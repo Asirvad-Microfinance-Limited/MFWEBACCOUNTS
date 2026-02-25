@@ -52,3 +52,5 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/MFWEBAPP/wwwroot/ClientApp/App.js
+/MFWEBAPP/appsettings.json
