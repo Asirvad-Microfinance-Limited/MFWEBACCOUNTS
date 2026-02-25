@@ -1,0 +1,892 @@
+﻿
+@model MFWEBAPP.Models.GenerateLoanApplicationModel
+
+
+
+@{
+    ViewData["Title"] = "LoanApplicationPrintPreview";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<link href="~/lib/bootstrap/dist/assets/css/Print.css" rel="stylesheet" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Print Loan Application  </strong></div>
+            <div class="card-body card-block">
+
+
+                <BODY>
+                    
+                    <div id="pdfloanapplication">
+                        <DIV id="page_1">
+                            <DIV id="p1dimg1" style="left: 613px;top:105px;position:absolute;width: 136px; height: 107px;border:1px solid black; z-index: 3;">
+                                @*<IMG src="data:image/jpg;base64," id="p1img1">*@
+                                <img src="data:image/jpeg;base64,@Model.customerImage" id="p1img1" style="width: 136px; height: 105px;z-index: 3;" />
+                                @*~/lib/bootstrap/dist/images/gettyimages-173236809-612x612.jpg*@
+                                @*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"*@
+                            </DIV>
+                            <DIV id="id1_1">
+                                <P class="p4 ft1" style="font: bold 16px 'Times'">APPLICATION NUMBER: @Model.applicationNumber</P>
+
+                            </DIV>
+                            <br />
+
+
+                                    <DIV id="id1_1">
+                                        <TABLE cellpadding=0 cellspacing=0 class="t0">
+                                            <TR>
+                                                <TD class="tr0 td0"><P class="p0 ft0" ><b>RBI Registration No:</b> <NOBR> @Model.rbiRegno</NOBR></P></TD>
+                                                <TD class="tr0 td1"><P class="p0 ft0" ><b>CIN No:</b> @Model.cinNo</P></TD>
+                                                <TD class="tr0 td2"><P class="p0 ft1" ><b>GST No:</b> @Model.gstinNo</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                        <P class="p1 ft2" >ASIRVAD MICROFINANCE LIMITED</P>
+                                    </DIV>
+                                    <DIV id="id1_2">
+                                        <DIV id="id1_2_1">
+                                            <P class="p2 ft1" style="font: bold"><b>Branch Name:</b> @Model.branchName</P>
+                                            <P class="p3 ft1" style="font: bold"><b>Village/Location:</b> @Model.location</P>
+                                        </DIV>
+                                        <DIV id="id1_2_2">
+                                            <TABLE cellpadding=0 cellspacing=0 class="t1">
+                                                <TR>
+                                                    <TD class="tr1 td3"><P class="p0 ft1"><b>Client ID:</b> @Model.memberId</P></TD>
+                                                    <TD class="tr1 td4"><P class="p0 ft3"><b>Date:</b> @Model.applnDate</P></TD>
+
+                                                </TR>
+                                            </TABLE>
+
+                                            <P class="p5 ft1"><b>Centre Code & Centre Name:</b> <NOBR>@Model.centerId - @Model.centerName</NOBR></P>
+                                            <P class="p6 ft1">&nbsp;</P>
+                                            <P class="p7 ft2">Applicant Personal Details</P>
+                                        </DIV>
+
+                                    </DIV>
+
+                                    <DIV id="id1_3">
+                                        <TABLE cellpadding=0 cellspacing=0 class="t2">
+                                            <TR>
+                                                <TD class="tr0 td5"><P class="p8 ft1" style="font: bold 11px 'Times'">Name of the Applicant</P></TD>
+                                                <TD class="tr0 td6"><P class="p9 ft1"> @Model.memberName</P></TD>
+                                                <TD class="tr0 td7"><P class="p9 ft1"  style="font: bold 11px 'Times'">Gender</P></TD>
+                                                <TD class="tr0 td8"><P class="p10 ft1">Female</P></TD>
+                                                <TD class="tr0 td9"><P class="p9 ft1"  style="font: bold 11px 'Times'">Age</P></TD>
+                                                <TD class="tr0 td10"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td11"><P class="p11 ft1"> @Model.memberAge</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td12"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td13"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td14"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td15"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td16"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td17"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td18"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Name of the Spouse</P></TD>
+                                                <TD class="tr3 td20"><P class="p9 ft1"> @Model.husband</P></TD>
+                                                <TD class="tr3 td21"><P class="p9 ft1"  style="font: bold 11px 'Times'">Gender</P></TD>
+                                                <TD class="tr3 td22"><P class="p12 ft3">Male</P></TD>
+                                                <TD class="tr3 td23"><P class="p9 ft1"  style="font: bold 11px 'Times'">Age</P></TD>
+                                                <TD class="tr3 td24"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr3 td25"><P class="p11 ft1">@Model.spouseAge</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr4 td12"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td13"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td14"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td15"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td16"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td17"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td18"><P class="p0 ft6">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr1 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Name of the Father</P></TD>
+                                                <TD class="tr1 td20"><P class="p9 ft1">@Model.father</P></TD>
+                                                <TD class="tr1 td21"><P class="p9 ft1"  style="font: bold 11px 'Times'">Gender</P></TD>
+                                                <TD class="tr1 td22"><P class="p12 ft3">Male</P></TD>
+                                                <TD class="tr1 td23"><P class="p9 ft1"  style="font: bold 11px 'Times'">Age</P></TD>
+                                                <TD class="tr1 td24"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr1 td25"><P class="p11 ft1">@Model.fatherAge</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr4 td12"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td13"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td14"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td15"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td16"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td17"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td18"><P class="p0 ft6">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Name of the Mother</P></TD>
+                                                <TD class="tr0 td20"><P class="p9 ft1">@Model.motherName</P></TD>
+                                                <TD class="tr0 td21"><P class="p9 ft1"  style="font: bold 11px 'Times'">Gender</P></TD>
+                                                <TD class="tr0 td22"><P class="p12 ft3">Female</P></TD>
+                                                <TD class="tr0 td23"><P class="p9 ft1"  style="font: bold 11px 'Times'">Age</P></TD>
+                                                <TD class="tr0 td24"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td25"><P class="p11 ft1" >@Model.motherAge</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td12"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td13"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td14"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td15"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td16"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td17"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td18"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Total family members</P></TD>
+                                                <TD class="tr3 td20"><P class="p9 ft1">@Model.familyMemberCount</P></TD>
+                                                <TD colspan=2 class="tr3 td26"><P class="p9 ft1"  style="font: bold 11px 'Times'">No of Earning members in family</P></TD>
+                                                <TD class="tr3 td23"><P class="p9 ft1">@Model.earningMemberCount</P></TD>
+                                                <TD class="tr3 td27"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr3 td25"><P class="p11 ft1">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td12"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td13"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td28"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td15"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td16"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td29"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td18"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Son</P></TD>
+                                                <TD class="tr0 td20"><P class="p11 ft1">@Model.mChildCount</P></TD>
+                                                <TD class="tr0 td30"><P class="p9 ft1"  style="font: bold 11px 'Times'">Daughter</P></TD>
+                                                <TD class="tr0 td22"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr0 td23"><P class="p11 ft1">@Model.fChildCount</P></TD>
+                                                <TD class="tr0 td27"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr0 td25"><P class="p11 ft1">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td12"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td13"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td28"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td15"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td16"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td29"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td18"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td19"><P class="p8 ft1"  style="font: bold 11px 'Times'">Status of Applicant</P></TD>
+                                                <TD class="tr3 td31"><P class="p11 ft1">@Model.maritalName</P></TD>
+                                                <TD class="tr3 td30"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr3 td32"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr3 td23"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr3 td27"><P class="p11 ft1">&nbsp;</P></TD>
+                                                <TD class="tr3 td25"><P class="p11 ft1">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td12"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td33"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td28"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td34"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td16"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td29"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td18"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                        <TABLE cellpadding=0 cellspacing=0 class="t3">
+                                            <TR>
+                                                <TD class="tr0 td35"><P class="p8 ft1" style="  text-align: center; font: bold 11px 'Times'">KYC Details</P></TD>
+                                                <TD class="tr0 td36"><P class="p15 ft1" style="font: bold 11px 'Times'">AADHAR Card No.</P></TD>
+                                                <TD class="tr0 td37"><P class="p16 ft1" style="font: bold 11px 'Times'">Voter ID No.</P></TD>
+                                                <TD class="tr0 td38"><P class="p17 ft1" style="font: bold 11px 'Times'">Ration card No.</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td41"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Applicant</P></TD>
+                                                <TD class="tr3 td44"><P class="p18 ft1">@Model.adhaarNo</P></TD>
+                                                <TD class="tr3 td45"><P class="p9 ft1">@Model.votersId </P></TD>
+                                                <TD class="tr3 td46"><P class="p9 ft1">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td41"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr1 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Spouse</P></TD>
+                                                <TD class="tr1 td44"><P class="p18 ft1">@Model.nomineeAadhar</P></TD>
+                                                <TD class="tr1 td45"><P class="p18 ft1">@Model.nomineeVotersId</P></TD>
+                                                <TD class="tr1 td46"><P class="p9 ft1">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td41"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Contact Numbers</P></TD>
+                                                <TD class="tr3 td44"><P class="p18 ft1">@Model.contactNo</P></TD>
+                                                <TD class="tr3 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Alternate Number</P></TD>
+                                                <TD class="tr3 td44"><P class="p18 ft1">@Model.altContactNo</P></TD>
+
+                                           </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td48"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"  style=" border-left: 1px solid;"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD rowspan=2 class="tr5 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Address: House no</P></TD>
+                                                <TD class="tr6 td44"><P class="p18 ft7">@Model.address</P></TD>
+                                                <TD rowspan=2 class="tr5 td45"><P class="p18 ft1" style="font: bold 11px 'Times'">Street / Colony</P></TD>
+                                                <TD class="tr6 td46"><P class="p12 ft3">@Model.street</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD rowspan=2 class="tr7 td40"><P class="p18 ft9">&nbsp;</P></TD>
+                                                <TD class="tr8 td46"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td39"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td41"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td42"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr9 td43"><P class="p12 ft3" style="text-align: center; font: bold 11px 'Times'">Village</P></TD>
+                                                <TD class="tr9 td44"><P class="p12 ft3" style="text-align: center; font: bold 11px 'Times'">Tehsil / Block</P></TD>
+                                                <TD class="tr9 td45"><P class="p12 ft3" style=" text-align: center;font: bold 11px 'Times'">District</P></TD>
+                                                <TD class="tr9 td46"><P class="p20 ft3" style="text-align: center; font: bold 11px 'Times'">PIN</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td41"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr1 td43"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr1 td44"><P class="p20 ft3">&nbsp;</P></TD>
+                                                <TD class="tr1 td45"><P class="p12 ft3">@Model.district</P></TD>
+                                                <TD class="tr1 td46"><P class="p12 ft3">@Model.pinCode</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td39"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td40"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td41"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td42"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr9 td43"><P class="p8 ft11" style="font: bold 11px 'Times'">Name of the Bank</P></TD>
+                                                <TD class="tr9 td44"><P class="p18 ft11">@Model.bankName</P></TD>
+                                                <TD class="tr9 td45"><P class="p9 ft11" style="font: bold 11px 'Times'">Bank Branch Name</P></TD>
+                                                <TD class="tr9 td46"><P class="p9 ft11">@Model.bankBranch</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td41"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr1 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Account Number</P></TD>
+                                                <TD class="tr1 td44"><P class="p18 ft1">@Model.accountNo</P></TD>
+                                                <TD class="tr1 td45"><P class="p9 ft1" style="font: bold 11px 'Times'">IFSC Code</P></TD>
+                                                <TD class="tr1 td46"><P class="p9 ft1">@Model.ifscCode</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td39"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td40"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td41"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td42"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr9 td43"><P class="p8 ft11" style="font: bold 11px 'Times'">Nationality</P></TD>
+                                                <TD class="tr9 td44"><P class="p18 ft11" style="font: bold 11px 'Times'"> Religion</P></TD>
+                                                <TD class="tr9 td47"><P class="p9 ft11" style="font: bold 11px 'Times'">Caste</P></TD>
+                                                <TD class="tr9 td46"><P class="p0 ft13">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td48"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr1 td43"><P class="p8 ft11">Indian</P></TD>
+                                                <TD class="tr1 td44"><P class="p18 ft1">@Model.religionName</P></TD>
+                                                <TD class="tr1 td47"><P class="p18 ft1">@Model.casteName</P></TD>
+                                                <TD class="tr1 td46"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td39"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td40"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td48"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td42"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td43"><P class="p8 ft1" style="font: bold 11px 'Times'">Applicant Education Status</P></TD>
+                                                <TD class="tr3 td49"><P class="p18 ft1">@Model.education</P></TD>
+                                                <TD class="tr3 td47"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr3 td46"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td39"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td50"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td48"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td42"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                        <P class="p21 ft14" style="font: bold 13px 'Times'">House Particulars & Household Particulars</P>
+                                        <TABLE cellpadding=0 cellspacing=0 class="t3">
+                                            <TR>
+                                                <TD class="tr0 td51"><P class="p8 ft1"  style=" font: bold 11px 'Times'">House</P></TD>
+                                                <TD class="tr0 td52"><P class="p22 ft1" style="padding-left: 2px;" >@Model.ownerShip</P></TD>
+                                                <TD class="tr0 td53"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td54"><P class="p23 ft1" style="font: bold 11px 'Times'">House condition</P></TD>
+                                                <TD class="tr0 td55"><P class="p19 ft1" style="padding-left: 2px;">@Model.houseType</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td56"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td57"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td58"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td59"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td60"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td61"><P class="p24 ft1" style="font: bold 11px 'Times'">Residing Since</P></TD>
+                                                <TD class="tr0 td62"><P class="p25 ft3" style="padding-right: 254px;">@Model.noofYears</P></TD>
+                                                <TD colspan=2 class="tr0 td63"><P class="p25 ft3">&nbsp;</P></TD>
+                                                <TD class="tr0 td64"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td56"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td57"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD colspan=2 class="tr10 td65"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td60"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td61"><P class="p8 ft1"  style="font: bold 11px 'Times'">Particulars</P></TD>
+                                                <TD class="tr0 td62"><P class="p25 ft3" style="padding-right: 209px;">@Model.particulars</P></TD>
+                                                <TD colspan=2 class="tr0 td63"><P class="p25 ft3">&nbsp;</P></TD>
+                                                <TD class="tr0 td64"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td56"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td57"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td66"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td67"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td60"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                        <P class="p21 ft14" style="font: bold 13px 'Times'">Occupation & Income Particulars</P>
+                                        <TABLE cellpadding=0 cellspacing=0 class="t4">
+                                            <TR>
+                                                <TD class="tr0 td68" style="padding-bottom:6px;"></TD>
+                                                <TD colspan=2 class="tr0 td69" style="padding-bottom:6px;"><P class="p8 ft1"  style="font: bold 11px 'Times'"> Applicant belongs to</P></TD>
+                                                <TD class="tr0 td70" style="padding-bottom:6px;"><P class="p0 ft1">@Model.areaType </P></TD>
+                                                <TD class="tr0 td9" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td71" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td72" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td73" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td74" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td75" style="padding-bottom:6px;"><P class="p0 ft4">&nbsp;</P></TD>
+
+                                            </TR>
+                                            @*<TR>
+                        <TD class="tr10 td68" style="border-: 1px solid  black;"></TD>
+                        <TD class="tr10 td76" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td77" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td78" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td16" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td34" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td79" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td80" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td81" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                        <TD class="tr10 td82" style="border: 1px solid black;"><P class="p0 ft12">&nbsp;</P></TD>
+                    </TR>*@
+                                            <TR>
+                                                <TD class="tr0 td68"></TD>
+                                                <TD colspan=2 class="tr0 td69"><P class="p8 ft1"  style="font: bold 11px 'Times'">Occupation of the applicant</P></TD>
+                                                <TD class="tr0 td70"><P class="p0 ft1">@Model.occupationName </P></TD>
+                                                <TD class="tr0 td9"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td71"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td72"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td73"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td74"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td75"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td68"></TD>
+                                                <TD class="tr10 td76"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td77"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td78"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td16"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td34"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td79"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td80"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td81"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td82"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td68"></TD>
+                                                <TD rowspan=2 class="tr11 td83"><P class="p8 ft1"  style="font: bold 11px 'Times'">Income sources</P></TD>
+                                                <TD class="tr3 td84"><P class="p26 ft1"  style="font: bold 11px 'Times'">Agriculture</P></TD>
+                                                <TD rowspan=2 class="tr11 td85"><P class="p27 ft1"  style="font: bold 11px 'Times'">Rent income</P></TD>
+                                                <TD class="tr3 td86"><P class="p28 ft1"  style="font: bold 11px 'Times'">Income from</P></TD>
+                                                <TD class="tr3 td22"><P class="p29 ft3"  style="font: bold 11px 'Times'">Total income per</P></TD>
+                                                <TD class="tr3 td87"><P class="p30 ft1"  style="font: bold 11px 'Times'">Monthly family</P></TD>
+                                                <TD class="tr3 td88"><P class="p31 ft3"  style="font: bold 11px 'Times'">Monthly</P></TD>
+                                                <TD class="tr3 td89"><P class="p31 ft3"  style="font: bold 11px 'Times'">Net income per</P></TD>
+                                                <TD class="tr3 td90"><P class="p29 ft3"  style="font: bold 11px 'Times'">Net income per</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td68"></TD>
+                                                <TD rowspan=2 class="tr6 td84"><P class="p32 ft7"  style="font: bold 11px 'Times'">income</P></TD>
+                                                <TD rowspan=2 class="tr6 td86"><P class="p33 ft7"  style="font: bold 11px 'Times'">other sources</P></TD>
+                                                <TD rowspan=2 class="tr6 td22"><P class="p34 ft15"  style="font: bold 11px 'Times'">annum</P></TD>
+                                                <TD rowspan=2 class="tr6 td87"><P class="p35 ft7"  style="font: bold 11px 'Times'">income</P></TD>
+                                                <TD rowspan=2 class="tr6 td88"><P class="p36 ft15"  style="font: bold 11px 'Times'">expenditure</P></TD>
+                                                <TD rowspan=2 class="tr6 td89"><P class="p34 ft15"  style="font: bold 11px 'Times'">month</P></TD>
+                                                <TD rowspan=2 class="tr6 td90"><P class="p37 ft15"  style="font: bold 11px 'Times'">annum</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td68"></TD>
+                                                <TD class="tr10 td83"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td85"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td68"></TD>
+                                                <TD class="tr10 td91"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td77"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td92"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td93"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td15"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td94"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td95"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td96"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td82"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr12 td68"></TD>
+                                                <TD class="tr12 td83"><P class="p8 ft3"  style="font: bold 11px 'Times'">Amount in Rupees</P></TD>
+                                                <TD class="tr12 td84"><P class="p38 ft1">@Model.agricultureIncome</P></TD>
+                                                <TD class="tr12 td85"><P class="p39 ft1">@Model.rent</P></TD>
+                                                <TD class="tr12 td86"><P class="p39 ft1">@Model.otherIncome</P></TD>
+                                                <TD class="tr12 td22"><P class="p39 ft1">@Model.annualIncome</P></TD>
+                                                <TD class="tr12 td87"><P class="p39 ft1">@Model.familyIncome</P></TD>
+                                                <TD class="tr12 td88"><P class="p38 ft1">@Model.monthlyExpense</P></TD>
+                                                <TD class="tr12 td89"><P class="p39 ft1">@Model.monthlyNetIncome</P></TD>
+                                                <TD class="tr12 td90"><P class="p38 ft1">@Model.annualNetIncome</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr13 td68"></TD>
+                                                <TD class="tr13 td91"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td77"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td92"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td93"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td15"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td94"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td95"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td96"><P class="p0 ft16">&nbsp;</P></TD>
+                                                <TD class="tr13 td82"><P class="p0 ft16">&nbsp;</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                        <P class="p40 ft14" style="font: bold 13px 'Times'">Loan Request</P>
+                                        <TABLE cellpadding=0 cellspacing=0 class="t5">
+                                            <TR>
+                                                <TD class="tr0 td97"><P class="p8 ft1"  style="font: bold 11px 'Times'">Loan Cycle</P></TD>
+                                                <TD class="tr0 td98"><P class="p41 ft1" style="text-align: left;padding-left: 3px;">@Model.loanCycle</P></TD>
+                                                <TD class="tr0 td99"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td100"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td101"><P class="p41 ft1">&nbsp;</P></TD>
+                                                <TD class="tr0 td102"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td103"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td104"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td105"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td106"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td107"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td108"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td109"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td110"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td111"><P class="p8 ft1" style="font: bold 11px 'Times'">Loan Product</P></TD>
+                                                <TD class="tr0 td112"><P class="p42 ft3" style="text-align: left;padding-left: 3px;">@Model.schemeName</P></TD>
+                                                <TD class="tr0 td113"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td114"><P class="p18 ft1" style="font: bold 11px 'Times'">Loan tenure</P></TD>
+                                                @if (@Model.loanTenure != 0)
+                                                {
+                                                    <TD class="tr0 td115"><P class="p43 ft1" style="text-align: left;padding-left: 3px;">@Model.loanTenure years</P></TD>
+
+                                                }
+                                                else
+                                                {
+                                                    <TD class="tr0 td115"><P class="p43 ft1" style="text-align: left;padding-left: 3px;">&nbsp;</P></TD>
+
+                                                }
+
+                                                <TD class="tr0 td116"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td117"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td104"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td105"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td118"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td119"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td108"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td109"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td110"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td111"><P class="p8 ft1"  style="font: bold 11px 'Times'">Loan Amount</P></TD>
+                                                <TD class="tr0 td112"><P class="p44 ft1" style="text-align: left;padding-left: 3px;">@Model.loanAmount</P></TD>
+                                                <TD class="tr0 td120"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td121"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td115"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td116"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td117"><P class="p0 ft4">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td104"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td105"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD colspan=2 class="tr2 td108"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td108"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td109"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td110"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr5 td111"><P class="p8 ft1"  style="font: bold 11px 'Times'">Loan Purpose</P></TD>
+                                                <TD class="tr5 td112"><P class="p0 ft1" style="text-align: left;padding-left: 3px;">@Model.purpose</P></TD>
+                                                <TD colspan=2 class="tr5 td115"><P class="p0 ft1">&nbsp;</P></TD>
+                                                <TD class="tr5 td122"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr5 td123"><P class="p18 ft1"  style="font: bold 11px 'Times'">Repayment Mode</P></TD>
+                                                <TD class="tr5 td117"><P class="p0 ft1" style="text-align: left;padding-left: 3px;font-size: 10px;">@Model.repayMode</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td104"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td105"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td106"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td107"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td124"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td125"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td110"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD rowspan=2 class="tr12 td111"><P class="p8 ft3"  style="font: bold 11px 'Times'">Rate of Interest per annum</P></TD>
+                                                <TD rowspan=2 class="tr12 td112"><P class="p45 ft1" style="text-align: left;padding-left: 3px;">@Model.interestRate</P></TD>
+                                                <TD class="tr1 td113"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr1 td114"><P class="p18 ft1"  style="font: bold 11px 'Times'">Processing Fee</P></TD>
+                                                <TD rowspan=2 class="tr12 td122"><P class="p36 ft3" style="text-align: left;padding-left: 3px;">@Model.processingFee</P></TD>
+                                                <TD rowspan=2 class="tr12 td123"><P class="p18 ft3"  style="font: bold 11px 'Times'">Insurance Coverage Required to</P></TD>
+                                                <TD rowspan=2 class="tr12 td117"><P class="p34 ft3" style="text-align: left;padding-left: 3px;">Applicant & Nominee</P></TD>
+                                                @*<TD rowspan=2 class="tr12 td117"><P class="p34 ft3"></P></TD>*@
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td113"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD rowspan=2 class="tr7 td114"><P class="p18 ft9"  style="font: bold 11px 'Times'">Inclusive GST</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td111"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td112"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td113"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td122"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td123"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td117"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr4 td104"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td105"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td118"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td119"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td124"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td125"><P class="p0 ft6">&nbsp;</P></TD>
+                                                <TD class="tr4 td110"><P class="p0 ft6">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr3 td111"><P class="p8 ft1"  style="font: bold 11px 'Times'">Insurance Premium</P></TD>
+                                                <TD rowspan=2 class="tr11 td112"><P class="p46 ft1" style="text-align: left;padding-left: 3px;">@Model.insurancePremium</P></TD>
+                                                <TD class="tr3 td113"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD rowspan=2 class="tr11 td114"><P class="p18 ft3"  style="font: bold 11px 'Times'">Moratorium applicable</P></TD>
+                                                <TD rowspan=2 class="tr11 td122"><P class="p36 ft3" style="text-align: left;padding-left: 3px;">Yes</P></TD>
+                                                <TD rowspan=2 class="tr11 td123"><P class="p18 ft1"  style="font: bold 11px 'Times'">Moratorium Days</P></TD>
+                                                <TD rowspan=2 class="tr11 td117"><P class="p34 ft3" style="text-align: left;padding-left: 3px;">@Model.morotorium</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD rowspan=2 class="tr6 td111"><P class="p8 ft7"  style="font: bold 11px 'Times'">inclusive GST</P></TD>
+                                                <TD class="tr8 td113"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr10 td112"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td113"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td114"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td122"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td123"><P class="p0 ft12">&nbsp;</P></TD>
+                                                <TD class="tr10 td117"><P class="p0 ft12">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td104"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td105"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td118"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td119"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td124"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td125"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td110"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr0 td111"><P class="p8 ft3"  style="font: bold 11px 'Times'">Security Deposit Applicable</P></TD>
+                                                <TD rowspan=2 class="tr14 td112"><P class="p42 ft3" style="text-align: left;padding-left: 3px;">No</P></TD>
+                                                <TD class="tr0 td113"><P class="p0 ft4">&nbsp;</P></TD>
+                                                <TD class="tr0 td114"><P class="p18 ft1"  style="font: bold 11px 'Times'"><NOBR>Pre-closure</NOBR></P></TD>
+                                                <TD rowspan=2 class="tr14 td122"><P class="p29 ft3" style="text-align: left;padding-left: 3px;">No</P></TD>
+                                                <TD rowspan=2 class="tr14 td123"><P class="p18 ft1" style="font: bold 11px 'Times'">Penalty on delay payments</P></TD>
+                                                <TD rowspan=2 class="tr14 td117"><P class="p36 ft3" style="text-align: left;padding-left: 3px;">No</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD rowspan=2 class="tr7 td111"><P class="p8 ft9"  style="font: bold 11px 'Times'">or not</P></TD>
+                                                <TD class="tr8 td113"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD rowspan=2 class="tr7 td114"><P class="p18 ft9"  style="font: bold 11px 'Times'">charges</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr8 td112"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td113"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td122"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td123"><P class="p0 ft10">&nbsp;</P></TD>
+                                                <TD class="tr8 td117"><P class="p0 ft10">&nbsp;</P></TD>
+                                            </TR>
+                                            <TR>
+                                                <TD class="tr2 td104"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td105"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td118"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td119"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td124"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td125"><P class="p0 ft5">&nbsp;</P></TD>
+                                                <TD class="tr2 td110"><P class="p0 ft5">&nbsp;</P></TD>
+                                            </TR>
+                                        </TABLE>
+                                    </DIV>
+                                    <DIV id="id1_4">
+                                        @*<P class="p2 ft11">LIST OF DOCUMENTS TO BE SUBMITTED WITH APPLICATION FORM: <NOBR>Self-attested</NOBR> Identity Proof of Borrower and <NOBR>Co-Borrower</NOBR> 2. Self <NOBR>-attested</NOBR> Address proof of Borrower and <NOBR>Co-Borrower</NOBR> 3. Recent joint passport size photographs (2) Self- attested copy of Applicant's Savings bank passbook / Cancelled cheque / Bank statement</P>*@
+                                    </DIV>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </DIV>
+                                <DIV id="page_2">
+
+
+                                    <P class="p47 ft17">BORROWERS REQUEST CUM DECLARATION STATEMENT</P>
+                                    <P class="p48 ft18">I, @Model.memberName W/D/o @Model.father hereby confirm that I have undergone the @Model.parameterValue days Compulsory Group Training (CGT) conducted byASIRVAD Microfinance Limited. Where in understood the procedures and systems and accepted all the terms and conditions. I as a loan applicant hereby declare that I interested to avail a loan from ASIRVAD Micro Finance Limited and further declare as under.</P>
+                                    <P class="p49 ft0"><SPAN class="ft1">1. </SPAN>My total family income is less than @Model.incomeLimit and as we reside in @Model.areaType area.</P>
+                                    <P class="p50 ft0"><SPAN class="ft3">2.</SPAN><SPAN class="ft19">My total level of indebtness is & would be less than 1 Lakh after disbursal of this loan being applied further, I shall neverexceed indebtness of Rs.1.25 Lakh under any circumstances.</SPAN></P>
+                                    <P class="p51 ft0"><SPAN class="ft3">3.</SPAN><SPAN class="ft19">I am not a member of any other JLG / SHG and under take that not become member of any other JLG / SHG till the time I have loans running with ASIRVAD Microfinance limited.</SPAN></P>
+                                    <P class="p52 ft18"><SPAN class="ft3">4.</SPAN><SPAN class="ft20">I have shared my/family KYC particulars on my own free will and hereby authorize ASIRVADto directly or indirectly carryout credit investigations, CB check back ground checks and other actions including contact my family members, group members, friends, residents of my locality or my referees to establish my credit worthiness, indebtness and default riskpotential risk at any time including prior or after loan sanction / disbursement.`</SPAN></P>
+                                    <P class="p53 ft0">a. I understand and agree to pay 1% of loan amount (plus GST) as <NOBR>non-refundable</NOBR> processing fee and (inclusive of GST) and the applicable insurance premium towards Credit Shield Insurance.</P>
+                                    <P class="p54 ft0"><SPAN class="ft3">5.</SPAN><SPAN class="ft21">I understand that the effective Annual percentage rate is @Model.interestRate %</SPAN></P>
+                                    <P class="p55 ft0"><SPAN class="ft3">6.</SPAN><SPAN class="ft21">I hereby authorize ASIRVAD Microfinance Limited to share my details to agencies approved by regulator/ Government Authorities.</SPAN></P>
+                                    <P class="p56 ft0"><SPAN class="ft3">7.</SPAN><SPAN class="ft21">I herewith authorize the insurer to remit the claim amount upon my /spouse death to ASIRVAD Micro Finance limited who will in turn pay to the nominee after adjusting any dues to ASIRVAD.</SPAN></P>
+                                    <P class="p57 ft0"><SPAN class="ft3">8.</SPAN><SPAN class="ft21">I hereby authorize ASIRVAD Microfinance Limited to remit the net sanction loan amount after deducting the processing fee+ GST + Applicable insurance premium + Tax into my bank account.</SPAN></P>
+                                    <P class="p58 ft18"><SPAN class="ft3">9.</SPAN><SPAN class="ft22">ASIRVAD Microfinance Limited shall be entitled to sell, assign, securitize or transfer its rights and obligations under this loan agreement/promissory note in favour of any bank(s) or financial institution(s) or any other person(s) or agency of ASIRVAD Microfinance Limited's choice in whole or in part of such manner and on such terms and conditions as ASIRVAD Microfinance Limited, may decide and the same shall conclusively be binding upon me.</SPAN></P>
+                                    <P class="p59 ft0"><SPAN class="ft3">10.</SPAN><SPAN class="ft23">I understand that a) No Penal charges, no penalty is charged on delayed payment & prepayment.b) No security deposit /margin is being collected for this loan</SPAN></P>
+                                    <P class="p60 ft0"><SPAN class="ft3">11.</SPAN><SPAN class="ft24">I Hereby authorize AML to use the mobile number given by me in the application for sending transactional SMS relating to my loan accounts.</SPAN></P>
+                                    <P class="p61 ft0">The above contents are filled at my instructions and are read over and explained in the language known to me and my group members by the FDO / Branch / Area Manager and made me understand the details.</P>
+                                    <P class="p62 ft18">I, @Model.memberName hereby wilfully declare the information provided herein is true to the bestof my knowledge, information and belief. I have clearly understood the detailed terms & conditions on the loan for which I have hereby applied through this application to ASIRVAD Microfinance Limited. I also confirm to have received the acknowledgement of this loan application. I further understand that this is only a loan application and that ASIRVAD Microfinance Limited has the sole discretion to sanction or reject the loan application or reduce the loan sanction amount.</P>
+                                    <TABLE cellpadding=0 cellspacing=0 class="t6">
+                                        <TR>
+                                            <TD class="tr0 td126"><P class="p0 ft0">Signature / Thumb Impression of the Applicant</P></TD>
+                                            <TD class="tr0 td127"><P class="p0 ft0">Signature / Thumb impression of the <NOBR>Co-Applicant /</NOBR> Spouse</P></TD>
+                                        </TR>
+                                    </TABLE>
+                                    <P class="p63 ft17">JLG Acceptance/Declaration by Group/Centre Members</P>
+                                    <P class="p64 ft18">We, the members of Centre name @Model.centerName centre code @Model.centerId here by declaring that the applicant is one of our group/centre members, and we undertake to stand as guarantors to the loan extended to each one of us including the applicant. In case of default to ASIRVAD, the Mutual Guarantors, who offer Guarantee collectively to their individual loans shall remain responsible jointly and severally for making necessary payments/clear all dues to ASIRVAD.</P>
+                                    <P class="p65 ft0">Signature/Thumb Impression of Group/Centre Members</P>
+                                    <TABLE cellpadding=0 cellspacing=0 class="t7">
+                                        <TR>
+                                            <TD class="tr12 td128"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr12 td129"><P class="p66 ft25">1</P></TD>
+                                            <TD class="tr12 td130"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr12 td131"><P class="p67 ft25">2</P></TD>
+                                            <TD class="tr12 td132"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr12 td133"><P class="p67 ft25">3</P></TD>
+                                            <TD class="tr12 td134"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr12 td135"><P class="p13 ft25">4</P></TD>
+                                            <TD class="tr12 td136"><P class="p68 ft25">5</P></TD>
+                                        </TR>
+                                        <TR>
+                                            <TD class="tr15 td137"><P class="p24 ft25">A2</P></TD>
+                                            <TD class="tr15 td138"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr15 td139"><P class="p8 ft25">J1</P></TD>
+                                            <TD class="tr15 td140"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr15 td141"><P class="p8 ft25">J2</P></TD>
+                                            <TD class="tr15 td142"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr15 td143"><P class="p8 ft25">J3</P></TD>
+                                            <TD class="tr15 td144"><P class="p0 ft4">&nbsp;</P></TD>
+                                            <TD class="tr15 td145"><P class="p69 ft25">J4</P></TD>
+                                        </TR>
+                                        <TR>
+                                            <TD class="tr7 td146"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td147"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td148"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td149"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td150"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td151"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td152"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td153"><P class="p0 ft26">&nbsp;</P></TD>
+                                            <TD class="tr7 td154"><P class="p0 ft26">&nbsp;</P></TD>
+                                        </TR>
+                                    </TABLE>
+                                </DIV>
+                                <DIV id="page_3">
+                                    <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />
+
+
+
+                                    <DIV id="p3dimg1">
+                                        <IMG src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABFAs4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArj7jQtH1v4h6p/a2lWN/5OlWPl/a7dJdmZbvONwOM4HT0FdhXP2f8AyUPWf+wVYf8Ao27oAP8AhBPB/wD0Kmh/+C6H/wCJo/4QTwf/ANCpof8A4Lof/ia6CigDn/8AhBPB/wD0Kmh/+C6H/wCJo/4QTwf/ANCpof8A4Lof/ia6CigDn/8AhBPB/wD0Kmh/+C6H/wCJo/4QTwf/ANCpof8A4Lof/ia6CigDn/8AhBPB/wD0Kmh/+C6H/wCJqPwNBDa+G5Le3ijhgi1PUEjjjUKqKLyYAADgADjFdJXP+Df+QHc/9hXUv/S2agDoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACufs/8Akoes/wDYKsP/AEbd10Fc/Z/8lD1n/sFWH/o27oA6CiiigAooooAKKKKACuf8G/8AIDuf+wrqX/pbNXQVz/g3/kB3P/YV1L/0tmoA6CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArn7P/AJKHrP8A2CrD/wBG3ddBXP2f/JQ9Z/7BVh/6Nu6AOgooooAKKKKACiiigArn/Bv/ACA7n/sK6l/6WzV0Fc/4N/5Adz/2FdS/9LZqAOgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK5+z/wCSh6z/ANgqw/8ARt3XQVz9n/yUPWf+wVYf+jbugDoKKKKACiiigAooooAK5/wb/wAgO5/7Cupf+ls1dBXP+Df+QHc/9hXUv/S2agDx/wD4aa/6lH/ypf8A2qj/AIaa/wCpR/8AKl/9qoooA9g8E+J/+Ex8IWOv/Y/sf2rzP3Hm+Zt2yMn3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" id="p3img1">
+                                    </DIV>
+
+
+                                    <DIV id="id3_1">
+                                        <DIV id="id3_1_1">
+                                            <P class="p2 ft27">DEMAND PROMISSORY NOTE</P>
+                                        </DIV>
+                                        <DIV id="id3_1_2">
+                                            <P class="p2 ft29"><SPAN class="ft28">Date: </SPAN>@Model.disbursementDate </P>
+
+                                        </DIV>
+                                        <DIV id="id3_1_2">
+
+                                            <P class="p2 ft29"><SPAN class="ft28">Place: </SPAN>@Model.branchName</P>
+                                        </DIV>
+                                    </DIV>
+                                    <DIV id="id3_2">
+                                        @*<P class="p70 ft3">I @Model.memberName W/D/o @Model.father residing at @Model.address (hereafter called as 'Borrower') unconditionally promise to pay (on demand) the payee ASIRVAD Microfinance Limited, at its Head office located at Chennai or at such other place as payee may designate, the loan amount received from ASIRVAD MicrofinanceLimited through NEFT/RTGS/Cheque/Cash of Rs.@Model.loanAmount Rupees (In Words) THIRTY THOUSAND onlywith interest thereon at the rate of @Model.interestRate %</P>
+        <P class="p71 ft3"><SPAN class="ft30">p.a. on diminishing balance method from the date hereof through on weekly/fortnightly/ Four weekly/ Monthly to ASIRVAD Microfinance Limited or its authorized employees.</SPAN></P>*@
+                                         <P class="p70 ft3">
+                                            ON DEMAND, I/WE, @Model.memberName, W/D/o @Model.father (hereafter called as "Borrower" jointly and severally promise to pay to ASIRVAD MICROFINANCE LIMITED (“LENDER”) or order the sum of
+                                            Rs. @Model.loanAmount (Rupees @Model.loanAmountTxt Only) together with interest from the date hereof, at @Model.interestRate.% per annum on diminishing balance payable with daily/ fortnightly/4 weekly / monthly/ Quarterly to
+                                            Asirvad Microfinance Limited or its authorized employees.
+                                        </P>
+                                        <div style="border: 1px solid;border-color:black;width: 9%;margin-left: 604px;margin-top: 10px;margin-bottom: 0px;">
+
+                                            <p style="font: 10px 'Times';line-height: 0px;margin-top: 14px;margin-top: 25px;">Revenue Stamp</p>
+                                            <p style="font: 10px 'Times';line-height: 0px;margin-top: 14px;">(Signature/ RTI</p>
+                                            <p style="font: 10px 'Times';line-height: 0px;margin-top: 14px;margin-bottom: 25px;">of borrowser)</p>
+                                        </div>
+
+                                        @*</DIV>*@
+                                        <P class="p75 ft3" style="margin-top: -20px;">Signature/Thumb Impression of Co-Applicant /Spouse</P>
+                                        __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __
+
+                                        <P class="p76 ft17">LOAN AGREEMENT</P>
+                                        <P class="p77 ft3">This Loan Agreement is made and executed on this @Model.disbursementDate at @Model.centerName</P>
+                                        <P class="p78 ft14">BY AND BETWEEN</P>
+                                        <P class="p79 ft3">ASIRVAD Microfinance Limited, a company incorporated and registered under the provisions of the Companies Act, 1956 having <NOBR>CIN-@Model.cinNo</NOBR> and having its registered office at @Model.holocation and corporate office at  @Model.holocation represented by its AuthorizedSignatory (Hereinafter referred to as the 'Lender / Company' which in expression shall mean and include its successors, legal heirs and permitted assignees)</P>
+                                        <P class="p80 ft14">AND</P>
+                                        <P class="p81 ft3">The Client Name (Hereinafter referred to as the Borrower/Co-Applicant) @Model.memberName W/D/o @Model.father being resident of the @Model.address address who in expression shall mean and include their successor,legal heir and permitted assignee)</P>
+                                        <P class="p82 ft3">The Lender has approved and sanctioned the loan to Borrower based on the information provided by the Borrower in her loan application.</P>
+                                        <P class="p83 ft33">WHEREAS further the Borrower have organized herself into a Group for the purpose of mutual guarantee, joint & several liability and the Borrower has guaranteed the repayment of loan of one another.</P>
+                                        <P class="p82 ft3">The Borrower has signed Demand Promissory Note in favour of the Lender for the loan that they have availed.</P>
+                                        <P class="p82 ft3">NOW, THEREFORE, the Lender and the Borrower as parties to this agreement hereby set forth their understanding and agree in writing as under:</P>
+                                        <P class="p84 ft34">LOAN AMOUNT, INTEREST, REPAYMENT FREQUENCY & FEES</P>
+                                        <P class="p85 ft3"><SPAN class="ft31">1.1</SPAN><SPAN class="ft35">The Borrower hereby agreed to obtain the loan amount Rs- @Model.loanAmount from the Lender and thereby give a written acknowledgement of the same through this agreement along with the execution of various other documents.</SPAN></P>
+                                        <P class="p86 ft3"><SPAN class="ft31">1.2</SPAN><SPAN class="ft35">The Borrower agree to repay the entire loan amount with the applicable interest as per diminishing balance method, within a term as stipulated in loan card.</SPAN></P>
+                                        <P class="p87 ft3"><SPAN class="ft31">1.3</SPAN><SPAN class="ft35">The Borrower shall be charged Loan Processing Fee (Tax as applicable) and Insurance Premium (tax as applicable) before disbursement of loan. The Borrower understands that the pricing of the loan involves only three components viz; the interest charge, the processing charge and the insurance premium.</SPAN></P>
+                                        <P class="p88 ft3"><SPAN class="ft31">1.4</SPAN><SPAN class="ft36">The Borrower has chosen the repayment frequency and agree to pay as per the loan card as provided by the Company. Borrower understood that there will be a moratorium period for the first instalment, equivalent to the period of one instalment. Any furtherchanges in first repayment due date/amount, thereby, is as per mutual consent with Borrower by the Company.</SPAN></P>
+                                        <P class="p86 ft3"><SPAN class="ft31">1.5</SPAN><SPAN class="ft36">The Borrower under this agreement have agreed upon to repay the loan amount as mentioned in loan card without a prior noticeor demand from the Lender.</SPAN></P>
+                                        <P class="p89 ft3"><SPAN class="ft31">1.6</SPAN><SPAN class="ft36">In case any of the days of repayment as per loan card falls on a public holiday or the Lender's business holiday then the Borrower have agreed to repay the said installment amount on any other day as decided and intimated by the Lender either before or after the due date.</SPAN></P>
+                                        <P class="p90 ft3"><SPAN class="ft31">1.7</SPAN><SPAN class="ft36">The Borrower hereby agree to permit the Lender to change the Centre schedule such as day, time and place as per the convenience of both the parties and with the prior information to the Borrower. Further the Borrower confirm that they will adhere to the said change and make sure that they are available according to the new changed Centre meeting scheduled date, place and time.</SPAN></P>
+                                        <P class="p86 ft34">BORROWER OBLIGATION</P>
+                                        <P class="p91 ft3"><SPAN class="ft31">2.1</SPAN><SPAN class="ft37">The Borrower hereby confirm that they will be using the availed loan facility only for income generation activities/purpose as indicated in Loan Application. Any change in end use of funds shall be duly informed to the Company within 15 days of disbursement,failure of which may result in recall of loan. The Borrower hereby have agreed to the Company that, at any point of time whenever the Company intends to verify for the same.</SPAN></P>
+                                        <P class="p92 ft3"><SPAN class="ft31">2.2</SPAN><SPAN class="ft37">If the Borrower fail to utilize the loan amount as per the specified income generation activity/purpose, such act of the Borrower would tantamount to intentional misuse, criminal breach of trust and misappropriation and Lender is permitted to bring appropriate legal actions (civil or criminal or arbitration or other) against the Borrower.</SPAN></P>
+                                        <P class="p93 ft3"><SPAN class="ft31">2.3</SPAN><SPAN class="ft37">The Borrower shall not give availed loan to anybody else.</SPAN></P>
+                                        <P class="p94 ft3"><SPAN class="ft3">2.4</SPAN><SPAN class="ft37">The Borrower hereby confirms that they have not availed loan facility from more than 2 MFIs including this Company as on the date of this disbursement, and that she will not become member of more than one Joint Liability Group/Self Help Group.</SPAN></P>
+                                        <P class="p95 ft3"><SPAN class="ft3">2.5</SPAN><SPAN class="ft37">The Borrower here by confirms that their household income is not more than Rs.2,00,000/- and her indebtedness is not more than Rs. </SPAN><NOBR>1,25,000/-.</NOBR></P>
+                                        <P class="p96 ft3"><SPAN class="ft31">2.6</SPAN><SPAN class="ft37">The Borrower under this agreement undertake jointly and severally to keep this agreement as confidential and also undertake not to provide any information or copies of the same unless the Borrower under this agreement are legally required to do so by any law/ statute and in such circumstances, they shall obtain prior written consent of the Company to provide the same.</SPAN></P>
+                                        <P class="p97 ft3"><SPAN class="ft31">2.7</SPAN><SPAN class="ft37">The Borrower hereby confirm that they have not paid or provided any security deposit, any collateral or any form of monetarydeposit directly or indirectly to the Company or its stafffor availing this loan.</SPAN></P>
+                                        <P class="p98 ft3"><SPAN class="ft31">2.8</SPAN><SPAN class="ft37">The Borrower understands that the loan application form and the copies of KYC documents obtained for the purpose of processing loan shall not be returned.</SPAN></P>
+                                        <P class="p99 ft3"><SPAN class="ft31">2.9</SPAN><SPAN class="ft38">The Borrower understands and agrees that all repayments shall be made only in mutually agreed upon centre meeting location orat Company's Branch premises. However, the loan disbursement will be directly credited into her bank account post deduction of applicable processing fee and insurance premium plus taxes.</SPAN></P>
+                                        <P class="p98 ft3"><SPAN class="ft31">2.10</SPAN><SPAN class="ft39">The Borrower agreed to pay </SPAN><NOBR>non-refundable</NOBR> Group Term Life Insurance premium as per the norms.</P>
+                                        <P class="p100 ft3"><SPAN class="ft31">2.11</SPAN><SPAN class="ft40">The Borrower shall notify the Company of any changes in her contact details viz. Address, mobile number, KYC information within next centre meeting. The Company will not be held responsible for any delay in transmission of such information and will be free to take any action, under this agreement, towards collection of the outstanding loan amount.</SPAN></P>
+                                        <P class="p101 ft3"><SPAN class="ft31">2.12</SPAN><SPAN class="ft41">Whenever the Borrower wishes to change the centre/branch, the Borrower shall make explicit request in writing to the Company which will be taken in to consideration within 21 days.</SPAN></P>
+                                        <P class="p102 ft3"><SPAN class="ft3">2.13</SPAN><SPAN class="ft41">The Borrower hereby consents to the company to share her KYC data and Credit history to Credit bureau agencies, Rating agencies,regulators, Banks /Funding agencies, Government offices based on the guidelines from RBI from time to time.</SPAN></P>
+                                    </DIV>
+                                </DIV>
+                                <DIV id="page_4">
+
+                                    <P class="p103 ft3"><SPAN class="ft3">2.14</SPAN><SPAN class="ft40">The Borrower need not to pay any commission or charges other than mentioned in loan card to any individual including staff of the Company.</SPAN></P>
+                                    <P class="p104 ft3"><SPAN class="ft3">2.15</SPAN><SPAN class="ft40">The Borrower hereby agree to comply with all company guidelines and processes while availing and repayment of the loan. TheBorrower also understand that these guidelines/ processes are subject to change from time to time as per Regulatory guidelines(issued by Government, RBI, SRO... etc.)</SPAN></P>
+                                    <P class="p105 ft3"><SPAN class="ft31">2.16</SPAN><SPAN class="ft40">The Borrower hereby severally and jointly undertake that they will never indulge in any activity which results in delays in repaymentsor stopping repayments by means of provoking, diverting or influencing the other Borrower of the group/centre or any otherborrower of the Company in either the same centre or same village or other villages under any circumstances.</SPAN></P>
+                                    <P class="p106 ft3"><SPAN class="ft3">2.17</SPAN><SPAN class="ft40">The Borrower hereby allows the Company to initiate the insurance claim process on behalf of Borrower in event of death as per the Insurance Policy. For the said purposes, the Borrower agrees with the company to retains the insurance policy under their custody for speedy processing of the claim.</SPAN></P>
+                                    <P class="p107 ft3"><SPAN class="ft3">2.18</SPAN><SPAN class="ft40">The Borrower hereby confirm that in case due date falls on holidays or a public holiday or the Company business holiday then the client can repay the said instalment amount on any other day as confirmed by Company staff either before or after the due date.</SPAN></P>
+                                    <P class="p108 ft3"><SPAN class="ft31">2.19</SPAN><SPAN class="ft41">The Borrower hereby confirm that this agreement and policies & procedures of the Company has been read to her by Company's staff and someone independently in a language that she understands, and she has clearly understood all the terms and conditions under this agreement and policies & procedures of the Company irrespective of her literacy levels.</SPAN></P>
+                                    <P class="p109 ft34">LENDERS RIGHTS & OBLIGATION</P>
+                                    <P class="p110 ft3"><SPAN class="ft31">3.1</SPAN><SPAN class="ft42">The Lender shall provide Loan Card containing repayment schedule to the Borrower as agreed and signed by the parties to this agreement. The terms and specifications incorporated in loan card with reference to this agreement have been unconditionally agreed by the parties.</SPAN></P>
+                                    <P class="p111 ft3"><SPAN class="ft3">3.2</SPAN><SPAN class="ft42">The Lender will not charge any penalty for delayed repayments. However, any delay in repayment by clients can adversely affect their credibility and their chances of getting further loans. This decision will be at the sole discretion of the Lender. Furthermore,any wilful delay in repayments beyond 30 days will give the Lender the right to take due legal action as deemed necessary to recollect any outstanding amount of the loan along with other charges as applicable.</SPAN></P>
+                                    <P class="p112 ft3"><SPAN class="ft31">3.3</SPAN><SPAN class="ft42">The Borrower under this agreement agree to allow the Lender to securitize or assign the loan instalments/ receivable due or outstanding due from the Borrower in favour of any Bank, NBFC, Holding company, Financial Institution, MFI or any other entitywhatsoever and also authorize the Lender to become a collection agent for such entity or appoint any one as a collection agentduring the term of their loan for any reason whatsoever.</SPAN></P>
+                                    <P class="p113 ft3"><SPAN class="ft31">3.4</SPAN><SPAN class="ft38">The Lender commits & undertakes to protect the privacy of the Borrower Information & data.</SPAN></P>
+                                    <P class="p114 ft3"><SPAN class="ft3">3.5</SPAN><SPAN class="ft38">The Lender will not charge any penalty on prepayment of loan.</SPAN></P>
+                                    <P class="p113 ft3"><SPAN class="ft31">3.6</SPAN><SPAN class="ft38">Settlement of loan will be confirmed by mentioning in the passbook in front of the client.</SPAN></P>
+                                    <P class="p115 ft3"><SPAN class="ft31">3.7</SPAN><SPAN class="ft42">The Lender hereby undertakes to be committed to deal fairly with the Borrower and abide by its own Fair Practices Code, RBI's Fair Practices Code & Other Industry Fair Practices Code &Code of Conduct in view of the fair and transparent lending policy as per the guidelines of the regulating authority.</SPAN></P>
+                                    <P class="p116 ft3"><SPAN class="ft31">3.8</SPAN><SPAN class="ft42">The Lender confirms that grant of loan is not linked to any other product /services offered by the MFI or third party.</SPAN></P>
+                                    <P class="p117 ft3"><SPAN class="ft3">3.9</SPAN><SPAN class="ft42">The Lender reserves the right to recalling the loan/ accelerating payment of the outstanding loan amount anytime from the clientsin case the client breaches any of the terms & conditions as mentioned herein this loan agreement.</SPAN></P>
+                                    <P class="p118 ft3"><SPAN class="ft3">3.10</SPAN><SPAN class="ft43">The Company staff will not collect any other amount from client except for due Loan instalments, Insurance Fees and ProcessingFees, in cash or any other form. The Company will acknowledge every financial transaction by entry in their passbook/any form of communication such as receipts, SMS, mails etc.</SPAN></P>
+                                    <P class="p119 ft3"><SPAN class="ft3">3.11</SPAN><SPAN class="ft36">The Company undertakes and confirms to train its staff on Fair Practices, ethical behaviour with an intention to prevent inappropriate collection and will be accountable for preventing inappropriate staff behaviour and timely grievance redressal.</SPAN></P>
+                                    <P class="p120 ft3"><SPAN class="ft31">3.12</SPAN><SPAN class="ft36">The Borrower under this agreement specifically permit the Lender and its authorized representatives or staff to visit the homeor dwelling place or working place of the Borrower or the authorized representatives of the Borrower for collection of loan dues within the compliance of the Lender's or RBI's Fair Practices Code / Notifications.</SPAN></P>
+                                    <P class="p121 ft3"><SPAN class="ft3">3.13</SPAN><SPAN class="ft36">Before providing any </SPAN><NOBR>non-financial</NOBR> products to the Borrower, Lender will take confirmation from her.</P>
+                                    <P class="p114 ft3"><SPAN class="ft31">3.14</SPAN><SPAN class="ft35">In case of any complaint/grievance, client can call company TOLL Free number </SPAN><NOBR>1800-270-1146&</NOBR> <NOBR>1800 102 1080</NOBR> OR Local Branch Manager.</P>
+                                    <P class="p122 ft34">JURISDICTION & GENERAL TERMS</P>
+                                    <P class="p123 ft3"><SPAN class="ft3">1.1</SPAN><SPAN class="ft44"> All disputes arising in connection with this agreement, at any time, shall be settled among the parties by discussions but if they fail to arrive at a consensus settlement, the same may be   referred to the Sole Arbitrator, to be appointed by the Company, whose decision shall be final and binding on both the parties. The expenses for the same shall be borne by the Borrower.  In the event of incapacity or resignation or death of the Sole Arbitrator so appointed, Company shall be entitled to appoint another Arbitrator in place of the earlier Arbitrator, and the proceedings shall continue from the stage at which the predecessor had left it. The venue of the arbitration shall be at Chennai or such other place as may be decided by the Company and the arbitration proceedings shall be governed by the Arbitration & Conciliation Act, 1996 with any statutory modifications and re-enactments or amendments thereof and shall be in English language. The Arbitrator's Award shall be in writing. The Arbitrator shall also decide on the costs of the arbitration proceedings.</SPAN></P>
+                                    <P class="p124 ft3"><SPAN class="ft31">1.2</SPAN><SPAN class="ft45">This Agreement shall be executed in two counterparts one to be retained by each party, both of which taken together shall constitute one and the same agreement.</SPAN></P>
+                                    
+                                    <P class="p116 ft3"><SPAN class="ft3">1.3</SPAN><SPAN class="ft44">No provision or terms of the agreement hereby accepted by both parties herein shall be waived off without the prior consent of Lender.</SPAN></P>
+                                    <P class="p125 ft3">I, the undersigned, have willingly executed this Loan and Joint Liability Guarantee Agreement on the @Model.applnDate and under this agreement hereby agree to the <NOBR>above-mentioned</NOBR> terms and conditions of the Loan and Joint Liability Guarantee Agreement.</P>
+                                    <P class="p116 ft3">I, the undersigned, have received the physical copy of Loan and Joint Liability Guarantee Agreement on the <NOBR>above-mentioned</NOBR> date of execution of the agreement.</P>
+                                    <P class="p126 ft3">IN WITNESS WHEREOF, the parties herein under have set their hands the day and year hereinabove mentioned.</P>
+                                    <TABLE cellpadding=0 cellspacing=0 class="t8">
+                                        <TR>
+                                            <TD class="tr9 td155"><P class="p0 ft3">Signature / Thumb impression of the <NOBR>Co-Applicant/</NOBR> Spouse</P></TD>
+                                            <TD class="tr9 td156"><P class="p0 ft31">Signature / Thumb impression of the Borrower</P></TD>
+                                        </TR>
+                                    </TABLE>
+                                    <P class="p127 ft3">Witness 1 (Signature of FDO)</P>
+                                    <P class="p128 ft3">Witness 2 (Group Leader)</P>
+                                    <P class="p129 ft3">(For Asirvad Microfinance Ltd.)</P>
+                                    <P class="p127 ft3">Date: @Model.date</P>
+                                    <TABLE cellpadding=0 cellspacing=0 class="t9">
+                                        <TR>
+                                            <TD class="tr9 td157"><P class="p0 ft3">Place : @Model.branchName</P></TD>
+                                            <TD class="tr9 td158"><P class="p0 ft3">Signature of the Branch Manager</P></TD>
+                                        </TR>
+                                    </TABLE>
+                                </DIV>
+
+                            </DIV>
+
+                </BODY>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+
+}
+
+

@@ -1,0 +1,230 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .full {
+            border: 1px outset black;
+            text-align: center;
+        }
+
+        .bind {
+            border: 1px outset black;
+        }
+
+        .tb {
+            border-style: none;
+        }
+
+        /* p, td, th, span {
+            font-size: 10px;
+        }*/
+        /* p{
+            font-size:10px;
+        }*/
+        /*  td{
+            border:1px solid black;
+        }*/
+    </style>
+
+    <title></title>
+</head>
+<BODY>
+    <div id="VoucherPrinteView">
+        <section class="sheet padding-10mm">
+
+            <div class="full" style="width:100% ">
+                <h2 style="text-align:center"><u> Branch ID, Branch ADMINISTRATIVE OFFICE </u></h2>
+                @*<h3 style=" margin-bottom:0px; text-align:right"> Original for Recipients</h3>*@
+                <div class="row">&nbsp;</div>
+                <div class="bind" style="width:98%; border:1px solid black; border-collapse:collapse ;border-color:#242323 ;padding-top:10px;padding-bottom:10px;padding-left:8px;padding-right:8px">
+
+                    <table style="width:100%;" class="address">
+                        <tr>
+                            @*<p style="text-align:left; margin-top:-2px; margin-left:3px ">*@
+                            <td style="text-align:left">
+                                <span style="font-size: 15px">Invoice Number:</span>
+                                <input type="text" style="margin-left:10px; width:200px;" value="@Model.queryResult[0].param1.Split("~")[0]" />
+                                <span style="font-size: 15px">Invoice Date:@Model.queryResult[0].param1.Split("~")[3]</span>   <br />                      
+                                <span style="margin-left: 320px; font-size: 15px">Original Invoice No: @Model.queryResult[0].param1.Split("~")[2]</span> <br />
+                                <span style="margin-left: 320px; font-size: 15px">Original Invoice Date: @Model.queryResult[0].param1.Split("~")[1]</span><br />
+                                 
+                                 <span style="margin-left: 320px; font-size: 15px ">Payment Terms 100% against Invoice</span>
+                            </td>
+                            <td style="padding-top:0px;">
+                                <img src="~/lib/bootstrap/dist/images/loginlogo.png" style="margin-left:10px; width:100px;height:80px; " />
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <table style="width:100%;margin-top:10px;" class="tb">
+                        <tr>
+
+                         
+                            <td>
+                                <p style="text-align:left;line-height:1%;font-size:15px"><b>ASIRVAD MICRO FINANCE LIMITED</b></p>
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">NO.9,9th and 10th Floor,Club House Road <span style="margin-left:15px;"></span> </p>
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">Anna Salai,Chennai,Tamil Nadu,600002 <span style="margin-left:15px;"></span> </p>
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">GST NO.   <span style="margin-left:15px;"> @Model.queryResult[0].param1.Split("~")[6]</span> </p>
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">PAN        <span style="margin-left:45px;">AAGC5275J </span></p>
+                                <p style="text-align: left; line-height: 1%; font-size: 15px"> CIN         <span style="margin-left:48px;">U65923TN2007PLC064550</span></p>
+                            </td>
+                            <td>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <table style="width:100%;margin-top:10px;" class="address">
+                        <tr>
+                            <td style="white-space:normal;word-wrap:break-word;width:50%;">
+                                <b style="text-align:left">Billing Address: </b><br />
+
+                                <b style="text-align: left; font-size: 15px">@Model.queryResult[0].param1.Split("~")[4]</b><br />
+
+
+
+                                @Model.queryResult[0].param1.Split("~")[5]
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">GST NO.   <span style="margin-left:55px;">@Model.queryResult[0].param1.Split("~")[6]</span><br />
+                                <p style="text-align: left; line-height: 1%; font-size: 15px">State of Supply: <span style="margin-left:14px;"></span><br />
+                                <p style="text-align: left; line-height: 1%; font-size: 15px"> Reverse Charge: <span style="margin-left:13px;">No</span>
+                            </td>
+
+                            <td style="text-align: left; white-space: normal; width: 50%; vertical-align: top;">
+                                <span style="text-align: left;">Shipping Adress </span><br />
+                                <b style="text-align: left; font-size: 15px">@Model.queryResult[0].param1.Split("~")[4]</b><br />
+                                @Model.queryResult[0].param1.Split("~")[5]
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                   
+                    <table style="width:100%; border:1px solid black;border-collapse:collapse;margin-top:20px">
+                        <tr>
+                            <th rowspan="2" style="border: 1px solid black;font-size: 15px;" align="center"> Product /Service Description</th>
+                            <th rowspan="2" style="border: 1px solid black; font-size: 15px;" align="center">HSN/SAC Code</th>
+                            <th rowspan="2" style="border: 1px solid black; font-size: 15px;" align="center">Taxable Value</th>
+
+                            <th colspan="2" width="20%" style="border: 1px solid black; font-size: 15px;" align="center">GST</th>
+                            <th rowspan="2" style="border: 1px solid black; font-size: 15px;" align="center">Gross Amount</th>
+
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black; font-size: 15px;" align="center">Rate</th>
+                            <th style="border: 1px solid black; font-size: 15px;" align="center">Amount</th>
+                        </tr>
+
+                        <tr>
+                            <td width="50%" style="border-right: 1px solid black; font-size: 15px; text-align: left; padding-bottom: 12px;">Being service fee booked for @Model.queryResult[0].param1.Split("~")[4] @Model.queryResult[0].param1.Split("~")[17] @Model.queryResult[0].param1.Split("~")[18]</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">00998599</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[7]</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[7]</td>
+                        </tr>
+                        <tr>
+                            <td style="border-right:1px solid black;text-align:left; padding-bottom:12px"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right"></td>
+                        </tr>
+                        <tr>
+                            <td style="border-right:1px solid black;text-align:left; padding-bottom:">CGST</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">9%</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[9]</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[9]</td>
+                        </tr>
+                        <tr>
+                            <td style="border-right:1px solid black;text-align:left; padding-bottom:">SGST</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">9%</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[10]</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[10]</td>
+                        </tr>
+
+                        <tr>
+                            <td style="border-right:1px solid black;text-align:left; padding-bottom:">IGST</td>
+                            <td style="border-right:1px solid black" align="center"></td>
+                            <td style="border-right:1px solid black" align="center"></td>
+                            <td style="border-right:1px solid black" align="right">18%</td>
+                            <td style="border-right:1px solid black" align="right">@Model.queryResult[0].param1.Split("~")[8]</td>
+                            <td style="border-right:1px solid black" align="right">@Model.queryResult[0].param1.Split("~")[8]</td>
+                        </tr>
+
+                        <tr>
+                            <td style="border-right:1px solid black ;text-align:left;  padding:12px 0px;">Rounding</td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="center"></td>
+                            <td style="border-right: 1px solid black; font-size: 15px;" align="right">-0.46</td>
+                        </tr>
+
+                        <tr>
+                            <td style="border:1px solid black ;border-top-color:black " align="center">Total</td>
+                            <td style="border:1px solid black; border-top-color:black;font-size: 15px; "></td>
+                            <td style="border: 1px solid black; border-top-color: black; font-size: 15px; " align="right">@Model.queryResult[0].param1.Split("~")[7]</td>
+                            <td style="border: 1px solid black; border-top-color: black; font-size: 15px; " colspan="2" align="right">@Model.queryResult[0].param1.Split("~")[11]</td>
+                            <td style="border: 1px solid black; border-top-color: black; font-size: 15px;" align="right">@Model.queryResult[0].param1.Split("~")[12]</td>
+                            <td style="border: 1px solid black; border-top-color: black; font-size: 15px; " align="right"></td>
+                        </tr>
+
+                    </table>
+                    <b style="text-align: left; font-size: 15px;"> Amount in words:   &nbsp INR <span>@Model.queryResult[0].TotalAmtText</span> only</b>
+
+                    <p style="text-align:left;line-height:1%;">Bank Details:</p>
+                    <p style="text-align: left; line-height: 1%; font-size: 15px;">Bank Name:  <span style="margin-left:58px;">@Model.queryResult[0].param1.Split("~")[13] </span> </p>
+                    <p style="text-align: left; line-height: 1%; font-size: 15px;">Bank Account No:      <span style="margin-left:22px;">@Model.queryResult[0].param1.Split("~")[14]</span></p>
+                    <p style="text-align: left; line-height: 1%; font-size: 15px;">Branch :        <span style="margin-left: 82px;">@Model.queryResult[0].param1.Split("~")[15] </span></p>
+                    <p style="text-align: left; line-height: 1%; font-size: 15px;">IFSC Code:        <span style="margin-left: 63px;"> @Model.queryResult[0].param1.Split("~")[16]  </span></p>
+                    <br />
+                    <table style="width:100% ;" class="tb">
+                        <tr>
+                            <td style="width: 70%; font-size: 15px; " align="left">
+                                <h4 style="line-height:0%;">DISCLOSURE</h4>
+
+                                We hereby declare that though our aggregate turnover in the preceding financial year from 2017-2018 onwards is
+                                more than the agreegate turnover notified under sub-rule (4) of rule 48, we are not required to prepare an invoice in
+                                terms of the provisions of the said sub-rule.
+                                <p>Maker</p>
+                                <img src="~/lib/bootstrap/dist/images/js/aparna-sign.png" style="width:80px;height:45px;" />
+                            </td>
+                            <td style="padding-top:0px;text-align:right;font-size: 15px;">
+
+
+                                <img src="~/lib/bootstrap/dist/images/js/Screenshot-sign.png" style="margin-right:30px; width:100px;height:35px;" />
+                                <br />
+
+                                <p style="margin-right: 30px; font-size: 15px;">Authorised Signatory</p>
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</BODY>
+</html>
+
+
+
+@section Scripts{
+
+
+}

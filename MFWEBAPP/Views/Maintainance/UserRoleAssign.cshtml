@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "UserRoleAssign";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> User Role Assign </strong></div>
+            <div class="card-body card-block">
+                <form name="frmRoleAssign" id="frmRoleAssign" method="post">
+
+                    <div class="row">
+                       
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment"  class="form-control-label">Role<b style="color:red">*</b></label>
+                                <select name="ddlRole" id="ddlRole" class="form-control">
+                                    <option value="0"> --- Select --- </option>
+
+                                </select>
+                                <label id="ddlRole-error" class="error" for="ddlRole" style="display:block"></label>
+
+                            </div>
+
+                            @*<div class="col col-md-3 col-sm-6 col-xs-12"  >*@
+                               
+                            <div class="float-right" style="padding-left: 875px;">
+                                <br />
+
+                                <button type="submit" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+                            </div>
+                               
+
+                            @*</div>*@
+                      
+                    </div>
+                    <!--Table-->
+                    <br />
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divroleassign" name="divroleassign" style="position: relative;max-height: 360px;min-height:250px;overflow: auto;display: block;" >
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!--more-->
+
+
+                   
+
+
+                </form>
+            </div>
+
+
+            <!--Modal-->
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+  
+<script src="~/ClientApp/UserRoleAssign/UserRoleAssign.Controller.js"></script>
+<script src="~/ClientApp/UserRoleAssign/UserRoleAssign.Validator.js"></script>
+}
+

@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "PreClosure";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">PreClosure</strong>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fundcat">Select Fund Type<span class="text-danger">*</span></label>
+                    <select class="custom-select form-control" id="ddlFundType" name="FundType" > </select>
+                </div>
+            </div>
+
+            <div class="col-md-6" id="selFinIns">
+                <div class="form-group">
+                    <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                    <select class="custom-select form-control" id="ddlFi" name="FinancialInstitution" > </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="divselectFund">
+                <div class="form-group">
+                    <label for="fundcat">Select Fund<span class="text-danger">*</span></label>
+                    <select class="custom-select form-control" id="ddlLoans" name="Fund" getTablePreCloseLoanDtlsEmi()"> </select>
+                </div>
+            </div>
+        </div> 
+
+
+       @*  <div class="row">
+            <div class="col-md-12" id="divtableshown">
+                <div class="tabs">
+                     <div class="tab" id="ShowTblNewLoan" style="display:none">
+                        <input type="checkbox" id="chck1" class="inputAccord" />
+                        <label class="tab-label" for="chck1">Loan Availment Details to be Approved</label>
+                        <div class="tab-content">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-success" id="tblShowNewLoan">
+                                    <thead class="bg-inverse text-white">
+                                        <tr>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border border-dark"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                     <div class="tab" id="ShowTblNewLoanEMI" style="display:none">
+                        <input type="checkbox" id="chck2" class="inputAccord" />
+                        <label class="tab-label" for="chck2">Repayment Shedule</label>
+                        <div class="tab-content">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-success" id="tblShowNewLoanEMI">
+                                    <thead class="bg-inverse text-white">
+                                        <tr>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border border-dark"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> *@
+        
+
+
+@* table show *@
+<div class="card" id="maincard" style="display:none;margin-top: 20px;">
+    <div class="card-body" style="background-color:#fff !important; ">
+    <div class="table-responsive">
+    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+        <table class="table" id="tbldespatch">
+        <thead>
+         <tr>
+           @* <th class="VCol" style="text-align:left;">#</th> *@
+           <th class="VCol" style="text-align:left;">FUND TYPE</th>
+           <th class="VCol" style="text-align:left;">FINANCIAL INSTITUTION</th>
+           <th class="VCol" style="text-align:left;">FUND ID</th>
+            <th class="VCol" style="text-align:left;">LOAN ID</th>
+           <th class="VCol" style="text-align:left;">LOAN AMOUT </th>
+            <th class="VCol" style="text-align:left;">INTEREST RATE </th>
+            <th class="VCol" style="text-align:left;">TENURE</th>
+            <th class="VCol" style="text-align:left;">LOAN DATE </th>
+            <th class="VCol" style="text-align:left;">MATURNITY DATE </th>
+            <th class="VCol" style="text-align:left;">REPAYMENT DATE </th>
+
+
+
+                                    <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabl"></tbody>
+                        </table>
+
+      </div>
+     </div>
+    </div>
+</div>
+@* second table *@
+
+        <div class="card" id="maincard2" style="display:none;margin-top: 20px;">
+            <div class="card-body" style="background-color:#fff !important; ">
+                <div class="table-responsive">
+                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                        <table class="table" id="tbldespatch">
+                            <thead>
+                                <tr>
+                                   
+                                  
+                                    <th class="VCol" style="text-align:left;">LoanID</th>
+                                    <th class="VCol" style="text-align:left;">InstallmentNo</th>
+                                    <th class="VCol" style="text-align:left;">InstallmentType</th>
+                                    <th class="VCol" style="text-align:left;">InstallmentFrequency </th>
+                                    <th class="VCol" style="text-align:left;">Amount </th>
+                                    <th class="VCol" style="text-align:left;">PenaltyAmount</th>
+                                    <th class="VCol" style="text-align:left;">InterestFromDate </th>
+                                    <th class="VCol" style="text-align:left;">InterestToDate </th>
+                                    <th class="VCol" style="text-align:left;">PaymentDate </th>
+
+
+
+                                    <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabll"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      @*   <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h4 class="card-title">Payment Details</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h4 class="card-title">Payment Account Details</h4>
+                </div>
+            </div>
+        </div> *@
+
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fundcat">Balance Loan Amount <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control" maxlength="15" id="txtloanbal" title="Loan Balance" onclick="" onkeyup="IntAmtWords.innerHTML=AmountToWords(this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                    <small id="LoanBalWords" class="form-text text-muted"></small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fundcat">Balance Interest Amount <span class="text-danger">*</span></label>
+                    <input type="text" id="txtIntAmt" maxlength="15" class="form-control" name="Interest Amount" onclick="" onkeyup="IntAmtWords.innerHTML=AmountToWords(this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                    <small id="IntAmtWords" class="form-text text-muted"></small>
+                </div>
+            </div>
+            <div class="col-md-3" id="divMainacct">
+                <div class="form-group">
+                    <label for="fundcat">Main Account <span class="text-danger">*</span></label>
+                    <div style="width:100%;">
+                        <select id="ddl_mainAcc" class="custom-select form-control" name="Select Main Account"></select>
+                    </div>
+                    <small id="LoanAccName" class="form-text text-muted"></small>
+                </div>
+            </div>
+            <div class="col-md-3" id="subacst" style="display:none">
+                <div class="form-group">
+                    <label for="fundcat">Sub Account<span class="text-danger">*</span></label>
+                    <div style="width:100%;">
+                        <select id="ddl_SubAcc" style="width:100%" class="custom-select form-control" name="Select Sub Account"></select>
+                    </div>
+                    <small id="LoanSubAccName" class="form-text text-muted"></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2" id="divintfinmainbnk" style="display:none">
+                <label for="fundcat"> Finance Cost Main Bank<span class="text-danger">*</span></label>
+                <div style="width:100%;">
+                    <select id="ddl_intfc_main_bnk" class="custom-select form-control" name="Select Sub Id" ></select>
+                </div>
+            </div>
+            <div class="col-md-2" id="divintfinsubbnk" style="display:none">
+                <label for="fundcat">Finance Cost Sub Bank<span class="text-danger">*</span></label>
+                <div style="width:100%;">
+                    <select id="ddl_intfc_sub_bnk" class="custom-select form-control" name="Select Sub Id" ></select>
+                </div>
+            </div>
+            <div class="col-md-2" id="divintfinsubid" style="display:none">
+                <label for="fundcat">Finance Cost Contra Id<span class="text-danger">*</span></label>
+                <div style="width:100%;">
+                    <select id="ddl_IfSubid" class="custom-select form-control" name="Select Sub Id"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="text-end">
+            <input id="btnconfirm" type="button" value="Confirm" class="btn btn-primary" onclick="return ConfirmLoanClosure();" />
+            <input id="btnexit" type="button" value="Exit" class="btn btn-danger" onclick="return exitPage();" />
+        </div>
+    </div>
+    </div>
+<input id="hdUserId" type="hidden" runat="server" />
+<input id="hdBranchId" type="hidden" runat="server" />
+<input id="hdFirmId" type="hidden" runat="server" />
+<input id="hdPag" type="hidden" runat="server" />
+<input id="hdMainAcc" type="hidden" runat="server" />
+<input id="hdSubAcc" type="hidden" runat="server" />
+<input id="hdBrid" type="hidden" runat="server" />
+<input id="hdnLoanMainAcc" type="hidden" runat="server" />
+<input id="hdnLoanSubAcc" type="hidden" runat="server" />
+<input id="hdnSubAccStatus" type="hidden" runat="server" />
+<input id="hdTotal" type="hidden" runat="server" />
+
+
+
+
+@section Scripts{
+<script src="~/clientapp/treasurymanagement/preclosure.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

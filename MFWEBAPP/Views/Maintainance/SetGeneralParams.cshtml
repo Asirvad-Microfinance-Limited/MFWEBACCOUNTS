@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "SetGeneralParams";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Set General Parameters </strong></div>
+            <div class="card-body card-block">
+                <form name="frmSetGeneralParams" id="frmSetGeneralParams" method="post">
+
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-2 col-xs-6">
+                            <label for="street" class=" form-control-label">Parameter<b style="color:red">*</b></label>
+                            <select name="ddlparameter" id="ddlparameter" placeholder="" class="form-control">
+                                <option value="0">--------------Select----------</option>
+                            </select>
+                            <label id="ddlparameter-error" class="error" for="ddlparameter" style="display:block;"></label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-2 col-xs-6">
+                            <label for="street" class=" form-control-label">Value<b style="color:red">*</b></label>
+                            <input type="text" placeholder="Value" id="txtValue" name="txtValue" maxlength="6" class="form-control">
+                            <label id="txtValue-error" class="error" for="txtValue" style="display:block;"></label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-2 col-xs-6">
+
+                            <label for="street" class=" form-control-label"></label>
+                            <br />
+                            <button type="submit" id="addSubLevelDataBtn" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+                        </div>
+
+                    </div>
+                    </form>
+</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+
+    <script src="~/ClientApp/SetGeneralParams/SetGeneralParams.Controller.js"></script>
+    <script src="~/ClientApp/SetGeneralParams/SetGeneralParams.Validator.js"></script>
+
+
+}

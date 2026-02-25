@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Re_intitiationRequest";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Debenture PaymentReversal</strong></div>
+            <div class="card-body card-block">
+                <form name="frmApproveIndent" id="frmApproveIndent" method="post">
+                    <!--Branch-->
+
+
+                    <div class="row" id="divPrincInter">
+                        <div class="col-md-12">
+                            <div class="row form-group">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="rbtInterest">Select Payment Type :<span class="text-danger">*</span></label><br />
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                        <div>
+                                            <input type="radio" id="rbtInterest" name="PayRbt" value="louie" />
+                                            <label for="louie">Interest</label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                        <div>
+                                            <input type="radio" id="rbtPrinciple" name="PayRbt" value="louie" />
+                                            <label for="louie">Principle</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div><br />
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="divPrincInterdbn">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Select Option<b style="color:red">*</b></label>
+                                <select name="ddlRent" id="ddlRent" class="form-control">
+                                    <option value="0"> DebentureId ~ Installment ~ Date</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+
+                        <label for="cc-payment" class="control-label mb-1">Rent ID<b style="color:red">*</b></label>
+                        <input type="text" id="txtRentId" name="txtRentId " placeholder=" Rent Id" class="form-control" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                        <label id="deliveryAddress-error" class="error" for="deliveryAddress" style="display:block"></label>
+
+                        </div>
+                        </div>*@
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" id="BtnConfirm" style="margin-top:20px">SUBMIT</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+                                    <div id="divvendordetailstable" name="divvendordetailstable"></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    @*<div class="row form-group">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="divReprocess">
+                    <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1">Date to Reprocess<b style="color:red">*</b></label>
+                    <select name="ddlReprocess" id="ddlReprocess" class="form-control">
+                    <option value="0"> ------------Select------------------ </option>
+                    </select>
+
+                    </div>
+
+                    </div>
+                    </div>*@
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" id="Btnedit" style="margin-top:20px">EDIT CURRENT DETAILS &nbsp;&nbsp;<i class="fa fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row form-group" id="AccountDetails" style="display:none">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="divIFSCCODE">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">IFSC Code<b style="color:red">*</b></label>
+                                <input type="text" id="txtIFSCCODE" name="txtIFSCCODE " placeholder="IFSC Code" class="form-control" maxlength="15" oninput="this.value = this.value.replace(/[^A-Z0-9]/g, '')">
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="divMobNo">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Mobile No<b style="color:red">*</b></label>
+                                <input type="text" id="txtMobNo" name="txtMobNo " placeholder="Mobile No" class="form-control" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="divAccNo">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Account No <b style="color:red">*</b></label>
+                                <input type="text" id="txtAccNo" name="txtAccNo " placeholder="Account No" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+
+                            </div>
+                        </div>
+
+                        @* <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="divAmt">
+                        <div class="form-group">
+
+                        <label for="cc-payment" class="control-label mb-1">Amount <b style="color:red">*</b></label>
+                        <input type="text" id="txtAmt" name="txtAccNo " placeholder="Account No" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+
+                        </div>
+                        </div> *@
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">TO ACCOUNT<b style="color:red">*</b></label>
+                            <select name="ddlRent" id="ddlRent" class="form-control">
+                                <option value="0"> Select account</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="text-right" style="padding: 10px; display: none" id="btnapprv">
+                        <button type="button" class="btn btn-success" id="BtnApprv">REINITIATE</button>
+                        <button type="button" class="btn btn-danger" id="btn_exit">EXIT</button>
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/paymentreversal.js"></script>
+}

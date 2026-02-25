@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewData["Title"] = "tabrelatedexpenseview";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card" style="min-height:500px;">
+            <div class="card-header">
+                <strong class="card-title"> APPROVAL OR REJECT</strong>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                <div class="card-body" style="background-color:#fff !important;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">*@
+                            <div class="table-responsive">
+                                <div align="center" id="approvalorReject" name="approvalorReject " style="position: relative;">
+                                </div>
+                            </div>
+                        </div>
+                        @*</div>
+                            </div>*@
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+
+                                    <div class="table-responsive">
+
+                                        <div align="center" id="divtabrelatedexpenseview" name="divtabrelatedexpenseview" style="position: relative; auto;display: block;">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div align="center" class="col-lg-12">
+                    <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/clientapp/tabexpense/tabrelatedexpenseview.js"></script>
+
+}

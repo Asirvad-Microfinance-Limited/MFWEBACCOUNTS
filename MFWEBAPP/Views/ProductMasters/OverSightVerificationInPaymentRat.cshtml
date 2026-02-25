@@ -1,0 +1,274 @@
+﻿@{
+    ViewData["Title"] = "AddVendor";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/css/zoom/image-zoom.css">*@
+<style type="text/css">
+    .nb {
+        height: 100%;
+        width: 100%;
+        /*overflow-x: scroll;
+                overflow-y: scroll;*/
+        overflow-x: auto;
+        overflow-y: auto
+        /*background-color: powderblue;*/
+    }
+
+    .north {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+
+    .west {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+
+    .south {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    }
+
+    .east {
+        transform: rotate(270deg);
+        -ms-transform: rotate(270deg); /* IE 9 */
+        -webkit-transform: rotate(270deg); /* Safari and Chrome */
+    }
+
+
+    figure.containerZoom {
+        background-position: 50% 50%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: zoom-in;
+        margin: 0;
+    }
+
+        figure.containerZoom img {
+            transition: opacity .5s;
+            display: block;
+            width: 100%;
+        }
+
+        figure.containerZoom.active img {
+            opacity: 0;
+        }
+</style>
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">OverSight Verification </strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmAccountsApproval" id="frmAccountsApproval" method="post" class="form-horizontal">
+
+                    <div class="row form-group">
+
+                        <div id="typelength" class="col-lg-4">
+                            <label for="cc-payment" class="control-label mb-1">PAYMENT ID<b style="color:red">*</b></label>
+                            <select name="ddlPayType" id="ddlPayIds" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlPayIds-error" class="error" for="ddlPayType" style="display:block"></label>
+
+                        </div>
+                    </div>
+                    <div class="row form-group" id="checkbox" class="col-lg-12" style="display:none;">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">BRANCH ID</label>
+                                <input type="text" id="branchids" name="branchname" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="branchid-error" class="error" for="branchtype" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">BRANCH NAME</label>
+                                <input type="text" id="branchname" name="branchname" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="branchname-error" class="error" for="branchname" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">EXPENSE TYPE</label>
+                                <input type="text" id="expensetype" name="expense" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="expensename-error" class="error" for="expensename" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">BILL DATE<b style="color:red"></b></label>
+                                <input class="form-control datepicker " id="Billdates" name="Billdate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                <label id="dtpaydate-error" class="error" for="Billdate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1"> APPROVED DATE<b style="color:red"></b></label>
+                                <input class="form-control datepicker " id="approvaldate" name="approvaldate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                <label id="dtapproval-error" class="error" for="approvaldate" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">CELING  LIMIT</label>
+                                <input type="text" id="celinglimit" name="celingamt" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="celingamt-error" class="error" for="celinglimit" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1"> FROM DATE<b style="color:red"></b></label>
+                                <input class="form-control datepicker " id="frmdateover" name="frmdateovr" placeholder="YYYY/MM/DD" type="text" readonly />
+                                <label id="dtapproval-error" class="error" for="approvaldate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1"> TO  DATE<b style="color:red"></b></label>
+                                <input class="form-control datepicker " id="todateovr" name="todateovr" placeholder="YYYY/MM/DD" type="text" readonly />
+                                <label id="dtapproval-error" class="error" for="approvaldate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">INVOICE NUMBER</label>
+                                <input type="text" id="billnumber" name="celingamt" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="billnumber-error" class="error" for="invoice" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">REQUESTER</label>
+                                <input type="text" id="Requester" name="requestt" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="requestid-error" class="error" for="requestid" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">AMOUNT</label>
+                                <input type="text" id="amountt" name="Amount" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="amountt-error" class="error" for="amount" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">REMARKS OF PR APPROVAL</label>
+                                <input type="text" id="appvrrmrks" name="remarks" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">PR APPROVED EMPLOYEE CODE</label>
+                                <input type="text" id="appvrempcode" name="emcodee" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="emcode-error" class="error" for="emcode" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">EXPENSE ENTER DATE</label>
+                                <input type="text" id="expdate" name="expdate" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="expdate-error" class="error" for="expdate" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="tempremrks" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">REMARKS OF OVERSIGH APPROVAL</label>
+                                <input type="text" id="Overightapprvremrks" name="remarks" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="TempEmcode" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">OVERSIGHT APPROVER EMCODE</label>
+                                <input type="text" id="Ovrsightappemp" name="Approver" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="requestid-error" class="error" for="approverid" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="col-lg-8 col-md-6 col-sm-8 col-xs-8">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Add Your Remarks</label><b style="color:red">*</b>
+                                <input type="text" id="addremarks" name="addremarks" placeholder="" class="form-control text-uppercase" maxlength="150" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');">
+                                <label id="addremarks-error" class="error" for="addremarks" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div align="center" class="col-lg-12">
+                                            <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                                            &nbsp;&nbsp;
+                                            <button type="button" id="rotate" aria-label="rotate" onclick="" class="btn btn-primary">Rotate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right " style="margin-top:24px">
+                            <button type="button" class="btn btn-link" id="viewinvoice">View Bill</button>
+                            <button type="button" class="btn btn-success" id="approval">VERIFICATION</button>&nbsp;&nbsp;&nbsp;
+
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ClientApp/PaymentAtBranch/OverSightVerification.js"></script>
+    <script src="~/js/image-zoom.js"></script>
+
+}

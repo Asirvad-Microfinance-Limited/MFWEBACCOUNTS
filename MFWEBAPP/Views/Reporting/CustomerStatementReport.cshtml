@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "CustomerStatementReport";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> CUSTOMER STATEMENT REPORT </strong></div>
+            <div class="card-body card-block">
+                <form name="frmcustStmtRpt" id="frmcustStmtRpt" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Loan ID<b style="color:red">*</b></label>
+                                <input id="txtLoanId" name="txtLoanId" class="form-control" maxlength="16" placeholder="Loan ID" />
+                                <label id="txtLoanId-error" class="error" for="txtLoanId" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Account Name<b style="color:red">*</b></label>
+                                <select name="ddlAccntName" id="ddlAccntName" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                </select>
+                                <label id="ddlAccntName-error" class="error" for="ddlAccntName" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker " id="dtFromDate" name="dtFromDate" placeholder="MM/DD/YYYY" type="text" readonly />
+                                <label id="dtFromDate-error" class="error" for="dtFromDate" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container2">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker " id="dtToDate" name="dtToDate" placeholder="MM/DD/YYYY" type="text" readonly />
+                                <label id="dtToDate-error" class="error" for="dtToDate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                            <br />
+                            <button type="submit" class="btnsmall btn-danger btn-bg"> <i class="fa fa-eye" style="font-size:24px;"></i></button>
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:8px;" id="custDetailsDiv" name="custDetailsDiv">
+                        <div class="col-md-12">
+                            <fieldset>
+                                <legend class="legendcls">Customer Details</legend>
+                                <div id="divcstSmtRptDetailsTable" name="divcstSmtRptDetailsTable" style="background:white;">
+
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                    <!--Table-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;min-height:250px">
+                            <div class="card-body" style="background-color:#fff !important;">
+
+                                <div class="table-responsive">
+
+                                    <div id="divcstSmtRptTable" name="divcstSmtRptTable ">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/CustomerStatementReport/CustomerStatementReport.controller.js"></script>
+    <script src="~/ClientApp/CustomerStatementReport/customerstatement.Validator.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>
+}

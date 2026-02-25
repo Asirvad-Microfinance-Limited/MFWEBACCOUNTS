@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Account Adjustment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<style type="text/css">
+    .btn-danger {
+        background-color: #e5322d;
+    }
+</style>
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="height:300px;">
+            <div style="font-size:15px;" class="card-header"><b>Account Adjustments Updation </b></div>
+            <div class="card-body card-block" style="background-color:#fff">
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container5">
+                        <div class="form-group">
+                            <label for="datepicker" class=" form-control-label mb-1">Date</label><b style="color:red">*</b>
+                            <input class="form-control datepicker " id="cc" name="dtToDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                            <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group" style="margin-left:10px;">
+                            <label for="cc-payment" class="control-label mb-1">Account<b style="color:red"> *</b></label>
+                            <select name="Accounts" id="Accounts" class="form-control">
+                                <option value="0">Select Account</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group" style="margin-left:10px;">
+                            <label for="cc-payment" class="control-label mb-1">ContraNo<b style="color:red"> *</b></label>
+                            <select name="Accounts" id="contra" class="form-control">
+                                <option value="0">Select Account</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col col-md-3 col-sm-6 col-xs-12" style="text-align: left;">
+                        <label for="street" class="form-control-label"> Amount<b style="color: red;">*</b></label>
+                        <input type="text" id="ammounts" name="ammounts" placeholder="Amount" class="form-control" maxlength="100">
+                    </div>
+                    <div class="col col-md-4 col-sm-6 col-xs-12" style="text-align: left;">
+                        <label for="street" class="form-control-label"> Description <b style="color: red;">*</b></label>
+                        <input type="text" id="desc" name="ammounts" placeholder="Description" class="form-control" maxlength="100">
+                    </div>
+                    <div>
+                        <button type="submit" id="btnSaveBank" @*onclick="_BankEntry.Saves();" *@ name="btnSaveBank" class="btn btn-success" style="margin-left: 15px; margin-top: 22px;"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+
+                    <div class="col-4" id="a">
+
+
+                    </div>
+
+                    <div class="col-3" id="amnt">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/Balancesheet/AccountAdjustments.js"></script>
+    }
+    

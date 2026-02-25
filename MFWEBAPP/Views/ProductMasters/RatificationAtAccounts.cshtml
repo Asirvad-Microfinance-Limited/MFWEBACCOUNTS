@@ -1,0 +1,343 @@
+﻿
+@{
+    ViewData["Title"] = "RatificationAtAccounts";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+@*<link rel="stylesheet" href="~/css/zoom/image-zoom.css">*@
+<style type="text/css">
+    .nb {
+        height: 100%;
+        width: 100%;
+        /*overflow-x: scroll;
+        overflow-y: scroll;*/
+        overflow-x: auto;
+        overflow-y: auto;
+        /*background-color: powderblue;*/
+    }
+
+    .north {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+
+    .west {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+
+    .south {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    }
+
+    .east {
+        transform: rotate(270deg);
+        -ms-transform: rotate(270deg); /* IE 9 */
+        -webkit-transform: rotate(270deg); /* Safari and Chrome */
+    }
+
+
+    figure.containerZoom {
+        background-position: 50% 50%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: zoom-in;
+        margin: 0;
+    }
+
+    figure.containerZoom img {
+        transition: opacity .5s;
+        display: block;
+        width: 100%;
+    }
+
+    figure.containerZoom.active img {
+        opacity: 0;
+    }
+</style><div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Ratification At Accounts</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="ddlOutWard" id="ddlOutWard" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Branch Type<b style="color:red">*</b></label>
+                            <select name="ddlBranchType" id="ddlBranchType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlBranchType-error" class="error" for="ddlBranchType" style="display:block"></label>
+                        </div>
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">x
+                    <label for="cc-ddlselect" class="control-label mb-1">PR<b style="color:red">*</b></label>
+                    <select name="ddlPRselect" id="ddlPRselect" class="form-control">
+                        <option value="0"> ------------ Select ------------ </option>
+
+                    </select>
+                    <label id="ddlPRselect-error" class="error" for="ddlPRselect" style="display:block"></label>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                    <br />
+                    <button type="button" class="btn btn-link" id="viewinvoice">View Receipt</button>
+                </div>*@
+                    </div>
+                    @*<div id="showimg" class="modal-content" style="display:none">
+                <span class="close">&times;</span>
+                <div class="col-lg-8" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+                    <div align="center" id="divInvimages" name="divInvimages" style="position: relative;max-height: 350px;min-height:100px;display: block;">
+                    </div>
+                </div>
+            </div>*@
+                    <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div align="center" class="col-lg-12">
+                                        <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                <th class="VCol" style="text-align:left;">#</th>
+                                                <th class="VCol" style="text-align:left;">PRID</th>
+                                                @*<th class="VCol" style="text-align:left;">BRANCH CODE</th>*@
+                                                <th class="VCol" style="text-align:left;">BRANCH(CODE)</th>
+                                                <th class="VCol" style="text-align:left;">PAYMENT TYPE</th>
+                                                <th class="VCol" style="text-align:left;">INVOICE DATE</th>
+                                                <th class="VCol" style="text-align:right;">AMOUNT</th>
+                                                <th class="VCol" style="text-align:right;">GST AMOUNT</th>
+                                                <th class="VCol" style="text-align:right;">SGST</th>
+                                                <th class="VCol" style="text-align:right;">CGST</th>
+                                                <th class="VCol" style="text-align:right;">IGST</th>
+
+                                                <th class="VCol" style="text-align:right;">BILL NO</th>
+                                                <th class="VCol" style="text-align:center;">GSTIN</th>
+
+                                                @*<th class="VCol" style="text-align:left;">BILL NO</th>*@
+                                                <th class="VCol" style="text-align:left;">PR ENTER DATE</th>
+                                                <th class="VCol" style="text-align:left;">REMARKS</th>
+
+                                                <th class="VCol" style="text-align:left;">TIMES OF RESUBMISSION</th>
+
+                                                @*<th class="VCol" style="text-align:left;">CHALLAN NO</th>
+                                        <th class="VCol" style="text-align:center;">AGENCY</th>*@
+                                                <th class="VCol" style="text-align:center;">CHALLAN</th>
+                                                <th class="VCol" style="text-align:center;">EDIT</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="paymenttabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="camsection" class="modal" style="display:none;">
+                        <div class="card" style="margin: 150px 300px 10px 300px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span id="closeCam" class="close">&times;</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Reject Remarks<b style="color:red">*</b></label>
+                                        <input type="text" id="accRemarks" name="accRemarks" placeholder="Accounts Remarks" class="form-control text-uppercase" maxlength="50" oninput="this.value = this.value.replace(/[^a-zA-Z0-9,. ]/g, '');" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-danger" id="rejectReason">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="modal fade" id="showimage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="imgDiv">
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-around">
+                            <button class="btn btn-danger" type="button" onclick="cashDeposite.downloadBase64File()"><i class="fa fa-download"></i> Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+                    <div id="confirm" class="text-right" style="display:none;">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger" id="reject">Reject</button>
+                    </div>
+
+
+
+
+                </form>
+
+
+                <div class="modal fade" id="moreDetailsModal" tabindex="-1" role="dialog" aria-labelledby="more" aria-hidden="true" data-backdrop="static" data-keyboard="false" >
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content" style="height:350px; width:590px">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mediumModalLabel">Bank Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                            </div>
+                            @*<div class="row" id="bankdetails" style="display:none;">*@
+                            <!--Account Holder's Name-->
+                            @*<div style=" margin-left:20px; margin-top:20px;">
+            <label>&nbsp;</label>
+            <input type="file" name="pdffile" id="UploadIMGEdit" accept="image/jpeg,image/png" />
+            <img id="original-Img" hidden />
+            <img id="upload-Preview" hidden />
+        </div>*@
+
+                            @*<div style=" margin-top:-25px; margin-left:200px; ">
+            <label>&nbsp;</label>
+            <button type="button" id="btnuploadedit" disabled  onclick="_uploadInsuranceClaimDocuments.convertToBase64Edit()" class="btn btn-primary fc-center"><i class="fa fa-upload">  </i> Upload </button>
+        </div>*@
+
+                            @*<div style="margin-top:10px;">*@
+
+
+                            <div>
+                                <div class="form-group" style="margin-left:20px">
+                                    <label for="cc-payment" class="control-label mb-1">
+                                        GST AMOUNT <b style="color:red">*</b> </label>
+                                    <input type="text"  id="gstamount" style="width:250px;" name="txtAccountHoldernameedit" placeholder="GST Amount" class="form-control" pattern="[0-9]*" oninput="validateNumberInput(this)" minlength="8" maxlength="16" autocomplete="off">
+                                </div>
+
+                               @*  <script>
+                                    function validateNumberInput(input) {
+                                        // Regular expression to allow only numbers
+                                        const pattern = /[^0-9]/g;
+                                        input.value = input.value.replace(pattern, '');
+                                    }
+                                </script> *@
+
+
+                            </div>
+                            <div>
+                            </div>
+
+                            <div>
+                                <div class="form-group" style="margin-left:20px">
+                                    <label for="cc-payment" class="control-label mb-1">BILL NUMBER <b style="color:red">*</b></label>
+                                    <input type="text" id="billnoupdate"  style="width:250px;" name="txtBankNameacc" placeholder="Bill Number" class="form-control"pattern="[A-Za-z0-9]*"oninput="validateInput(this)"minlength="8"    maxlength="16" autocomplete="off">
+                                </div>
+
+                                @* uncoment for live and uat *@
+                                @*  <script>
+                                function validateInput(input) {
+                                // Regular expression to allow only alphabets and numbers
+                                const pattern = /[^A-Za-z0-9]/g;
+                                input.value = input.value.replace(pattern, '');
+                                }
+                                </script> *@
+                                @*coment end*@
+                               @*  <script>
+                                    function validateInput(input) {
+                                        // Regular expression to allow only numbers
+                                        const pattern = /[^0-9]/g;
+                                        input.value = input.value.replace(pattern, '');
+                                    }
+                                </script> *@
+
+                            </div>
+
+
+
+                            <input type="hidden" id="pr" >
+
+
+
+
+
+
+                            <div>
+                                <div class="form-group" id="bs_datepicker_container2" style="position: relative; overflow: visible; z-index: 1050;margin-left:300px; margin-top:-60px;">
+                                    <label for="cc-payment" class="control-label mb-1">BILL DATE <b style="color:red">*</b></label>
+                                    <input class="form-control datepicker " id="billdate1" name="efromDate" placeholder="YYYY/MM/DD" type="text">
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-danger" id="savebuttonedit" margin-top:5px;="" width:150px;"="" data-dismiss="modal">Save </button>
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                </div>--
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/RatificationAtAccounts.js"></script>
+    <script src="~/js/image-zoom.js"></script>
+}

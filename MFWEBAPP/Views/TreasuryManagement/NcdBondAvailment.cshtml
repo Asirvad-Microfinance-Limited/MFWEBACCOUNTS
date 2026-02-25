@@ -1,0 +1,450 @@
+﻿@{
+    ViewData["Title"] = "NCDBondAvailment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">+
+                <strong class="card-title">New Debenture Request</strong>
+            </div>
+           
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Fund Category : <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlCategory"  name="Fund Category">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundsubcat">Fund Sub Category : <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlSubCat" name="Fund Sub Category" >
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divFiType" style="display:none">  
+                            <div class="form-group">
+                                <label for="fundcat">Financial Institution Type : <span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFiType" name="FinancialInstitutionType">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divFi" style="display:none">
+                            <div class="form-group">
+                                <label for="fundsubcat">Financial Institution :<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlFi"  name="FinancialInstitution">
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6" id="divPISeries" style="display:none">
+                            <div class="form-group">
+                                <label for="txtPublicIssueSeries">Series : <span class="text-danger">*</span></label>
+                                <input type="text" class=" form-control" maxlength="100" id="txtPblcIssueSeries" name="PublicIssueSeries"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtIsinNo">ISIN No : <span class="text-danger">*</span></label>
+                                <input type="text" class=" form-control" maxlength="12" id="txtIsinNo" name="ISIN" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtRating">Rating : <span class="text-danger">*</span></label>
+                                <input type="text" class=" form-control" maxlength="100" id="txtRating" style="width:100%" name="Rating"  />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Amount:<span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                     
+                                    </div>
+                                    <input type="text" id="txtMatAmtPrinc" maxlength="15" class="form-control" name="LoanAmount"   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                                <small id="LoanAmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Interest Rate : <span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      
+                                    </div>
+                                    <input type="text" class="form-control" id="txtintrate" title="InterestRate" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Interest Method : <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlintresttype"  name="InterestType"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Principal Method : <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlprinciple"  name="Principletype"></select>
+                            </div>
+                        </div>
+
+
+
+
+
+                      @*   <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtAllotmentDate">Allotment Date : <span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      
+                                    </div>
+                                    <input type="text" class="form-control" id="txtAllotmentDate" name="AllotmentDate" autocomplete="off" title="Allotment Date" onkeypress="return false" />
+                                </div>
+                            </div>
+                        </div> *@
+
+
+                    <div class="col-md-3" id="datepickerDate">
+                        <div class="form-group">
+                            <label for="datepicker" class=" form-control-label mb-1">Allotment Date</label><b style="color:red">*</b>
+                            <input class="form-control datepicker " id="txtAllotmentDate" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                            <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                        </div>
+                    </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtTenure">Tenure: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtTenure"  title="Tenure" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Maturity Date : <span class="text-danger">*</span></label>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      
+                                    </div>
+                                    <input type="text" class="form-control" id="txtMaturityDate" name="MaturityDate" title="Maturity Date"  disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Security Margin: </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                       
+                                    </div>
+                                    <input type="text" class="form-control" id="txtsecuritymarginamt" title="securitymargin" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Processing Fee :<span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                       
+                                    </div>
+                                    <input type="text" id="txtProcessFee" maxlength="15" class="form-control" name="ProcessingFee"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                                <small id="PFAmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Other Cost :<span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        
+                                    </div>
+                                    <input type="text" id="txtOtherCost" maxlength="15" class="form-control" name="OtherCost"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                                <small id="OCAmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row" id="divUSDBond">
+                        <div class="col-md-3" id="divRateTerm">
+                            <div class="form-group">
+                                <label for="fundcat">Rate Term: </label>
+                                <input type="text" class="form-control" id="txtRateTerm"  title="Rate Term" />
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divHedgeType">
+                            <div class="form-group">
+                                <label for="txtHedgeType">Hedging Type: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtHedgeType"  title="Rate Term" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Amount in USD:<span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                       
+                                    </div>
+                                    <input type="text" id="txtUsdAmt" maxlength="15" class="form-control" name="USDAmount"   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                                <small id="UsdAmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Conversion Rate INR:<span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                       
+                                    </div>
+                                    <input type="text" id="txtInrRate" maxlength="15" class="form-control" name="InrRate"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                                <small id="InrAmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="divtermloan">
+                        <div class="col-md-12 my-3 text-center" id="divterm1">
+                            <div class="form-group">
+
+                            <h4 class="card-title"> <strong>Upload Repayment Shedule</strong> </h4>
+                            </div>
+                        </div>
+
+           
+                       
+                    </div>
+
+                    @* <div class="row" id="divgrid1">
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+                                <div class="table-responsive" id="table-scroll">
+                                    <table class="table table-hover table-danger" id="exceltable">
+                                        <thead class="bg-danger text-white">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> *@
+
+
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12r">
+                        <div>
+                            <label>&nbsp;</label>
+                            <input type="file" id="fileUpload" accept=".xls,.xlsx" name="Select File">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12r" style="margin-left:-80px">
+                        <div class="form-group">
+                            <button class="btn btn-success" onclick="_NcdBond.GetData();" id="viewData"><i class="fa fa-search"></i>&nbsp;View Data</button>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12r" style="margin-left:-160px">
+
+                        <div class="form-group">
+
+                            <a class="btn btn-warning" href="~/template/repaymentschedule.xlsx"><i class="fa fa-download"></i>&nbsp;Download Template</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="divclass" style="display:none">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="">
+                            <div class="card-body" style="background-color:#fff !important;min-height:200px;">
+
+
+
+                                <div align="center" id="dvExcel" name="dvExcel" style="position: relative;min-height: 50px;overflow-x: auto;">
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <br />
+                    <br />
+                    <div class="row">
+                    <div class="col-md-12  text-center">
+                            <div class="form-group">
+                            <h4 class="card-title"> <strong>Debenture Account Detail</strong></h4>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Main Account : <span class="text-danger">*</span></label>
+
+                               
+                                    <select id="ddl_DebmainAcc" class="custom-select form-control" name="Select Main Account" ></select>
+                              
+                                <small id="DebAccName" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3" id="ddlDebsubacsts" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Sub Account : <span class="text-danger">*</span></label>
+                               
+                                    <select id="ddlDebSubAcc"  class="custom-select form-control" name="Select Sub Account" ></select>
+                                </div>
+                                <small id="LoanSubDebAccName" class="form-text text-muted"></small>
+                            </div>
+                       
+
+
+
+                        <div class="col-md-3" id="ddlDebsubID" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Sub ID : <span class="text-danger">*</span></label>
+                               
+                                    <select id="ddlDebSubIDloan" class="custom-select form-control" name="Select Sub Account"></select>
+                                </div>
+                                <small id="LoanSubDebID" class="form-text text-muted"></small>
+                            </div>
+                      </div>
+
+                      &nbsp;
+                  <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Finance Cost Main Account : <span class="text-danger">*</span></label>
+
+                                    <select id="ddl_DebFImainAcc" s class="custom-select form-control" name="Select Main Account" ></select>
+                                </div>
+                                <small id="DebFIAccName" class="form-text text-muted"></small>
+                            </div>
+                        
+                        <div class="col-md-3" id="ddlDebFIsubacsts" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Finance Cost Sub Account : <span class="text-danger">*</span></label>
+                               
+                                    <select id="ddl_DebFISubAcc"  class="custom-select form-control" name="Select Sub Account" ></select>
+                                </div>
+                                <small id="LoanSubDebFIAccName" class="form-text text-muted"></small>
+                            </div>
+                      
+                        <div class="col-md-3" id="ddlDebFIsubID" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Finance CostSub ID : <span class="text-danger">*</span></label>
+                               
+                                    <select id="ddl_DebSubFIID"  class="custom-select form-control" name="Select Sub Account"></select>
+                                </div>
+                                <small id="LoanSubDebFIID" class="form-text text-muted"></small>
+                            </div>
+                    </div>
+                &nbsp;
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Interest Main Account : <span class="text-danger">*</span></label>
+
+                             
+                                    <select id="ddl_DebINTmainAcc"  class="custom-select form-control" name="Select Main Account"></select>
+                               
+                                <small id="DebINTAccName" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="ddlDebINTsubacsts" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Interest  Sub Account : <span class="text-danger">*</span></label>
+                              
+                                    <select id="ddl_DebINTSubAcc" class="custom-select form-control" name="Select Sub Account"></select>
+                               
+                                <small id="LoanSubDebINTAccName" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+                    <div class="row">
+                        <div class="col-md-12 text-lg-center">
+                            <div class="form-group">
+                        <h4 class="card-title"><strong>Bank Account Details</strong></h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Main Account : <span class="text-danger">*</span></label>
+
+                               
+                                    <select id="ddl_mainAcc"  class="custom-select form-control" name="Select Main Account" ></select>
+                               
+                                <small id="LoanAccName" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="ddlsubacsts" style="display:none">
+                            <div class="form-group">
+                                <label for="fundcat">Sub Account : <span class="text-danger">*</span></label>
+                               
+                                    <select id="ddl_SubAcc"  class="custom-select form-control" name="Select Sub Account"></select>
+                                
+                                <small id="LoanSubAccName" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+            <div class="card-footer text-end">
+                <input id="btnconfirm" type="button" value="Confirm" class="btn btn-primary"  />
+
+                <input id="btnexit" type="button" value="Exit" class="btn btn-danger" on/>
+            </div>
+        </div>
+                   
+     </div>
+                      
+</div>
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/ncdbondavailment.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}

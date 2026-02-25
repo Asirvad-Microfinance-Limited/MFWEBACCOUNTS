@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "ReportAccess";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Report Access </strong></div>
+            <div class="card-body card-block">
+                <form name="frmReportAccess" id="frmReportAccess" method="post">
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">User ID<b style="color:red">*</b></label>
+                                <input type="text" id="txtUserID" name="txtUserID" placeholder="Employee Code" maxlength="6" class="form-control" />
+                                <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">User Name<b style="color:red">*</b></label>
+                                <input type="text" id="txtUserName" name="txtUserName" placeholder="User Name" readonly class="form-control" />
+                                <label id="txtUserName-error" class="error" for="txtUserName" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <label for="cc-payment" class="form-control-label">Report Name<b style="color:red">*</b></label>
+                            <select name="ddlReportName" id="ddlReportName" class="form-control">
+                                <option value="0"> ---------------- Select ---------------- </option>
+                            </select>
+                            <label id="ddlReportName-error" class="error" for="ddlReportName" style="display:block"></label>
+
+                        </div>
+
+
+
+                        @*<div class="col col-md-3 col-sm-6 col-xs-12"  >*@
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <br />
+                            <button type="submit" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+                        </div>
+                            @*<div class="float-right" style="padding-left: 875px;">
+                                <br />
+
+                                <button type="submit" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+                            </div>*@
+
+
+                            @*</div>*@
+
+                        </div>
+
+
+
+
+
+
+</form>
+            </div>
+
+
+            <!--Modal-->
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/ClientApp/ReportAccess/ReportAccess.Controller.js"></script>
+<script src="~/ClientApp/ReportAccess/ReportAccess.Validator.js"></script>
+   
+}
+

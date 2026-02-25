@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "StaffDeductionExtentRequest";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Staff Deduction Extend Request</strong>
+        </div>
+        <br />
+        <br />
+        <div class="row form-group">
+
+            <div class="col col-md-2 col-sm-6 col-xs-12">
+                    <label for="rqstsearch1" class=" form-control-label mb-1" style="margin-left:20px">Enter request to search </label><b style="color:red">*</b>
+                    <input type="text" placeholder="Employee code  >>>  Request Id >>> Amount" style="width: 300px; margin-left: 20px;"id="rqstsearch1" name="rqstsearch1" class="form-control" maxlength="100">
+                    <label id="extendedupto-error" class="error" for="extendedupto" style="display:block; margin-left:100px"></label>
+            </div>
+       
+
+  
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="bs_datepicker_container5_todate">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1" style="margin-left:100px;">Extension Upto</label><b style="color:red">*</b>
+                                <input class="form-control datepicker datePicker_po" style="margin-left:100px;" id="exupto" name="exupto" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="exupto-error" class="error" for="todate" style="display:block"></label>
+
+                            </div>
+
+                        </div>
+            <div class="col col-md-2 col-sm-6 col-xs-12">
+                <label for="reason" class=" form-control-label mb-1"style="margin-left: 100px">Reason</label><b style="color: red;  ">*</b>
+                <input type="text"  placeholder="Enter the reason" style="margin-left:100px; width:400px;" id="reason" name="reason" class="form-control" maxlength="500">
+                <label id="reason-error" class="error" for="reason" style="display:block"></label>
+            </div>
+            <br />
+            <br />
+            <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px">
+                <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; " name="confirm" id="confirm" value="confirm" onclick=""><i class="confirm "></i> Confirm</button>
+                <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px;  " name="exit" id="exit" value="exit" onclick=""> <i class="times "></i> Exit</button>
+            </div>
+        </div>
+    </div>
+</div>

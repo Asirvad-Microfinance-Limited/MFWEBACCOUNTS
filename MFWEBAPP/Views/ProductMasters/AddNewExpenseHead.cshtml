@@ -1,0 +1,177 @@
+﻿@{
+    ViewData["Title"] = "AddNewExpenseHead";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Add New Expense</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmAccountsApproval" id="frmAccountsApproval" method="post" class="form-horizontal">
+
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Expense Name</label><b style="color:red">*</b>
+                                <input type="text" id="exp" name="exp" placeholder="" class="form-control text-uppercase">
+                                <label id="exp-error" class="error" for="exp" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">PERIOD</label><b style="color:red">*</b>
+                                <br />
+                                <select id="period" name="period" class="form-control" style="height:30px;width:380px">
+                                    <option value="" default>---------------Select an option-----------------------------</option>
+                                    <option value="Timely">Timely</option>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quaterly">Quaterly</option>
+                                    <option value="Half-Yearly">Half-Yearly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
+                                <label id="period-error" class="error" for="period" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Ceiling Limit</label><b style="color:red">*</b>
+                                <input type="text" id="lmt" name="lmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="lmt-error" class="error" for="lmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Type</label><b style="color:red">*</b>
+                                <br />
+                                <select id="type" name="type" class="form-control" style="height:30px;width:380px">
+                                    <option value="" default>---------------Select an option-----------------------------</option>
+                                    <option value="GL">GL</option>
+                                    <option value="MFI">MFI</option>
+                                </select>
+                                <label id="type-error" class="error" for="type" style="display:block"></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Branch Head Limit</label><b style="color:red">*</b>
+                                <input type="text" id="bhlmt" name="bhlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="bhlmt-error" class="error" for="bhlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Area Head Limit</label><b style="color:red">*</b>
+                                <input type="text" id="ahlmt" name="ahlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="ahlmt-error" class="error" for="ahlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Regional Manager Limit</label><b style="color:red">*</b>
+                                <input type="text" id="rmlmt" name="rmlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="rmlmt-error" class="error" for="rmlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Zonal Manager Limit</label><b style="color:red">*</b>
+                                <input type="text" id="zmlmt" name="zmlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="zmlmt-error" class="error" for="zmlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Operation Head Limit</label><b style="color:red">*</b>
+                                <input type="text" id="ohlmt" name="ohlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="ohlmt-error" class="error" for="ohlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Infra Head Limit</label><b style="color:red">*</b>
+                                <input type="text" id="ihlmt" name="ihlmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="ihlmt-error" class="error" for="ihlmt" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">CTO Limit</label><b style="color:red">*</b>
+                                <input type="text" id="ctolmt" name="ctolmt" placeholder="" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label id="ctolmt-error" class="error" for="ctolmt" style="display:block"></label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">ACCOUNT NUMBER</label><b style="color:red">*</b>
+                                <select name="ddlAcc" id="ddlAcc" class="form-control">
+                                    <option value="0"> ------------ Select ------------ </option>
+                                </select>
+                                <label id="acc-error" class="error" for="acc" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">SUB-ACCOUNT NUMBER</label><b style="color:red">*</b>
+                                <select name="subacc" id="subacc" class="form-control">
+                                    <option value="0"> ------------ Select ------------ </option>
+                                </select>
+                                <label id="subacc-error" class="error" for="subacc" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="ddlOutWard" id="ddlOutWard" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlOutWard-error" class="error" for="ddlOutWard" style="display:block"></label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="overflow-y: auto;height: 300px;">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Branch Type<b style="color:red">*</b></label>
+                            <div id="ddlBranchType" class="form-control" style="height:auto;">
+                                <div value="0"> ------------ Select ------------ </div>
+                            </div>
+                            <label id="ddlBranchType-error" class="error" for="ddlBranchType" style="display:block"></label>
+                        </div>
+                    </div>
+
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+
+    <script src="~/ClientApp/PaymentAtBranch/AddNewExpenseHead.js"></script>
+
+}

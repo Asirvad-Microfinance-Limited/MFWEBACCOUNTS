@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "UserTypeDetails";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> User Type </strong></div>
+            <div class="card-body card-block">
+               <button type="button" class="btn btn-primary btn-bg" data-toggle="modal" onclick="_userTypeDetails.changePopupHeader(1);" data-target="#mediumModal"> <i class="fa fa-plus-circle" style="font-size:24px;"></i></button>
+
+              
+
+                    <!--Modal-->
+                    <form name="frmUserType" id="frmUserType" method="post">
+                        <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog"   aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="mediumModalLabel">Add User Type</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="_userTypeDetails.clearForm();">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <div class="row form-group">
+                                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="street" class="form-control-label">User Type<b style="color:red">*</b></label>
+                                                    <input type="text" placeholder="User Type" id="userType" name="userType" maxlength="35" class="form-control">
+                                                    <label id="userType-error" class="error" for="userType" style="display:block;"></label>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="row form-group">
+                                                @*<label for="street" class=" form-control-label">Address<b style="color:red">*</b></label>
+                                        <input type="text" placeholder="Address" id="address" name="address" class="form-control">*@
+                                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="cc-payment" class=" form-control-label">Access Level<b style="color:red">*</b></label>
+                                                    <select name="ddlAccessLevel" id="ddlAccessLevel" class="form-control">
+                                                        <option value="0">--------------Select----------</option>
+                                                        
+                                                    </select>
+                                                    <label id="ddlAccessLevel-error" class="error" for="ddlAccessLevel" style="display:block;"></label>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="cc-payment" class=" form-control-label">Default Role<b style="color:red">*</b></label>
+                                                    <select name="ddlDefaultRole" id="ddlDefaultRole" class="form-control">
+                                                        <option value="0">--------------Select----------</option>                                                
+                                                    </select>
+                                                    <label id="ddlDefaultRole-error" class="error" for="ddlDefaultRole" style="display:block;"></label>
+
+                                                </div>
+
+                                            </div>
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="submit" id="addUserTypeDataBtn" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                    </br>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divusertypedetails" name="divusertypedetails" style="position: relative;max-height: 350px;min-height:250px;overflow: auto;display: block;">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                    <!--Table-->
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/ClientApp/AddUserTypeDetails/AddUserTypeDetails.Controller.js"></script>
+<script src="~/ClientApp/AddUserTypeDetails/AddUserTypeDetails.Validator.js"></script>
+  
+
+}

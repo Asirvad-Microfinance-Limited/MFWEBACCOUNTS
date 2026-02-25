@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "FDInterestAccrREP";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">INTEREST ACCRUAL AUTOMATION</strong>
+            </div>
+            <form class="form-horizontal" runat="server">
+               
+                <div class="card-body">
+                       <div class="row">
+                           <div class="col-md-12">
+                                <div class="form-group">
+                                        <div class="text-center">
+                                            <input type="button" class="btn btn-success" id="btn_Excel" value="Export to Excel"  />
+                                        </div>
+                                </div>
+                           </div>
+                        
+                       </div>
+                </div>
+
+            </form>        
+        
+                            
+                               
+        </div>
+
+        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+            <div class="card-body" style="background-color:#fff !important; ">
+                <div class="table-responsive">
+                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                        <table class="table" id="tbldespatch">
+                            <thead>
+                                <tr>
+                                    @* <th class="VCol" style="text-align:left;">#</th> *@
+                                    <th class="VCol" style="text-align:left;">DOC_ID</th>
+                                    <th class="VCol" style="text-align:left;">FD_NUMBER	</th>
+                                    <th class="VCol" style="text-align:left;">DEPOSIT_DT</th>
+                                    <th class="VCol" style="text-align:left;">MATURITY_DT</th>
+                                    <th class="VCol" style="text-align:left;">DEPOSIT_AMT</th>
+                                    <th class="VCol" style="text-align:left;">MATURITY_AMT	</th>
+                                    <th class="VCol" style="text-align:left;">DAYS</th>
+                                    <th class="VCol" style="text-align:left;">INTEREST_AMOUNT</th>
+                                    <th class="VCol" style="text-align:left;">ACCRUAL</th>
+                                    <th class="VCol" style="text-align:left;">ENTRY_POSTING_DATE</th>
+                                    <th class="VCol" style="text-align:left;">REVERSAL_DATE	</th>
+                                   
+
+
+                                    <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabl"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-end">
+               <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger"   />
+
+
+                <input id="hdUserId" type="hidden" runat="server" />
+
+        </div>
+        
+    </div>
+</div>
+    @section Scripts {
+    <script src="~/clientapp/treasurymanagement/fdintaccrualauto.js"></script>
+    }
+   

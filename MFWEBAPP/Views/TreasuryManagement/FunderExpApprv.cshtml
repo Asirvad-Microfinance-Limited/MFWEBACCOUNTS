@@ -1,0 +1,285 @@
+﻿@{
+    ViewData["Title"] = "Funder Exposure Approval";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">FUNDER EXPOSURE APPROVAL</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name=" " id=" " method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3" id="selloan">
+                            <div class="form-group">
+                                <label for="selloan">Select Loan<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="txt_selectloan" name="selectloan">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="pjctne">
+                                <label for="selloan">Project Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_PjtName" class="form-control" name="txtinvest" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_invest" class="form-control" name="txtinvest" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor Type<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_investType" class="form-control" name="txtinvestType" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor Sub Type<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_sub_investType" class="form-control" name="txtsubinvestType" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="secure">Secured/Unsecured<span class="text-danger"></span></label>
+                                <input type="text" id="txt_securedunsecured" class="form-control" name="securedunsecured" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">MCLR <span class="text-danger"></span></label>
+                                <input type="text" id="txt_Mclr" class="form-control" name="txtMclr" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Nature Of Facility<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_nat_fac" class="form-control" name="txtnatfac" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Type Of Scheme<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_scheme" class="form-control" name="txtscheme" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Facilitator Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_fac_name" class="form-control" name="txtfacname" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Funder Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_fund_name" class="form-control" name="txtfundname" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Sanctioned Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_Sanc_amnt" class="form-control" name="txtSancamnt" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Availed Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_Ava_amnt" class="form-control" name="txtAvaamnt" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Date Of Sanction<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control " id="txt_date_sanc" name="dateofpay" autocomplete="off" title="txtdatesanc" readonly onkeypress="return false" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Base Rate Mclr At Sanction<span class="text-danger"></span></label>
+                                <input type="text" id="txt_base_mclr_san" class="form-control" name="txtbasemclrsan" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="spredrate">Spread Rate</label>
+                                <input type="text" class="form-control" id="txt_spreadrate" name="txtspreadrate" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="spredrate">Interest Rate At Sanction<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txt_intRateAtSan" name="txtintRateAtSan" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Cash Margin</label>
+                                <input type="text" id="txt_cashmargin" class="form-control" name="txtcashmargin" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Book debt Margin</label>
+                                <input type="text" id="txt_bkdbt_margin" class="form-control" name="txtbkdbtmargin" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Disbursal Date<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control " id="txt_dis_dt" name="dateofpay" autocomplete="off" title="txtdisdt" onkeypress="return false" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Date Of Maturity<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control " id="txt_Mat_dt" name="dateofpay" autocomplete="off" title="txtMatdt" onkeypress="return false" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Processing Fee</label>
+                                <input type="text" id="txt_proc_fee" class="form-control" name="txtprocfee" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Arranger Name</label>
+                                <input type="text" id="txt_arg_name" class="form-control" name="txtargname" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Arranger Fee</label>
+                                <input type="text" id="txt_arg_fee" class="form-control" name="txtargfee" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="prepaymentpenalty">Prepayment Penalty</label>
+                                <input type="text" id="txt_prepaymentpenalty" class="form-control" name="prepaymentpenalty" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Tenure In Months<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_tenure" class="form-control" name="txttenure" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="debenture">Interest Type<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_debenture" class="form-control" name="txtdebenture" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="debenture">Listed/UnListed<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_listed" class="form-control" name="txtlisted" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">Rating</label>
+                                <input type="text" id="txt_rating" class="form-control" name="txtrating" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">MCLR Next Change(M)</label>
+                                <input type="text" id="txt_mclr_next" class="form-control" name="tenureinmonth" onchange="" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">Total Transcation Cost</label>
+                                <input type="text" id="tot_transctin_cost" class="form-control" name="tenureinmonth" onchange="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="dvrejectremarks" style="display:none;">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="remarks">Remarks<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtremarks" title="Remarks" />
+                            </div>
+                        </div>
+                    </div>
+                    @* <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input">
+                                    <label class="custom-control-label" for="radAppr">Approve</label>
+                                    &nbsp;
+                                    <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input">
+                                    <label class="custom-control-label" for="radRjct">Reject</label>
+
+                                    <div id="dvtext" style="display: none">
+                                        <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                        <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+                    <div class="row form-group">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="fundcat">Approve Status : <span class="text-danger">*</span> </label>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radAppr" name="radaprrej" value="louie" />
+                                    <label for="louie">Approve</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radRjct" name="radaprrej" value="louie" />
+                                    <label for="louie">Reject</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+                </form>
+            </div>
+            <div class="card-footer text-end">
+                <input id="btnsubmit" type="button" value="SUBMIT" class="btn btn-primary" />
+
+                <input id="btnext" type="button" value="EXIT" class="btn btn-danger" onclick="return frmExit();" />
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/funderexpapprv.js"></script>
+
+}

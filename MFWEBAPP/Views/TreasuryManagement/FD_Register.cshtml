@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "FD_Register";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">FIXED DEPOSIT REGISTER</strong>
+            </div>
+        </div>
+
+        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+            <div class="card-body" style="background-color:#fff !important; ">
+                <div class="table-responsive">
+                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                        <table class="table" id="tbldespatch">
+                            <thead>
+                                <tr>
+                                    <th class="VCol" style="text-align:left;">NAME_OF_BANK</th>
+                                    <th class="VCol" style="text-align:left;">CLASSIFICATION</th>
+                                    <th class="VCol" style="text-align:left;">FD_NO</th>
+                                    <th class="VCol" style="text-align:left;">STATUS</th>
+                                    <th class="VCol" style="text-align:left;">OPEN_DATE</th>
+                                    <th class="VCol" style="text-align:left;">CLOSURE_DATE</th>
+                                    <th class="VCol" style="text-align:left;">MATURITY_VALUE</th>
+                                    <th class="VCol" style="text-align:left;">ROI</th>
+                                    <th class="VCol" style="text-align:left;">AMOUNT</th> 
+                                    <th class="VCol" style="text-align:left;">TENURE</th>
+
+                                    <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabl1"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+	<script src="~/clientapp/treasurymanagement/fd_register.js"></script>
+}

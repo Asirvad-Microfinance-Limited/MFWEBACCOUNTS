@@ -1,0 +1,400 @@
+﻿@{
+    ViewData["Title"] = "Other Charges";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="card">
+  <div class="col-lg-12">
+      <div class="card-header">
+            <strong class="card-title">Payment Of Other Charges</strong>
+      </div>
+       <div class="card-body">
+           <form name=" " id=" " method="post" class="form-horizontal">
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddl_fI"  name="Select Finanacial Institution" ></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group" id ="sclfnd">
+                            <label for="fundcat">Select Fund<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddl_Loan"  name="Select Fund" > </select>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row mb-2" id="ShowtblDiv" style="display:none;">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class=" "><strong>Fund Details :</strong></h4>
+                                <div class="table-responsive">
+                                    <table class="table" id="tableShowLoans">
+                                        <thead class="bg-inverse text-white">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">Fund_Type</th>
+                                                <th class="VCol" style="text-align:left;">Fund</th>
+                                                <th class="VCol" style="text-align:left;">FI_Type</th>
+                                                <th class="VCol" style="text-align:left;">FI_Name</th>
+                                                <th class="VCol" style="text-align:left;">Entered Date</th>
+                                                <th class="VCol" style="text-align:left;">From Date</th>
+                                                <th class="VCol" style="text-align:left;">To Date</th>
+                                                <th class="VCol" style="text-align:left;">Entered By</th>
+                                                <th class="VCol" style="text-align:left;">Amount</th>
+                                                <th class="VCol" style="text-align:left;">ROI</th>
+                                                <th class="VCol" style="text-align:left;">Personal Guarantee</th>
+
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+           </form>
+
+            @* <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="radio" id="radigst" name="radproc" class="custom-control-input">
+                                <label class="custom-control-label" for="radigst">Other Charges With IGST</label>
+                                &nbsp;
+                                <input type="radio" id="radsgst" name="radproc" class="custom-control-input">
+                                <label class="custom-control-label" for="radsgst">Other Charges With SGST & CGST</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> *@
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radigst" name="radproc" value="louie" />
+                                    <label for="louie">Processing Fee With IGST</label>
+                                </div>
+                            </div>
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radsgst" name="radproc" value="louie" />
+                                    <label for="louie">Processing Fee With SGST & CGST</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div><br/>
+                </div>
+            </div>
+
+    @* 
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="agreemntfrom">Do You Transfer The Cash ?<span class="text-danger">*</span></label><br/>
+                        <input type="radio" id="radYes" name="radcheck" class="custom-control-input" style="cursor:pointer" >
+                        <label class="custom-control-label" for="radYes" style="cursor:pointer">Yes</label>
+                        &nbsp;
+                        <input type="radio" id="radNo" name="radcheck" class="custom-control-input" style="cursor:pointer">
+                        <label class="custom-control-label" for="radNo" style="cursor:pointer">No</label>
+                    </div>
+                </div>
+            </div> *@
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="fundcat">Do You Transfer The Cash ? :<span class="text-danger">*</span> </label>
+                            <br />
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radYes" name="radcheck" value="louie" />
+                                    <label for="louie">Yes</label>
+                                </div>
+                            </div>
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radNo" name="radcheck" value="louie" />
+                                    <label for="louie">No</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div><br />
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="fundcat">Other Fee<span class="text-danger">*</span></label>
+
+                        <div style="width:100%;">
+                            <input type="text" id="txt_docfee" style="width:100%" class="form-control"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="15" />
+
+                        </div>
+                        <small id="LoanAmtWords" class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="col-md-3" id="divmainbank">
+                    <div class="form-group">
+                        <label for="fundcat">Bank Account<span class="text-danger">*</span></label>
+
+                        <div style="width:100%;">
+                            <select id="ddl_mainAcc"  class="custom-select form-control" name="Select Main Account"></select>
+                        </div>
+                        <small id="LNFIMainAccName" class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="col-md-3" id="ddlsubacBNK" style="display:none">
+                    <div class="form-group">
+                        <label for="fundcat">Bank Sub Account<span class="text-danger">*</span></label>
+                        <div style="width:100%;">
+                            <select id="ddl_SubAcc"  class="custom-select form-control" name="Select Sub Account"></select>
+                        </div>
+                        <small id="LoanSubAccName" class="form-text text-muted"></small>
+                    </div>
+                </div>
+
+            </div>
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Contra Main Account<span class="text-danger">*</span></label>
+
+                            <div style="width:100%;">
+                                <select id="ddl_contramainAcc"  class="custom-select form-control" name="Select Main Account"></select>
+                            </div>
+                            <small id="LNFIAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="ddlcontrasub" style="display:none">
+                        <div class="form-group">
+                            <label for="fundcat">Contra Sub Account<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <select id="ddl_contraSubAcc"  class="custom-select form-control" name="Select Sub Account"></select>
+                            </div>
+                            <small id="LoanSubLNFIAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="divpjt" style="display:none">
+                        <div class="form-group">
+                            <label for="fundcat">Project Code<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <input type="text" id="txt_pjt"  class="form-control text-uppercase"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="ddlcontraIsubID" style="display:none">
+                        <div class="form-group">
+                            <label for="fundcat">Contra No<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <select id="ddl_contraFIID"  class="custom-select form-control" name="Select Sub Account"></select>
+                            </div>
+                            <small id="LoanSubLNFIID" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-2" id="DivBank" style="display:none">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="lblifsc">IFSC<span class="text-danger">*</span></label>
+                            <input type="text" id="txt_ifsc"  class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="lbaccnum">Account Number<span class="text-danger">*</span></label>
+                            <input type="text" id="txt_Accnumber"  class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="lbaccname">Beneficiary Name<span class="text-danger">*</span></label>
+                            <input type="text" id="txt_Accname"  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="lblmob">Mobile Number <span class="text-danger">*</span></label>
+                            <input type="text" id="txt_Mobnumber"  class="form-control"  maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                        </div>
+                    </div>
+                </div>
+    @* 
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                        <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input">
+                                        <label class="custom-control-label" for="radAppr">With TDS</label>&nbsp;>
+                                        <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input">
+                                        <label class="custom-control-label" for="radRjct">Without TDS</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row form-group">
+
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radAppr" name="radApprRej" value="louie" />
+                                    <label for="louie">With TDS</label>
+                                </div>
+                            </div>
+                            <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radRjct" name="radApprRej" value="louie" />
+                                    <label for="louie">Without TDS</label>
+                                </div>
+                            </div>
+                        </div><br />
+                    </div>
+                </div>
+
+
+                <div class="row mb-2" id="tdsdiv" style="display:none">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Account<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <select id="ddl_maintds" class="custom-select form-control" name="Select Main Account"></select>
+                            </div>
+                            <small id="LNtdsMainAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Sub Account<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <select id="ddl_tdsSubAcc"  class="custom-select form-control" name="Select Sub Account"></select>
+                            </div>
+                            <small id="LoantdsSubAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Amouont<span class="text-danger">*</span></label>
+                            <div style="width:100%;">
+                                <input type="text" id="txt_tds" class="form-control"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10" />
+                            </div>
+                            <small id="LoantdsAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div>
+       </div>
+  </div>
+
+</div>
+        <div class="card-footer">
+                        <div class="text-end">
+                         <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                        <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+                    </div>
+                </div>
+</div>
+
+<input id="hdUserIdoth" type="hidden" runat="server" />
+<input id="hdPagoth" type="hidden" runat="server" />
+
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/othercharges.js"></script>
+}
+
+
+                                
+
+
+
+
+           
+
+                                   
+
+                           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+               
+
+
+
+
+                       
+
+               
+              
+
+               
+
+                  
+
+
+               
+    

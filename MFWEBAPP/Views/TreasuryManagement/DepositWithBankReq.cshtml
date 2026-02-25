@@ -1,0 +1,330 @@
+﻿@{
+    ViewData["Title"] = "DepositWithBankReq";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">DEPOSIT WITH BANK REQUEST</strong>
+            </div>
+            <div class="card-body">
+                <form name="" id="" method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-4">
+                           @*  <label for="fundcat">SL_NO<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlSLNO" name="">
+                            </select> *@
+                            <label for="fundcat">SL_NO<span class="text-danger">*</span></label>
+                            <input type="text" id="txtSLNO" maxlength="25" class="form-control"  readonly  />
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fundcat">Financial Institution Type<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFiType"  name="FinancialInstitutionType">
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-4" id="ddlFiinstitution">
+                            <label for="fundsubcat">Financial Institution<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFi" name="FinancialInstitution">
+                            </select>
+                        </div>
+
+                        <div class="col-md-4" id="ddlCategory"> 
+                            <label for="fundcat">Category<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlcategory" name="Category">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+
+                            <label for="fundcat">FD Number</label>
+                            <input type="text" id="txtFDNo" maxlength="25" class="form-control" name="FDNumber" onclick="" />
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <label for="fundcat">Deposit Bank Branch<span class="text-danger">*</span></label>
+                            <input type="text" id="txtbankbranch" maxlength="25" class="form-control"  />
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        
+                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDate">
+                        <div class="form-group">
+                        <label for="datepicker" class=" form-control-label mb-1">Deposit Date</label><b style="color:red">*</b>
+                        <input class="form-control datepicker " id="AgreeDt" name="dtToDate" type="text" readonly placeholder="MM/DD/YYYY" />
+                        <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                        </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDates">
+                        <div class="form-group">
+                        <label for="datepicker" class=" form-control-label mb-1">Maturity Date</label><b style="color:red">*</b>
+                        <input class="form-control datepicker " id="AgreeDate" name="AgreeDate" type="text" readonly placeholder="MM/DD/YYYY" />
+                        <label id="dtFromDate-error" class="error" for="AgreeDate" style="display:block"></label>
+                        </div>
+                        </div> 
+
+
+                      
+                        <div class="col-md-4">
+                            <label for="fundcat">Rate%<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtrate" title="Rate" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  />
+                            @*  <input type="text" class="form-control input-group-text " style="width: 100%" id="txtintrate" name="txtsub" title="Subject" maxlength="200" onkeypress="return isNumberKey(event)" onchange="interestrate();" /> *@
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+
+
+                        <div class="col-md-4">
+
+                            <label for="fundcat">Deposit Amount<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtDepositAmt" title="DepositAmount" maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+
+                            <small id="PricipleAmtWords" class="form-text text-muted"></small>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="fundcat">Maturity Amount<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtMaturityAmt" title="MaturityAmt" maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                            <small id="MatrtyAmntWords" class="form-text text-muted"></small>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <label for="fundcat">Purpose</label>
+                            <input type="text" class="form-control" id="txt_purpose" title="Tenure" maxlength="150"   />
+                        </div>
+                    </div>
+
+                    <div class=" row">
+                        <div class="col-md-4">
+                            <label for="fundcat">Period</label>
+                            <input type="text" class="form-control" id="txt_period" title="" maxlength="150" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="debenture">Compounding Interest  <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="txtcompoundint" name="ddldebenture" onchange="">
+                                    <option value="0">---Select----</option>
+                                    <option value="Secured">Monthly </option>
+                                    <option value="Unsecured">Quarterly </option>
+                                    <option value="Unsecured">Annually </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fundcat">Remark</label>
+                            <input type="text" class="form-control" id="txt_Remark" title="" maxlength="150" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="fundcat">Classification<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_Classification" title="" maxlength="150"  />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="card-title">Deposit Account Details</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="fundcat">Main Account<span class="text-danger">*</span></label>
+                            <select id="ddl_mainAcc" style="width:100%" class="custom-select form-control" name="Select Main Account" ></select>
+                            <small id="LoanAccName" class="form-text text-muted"></small>
+                        </div>
+                        <div class="col-md-3" id="ddlsubacsts" style="display:none">
+                            <label for="fundcat">Sub Account<span class="text-danger">*</span></label>
+                            <select id="ddl_SubAcc" style="width:100%" class="custom-select form-control" name="Select Sub Account"></select>
+                            <small id="LoanSubAccName" class="form-text text-muted"></small>
+                        </div>
+                        </div> 
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="text-end">
+                    <input id="btnconfirm" type="button" value="Confirm" class="btn btn-primary"  />
+                    <input id="BtnExit" type="button" value="Exit" class="btn btn-danger" onclick="return exitPage();" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+    <input id="hdData" type="hidden" runat="server" />
+    <input id="hdfunid" type="hidden" runat="server" />
+    <input id="hdnLoanMainAcc" type="hidden" runat="server" />
+    <input id="hdnLoanSubAcc" type="hidden" runat="server" />
+    <input id="hdnFTMainAcc" type="hidden" runat="server" />
+    <input id="hdnFTSubAcc" type="hidden" runat="server" />
+    <input id="Hidden1" type="hidden" runat="server" />
+    <input id="hdnLoanBal" type="hidden" runat="server" />
+    <input id="hdnSubAccStatus" type="hidden" runat="server" />
+</div>
+
+@section Scripts {
+
+    <script src="~/clientapp/treasurymanagement/depbankreq.js"></script>
+
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+                 
+
+
+
+
+
+                           
+                               
+                          
+                       
+                               
+                           
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+                           
+                  
+                  
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

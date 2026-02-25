@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Asirvad | @ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/cs-skin-elastic.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/normalize.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/pe-icon-7-filled.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/style.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/lib/Plugins/sweetalert/css/sweetalert.css" rel="stylesheet" />
+    <link href="~/lib/Plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/lib/Plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="~/lib/Plugins/LoaderWrapper/Loginstyle.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Left Panel -->
+    @*<aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+
+            </div> /.navbar-collapse 
+        </nav>
+    </aside>*@
+    <!-- /#left-panel -->
+    <!-- Left Panel -->
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+
+                    <a href="https://asirvadmicrofinance.co.in/" target="_blank">
+                        @*<img src="~/lib/bootstrap/dist/images/logo.png" alt="Logo">*@
+                        <img src="~/lib/bootstrap/dist/images/loginlogo.png" alt="Logo" style="width: 35%;padding-left: 15px;" />
+                    </a>
+                    @*<a class="navbar-brand hidden" href="index.html"><img src="images/logo2.png" alt="Logo"></a>*@
+
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars" style="padding-left: 10px;"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                
+                <div class="header-menu">
+                    <div class="header-left">
+                        <div style="margin: -6px 0px -55px -70px">
+                            <a class="nav-link" href="https://mac.mactech.net.in/Userguide_PaymentRatification/Introduction.html" target="_blank"><i style="color:#e5322d" class="fa fa-question-circle fa-4x"></i></a>
+                        </div>
+                        <div>
+                            <label id="userdtl" name="userdtl" style="color:red;font-size:12px;text-transform:uppercase;margin-top:18px;margin-right:-9px;"> </label>
+                        </div>
+    @*<button class="search-trigger"><i class="fa fa-search"></i></button>
+        <div class="form-inline">
+            <form class="search-form">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+            </form>
+        </div>
+        <div class="dropdown for-notification">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="count bg-danger">3</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="notification">
+                <p class="red">You have 3 Notification</p>
+                <a class="dropdown-item media" href="#">
+                    <i class="fa fa-check"></i>
+                    <p>Server #1 overloaded.</p>
+                </a>
+                <a class="dropdown-item media" href="#">
+                    <i class="fa fa-info"></i>
+                    <p>Server #2 overloaded.</p>
+                </a>
+                <a class="dropdown-item media" href="#">
+                    <i class="fa fa-warning"></i>
+                    <p>Server #3 overloaded.</p>
+                </a>
+            </div>
+        </div>*@
+</div>
+
+                    <div class="user-area dropdown float-right">
+
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="~/lib/bootstrap/dist/images/admin.png" alt="User Avatar">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+
+                            <a class="nav-link" href="#" onclick="_GeneralServices.signOut();"><i class="fa fa-power-off"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /header -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="page-loader-wrapper" style="display:none;">
+                    <div class="loader">
+                        <div class="preloader">
+                            <div class="spinner-layer pl-blue-grey">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Please Wait...</p>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <footer class="site-footer mt-2">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Copyright &copy; @DateTime.Now.Year.ToString() <a href="https://asirvadmicrofinance.co.in/technology/" style="color:#e6312c;">MICROFINANCE</a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        Designed and Developed by <a href="http://www.macomsolutions.com/" style="color:#e6312c;">MACOM</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/plugins.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/main.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/flot-chart/jquery.flot.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/flot-chart/jquery.flot.spline.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/widgets.js"></script>
+    <script src="~/ClientApp/App.js"></script>
+    <script src="~/ClientApp/Services/HttpService.js"></script>
+    <script src="~/Script/aes.js"></script>
+    <script src="~/Script/pbkdf2.js"></script>
+    <script src="~/ClientApp/Services/LocalStorageServices.js"></script>
+    <script src="~/ClientApp/Services/MenuServices.js"></script>
+    <script src="~/ClientApp/Genaral/Genaral.Controller.js"></script>
+    <script src="~/lib/Plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="~/Script/moment.min.js"></script>
+    <script src="~/lib/Plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/lib/Plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/Script/xlsx.full.min.js"></script>
+    <script src="~/lib/Plugins/CSVExport/CSVExport.js"></script>
+    <script src="~/ClientApp/Services/GeneralServices.js"></script>
+    <script src="~/lib/Plugins/excelexport/jquery.table2excel.js"></script>
+    <script src="~/Script/pdfmake.min.js"></script>
+    <script src="~/Script/html2canvas.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "ShiftChange";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Shift Change</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="ddlOutWard" id="ddlOutWard" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Branch Type<b style="color:red">*</b></label>
+                            <select name="ddlBranchType" id="ddlBranchType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlBranchType-error" class="error" for="ddlBranchType" style="display:block"></label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label class="control-label mb-1">Open Reading of Electricity</label><b style="color:red">*</b>
+                                <input type="text" id="OpenRead" name="OpenRead" placeholder="" class="form-control" readonly>
+                            <label id="OpenRead-error" class="error" for="payType" style="display:block"></label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label class="control-label mb-1">Close Reading of Electricity</label><b style="color:red">*</b>
+                            <input type="text" id="CloseRead" name="CloseRead" placeholder="" class="form-control" readonly>
+                            <label id="CloseRead-error" class="error" for="payType" style="display:block"></label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-2">Are you sure you want to make the Opening reading of Electricity as zero?<b style="color:red">*</b></label>
+                            <div>
+                                <input type="radio" id="opening" name="openingReading" value="yes">
+                                <label for="yes" id="op">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="openingReading" name="openingReading" value="no">
+                                <label for="no" id="en">No</label>
+                            </div>
+                            <label id="ddlOpenType-error" class="error" for="ddlOpenType-error" style="display:block"></label>
+                        </div>
+                    </div>
+
+        
+                    <div id="confirm" class="text-right" style="display:block;">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>&nbsp;&nbsp;&nbsp;
+                    
+                    </div>
+
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/ShiftChange.js"></script>
+
+}

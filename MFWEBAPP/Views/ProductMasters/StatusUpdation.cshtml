@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" id="rptHeadName"><strong> STATUS UPDATION </strong></div>
+            <div class="card-body card-block">
+                <form name="frmMicroReport" id="frmMicroReport" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                            <label class="control-label mb-1">Notice No:</label><b style="color:red">*</b>
+                            @*<label for="cc-payment" class="control-label mb-1">Select Notice Number<b style="color:red">*</b></label>*@
+                            <select name="ddlnoticeno" id="ddlnoticeno" class="form-control">
+                                <option value="0"> --------- Select --------- </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <br />
+
+                  <div id="allcolum" >
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtfinancialyear1" style="display:none">
+                            <div class="form-group">
+
+                                <label class="control-label mb-2">financial Year <b style="color:red">*</b></label>
+                                <input type="text" id="txtfinancialyear" name="txtfinancialyear" maxlength="150" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtassesmentyear1" style="display:none">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Assessment Year <b style="color:red">*</b></label>
+                                <input type="text" id="txtassesmentyear" name="txtassesmentyear" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtdocsub1" style="display:none">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Document Submitted by:<b style="color:red">*</b></label>
+                                <input type="text" id="txtdocsub" name="txtdocsub" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtnoticedate1" style="display:none">
+                            <div class=" form-group">
+                                <label class="control-label mb-1">Notice Date:<b style="color:red">*</b></label>
+                                <input type="text" id="txtnoticedate" name="txtnoticedate" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txthearingdate1" style="display:none">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Hearing Date:<b style="color:red">*</b></label>
+                                <input type="text" id="txthearingdate" name="txthearingdate" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtreplydate1" style="display:none">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Replay Date:<b style="color:red">*</b></label>
+                                <input type="text" id="txtreplydate" name="txtreplydate" disabled class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+                        <input type="hidden" id="recordingID"/>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="ddlStatus" style="display:none;">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Status<b style="color:red">*</b></label>&nbsp;
+                                <select name="ddldocrecivd" id="ddlPayType" class="form-control">
+                                    <option value="0"> ------------ Select Type------------ </option>
+                                    <option value="Replied">Replied</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Personal Hearing attended but  replied">Personal Hearing attended but  replied</option>
+                                    <option value="Personal Hearing attended but not replied">Personal Hearing attended but not replied </option>
+                                    <option value="Replied but not attended Personal Hearing">Replied but not attended Personal Hearing </option>
+                                    <option value="Others">Others </option>
+                                </select>
+                                @*<label id="ddlPayType-error" class="error" for="ddlPayType" style="display:block"></label>*@
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                            <div class="form-group">
+
+                                <label id="ddlMicrRptName-error" class="error" for="ddlMicrRptName" style="display:block">&nbsp;</label>
+
+                                <button type="button" id="btnView" value="View Document" class="btn-light" @*data-toggle="modal" *@ style="display:none;border-radius:5px;height:40px;background-color:#1078b5"><i class="fa fa-download">&nbsp Download</i></button>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="txtremark1" style="display:none">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Remark:<b style="color:red">*</b></label>
+                                <input type="text" id="txtcurrentRemark" name="txtRemark"  class="form-control" />
+                                <label id="dmremarks-error" class="error" for="dmremarks"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+
+                        <div class="text-right">
+                            <button type="button" class="btn btn-success" id="submit">Approve</button>
+                            <button type="button" class="btn btn-danger" id="reject">Exit</button>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div align="center" class="col-lg-12">
+                    <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+<script src="~/ClientApp/PaymentAtBranch/StatusUpdation.js"></script>
+    @*<script src="~/ClientApp/Reports/Reports.Controller.js"></script>*@
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>
+    <link href="~/lib/Plugins/LoaderWrapper/Loginstyle.css" rel="stylesheet" />
+
+}
+

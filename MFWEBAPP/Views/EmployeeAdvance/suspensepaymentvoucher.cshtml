@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .full {
+/*            border: 1px outset black;
+*/            /*text-align: center;*/
+        }
+
+        .bind {
+            border: 1px outset black;
+        }
+
+        .tb {
+            border-style: none;
+        }
+
+        /* p, td, th, span {
+            font-size: 10px;
+        }*/
+        /* p{
+            font-size:10px;
+        }*/
+          tr{
+            border:1px solid black;
+            border-collapse:collapse;
+        }
+    </style>
+
+    <title></title>
+</head>
+<body>
+    <div id="VoucherPrinteView">
+        <section class="sheet padding-10mm">
+
+            <div class="full" style="width:100% ">
+                <h2 style="text-align:center"> ASIRVAD MICROFINANCE LIMITED <br /> Branch ID- @Model.queryResult[0].BranchID ,Branch ADMINISTRATIVE OFFICE</h2>
+                <h3 style="text-align:center"> JOURNEL VOUCHER OF @Model.queryResult[0].param1.Split("#")[2] </h3>
+
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            <span style="font-size: 15px;float:left">@Model.queryResult[0].param1.Split("#")[3] </span>
+
+                        </th>
+                        @*<th>
+                            <span style="font-size: 15px;float:right">05:42:42 PM</span>
+                        </th>*@
+                    </tr>
+
+                </table>
+
+
+
+
+                @*<div class="bind" style="width:98%; border:1px solid black; border-collapse:collapse ;border-color:#242323 ;padding-top:10px;padding-bottom:10px;padding-left:8px;padding-right:8px">*@
+
+                <table style="width:100%;border:1px solid black" class="address">
+                    <tr>
+                        <th style="font-size: 15px;border-bottom:1px solid black" align="left">Account No</th>
+                        <th style="font-size: 15px; border-bottom: 1px solid black" align="left">Account Name</th>
+                        <th style="font-size: 15px; border-bottom: 1px solid black" align="left">Tradt</th>
+                        <th style="font-size: 15px; border-bottom: 1px solid black" align="left">Descr</th>
+                        <th style="font-size: 15px; border-bottom: 1px solid black" align="left">Debit</th>
+                        <th style="font-size: 15px; border-bottom: 1px solid black" align="left">Credit</th>5
+                    </tr>
+                    <tr>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[0].param2.Split("#")[0]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[0].param2.Split("#")[1]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">20/12/2023</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[0].param2.Split("#")[2]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[0].param2.Split("#")[3]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[0].param2.Split("#")[4]</td>
+
+                    </tr>
+
+                    <tr>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[1].param2.Split("#")[0]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[1].param2.Split("#")[1]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">20/12/2023</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[1].param2.Split("#")[2]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[1].param2.Split("#")[3]</td>
+                        <td style="font-size: 15px;border-bottom:1px solid black" align="left">@Model.queryResult[1].param2.Split("#")[4]</td>
+
+                    </tr>
+
+                    <tr>
+                        <td style="font-size: 15px;" align="left"></td>
+                        <td style="font-size: 15px;" align="left"></td>
+                        <td style="font-size: 15px;" align="left">Total</td>
+                        <td style="font-size: 15px;" align="left"></td>
+                        <td style="font-size: 15px;" align="left">@Model.queryResult[2].param2.Split("#")[3]</td>
+                        <td style="font-size: 15px;" align="left">@Model.queryResult[2].param2.Split("#")[3]</td>
+
+                    </tr>
+
+                </table>
+
+                <h3 style="text-align:center"> THE USE ID FOR THE JOURNEL VOUCHER:- DEPOSIT. </h3>
+
+
+                @*</div>*@
+
+
+            </div>
+        </section>
+     </div>
+   </body>
+
+</html>

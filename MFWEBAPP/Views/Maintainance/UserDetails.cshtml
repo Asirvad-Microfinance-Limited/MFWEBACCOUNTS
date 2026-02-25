@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewData["Title"] = "UserDetails";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 ">
+        <div class="card">
+            <div class="card-header"><strong> Add User </strong></div>
+            <div class="card-body card-block">
+                <div id="idprint">
+
+                </div>
+                <button type="button" class="btn btn-primary btn-bg" data-toggle="modal" data-target="#mediumModal" onclick="_userDetails.changePopupHeader(1);"> <i class="fa fa-plus-circle" style="font-size:24px;"></i></button>
+
+
+
+                <!--Modal-->
+                <form name="frmUserDetails" id="frmUserDetails" method="post">
+                    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="mediumModalLabel"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="_userDetails.clearForm();">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <div class="row form-group" id="divuserId" name="divuserId" style="display:none;">
+                                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="street" class="form-control-label">User ID<b style="color:red">*</b></label>
+                                                <input type="text" placeholder="User ID" id="userId" name="userId" readonly class="form-control">
+                                                <label id="userId-error" class="error" for="userId" style="display:block;"></label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="street" class="form-control-label">Name<b style="color:red">*</b></label>
+                                                <input type="text" placeholder="Name" id="userName" name="userName" maxlength="35" class="form-control">
+                                                <label id="userName-error" class="error" for="userName" style="display:block;"></label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row form-group">
+                                            @*<label for="street" class=" form-control-label">Address<b style="color:red">*</b></label>
+                                    <input type="text" placeholder="Address" id="address" name="address" class="form-control">*@
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="cc-payment" class=" form-control-label">User Type<b style="color:red">*</b></label>
+                                                <select name="ddlUserType" id="ddlUserType" class="form-control">
+                                                    <option value="0">--------------Select----------</option>
+
+                                                </select>
+                                                <label id="ddlUserType-error" class="error" for="ddlUserType" style="display:block;"></label>
+
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="cc-payment" class=" form-control-label">Access Level<b style="color:red">*</b></label>
+                                                <select name="ddlBranch" id="ddlBranch" class="form-control">
+                                                    <option value="0">--------------Select----------</option>
+                                                </select>
+                                                <label id="ddlBranch-error" class="error" for="ddlBranch" style="display:block;"></label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="street" class="form-control-label">Mobile<b style="color:red">*</b></label>
+                                                <input type="text" placeholder="Mobile" id="mobile" name="mobile" maxlength="10" class="form-control">
+                                                <label id="mobile-error" class="error" for="mobile" style="display:block;"></label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="street" class="form-control-label">Email - ID<b style="color:red">*</b></label>
+                                                <input type="text" placeholder="Email - ID" id="txtemail" name="txtemail" maxlength="30" class="form-control">
+                                                <label id="txtemail-error" class="error" for="txtemail" style="display:block;"></label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="submit" id="addUserTypeDataBtn" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+
+                </br>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                    <div class="card" id="maincard" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+
+                            <div class="table-responsive">
+
+                                <div  id="divuserdetails" name="divuserdetails" style="overflow-x:hidden !important;overflow-y:auto !important;">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <!--Table-->
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/AddUserDetails/AddUserDetails.Validator.js"></script>
+    <script src="~/ClientApp/AddUserDetails/AddUserDetails.Controller.js"></script>
+
+
+    @*<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>*@
+
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+
+    @*<script src="~/lib/bootstrap/dist/assets/js/DataTable/datatables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>*@
+
+    @*<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="  https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="  https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>*@
+
+
+
+    @*<script src="~/lib/bootstrap/dist/assets/js/data-table/datatables.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/dataTables.bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/dataTables.buttons.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/jszip.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/pdfmake.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/vfs_fonts.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.html5.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.print.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.colVis.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/datatables-init.js"></script>*@
+
+
+}

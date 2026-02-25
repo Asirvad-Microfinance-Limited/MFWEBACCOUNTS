@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "ApproveNcdBondAvailment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">Debenture Approve</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Select Fund Type<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFundType" style="width:100%" name="FundType" > </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="ShowFinInst">
+                        <div class="form-group">
+                            <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFi" name="FinancialInstitution"> </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="showSclFnd">
+                        <div class="form-group">
+                            <label for="fundcat">Select Fund<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlLoans" name="Fund" > </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 my-2">
+                        <div class="tabs">
+                            <div class="tab" id="ShowTblNewLoan" style="display:none">
+                                <input type="checkbox" id="chck1" class="inputAccord" />
+                                <label class="tab-label" for="chck1">Fund Availment Details to be Approved</label>
+                                <div class="tab-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-success" id="tblShowNewLoan">
+                                            <thead class="bg-inverse text-white">
+                                                <tr>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border border-dark"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                          @*   <div class="col-md-12 my-2" id="ShowTblNewLoanEMI" style="display:none">
+                                <input type="checkbox" id="chck2" class="inputAccord" />
+                                <label class="tab-label" for="chck2">Repayment Shedule</label>
+                                <div class="tab-content" id="table-scroll">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-success" id="tblShowNewLoanEMI">
+                                            <thead class="bg-inverse text-white">
+                                                <tr>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border border-dark"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> *@
+
+
+
+
+                            <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                                <div class="card-body" style="background-color:#fff !important; ">
+                                    <div class="table-responsive">
+                                        <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                            <table class="table" id="tbldespatch">
+                                                <thead>
+                                                    <tr>
+                                                        @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                        <th class="VCol" style="text-align:left;">DocID</th>
+                                                        <th class="VCol" style="text-align:left;">InstallmentNo</th>
+                                                        <th class="VCol" style="text-align:left;">InstallmentType</th>
+                                                        <th class="VCol" style="text-align:left;">Amount</th>
+                                                        <th class="VCol" style="text-align:left;">PaymentDate</th>
+                                               
+                                                     
+                                                        <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="Fidatatabl"></tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                @* <div class="row">
+                  <div class="col-md-2"></div> *@
+                    @* <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="agreemntfrom">Approval Status <span class="text-danger">*</span></label>
+                            <br />
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radAppr" name="radcheck" class="custom-control-input">
+                                <label class="custom-control-label" for="radAppr">Approve</label>
+                                &nbsp;
+                                <input type="radio" id="radRjct" name="radcheck" class="custom-control-input" >
+                                <label class="custom-control-label" for="radRjct">Reject</label>
+                            </div>
+
+                            <div id="dvtext" style="display: none">
+
+                                <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason" />
+                            </div>
+                            
+                        </div>
+                    </div> *@
+                      <div class="row">
+                              <div class="col-md-4">
+                                    <div class="row form-group">
+                                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <label for="fundcat">Approve Status  : <span class="text-danger">*</span> </label>
+                                                <br/>
+                                                 <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                                    <div>
+                                                        <input type="radio" id="radAppr" name="radaprrej" value="louie" />
+                                                        <label for="louie">Approve</label>
+                                                    </div>
+                                                </div>
+                                                <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                                    <div>
+                                                        <input type="radio" id="radRjct" name="radaprrej" value="louie" />
+                                                        <label for="louie">Reject</label>
+                                                    </div>
+                                                </div>
+                                                <div id="dvtext" style="display: none">
+
+                                                    <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                                    <input type="text" style="width:400%;height:50px" maxlength="500" id="txt_reason" name="reason" />
+                                                </div>
+                                          </div>
+
+                           
+                                    </div><br />
+                              </div>
+                      </div>
+ 
+
+@* 
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="agreemntfrom">Approve Status <span class="text-danger">*</span></label>
+                            <br />
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radAppr" name="radchecking" class="custom-control-input">
+                                <label class="custom-control-label" for="radYes">Approve</label>
+                                &nbsp;
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radRjct" name="radchecking" class="custom-control-input">
+                                <label class="custom-control-label" for="radNo">Reject</label>
+
+                            </div>
+                            <div id="dvtext" style="display: none">
+
+                                <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+ *@
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="agreemntfrom">Do You Pass Entry? <span class="text-danger">*</span></label>
+                                <br />
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="radYes" name="radchecking" class="custom-control-input">
+                                    <label class="custom-control-label" for="radYes">Yes</label>
+                                    &nbsp;
+                                </div>
+                            
+                                <div class="custom-control custom-radio">
+                                        <input type="radio" id="radNo" name="radchecking" class="custom-control-input">
+                                        <label class="custom-control-label" for="radNo">No</label>
+
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+        
+
+
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger"  />
+            </div>
+
+        </div>
+    </div>
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+
+</div>
+
+@section Scripts {
+<script src="~/clientapp/treasurymanagement/approvencdbondavailment.js"></script>
+}
+
+
+
+
+
+
+

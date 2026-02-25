@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\101168\Desktop\web publishlast\MFWEBACCOUNTS</_PublishTargetUrl>
+    <History>True|2025-05-07T12:02:29.1139456Z||;False|2025-05-07T17:30:23.7669046+05:30||;True|2025-05-07T12:58:42.8723694+05:30||;True|2025-05-07T12:39:17.6787818+05:30||;True|2025-05-07T12:09:14.4525289+05:30||;True|2025-05-07T12:07:32.1955184+05:30||;True|2025-05-07T11:38:20.0674114+05:30||;True|2025-05-07T11:36:19.3081530+05:30||;True|2025-05-07T10:18:36.1199581+05:30||;True|2025-05-07T10:16:07.2948141+05:30||;True|2025-05-06T11:37:04.2211584+05:30||;True|2025-05-03T14:51:05.8422032+05:30||;True|2025-05-03T14:07:38.6419761+05:30||;True|2025-05-03T12:33:29.4190156+05:30||;True|2025-05-03T11:43:46.8190859+05:30||;True|2025-05-03T10:48:14.6467379+05:30||;False|2025-05-03T10:47:34.0448849+05:30||;True|2025-05-03T09:47:23.1392793+05:30||;True|2025-05-01T11:14:27.0387019+05:30||;True|2025-04-30T16:46:00.1161610+05:30||;True|2025-04-30T15:30:34.3260614+05:30||;True|2025-04-30T09:22:59.4927142+05:30||;True|2025-04-30T09:12:26.3931750+05:30||;True|2024-11-08T16:13:59.9414273+05:30||;True|2024-11-08T16:11:22.2864335+05:30||;True|2024-11-08T16:10:20.9973582+05:30||;True|2024-10-24T15:29:56.5000341+05:30||;True|2024-10-24T15:29:29.8665089+05:30||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

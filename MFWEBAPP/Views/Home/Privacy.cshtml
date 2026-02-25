@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewData["Title"] = "Loan Card";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-12">
+        <form>
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Loan Card</strong>
+                </div>
+                <div class="card-body">
+                    <!-- Credit Card -->
+                    <div id="pay-invoice">
+                        <div class="card-body">
+                            @*<div class="card-title">
+            <h3 class="text-left">Loan Card</h3>
+        </div>*@
+
+
+
+                            <div class="form-group">
+                                <p>
+                                    <label for="cc-payment" class="control-label mb-1">Branch</label>
+
+                                </p>
+                                <select name="cars" class="form-control">
+                                    <option value="branch1">Branches Under This Area With GRT Completed Centers </option>
+                                    <option value="branch2">Saab</option>
+                                    <option value="branch3">Fiat</option>
+                                    <option value="branch4">Audi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    <label for="cc-payment" class="control-label mb-1">Center</label>
+                                </p>
+                                <select name="cars" class="form-control">
+                                    <option value="branch1">GRT Completed Centers From The Selected Branch </option>
+                                    <option value="branch2">Saab</option>
+                                    <option value="branch3">Fiat</option>
+                                    <option value="branch4">Audi</option>
+                                </select>
+                            </div>
+                            <div class="table-stats order-table">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Nominee</th>
+                                            <th></th>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>Mark</td>
+                                            <td>
+                                                <div class="demo-checkbox">
+                                                    <input type="checkbox" class="chk" id="chk_1" value="" /> <label for="basic_checkbox_1"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>Mark</td>
+                                            <td>
+                                                <div class="demo-checkbox">
+                                                    <input type="checkbox" class="chk" id="chk_1" value="" /> <label for="basic_checkbox_1"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>Mark</td>
+
+                                            <td>
+                                                <div class="demo-checkbox">
+                                                    <input type="checkbox" class="chk" id="chk_1" value="" /> <label for="basic_checkbox_1"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </thead>
+
+                                    <tbody id="inventoryContainer"></tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 ">
+                                </div>
+                                <div class="col-md-4 ">
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                        @*<i class="fa fa-lock fa-lg"></i>&nbsp;*@
+                                        <span id="payment-button-amount">Print</span>
+
+                                    </button>
+                                </div>
+                                <div class="col-md-4 ">
+
+                                </div>
+                            </div>
+                            </div>
+                       
+                       
+                       
+                    </div>
+
+                    </div>
+            </div>
+        </form>
+      
+       
+
+    </div>
+</div>
+<!-- .card -->
+   
+
+  

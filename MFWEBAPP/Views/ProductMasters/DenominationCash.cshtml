@@ -1,0 +1,441 @@
+﻿@{
+    ViewData["Title"] = "DenominationCash";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Cash Denomination</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcashdenomination" id="frmcashdenomination" class="form-horizontal" method="post" />
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                    <div class="card" id="maincard1" style="min-height:250px">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            @*<table cellspacing="0" cellpadding="0" style="width:75%;border-collapse:collapse;border:1px solid black;text-align:left;font-size: 9pt;">*@
+                            <br /><br />
+
+                            <table width="650" align="center" style="font-size: 11pt;font-family: 'Times New Roman';border: 2px #A2A49E;border-radius:10px; box-shadow: 2px 2px 4px #000000; ">
+                                <tr>
+                                    <td colspan="3" style="height:50px; text-align: center;border-bottom:1px solid #e0e0d1;background-color:#777373">
+                                        <strong><span style="font-size: 14pt;color:white">ENTER ONLY CASHIER</span></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="height: 35px;  text-align: center;border-bottom:1px solid #e0e0d1;">
+                                        <span style="font-size: 12pt"><strong>CASH POSITION</strong></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px; text-align: center;border-bottom:1px solid #e0e0d1;background-color:#dad7cd" width=30%>
+                                        <strong>Denomination </strong>
+                                    </td>
+                                    <td style=" line-height: 26px;  text-align: center;border-bottom:1px solid #e0e0d1;background-color:#dad7cd" width=30%>
+                                        <strong>No.of Pieces </strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align: center;border-bottom:1px solid #e0e0d1;background-color:#dad7cd" width=40%>
+                                        <strong> Rupees</strong>
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                            <strong id="C2000">2000&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                        </td>
+                                        <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <strong><input type="text" maxlength="4" class="changCash" id="txt2000" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+
+                                        </td>
+                                        <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl2000"> </label></strong></td>
+                                    </tr>*@
+
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong id="c2">500&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt500" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl500"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>200&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;   text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt200" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl200"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong id="c3">100&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt100" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl100"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>50&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt50" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl50"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>20&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt20" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl20"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>10&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt10" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl10"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>5&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt5" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl5"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>2&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt2" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl2"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong> 1&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txt1" style="border:outset;text-align:center;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:center;border-bottom:1px solid #e0e0d1;"><strong><label id="lbl1"> </label></strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="line-height: 35px;  text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>Coins&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="4" class="changCash" id="txtcoin" style="font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;text-align:center;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td colspan="2" style="line-height: 35px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>Late Cash&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" maxlength="8" class="changCash" id="txtlatecash" style="border:outset;text-align:left;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;text-align:center;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /></strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td colspan="2" style="line-height: 35px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>Total&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" id="txttotal" style="border:outset;text-align:left;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box; text-align: center;" readonly /></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td colspan="2" style="line-height: 35px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>Sys Closing Balance&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" id="systotal" style="border:outset;text-align:left;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box; text-align: center;" readonly /></strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="line-height: 35px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong>Remarks(Late cash Reason)&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    </td>
+                                    <td style="line-height: 26px;  text-align: center;text-align:right;border-bottom:1px solid #e0e0d1;">
+                                        <strong><input type="text" class="changCash" id="txtremark" style="border:outset;text-align:left;font-family: 'Times New Roman';width:85%;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;text-align:center;" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');" /></strong> @*oninput="this.value = this.value.replace( /[^a-zA-Z0-9.()]/gm, '').replace(/(\..*)\./g, '$1');" />*@
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <!--Table-->
+                            <table width="650" align="center" style="font-size: 11pt;font-family: 'Times New Roman';border: 2px #A2A49E;border-radius:10px; box-shadow: 2px 2px 4px #000000; ">
+                                <tr>
+                                    <td colspan="4" style="height:40px; text-align: center;border-bottom:1px solid #e0e0d1;background-color:#777373">
+                                        <strong><span style="font-size: 14pt;color:white">E- Security Device Working Conditions:-</span></strong>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Whether Burgulary Alarm Working or not?</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Br_Yes" name="Burgulary" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Br_No" name="Burgulary" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Whether All IP Camera Working or not?</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Ip_Yes" name="IPCam" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Ip_No" name="IPCam" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Whether 2 GPS Tracker Working or not?</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Gps_Yes" name="GPS" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Gps_No" name="GPS" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Whether all Panic switches Working or not?</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Ps_Yes" name="P_switches" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Ps_No" name="P_switches" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Whether 2 Wireless Panic switches Working or not?</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Wps_Yes" name="Wp_switches" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Wps_No" name="Wp_switches" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>Safe Room Door Properly Closed</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Sr_Yes" name="Safe_room" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Sr_No" name="Safe_room" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 113px; text-align: left">
+                                        &nbsp; &nbsp; &nbsp;  <strong>UPS is working properly for 24 hours with proper Backup</strong>
+                                    </td>
+                                    <td style="width: 87px">
+                                        <input type="radio" id="Ups_Yes" name="Ups" checked />
+                                        <label for="Br_Yes">Yes</label>
+                                    </td>
+                                    <td style="width: 91px">
+                                        <input type="radio" id="Ups_No" name="Ups" />
+                                        <label for="Br_No">No</label>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br />
+
+                            <!--Table-->
+                            <table width="650" align="center" style="font-size: 11pt;font-family: 'Times New Roman';border: 2px #A2A49E;border-radius:10px; box-shadow: 2px 2px 4px #000000; ">
+                                <tr>
+                                    <td colspan="3" style="height:35px; text-align: center;border-bottom:1px solid #e0e0d1;background-color:#777373">
+                                        <strong><span style="color:white">BH / ABH / AH &nbsp; VERIFICATION </span></strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="width: 113px; height: 23px; text-align: center">
+                                        <strong>User ID</strong>
+                                    </td>
+                                    <td style="height: 23px">
+                                        <br />
+                                        <input type="text" id="txt_id" placeholder="User ID" autocomplete="off" style="border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box; height:28px" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onchange="_Cashdenomination.GetTok()" />
+
+                                        @*<input type="number" id="txt_id" name="txt_id" class="form-control" placeholder="User ID" autocomplete="off">*@
+                                        <br /> <br />
+                                    </td>
+
+                                </tr>
+
+                                @* <tr>
+
+                                    <td colspan="2" style="width: 113px; text-align: center">
+                                        <strong>Password</strong>
+                                    </td>
+
+                                    <td>
+                                        <br />
+                                        <input type="password" id="txt_pwd" placeholder="Password" autocomplete="off" style="border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box; height:28px" />
+                                        <br /><br />
+                                    </td>
+                                </tr> *@
+
+                                <tr>
+                                    <td colspan="3" style="text-align: center; padding: 10px">
+                                        <input type="checkbox" id="Consent_Check" name="Consent_Check" />
+                                        &nbsp;&nbsp;
+                                        <strong>I understand and agree that my biometric information will be used solely for identity verification purposes.</strong>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="4" style="height: 35px;  text-align: center;border-bottom:1px ;">
+
+                                        @* <button type="button" class="btn btn-success" id="scanThumb" onclick="_Cashdenomination.scanFinger()">Scan Thumb Impression</button> *@
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" class="btn btn-success" name="btnAdd" id="btnConfirm" style="display:none" onclick="_Cashdenomination.CashConfirm()">CONFIRM</button>
+                                        &nbsp;&nbsp;
+                                        <button type="button" class="btn btn-danger" name="btnExit" id="btnexit" onclick="_Cashdenomination.clear()">CLEAR</button>
+                                        <br /><br />
+                                    </td>
+                                </tr>
+
+
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        const consentCheckbox = document.getElementById("Consent_Check");
+                                        const confirmButton = document.getElementById("btnConfirm");
+                                        const verifierInput = document.getElementById("txt_id");
+
+                                        function toggleConfirmButton() {
+                                            const isCheckboxChecked = consentCheckbox.checked;
+                                            const isVerifierFilled = verifierInput.value.trim() !== "";
+
+                                            if (isCheckboxChecked && isVerifierFilled) {
+                                                confirmButton.style.display = "inline-block";
+                                            } else {
+                                                confirmButton.style.display = "none";
+
+                                                // Show alert if verifier is empty and checkbox is checked
+                                                if (isCheckboxChecked && !isVerifierFilled) {
+                                                    alert("Please Enter The User ID");
+                                                }
+                                            }
+                                        }
+
+                                        // Initial check
+                                        toggleConfirmButton();
+
+                                        // Event listeners
+                                        consentCheckbox.addEventListener("change", toggleConfirmButton);
+                                        verifierInput.addEventListener("input", toggleConfirmButton);
+                                    });
+                                </script>
+
+
+                                @*  <script>
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        const consentCheckbox = document.getElementById("Consent_Check");
+                                        const confirmButton = document.getElementById("btnConfirm");
+
+                                        // Initial state check
+                                        confirmButton.style.display = consentCheckbox.checked ? "inline-block" : "none";
+
+                                        // Event listener for checkbox toggle
+                                        consentCheckbox.addEventListener("change", function () {
+                                            if (consentCheckbox.checked) {
+                                                confirmButton.style.display = "inline-block";
+                                            } else {
+                                                confirmButton.style.display = "none";
+                                            }
+                                        });
+                                    });
+                                </script> *@
+
+
+                            </table>
+                            <br />
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+    <script src="~/clientapp/cashdenomination/cashdenominationcontroller.js"></script>
+
+}

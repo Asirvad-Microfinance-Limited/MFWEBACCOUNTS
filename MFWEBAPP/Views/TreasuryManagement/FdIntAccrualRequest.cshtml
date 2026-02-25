@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Interest Accrual Posting";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class=" ">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Fixed Deposit Interest Accrual Request</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDatee">
+                    <div class="form-group">
+                        <label for="datepicker" class=" form-control-label mb-1">Entry Posting Date</label><b style="color:red">*</b>
+                        <input class="form-control datepicker " id="AgreeDts" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                        <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fundcat">Select Finanacial Institution <span class="text-danger">*</span></label>
+                        <select class="custom-select form-control" id="SelectFinanceinst" name="FundType"> </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" id="Scltfd">
+                        <label for="fundcat">Select FD <span class="text-danger">*</span></label>
+                        <select class="custom-select form-control" id="ddlFd" name="FinancialInstitution"> </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" id="Scllon">
+                        <label for="fundcat">Account Number<span class="text-danger">*</span></label>
+                        <select class="custom-select form-control" id="Accountno" name="Fund"> </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="divAddAccount">
+                <div class="col-md-6" id="divsubid">
+                    <label for="fundcat"> Sub  Account Number  <span class="text-danger">*</span></label>
+                    <div style="width:100%;">
+                        <select id="subactid" class="custom-select form-control" name="Select Sub Id"></select>
+                    </div>
+                </div>
+               @*  <div class="col col-md-6 " style="text-align: left;  margin-left:15px;" id="txtPayAmount"> *@
+                    <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="txtPayAmount">
+                    <label for="street" class="form-control-label">Accrual Amount<b style="color: red;">*</b></label>
+                    <input type="text" id="txtPayAmount1" style="width: 200px;" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" class="form-control">
+                </div>
+
+                @*  <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                <label for="fundcat">Accrual Amount<span class="text-danger">*</span></label>
+                <input type="text" id="txtPayAmount" maxlength="15" class="form-control" name="PayAmount" />
+                </div>
+
+                </div>
+                </div> *@
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+</div>
+
+
+@section Scripts {
+
+    <script src="~/clientapp/treasurymanagement/fdinterestaccuralrequest.js"></script>
+
+
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}
+
+
+

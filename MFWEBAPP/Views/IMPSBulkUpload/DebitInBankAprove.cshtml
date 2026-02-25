@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "DebitInBankAprove";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Debit In Bank Approve </strong></div>
+            <div class="card-body card-block" style="min-height:100px">
+                <form name="frmCreditInBankAprove" id="frmCreditInBankAprove" method="post">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-10 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Lot Number<b style="color:red">*</b></label>
+                                <select name="ddlLot" id="ddlLot" class=" form-control" style="margin-bottom:15px;">
+                                    <option value="0">Select Lot Number</option>
+                                </select>
+                                <label id="ddlLot-error" class="error" for="ddlLot" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Remark<b style="color:red"></b></label>
+                                <input type="text" id="remark" name="txtremark" placeholder="Please Enter Remark " class="form-control" />
+                                <label id="txtremark-error" class="error" for="txtremark" style="display:block"></label>
+                            </div>
+                        </div>
+                        <!--Button's-->
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="btnUpdate" style="padding-top:23px; ">
+                            <button type="button" onclick="_DebitInBankAprove.Approve();" class="btn btn-success"><i class="fa fa-check-square-o"></i> &nbsp;Approve </button>
+                            <button type="button" onclick="_DebitInBankAprove.Reject();" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Reject </button>
+                        </div>
+                    </div>
+                    <!--Table-->
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;min-height:200px;">
+
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divDebitInBankAprove" name="divDebitInBankAprove" style="position: relative;min-height: 50px;overflow: auto;display: block;">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section scripts {
+<script src="~/clientapp/paymentatbranch/debitinbankaprove.js"></script>
+}

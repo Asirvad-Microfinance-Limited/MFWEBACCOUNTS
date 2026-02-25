@@ -1,0 +1,291 @@
+﻿@{
+    ViewData["Title"] = "Bank Charges";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Approval Of Bank Charges</strong>
+    </div>
+  
+    <div class="card-body">
+
+        <div class="row mb-2">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="radio" id="rdproc" name="bankcharges" value="1" >
+                    <label for="html">Processing Fee</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="radio" id="rddoc" name="bankcharges" value="2" >
+                    <label for="css">Documentation Fee</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="radio" id="rdoth" name="bankcharges" value="3" >
+                    <label for="javascript">Other Fee</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="radio" id="rdnoc" name="bankcharges" value="4" >
+                    <label for="javascript">IPO NOC Fee</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2" id="divfi" style="display:none">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fundcat">Select Fund<span class="text-danger">*</span></label>
+                    <select class="custom-select form-control" id="ddl_Loan"  name="Select Fund" > </select>
+                </div>
+            </div>
+        </div>
+       @*  <div class="row mb-2" id="ShowtblDiv" style="display:none">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <h4> <strong>Fee Details</strong></h4>
+                    <div class="table-responsive">
+                        <table class="table" id="tableShowLoans">
+                            <thead class="bg-inverse text-white">
+                                <tr>
+                                </tr>
+                            </thead>
+                            <tbody class="border border-dark"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> *@
+
+         
+        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+            <div class="card-body" style="background-color:#fff !important; ">
+                <div class="table-responsive">
+                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                        <table class="table" id="tbldespatch">
+                            <thead>
+                                <tr>
+                                    @* <th class="VCol" style="text-align:left;">#</th> *@
+                                    <th class="VCol" style="text-align:left;">Bank Main A/C</th>
+                                    <th class="VCol" style="text-align:left;">>Bank Sub A/C</th>
+                                    <th class="VCol" style="text-align:left;">Contra Main A/C</th>
+                                    <th class="VCol" style="text-align:left;">Contra Sub A/C</th>
+                                    <th class="VCol" style="text-align:left;">Contra No</th>
+                                    <th class="VCol" style="text-align:left;">IFSC Code</th>
+                                    <th class="VCol" style="text-align:left;">Beneficiary A/C</th>
+                                    <th class="VCol" style="text-align:left;">Mobile No</th>
+                                    <th class="VCol" style="text-align:left;">IGST</th>
+                                    <th class="VCol" style="text-align:left;">SGST</th>
+                                    <th class="VCol" style="text-align:center;">CGST</th>
+                                    <th class="VCol" style="text-align:center;">TDS</th>
+                                    <th class="VCol" style="text-align:center;">TOTAL FEE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabl"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-2" style="display:none" id="divaprrej">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row form-group">
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                                            <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                                <div>
+                                                    <input type="radio" id="radAppr" name="radchecking" value="louie" />
+                                                    <label for="louie">Approve</label>
+                                                </div>
+                                            </div>
+                                            <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                                <div>
+                                                    <input type="radio" id="radRjct" name="radchecking" value="louie" />
+                                                    <label for="louie">Reject</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                       
+                                </div>
+                            </div>
+
+                                <div id="dvtext" style="display: none">
+                                    <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                    <input type="text" style="width:200%;height:25px" maxlength="500" id="txt_reason" name="reason" />
+
+                                </div><br />
+                               @*  <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input">
+                                <label class="custom-control-label" for="radAppr">Approve</label>
+                                <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input" >
+                                <label class="custom-control-label" for="radRjct">Reject</label>
+                                <div id="dvtext" style="display: none">
+                                <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason" /> *@
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="card-footer">     
+        <div class="text-end"> 
+        <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+        <input id="btnExit" type="button" value="Exit" class="btn btn-danger"  />
+        </div>
+    </div>
+    <input id="hdUserIdproc" type="hidden" runat="server" />
+    <input id="hdPag2proc" type="hidden" runat="server" />
+</div>
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/bankcharges.js"></script>
+}
+       
+
+   
+   
+                           
+                                
+                        
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+               
+           
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

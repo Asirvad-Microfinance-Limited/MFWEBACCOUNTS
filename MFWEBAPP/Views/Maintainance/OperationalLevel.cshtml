@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "OperationalLevel";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Operational Level </strong></div>
+            <div class="card-body card-block">
+                <form name="frmOperationalLevel" id="frmOperationalLevel" method="post">
+
+                    <div class="row">
+
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Operational Levels<b style="color:red">*</b></label>
+                                <select name="ddlOpLevel" id="ddlOpLevel" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+
+
+                                </select>
+                                <label id="ddlOpLevel-error" class="error" for="ddlOpLevel" style="display:block"></label>
+
+                                <input type="hidden" id="layerName" name="layerName" class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                        <!--Table-->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+
+                                    <div class="table-responsive">
+
+                                        <div align="center" id="divoperationallevel"  name="divoperationallevel ">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--more-->
+
+
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> &nbsp;Save </button>
+                      
+                        </div>
+
+
+
+</form>
+            </div>
+
+
+            <!--Modal-->
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/ClientApp/OperationalLevel/OperationalLevel.Controller.js"></script>
+<script src="~/ClientApp/OperationalLevel/OperationalLevel.Validator.js"></script>
+   
+}

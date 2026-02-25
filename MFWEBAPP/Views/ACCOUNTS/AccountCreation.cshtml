@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewData["Title"] = "AccountCreation";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">LEDGER ACCOUNT</strong>
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cc-branch" class="control-label mb-1">CategoryName<b style="color:red">*</b></label>
+                        <select name="CategoryID" id="CategoryID" class=" form-control">
+                            <option value="0">Select Category</option>
+                        </select>
+                        <label id="category-error" class="error" for="category" style="display:block"></label>
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <label for="cc-payment" class="control-label mb-1">AccountName<b style="color:red">*</b></label>
+                        <input type="text" style="text-transform:uppercase" id="AccountName" name="AccountName" placeholder="AccountName" class="form-control" ;> @*onkeyup="this.value = this.value.toUpperCase()*@
+                    </div>
+                    @*<div class="checkbox">
+            <label for="cc-payment" class="control-label mb-1">Add Sub-Account<b style="color:red">*</b></label>
+            <input type="checkbox" id="SubAcFlag" class="form-control" style="padding-top:0px;" autocomplete="off">
+        </div>*@
+                    <div class="checkbox">
+                        <label class="control-label mb-1">Add Sub-Account<b style="color:red">*</b></label>
+                        <div style="padding-left:50px; padding-top:10px;"><input type="checkbox" id="SubAcFlag" class="form-check" autocomplete="off"></div>
+                    </div>
+                    <div class="buttons" style="padding-top: 20px;padding-left:290px;text-align: right;">
+                        <button type="button" class="btn btn-success" name="btnSave" id="btnSave" onclick="_AccountCreation.AccountCreationSaveReq(2)"><i class="fa fa-save"></i>&nbsp;Save</button>
+
+                        &nbsp;  &nbsp;
+                        <button type="button" class="btn btn-primary" name="btnClear" id="btnClear" onclick=" _AccountCreation.AccountFieldClear()"><i class="fa fa-times"></i>&nbsp;Clear</button>
+                        <input type="text" id="MaxAmount" name="MaxAmount" hidden>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cc-branch" class="control-label mb-1">AccountGroup<b style="color:red">*</b></label>
+                        <select name="AccountGRP" id="AccountGRP" class=" form-control">
+                            <option value="0">Select Account Group</option>
+                        </select>
+
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cc-branch" class="control-label mb-1">SubAccountGroup <b style="color:red">*</b></label>
+                        <select name="SubAccountgrp" id="SubAccountgrp" class=" form-control">
+                            <option value="">Select Sub Group</option>
+                        </select>
+                    </div>
+
+                   
+
+
+
+                </div>                         
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="padding-top:5px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">SUB-LEDGER ACCOUNT</strong>
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cc-branch" class="control-label mb-1">LedgerAcountName<b style="color:red">*</b></label>
+                        <select name="AccountNo" id="AccountNo" class=" form-control">
+                            <option value="0">Select Account</option>
+                        </select>
+                        <label id="branch-error" class="error" for="branch" style="display:block"></label>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cc-payment" class="control-label mb-1">Sub-LedgerAccountName<b style="color:red">*</b></label>
+                        <input type="text" style="text-transform:uppercase" id="SubAccountName" name="SubAccountName" placeholder="AccountName" class="form-control" ;>
+                    </div>
+                    <div class="checkbox">
+                        <label class="control-label mb-1">Add Sub-Account<b style="color:red">*</b></label>
+                        <div style="padding-left:50px; padding-top:10px;"><input type="checkbox" id="SubAcFlag2" class="form-check" autocomplete="off"></div>
+                    </div>
+
+
+                    <div class="buttons" style="padding-top: 20px;padding-left:290px;text-align: right;">
+                        <button type="button" class="btn btn-success" name="btnApprove" id="btnApprove" onclick="_AccountCreation.AccountCreationSaveReq(4)"><i class="fa fa-save"></i>&nbsp;Save</button>
+
+                        &nbsp;  &nbsp;
+                        <button type="button" class="btn btn-primary" name="btnReject" id="btnReject" onclick="_AccountCreation.SubAccFieldClear()"><i class="fa fa-times"></i>&nbsp;Clear</button>
+                        <input type="text" id="MaxAmount" name="MaxAmount" hidden>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">SUB-ID</strong>
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group">
+                    <div class="card-body card-block">
+                        <div class="row form-group">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-branch" class="control-label mb-1">LedgerAcount<b style="color:red">*</b></label>
+                                <select name="AccountNoDiv3" id="AccountNoDiv3" class=" form-control">
+                                    <option value="">Select Account</option>
+                                </select>
+                                <label id="branch-error" class="error" for="branch" style="display:block"></label>
+
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-branch" class="control-label mb-1">Sub-LedgerAccount<b style="color:red">*</b></label>
+                                <select name="SubAccountNo" id="SubAccountNo" class=" form-control">
+                                    <option value="">Select Category</option>
+                                </select>
+                                <label id="category-error" class="error" for="category" style="display:block"></label>
+
+                            </div>
+                            <div class="col-md-3">
+
+                                <label for="cc-payment" class="control-label mb-1">Sub-IDName<b style="color:red">*</b></label>
+                                <input type="text" style="text-transform:uppercase" id="SubAIdName" name="SubAIdName" placeholder="AccountName" class="form-control" />@*onchange="_AccountCreation.SubAcFill()"*@ @*onkeyup="this.value = this.value.toUpperCase()*@
+                            </div>
+                            <div class="col-md-3">
+
+                                <label for="cc-payment" class="control-label mb-1">Project-Code(Optional)</label>
+                                <input type="text" style="text-transform:uppercase" id="ProjectCode" name="ProjectCode" placeholder="Project Code" class="form-control" /> @*onchange="_AccountCreation.SubAcFill()" onkeyup="this.value = this.value.toUpperCase()*@
+                            </div>
+                            <div class="buttons" style="padding-top: 20px;padding-left:1095px; text-align: right;">
+                               
+                                    @*margin-left:1020px;*@
+                                    <button type="button" class="btn btn-success" name="btnSave" id="btnSave" onclick="_AccountCreation.AccountCreationSaveReq(9)"><i class="fa fa-save"></i>&nbsp;Save</button>
+
+                                    &nbsp;  &nbsp;
+                                    <button type="button" class="btn btn-primary" name="btnClear" id="btnClear" onclick=" _AccountCreation.SubIdFieldClear()"><i class="fa fa-times"></i>&nbsp;Clear</button>
+                                    <input type="text" id="MaxAmount" name="MaxAmount" hidden>
+                                </div>
+
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    <script src="~/ClientApp/AccountCreation/AccountCreation.js"></script>
+
+}

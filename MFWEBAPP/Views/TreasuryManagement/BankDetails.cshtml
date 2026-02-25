@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "BankDetails";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">BANK DETAILS</strong>
+            </div>
+            
+
+
+        </div>
+
+        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+            <div class="card-body" style="background-color:#fff !important; ">
+                <div class="table-responsive">
+                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                        <table class="table" id="tbldespatch">
+                            <thead>
+                                <tr>
+                                    <th class="VCol" style="text-align:left;">BANK_ID</th>
+                                    <th class="VCol" style="text-align:left;">BANK_NAME</th>
+
+                                    <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Fidatatabl1"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+    </div>
+</div>
+@section Scripts {
+	<script src="~/clientapp/treasurymanagement/bankdetails.js"></script>
+}

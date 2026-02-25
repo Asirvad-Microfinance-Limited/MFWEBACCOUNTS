@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "NewFund";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">New Fund</strong>
+            </div>
+            <div class="card-body">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Fund Category<b style="color:red">*</b></label>
+                            <select name="Fund Category" id="ddlCatgry" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Fund Sub Category<b style="color:red">*</b></label>
+                            <select name="Fund Sub Category" id="ddlsSubCat" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Financial Institution Type<b style="color:red">*</b></label>
+                            <select name="FinancialInstitutionTypee" id="ddlFIType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Financial Institution<b style="color:red">*</b></label>
+                            <select name="FinancialInstitution" id="ddlFInst" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+                    </div><br />
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">BANK NAME</th>
+                                                <th class="VCol" style="text-align:left;">ADDRESS</th>
+                                                <th class="VCol" style="text-align:left;">CONTACT PERSON</th>
+                                                <th class="VCol" style="text-align:left;">MOBILE NUMBER</th>
+                                                <th class="VCol" style="text-align:left;">EMAIL ID</th>
+                                                <th class="VCol" style="text-align:left;">PAN NO</th>
+                                                <th class="VCol" style="text-align:left;">GSTIN</th>
+                                                <th class="VCol" style="text-align:left;">CIN</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+
+                    <div class="row form-group">
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Loan Amount(Limit)</label>
+                                <input type="text" id="txt_loan" name="LoanAmount" placeholder="" class="form-control" maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">ROI(%)</label>
+                                <input type="text" id="txt_ROI" name="ROI" placeholder="" class="form-control" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDate">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">Agreement Date</label><b style="color:red">*</b>
+                                <input class="form-control datepicker " id="AgreeDt" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                                <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                    </div><br />
+
+
+
+                    <div class="row form-group">
+
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="datepickerAgrFrom">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Agreement From </label>
+                                <input type="text" id="txt_DtAgrmntFrm" name="DateAgrmntFrm" placeholder="mm/dd/yyyy" class="form-control" onkeypress="return false">
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Tenure(days)</label>
+                                <input type="text" id="txt_tenure" name="tenure" placeholder="" class="form-control" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Agreement To</label>
+                                <input type="text" id="txt_DtAgrmntTo" name="DateAgrmnTo" placeholder="mm/dd/yyyy" class="form-control" onkeypress="return false">
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div><br />
+
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="text-end">
+                    <button type="button" class="btn btn-primary" style="background-color:forestgreen;color:white; width:70px; height:30px; margin-left:1000px;" data-dismiss="modal" id="btnConf">Confirm</button>
+                    <button type="button" class="btn btn-danger" style="background-color:red; color:white;width:70px;height:30px;" data-dismiss="modal" id="btnExit">Exit</button>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/newfundreq.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

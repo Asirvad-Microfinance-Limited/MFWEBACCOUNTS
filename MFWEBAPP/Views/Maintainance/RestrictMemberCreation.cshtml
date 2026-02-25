@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "RestrictMemberCreation";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+
+
+
+@*@section Styles{ </style> }*@
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-header"><strong> Restrict Member Creation </strong></div>
+            <div class="card-body card-block">
+
+                <form id="frmRestrictMemberCreation" name="frmRestrictMemberCreation" method="post">
+                    <!--Branch-->
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-5 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                @*<label for="cc-payment" class="control-label mb-1">Center</label>*@
+                                <select name="ddlRestricttype" id="ddlRestricttype" class="form-control  ">
+                                    <option value="0">------------Select------------------</option>
+                                    @*<option value="1">Option #1</option>
+                                        <option value="2">Option #2</option>
+                                        <option value="3">Option #3</option>*@
+                                </select>
+                                <label id="ddlRestricttype-error" class="error" for="ddlRestricttype" style="display:block;"></label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                            <button type="submit" class="btnsmall btn-primary btn-bg" id="typeSubmit" name="typeSubmit" @*onclick="_RestrictMemberCreation.loadpopwindow();" *@>
+                                <i class="fa fa-plus-circle" style="font-size:24px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!--Modal Popup-->
+                    <!--PopupEnd-->
+                    <!--Table-->
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+                                    <div  id="DivRestrictedMemberTable">
+
+                                    </div>
+                                    <div id="divloadpartial">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!--Modal-->
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/OperationalLevel/OperationalSubLevel.Validator.js"></script>
+    <script src="~/ClientApp/OperationalLevel/OperationalSubLevel.Controller.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    <script>
+        jQuery(function () {
+            jQuery('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script src="~/ClientApp/RestrictMemberCreation/RestrictMemberCreation.Validator.js"></script>
+    <script src="~/ClientApp/RestrictMemberCreation/RestrictMemberCreation.Controller.js"></script>
+
+}
+

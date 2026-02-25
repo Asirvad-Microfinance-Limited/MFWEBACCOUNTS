@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewData["Title"] = "HoAddExpense";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<style type="text/css">
+    .Nbtn {
+        display: block;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        border: 8px solid #e5322d;
+    }
+
+    .modal-content {
+        border: none !important;
+    }
+</style>
+
+@*first div updated*@
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Ho Direct Payment</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+
+                    @*vendor add employee load*@
+                    <div cclass="row form-group">
+                        <div id="typelength" class="col-lg-4">
+                            <label for="cc-payment" class="control-label mb-1">Bill Type<b style="color:red">*</b></label>
+                            <select name="ddlAssignedTo" id="billOfType" class=" form-control">
+                                <option value="0">  Select type </option>
+                                <option value="BILLVENDOR">VENDOR</option>
+                                <option value="BILLEMPLOYEE">EMPLOYEE</option>
+                            </select>
+                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                        </div>
+                    </div>
+                    @*VENDOR div & EMPLOYEE div Start*@
+                    <div class="card" id="firstrow" style="display:none; margin-top:15px;">
+                        <div class="card-header" id="vendordetails" style="display:none;">
+                            <strong class="card-title">VENDOR DETAILS</strong>
+                        </div>
+
+                        <div class="card-header" id="employeedetails" style="display:none;">
+                            <strong class="card-title">EMPLOYEE DETAILS</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            @*vedor load*@
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="vendordiv" style="display:none;">
+                                    <label for="cc-payment" class="control-label mb-1"> Vendor<b style="color:red">*</b></label>
+                                    <select name="vendor" id="vendor" class=" form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="employeediv" style="display:none;">
+                                    <label for="cc-payment" class="control-label mb-1"> Employee<b style="color:red">*</b></label>
+                                    <select name="employee" id="employee" class=" form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                </div>
+
+
+
+                            </div>
+
+                            @*Add and Clear Button*@
+                            <div class="row form-group">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:900px">
+                                    <button type="button" id="add" style="color:white" class="btn btn-warning"><i class="fa fa-plus"></i> &nbsp;Add </button>
+                                    <button type="button" id="clear" onclick="_HoPaymentEntry.ClearData();" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Clear </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                </form>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>*@
+    <script src="~/ClientApp/HoDirectPayment/HoDirectPayment.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js?v=123"></script>
+
+
+}

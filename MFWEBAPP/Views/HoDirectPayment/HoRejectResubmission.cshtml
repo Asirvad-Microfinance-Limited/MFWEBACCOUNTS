@@ -1,0 +1,338 @@
+﻿
+@{
+    ViewData["Title"] = "HoRejectResubmission";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+
+
+<div class="col-md-15">
+    <div class="card">
+        <div class="card-header"><strong> Ho Direct Payment Resubmission</strong></div>
+        <div class="card-body card-block" style="min-height:200px;height:600px;">
+            <form name="paymentresubmission" id="paymentresubmission" method="post"></form>
+
+
+            <div class="row">
+
+                @*<div id="typelength" class="col-lg-3">
+                <label for="cc-payment" class="control-label mb-1">Rejected Bill Type<b style="color:red">*</b></label>
+                <select name="ddlrejbilltyp" id="ddlrejbilltyp" class=" form-control">
+                    <option value="0">  Select type </option>
+                    <option value="BILLVENDOR">VENDOR</option>
+                    <option value="BILLEMPLOYEE">EMPLOYEE</option>
+                </select>
+                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+            </div>*@
+
+
+                <div id="typelength" class="col-lg-3">
+                    <label for="cc-payment" class="control-label mb-1">Rejected BY<b style="color:red">*</b></label>
+                    <select name="ddlrejby" id="ddlrejby" class=" form-control">
+                        <option value="0">  Select  </option>
+                        <option value="1">DEPARTMENT HEAD</option>
+                        <option value="2">CFO</option>
+                        <option value="3">MD</option>
+                    </select>
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1"> Expence Type<b style="color:red">*</b></label>
+                    <select name="ddlexpensetyp" id="ddlexpensetyp" class=" form-control">
+                        <option value="0"> ------select expense type-------- </option>
+
+                    </select>
+
+
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:650px;margin-top:-33px;">
+                        <button type="button" class="btnsmall  btn-danger fc-center" id="btnView" name="submitprint" style="height:30px;width:90px;" data-target="#ImageModel" onclick=" _HoRejectResubmission.viewInvoiceImages();"> <i class="fa fa-eye" @*class="bs-tooltip remove" *@ style="font-size:15px;"> View Bill</i></button>
+
+                    </div>
+                </div>
+
+
+                @*<div class="col-lg-5 col-md-2 col-sm-2 col-xs-2" id="remark">
+                <div class="form-group">
+
+                    <label for="cc-payment" class="control-label mb-1">Department Head Reject Reason <b style="color:red"></b></label>
+                    <input type="text" id="txtremarks" name="txtremarks" class="form-control" maxlength="4" readonly="readonly" />
+                    <label id="txtUserID-error" class="error" for="txtUserID" style="display:none"></label>
+                </div>
+            </div>*@
+
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                <div class="col-md-12" id="total">
+                    <div class="card" id="maincard" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            <div class="table-responsive">
+                                <div align="center" id="hodetailsentry" name="hodetailsentry" style="position: relative;">
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <div class="small-box bg-dark" style="padding-left:50px;">
+                                        <div class="inner">
+                                            <i class="fa fa-inr" style="color: #f93a3a;font-size: 20px;"></i>&nbsp;<span style="font-family:Open Sans,sans-serif;margin:0;font-size: 1.50rem;" id="amttotal">0.0</span>
+
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-stats-bars"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                                <div class="col-md-12" id="total">
+                                    <div class="card" id="maincard" style="display:none;">
+                                        <div class="card-body" style="background-color:#fff !important;">
+                                            <div class="table-responsive" id="HoRejectResubmission">
+                                                <div align="center" name="HoRejectResubmission" style="position: relative;">
+
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-xs-6">
+                                                    <div class="small-box bg-dark" style="padding-left:50px;">
+                                                        <div class="inner">
+                                                            <i class="fa fa-inr" style="color: #f93a3a;font-size: 20px;"></i>&nbsp;<span style="font-family:Open Sans,sans-serif;margin:0;font-size: 1.50rem;" id="amttotal">0.0</span>
+
+                                                        </div>
+                                                        <div class="icon">
+                                                            <i class="ion ion-stats-bars"></i>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="dvreason" style="display:none;">
+                <div class="col-lg-4 col-md-2 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1">Rejected Reason</label>
+                    <input type="text" id="txtreason" name="txtreason" class="form-control" style="width:675px;" maxlength="100" onkeydown="return /[a-z, ]/i.test(event.key)" readonly />
+                    <label id="txtreason-error" class="error" for="txtreason"></label>
+
+                </div>
+            </div>
+
+            <div class=" row" style="display:none;" id="divrejectreason">
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1">Amount<b style="color:red">*</b></label>
+                    <input type="text" id="txtamt" name="amount" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:none"></label>
+                </div>
+
+                <div id="gsttype" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1">GST Type<b style="color:red">*</b></label>
+                    <select name="ddlAssignedTo" id="gstOfType" class=" form-control">
+                        <option value="0">  Select type </option>
+                        <option value="1">GST</option>
+                        <option value="2">ISD</option>
+                        <option value="3">RCM</option>
+                    </select>
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        <label for="cc-payment" class="control-label mb-1"> GST Percentage<b style="color:red">*</b></label>
+                        <select name="gstper" id="gstper" class=" form-control">
+                            <option value="0"> ------------ Select ------------ </option>
+
+                        </select>
+                        <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1">GST Total Amount<b style="color:red">*</b></label>
+                    <input type="text" id="txtgst" name="gst" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:none"></label>
+                </div>
+
+
+                @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1" ">
+                <div class="form-group">
+                    <label for="datepicker" class=" form-control-label mb-1"> Bill Date<b style="color:red">*</b></label>
+                    <input class="form-control datepicker " id="billDate" name="billdate" placeholder="DD-MMM-YYYY" type="text" readonly="readonly" />
+                    <label id="dtFromDate-error" class="error" for="dtFromDate"></label>
+                </div>
+            </div>*@
+
+                @*<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3" style="padding-top: 24px;  margin-left:25px;">
+                <button type="button" id="btnadd" style="color:white;width:80px; " class="btn btn-warning"><i class="fa fa-plus"></i> &nbsp;Add </button>
+
+
+            </div>*@
+
+
+
+            </div>
+
+            @*TDS Checking*@
+            <div class="row form-group" id="dvtds" style="display:none;">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="tdsupd">
+                    <div class="form-group">
+                        <label class="control-label mb-1">TDS</label><br />
+                        Yes&nbsp;<input type="radio" id="tdsyes" name="tdsyes" value="1" />&nbsp;&nbsp;
+                        No&nbsp;<input type="radio" id="tdsno" name="tdsyes" checked value="0" />&nbsp;&nbsp;
+                    </div>
+                </div>
+                @*TDS MASTER*@
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="tdsmasterdiv" style="display:none;">
+                    <label for="cc-payment" class="control-label mb-1"> TDS<b style="color:red">*</b></label>
+                    <select name="tdsmaster" id="tdsmaster" class=" form-control">
+                        <option value="0"> ------------ Select ------------ </option>
+
+                    </select>
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                </div>
+                @*TDS percentage*@
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="tdspercentage" style="display:none;">
+                    <div class="form-group">
+                        <label for="cc-payment" class="control-label mb-1"> TDS Percentage<b style="color:red">*</b></label>
+                        <select name="tdsper" id="tdsper" class=" form-control">
+                            <option value="0"> ------------ Select ------------ </option>
+
+                        </select>
+                        <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                    </div>
+                </div>
+                @*TDS Amount*@
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="tdstotamount" style="display:none;">
+                    <div class="form-group">
+                        <label class="control-label mb-1">TDS Total Amount</label>
+                        <input type="text" id="tdsamount" name="tdsamount" placeholder="" class="form-control" maxlength="10" readonly>
+                        <label id="tdsamount-error" class="error" for="tdsamount" style="display:block"></label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <input type="text" id="txtparam2" name="txtparam2" placeholder="" class="form-control" maxlength="10" style="display:none;">
+
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3" style="display:none">
+
+                <input type="text" id="txtsubexpense" name="subexpense" class="form-control" maxlength="100" style="width:190px;" onkeydown="return /[a-z, ]/i.test(event.key)" />
+
+            </div>
+            @*Add and Clear Button*@
+            @*<div class="row form-group" id="dvbtnadd" style="display:none;">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:900px">
+                <button type="button" id="add" style="color:white" class="btn btn-warning"><i class="fa fa-plus"></i> &nbsp;Add </button>
+                <button type="button" id="clear" onclick="_HoPaymentEntry.ClearData();" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Clear </button>
+            </div>
+        </div>*@
+
+            @*Add and Clear Button*@
+            <div class="row form-group" id="addclear" style="display:none;">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:900px">
+                    <button type="button" id="add" style="color:white" class="btn btn-warning"><i class="fa fa-plus"></i> &nbsp;Add </button>
+                    <button type="button" id="clear" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Clear </button> @*onclick="_HoPaymentEntry.ClearData();"*@
+                </div>
+            </div>
+
+            <div class="row"></div>
+
+            <div class="row" id="dvremarks" style="display:none;">
+                <div class="col-lg-6 col-md-2 col-sm-3 col-xs-3">
+                    <label for="cc-payment" class="control-label mb-1">Remarks<b style="color:red">*</b></label>
+                    <input type="text" id="txtremarks" name="txtremarks" class="form-control" style="width:675px;" maxlength="100" onkeydown="return /[a-z, ]/i.test(event.key)" />
+                    <label id="txtUserID-error" class="error" for="txtUserID"></label>
+
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:900px">
+                        <button type="button" id="ClickmeBtnConfirm" class="btn btn-md btn-success" value="confirm">Confirm</button>
+                    </div>
+                </div>
+
+                @*<div class="col-lg-2 col-md-1 col-sm-3 col-xs-3">
+                <button type="button" id="ClickmeBtnConfirm" class="btn btn-md btn-success" value="confirm">Confirm</button>
+            </div>*@
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div align="center" class="col-lg-12">
+                        <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/ClientApp/HoDirectPayment/HoRejectResubmission.js"></script>
+
+}

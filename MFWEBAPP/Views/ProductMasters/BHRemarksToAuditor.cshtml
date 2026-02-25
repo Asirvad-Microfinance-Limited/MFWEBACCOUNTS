@@ -1,0 +1,475 @@
+﻿
+@{
+    ViewData["Title"] = "BHRemarksToAuditor";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/css/zoom/image-zoom.css">*@
+<style type="text/css">
+    .nb {
+        height: 100%;
+        width: 100%;
+        /*overflow-x: scroll;
+        overflow-y: scroll;*/
+        overflow-x: auto;
+        overflow-y: auto;
+        /*background-color: powderblue;*/
+    }
+
+    .north {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+
+    .west {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+
+    .south {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    }
+
+    .east {
+        transform: rotate(270deg);
+        -ms-transform: rotate(270deg); /* IE 9 */
+        -webkit-transform: rotate(270deg); /* Safari and Chrome */
+    }
+
+
+    figure.containerZoom {
+        background-position: 50% 50%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: zoom-in;
+        margin: 0;
+    }
+
+        figure.containerZoom img {
+            transition: opacity .5s;
+            display: block;
+            width: 100%;
+        }
+
+        figure.containerZoom.active img {
+            opacity: 0;
+        }
+
+
+    /*.datePicker_po {
+    }*/
+
+    .datepicker-dropdown {
+        position: relative;
+        top: 0 !important;
+    }
+</style><div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">BH REMARKS</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="ddlOutWard" id="ddlOutWard" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlpaytype-error" class="error" for="ddlpaytype" style="display:block"></label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Branch Type<b style="color:red">*</b></label>
+                            <select name="ddlBranchType" id="ddlBranchType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlBranchType-error" class="error" for="ddlBranchType" style="display:block"></label>
+                        </div>
+
+
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker datePicker_po " id="efromDate" name="efromDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container2">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker datePicker_po " id="toDate" name="efromDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">x
+                                <label for="cc-ddlselect" class="control-label mb-1">PR<b style="color:red">*</b></label>
+                                <select name="ddlPRselect" id="ddlPRselect" class="form-control">
+                                    <option value="0"> ------------ Select ------------ </option>
+
+                                </select>
+                                <label id="ddlPRselect-error" class="error" for="ddlPRselect" style="display:block"></label>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <br />
+                                <button type="button" class="btn btn-link" id="viewinvoice">View Receipt</button>
+                            </div>*@
+                    </div>
+                    @*<div id="showimg" class="modal-content" style="display:none">
+                            <span class="close">&times;</span>
+                            <div class="col-lg-8" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+                                <div align="center" id="divInvimages" name="divInvimages" style="position: relative;max-height: 350px;min-height:100px;display: block;">
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div align="center" class="col-lg-12">
+                                        <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Agency Name<b style="color:red">*</b></label>
+                                    <input type="text" id="agencyName" name="agencyName" placeholder="Agency Name" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="agencyName-error" class="error" for="agencyName" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Employee<b style="color:red">*</b></label>
+                                    <input type="text" id="empName" name="empName" placeholder="Employee Name" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="empName-error" class="error" for="empName" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Branch<b style="color:red">*</b></label>
+                                    <input type="text" id="branchname" name="branchname" placeholder="Branch Name" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="branchname-error" class="error" for="branchname" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group" id="vendordata" style="display:none">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Vendor Name</label>
+                                    <input type="text" id="vendorName" name="vendorName" placeholder="Vendor" class="form-control" maxlength="25" readonly>
+                                    <label id="vendorName-error" class="error" for="vendorName" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment" class="control-label mb-1">Vendor Address</label>
+                                <input type="text" id="vendorAddress" name="vendorAddress" placeholder="Vendor Address" class="form-control" readonly maxlength="100">
+                                <label id="vendorAddress-error" class="error" for="vendorAddress" style="display:block"></label>
+
+                            </div>
+                        </div>
+
+                        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                        <table class="table" id="tbldespatch">
+                                            <thead>
+                                                <tr>
+                                                    <th class="VCol" style="text-align:left;">ITEM NAME</th>
+                                                    <th class="VCol" style="text-align:left;">UNIT PRICE</th>
+                                                    <th class="VCol" style="text-align:left;">QUANTITY</th>
+                                                    <th class="VCol" style="text-align:left;">AMOUNT</th>
+                                                    <th class="VCol" style="text-align:left;">TAX</th>
+                                                    <th class="VCol" style="text-align:left;">SGST</th>
+                                                    <th class="VCol" style="text-align:left;">CGST</th>
+                                                    <th class="VCol" style="text-align:left;">IGST</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="paymenttabl"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">From Date<b style="color:red">*</b></label>
+                                    <input type="text" id="frmdt" name="frmdt" placeholder="From date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="branchname-error" class="error" for="branchname" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">To Date<b style="color:red">*</b></label>
+                                    <input type="text" id="todt" name="todt" placeholder="To Date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="todt-error" class="error" for="todt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Date<b style="color:red">*</b></label>
+                                    <input type="text" id="billdt" name="billdt" placeholder="Bill Date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="billdt-error" class="error" for="billdt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Courier Send Date<b style="color:red">*</b></label>
+                                    <input type="text" id="crsenddt" name="crsenddt" placeholder="Courier Send Date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="crsenddt-error" class="error" for="crsenddt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Courier Updated Date<b style="color:red">*</b></label>
+                                    <input type="text" id="crupddt" name="crupddt" placeholder="Updated Date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="crupddt-error" class="error" for="crupddt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Courier Received Date<b style="color:red">*</b></label>
+                                    <input type="text" id="crrcvddt" name="crrcvddt" placeholder="Received Date" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="crrcvddt-error" class="error" for="crrcvddt" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group" id="vendordata">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Courier Send Employee</label>
+                                    <input type="text" id="crsndName" name="crsndName" placeholder="Courier sender" class="form-control text-uppercase" maxlength="25" readonly>
+                                    <label id="crsndName-error" class="error" for="crsndName" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment" class="control-label mb-1">Courier Updated Employee</label>
+                                <input type="text" id="crupdName" name="crupdName" placeholder="courier Updated" class="form-control text-uppercase" readonly maxlength="100">
+                                <label id="crupdName-error" class="error" for="crupdName" style="display:block"></label>
+
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment" class="control-label mb-1">Courier Received Employee</label>
+                                <input type="text" id="crrcvdName" name="crrcvdName" placeholder="Courier Receiver" class="form-control text-uppercase" readonly maxlength="100">
+                                <label id="crrcvdName-error" class="error" for="crrcvdName" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">CGST<b style="color:red">*</b></label>
+                                    <input type="text" id="cgst" name="cgst" placeholder="CGST" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="cgst-error" class="error" for="cgst" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">SGST<b style="color:red">*</b></label>
+                                    <input type="text" id="sgst" name="sgst" placeholder="SGST" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="sgst-error" class="error" for="sgst" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">IGST<b style="color:red">*</b></label>
+                                    <input type="text" id="igst" name="igst" placeholder="IGST" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="igst-error" class="error" for="igst" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Gross Tax<b style="color:red">*</b></label>
+                                    <input type="text" id="gtax" name="gtax" placeholder="TAX" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="gtax-error" class="error" for="gtax" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Gross GST<b style="color:red">*</b></label>
+                                    <input type="text" id="grossgst" name="grossgst" placeholder="Gross GST" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="grossgst-error" class="error" for="grossgst" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Ceiling Amount<b style="color:red">*</b></label>
+                                    <input type="text" id="ceilamt" name="ceilamt" placeholder="Ceiling Amount" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="ceilamt-error" class="error" for="ceilamt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Gross Amount<b style="color:red">*</b></label>
+                                    <input type="text" id="grossamt" name="grossamt" placeholder="Gross Amount" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="grossamt-error" class="error" for="grossamt" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Excess Amount<b style="color:red">*</b></label>
+                                    <input type="text" id="excsamt" name="excsamt" placeholder="Excess Amount" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="excsamt-error" class="error" for="excsamt" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">BH Remarks<b style="color:red">*</b></label>
+                                    <input type="text" id="bhRemarks" name="bhRemarks" placeholder="BH Remarkas" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="bhRemarks-error" class="error" for="bhRemarks" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">DM Remarks<b style="color:red">*</b></label>
+                                    <input type="text" id="dmRemarks" name="dmRemarks" placeholder="DM Remarks" class="form-control text-uppercase" maxlength="30" readonly>
+                                    <label id="dmRemarks-error" class="error" for="dmRemarks" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Accounts Remarks<b style="color:red">*</b></label>
+                                    <input type="text" id="accRemarks" name="accRemarks" placeholder="Accounts Remarks" class="form-control text-uppercase" maxlength="30">
+                                    <label id="accRemarks-error" class="error" for="accRemarks" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                <th class="VCol" style="text-align:left;">#</th>
+                                                <th class="VCol" style="text-align:left;">PRID</th>
+                                                @*<th class="VCol" style="text-align:left;">BRANCH CODE</th>*@
+                                                <th class="VCol" style="text-align:left;">BRANCH(CODE)</th>
+                                                <th class="VCol" style="text-align:left;">PAYMENT TYPE</th>
+                                                <th class="VCol" style="text-align:right;">AMOUNT</th>
+                                                <th class="VCol" style="text-align:right;">SGST</th>
+                                                <th class="VCol" style="text-align:right;">CGST</th>
+                                                <th class="VCol" style="text-align:right;">IGST</th>
+                                                @*<th class="VCol" style="text-align:left;">BILL NO</th>*@
+                                                <th class="VCol" style="text-align:left;">BILL DATE/NUMBER</th>
+                                                <th class="VCol" style="text-align:left;">REMARKS</th>
+                                                @*<th class="VCol" style="text-align:left;">CHALLAN NO</th>
+                                                    <th class="VCol" style="text-align:center;">AGENCY</th>*@
+                                                <th class="VCol" style="text-align:center;">CHALLAN</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="paymenttabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="camsection" class="modal" style="display:none;">
+                        <div class="card" style="margin: 150px 300px 10px 300px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span id="closeCam" class="close">&times;</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Auditor Remarks<b style="color:red">*</b></label>
+                                        <input type="text" id="accRemarks" name="accRemarks" placeholder="Auditor Remarks" class="form-control text-uppercase" maxlength="50" oninput="this.value = this.value.replace(/[^a-zA-Z0-9,. ]/g, '');" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" id="rejectReason">Send Comments</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="modal fade" id="showimage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div id="imgDiv">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-around">
+                                        <button class="btn btn-danger" type="button" onclick="cashDeposite.downloadBase64File()"><i class="fa fa-download"></i> Download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    <div id="confirm" class="text-right" style="display:none;">
+                        @*<button type="button" class="btn btn-success" id="submit" onclick="_InternalAuditObservation.AddRemarks();">Send Comments</button>&nbsp;&nbsp;&nbsp;*@
+                        @*<button type="button" class="btn btn-danger" id="reject">Reject</button>*@
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/BHRemarksToAuditor.js"></script>
+    <script src="~/js/image-zoom.js"></script>
+}

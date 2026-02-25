@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "ApproveFI";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">New Financial Institution Approval</strong>
+            </div>
+<div class="card-body card-block">
+    <form name=" " id=" " method="post" class="form-horizontal">
+
+        <div class="row form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <label for="fundcat">Select Financial Institution Type : <span class="text-danger">*</span></label>
+                <select class="custom-select form-control" id="ddlFIType" style="width:100%" name="Select Finanacial Institution Type" > </select>
+                
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <label for="fundcat">Select Financial Institution : <span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddl_fIName" style="width:100%" name="Select Finanacial Institution Name"> </select>
+               
+            </div>
+        </div><br />
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">ADDRESS</th>
+                                                <th class="VCol" style="text-align:left;">PAN</th>
+                                                <th class="VCol" style="text-align:left;">GSTN</th>
+                                                <th class="VCol" style="text-align:left;">CIN</th>
+                                                <th class="VCol" style="text-align:left;">REQUESTED BY</th>
+                                                <th class="VCol" style="text-align:left;">REQUESTED DATE</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+        <div class="row form-group">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="fundcat">Approve/Reject  : <span class="text-danger">*</span> </label>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radaprv" name="radaprrej" value="louie" />
+                                    <label for="louie">Approve</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radreject" name="radaprrej" value="louie" />
+                                    <label for="louie">Reject</label>
+                                </div>
+                            </div>
+                        </div>
+        </div><br />
+
+        <div class="row form-group" style="display:none" id="divreason">
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Reason </label>
+                                <input type="text" id="txt_reason" name="Address" placeholder="" class="form-control" maxlength="200">
+                                <label id="txtreason-error" class="error" for="txtreason" style="display:block"></label>
+                            </div>
+                        </div>
+
+        </div>
+      
+    </form>
+</div>
+<div  id="divAprRejBtn" style="display:none">
+        <div id="confirm" class="text-right">
+                    <button type="button" class="btn btn-success" id="Btnsubmit">Confirm</button>
+        <button type="button" class="btn btn-danger" id="BtnExit">Exit</button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/fiapprove.js"></script>
+}

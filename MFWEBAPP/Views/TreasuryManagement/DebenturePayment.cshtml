@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "DebenturePayment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class=" ">
+    <div class=" ">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Add Debenture Details</strong>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Payment Type<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlPaymentType" name="ddlPaymentType">
+                                <option value="0" >Choose Payment Type</option>
+                                <option value="automatic">Automatic</option> 
+                                <option value="manual">Manual</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 my-3 text-center" id="divterm1">
+                    <div class="form-group">
+                        <h4 class="card-title"><strong>Upload Debenture Details</strong></h4>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12r">
+                        <div>
+                            <label>&nbsp;</label>
+                            <input type="file" id="fileUpload" accept=".xls,.xlsx" name="Select File">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12r" style="margin-left:-80px">
+                        <div class="form-group">
+                            <button class="btn btn-success" onclick="_NcdIndividual.GetData();" id="viewDataDetails"><i class="fa fa-search"></i>&nbsp;View Data</button>
+                        </div>
+                    </div>
+       
+
+                    <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12r" style="margin-left:-160px">
+
+                        <div class="form-group">
+
+                            <a class="btn btn-warning" href="~/template/debenture.xlsx"><i class="fa fa-download"></i>&nbsp;Download Template</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+               
+
+                <div class="card-footer text-end">
+                    <input id="btnconfirm" type="button" style="background-color:forestgreen;color:white; width:70px; height:30px; margin-left:1000px;" value="Confirm" class="btn btn-primary" />
+
+                    <input id="btnexit" type="button" style="background-color:red; color:white;width:70px;height:30px;" value="Exit" class="btn btn-danger" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/DebenturePayment.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

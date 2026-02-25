@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "TTRequest";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" id="ah-header" style="display:none"><strong> Recommend </strong></div>
+            <div class="card-header" id="ho-header" style="display:none"><strong> Approve </strong></div>
+
+            <div class="card-body card-block" style="min-height:300px">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">Branch<b style="color:red">*</b></label>
+                            <select name="ddlAssignedFrom" id="ddlAssignedFrom" class="form-control">
+                                <option value="0"> ------------- Select Branch------------- </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col col-md-2 col-sm-6 col-xs-12" style="text-align: left">
+                        <label for="street" class="form-control-label">Branch Name<b style="color: red;">*</b></label>
+                        <input type="text" id="BranchName" name="BranchName" placeholder="Branch Name" class="form-control" readonly>
+                    </div>
+                    <div class="col col-md-2 col-sm-6 col-xs-12" style="text-align: left;">
+                        <label for="street" class="form-control-label">Amount<b style="color: red;">*</b></label>
+                        <input type="text" id="Amount" name="Amount" placeholder="Amount " class="form-control" readonly>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 col-xs-12" style="text-align: left;">
+                        <label for="street" class="form-control-label">Remark<b style="color: red;">*</b></label>
+                        <input type="text" id="remark" name="Remark" placeholder="Reason" class="form-control" maxlength="100">
+
+                    </div>
+                    <input type="hidden" id="reqIds"/>
+
+                    <div class="row" style="margin-left:190px; margin-top:-42px;">
+                        <button type="button" style="margin-left:850px; height:35px;display:none" class="btn btn-success" id="BtnRecommend">Recommend</button>
+                        <button type="button" style="margin-left:870px; height:35px;display:none;padding:0px 15px" class="btn btn-success" id="BtnApprove">Approve</button>
+
+
+                    </div>
+                </div>
+                    <div class="row" style="margin-left:295px; margin-top:-42px;">
+                         <button type="button" style="margin-left:850px; height:35px;background-color:#e5322d;border:none" class="btn btn-success" id="BtnReject">Reject</button>
+
+                    </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card-body" style="background-color:#fff !important;">
+
+                            <div class="table-responsive">
+                                <div align="center" id="divloanDetails" name="divloanDetails">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ @section Scripts{
+@*<script src="~/ClientApp/TTRequest/AHapprove.js"></script>*@
+<script src="~/ClientApp/PaymentAtBranch/AHapprove.js"></script>
+
+                    }

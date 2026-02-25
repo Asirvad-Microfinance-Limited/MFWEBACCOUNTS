@@ -1,0 +1,234 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" />
+    <title>Accounts-Login</title>
+    <link href="~/lib/bootstrap/dist/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/cs-skin-elastic.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/normalize.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/pe-icon-7-filled.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/style.css?v=10" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/lib/Plugins/sweetalert/css/sweetalert.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="~/lib/Plugins/LoaderWrapper/Loginstyle.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <style>
+
+        input.pw {
+            -webkit-text-security: disc;
+            text-security: disc !important;
+        }
+
+        .form-control {
+            /*border-radius: 1.375rem !important;*/
+        }
+
+        .btn {
+            border-radius: 100px !important;
+        }
+
+        html { /*background-image: url('https://mac.mactech.net.in/mfweb/lib/bootstrap/dist/images/banking.jpg');*/
+            /*background-image: url('lib/bootstrap/dist/images/PR2.jpg');*/
+            background-image: url('https://apps.asirvad.com/amfl_paymentrat/lib/bootstrap/dist/images/PR2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            width: 100%;
+            height: 610px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+
+</head>
+<body class="bg-dark" oncontextmenu="return false">
+
+    @*Page Loader*@
+    @*<div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="preloader">
+                    <div class="spinner-layer.pl-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="color:#dbb714;font-family:'Myanmar Text'">Please wait...</p>
+            </div>
+        </div>*@
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue-grey">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <div class="sufee-login d-flex align-content-center flex-wrap ">
+        <div class="container">
+            <div class="login-content">
+                @*<div class="login-logo">
+            <a href="index-2.html">
+                <img class="align-content" src="~/lib/bootstrap/dist/images/logo2.png" alt=""></a>
+        </div>*@
+
+
+
+
+                <div class="login-form animated  bounceInLeft">
+                    <div class="col-sm-9 text-center" style="margin:0 auto;">
+
+                        <div class="login-logo">
+                            <a href="https://asirvadmicrofinance.co.in/" target="_blank">
+                                <img class="align-content" src="~/lib/bootstrap/dist/images/loginlogo.png" alt="">
+                            </a>
+                            <a href="https://www.manappuram.com/" target="_blank">
+                                <img class="align-content" style="height: 11px;width: 178px;" src="data:image/png;base64,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" alt="">
+                            </a>
+                        </div>
+
+                        <form method="post" id="login" name="login">
+                            <div class="form-group">
+                                <label></label>
+
+                                <input type="text" id="userid" name="userid" class="form-control form-control-lg" placeholder="User ID" autocomplete="off">
+                                <label id="userid-error" class="error error-msg" for="userid" style="display:block"></label>
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" minlength="8" maxlength="16" autocomplete="off">
+                                <label id="password-error" class="error error-msg" for="password" style="display:block"></label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @*<input type="checkbox"> Remember Me*@
+                                </label>
+                                <label class="pull-right">
+                                    @*<a href="#">Forgotten Password?</a>*@
+                                </label>
+                            </div>
+                            @*<button type="submit" name="login_submit" id="login_submit" class="btn btn-success btn-lg btn-flat m-b-30 m-t-30" > Sign in </button>*@
+                            <input type="submit" value="Login" id="login_submit" name="login_submit" class="btn btn-login btn-lg btn-flat m-b-30 m-t-30">
+                            <!--<div class="social-login-content">
+                                <div class="social-button">
+                                    <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
+                                    <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button>
+                                </div>
+                            </div>-->
+
+
+                            <div class="register-link m-t-15 text-center">
+                                @*<p>Don't have account ? <a href="#"> Sign Up Here</a></p>*@
+
+
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="Otp" tabindex="-1" role="dialog" aria-labelledby="more" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="background-color:white;">
+
+                    <div class="modal-dialog modal-md" role="document">
+
+                        <div class="otp-form animated  bounceIn" style="margin-top: 100px;  padding-right: 0px; padding-left: 0px;height:500px; width:500px;background-color:#aaaaa1">
+                            <div class="containers" style="padding-left: 61px; height: 20px; display: block "></div>
+
+                            <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close" style=" padding-right:23px;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="otp-group" style="padding-top:5px;">
+                                <label></label>
+                                <div style="width: 420px; text-align: center; padding-left: 106px; padding-top: 180px;">
+
+                                    <label id="phonenum" class="" for="dtFromDate" style="display:block;font-size:20px;"></label>
+                                    <input type="text" id="otpid" style="width:200px" name="otpid" class="rounded-input" placeholder="Enter OTP" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                </div>
+                            </div>
+                            <div style="text-align: center;margin-top: 15px;">
+                                <input type="button" value="Verify OTP" id="VerifyOtp" name="VerifyOtp" class="btn btn-login btn-lg btn-flat m-b-20 m-t-20" style="width: auto;">
+                                <input type="button" value="Resend OTP" id="ResentOtp" name="ResentOtp" class="btn btn-login btn-lg btn-flat m-b-20 m-t-20" style="width: auto;">
+                            </div>
+                            <div style="margin-top:-2%;">
+                                <label style="text-align: justify; font-size: 78%; color: #000000; padding-left: 21px; padding-top: 34px; padding-right: 21px;">
+                                    <span style="color:red;">Note: </span>update your phone number in <a href="https://apps.asirvad.com/hrms_app/login.aspx"><FONT COLOR="#006699">HRM</FONT></a> module if the mentioned phone number didnot function.
+                                </label>
+                            </div>
+                        </div>
+                        @*</div>*@
+                    </div>
+                </div>
+
+
+                <footer class="text-center animated bounceInLeft" style="padding-top: 10px;">
+                    <medium style="color:#000000;z-index: 152;">
+                        &copy; Copyright @DateTime.Now.Year.ToString(),All rights reserved by Asirvad.Designed by <a href="http://www.macomsolutions.com/" style="color:#fff;">MACOM</a>
+                    </medium>
+                </footer>
+            </div>
+
+            <div style="margin-top:-2%;">
+                <h5 style="text-align:center;color:#ed1a38;"><b>W A R N I N G</b></h5>
+                <label style="text-align:center;">
+                    <small style="color:#000000;z-index: 152;">
+                        This computer system/application is the property of the Asirvad Micro Finance Ltd. It is for authorized use only.  By using this system, all users acknowledge notice of, and agree to comply with, the Asirvad’ s Acceptable Use Policy (“AUP”) and Information Security Policy. Users have no personal privacy rights in any materials they place, view, access, or transmit on this system. Unauthorized or improper use of this system may result in administrative disciplinary action, and/or other sanctions as set forth in the Asirvad’ s AUP. By continuing to use this system you indicate your awareness of and consent to these terms and conditions of use.
+
+                        LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this warning.
+                    </small>
+                </label>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/ClientApp/Services/LocalStorageServices.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/Plugins/sweetalert/js/sweetalert.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/assets/js/vendor/jquery-2.1.4.min.js"></script>*@
+    <script src="~/lib/bootstrap/dist/assets/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/plugins.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/main.js"></script>
+    <script src="~/ClientApp/App.js"></script>
+    <script src="~/ClientApp/Services/HttpService.js"></script>
+    @*<script src="~/lib/CryptoJSv3.1.2/rollups/aes.js"></script>*@
+    <script src="~/ClientApp/Login/Login.Validator.js"></script>
+    <script src="~/ClientApp/Login/Login.Controller.js?v=10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+    <script src="~/ClientApp/Services/GeneralServices.js"></script>
+
+    @*<script type="text/javascript">
+        //disable f12
+        eval(function (p, a, c, k, e, d) { e = function (c) { return c.toString(36) }; if (!''.replace(/^/, String)) { while (c--) { d[c.toString(a)] = k[c] || c.toString(a) } k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1 }; while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } } return p }('(3(){(3 a(){8{(3 b(2){7((\'\'+(2/2)).6!==1||2%5===0){(3(){}).9(\'4\')()}c{4}b(++2)})(0)}d(e){g(a,f)}})()})();', 17, 17, '||i|function|debugger|20|length|if|try|constructor|||else|catch||5000|setTimeout'.split('|'), 0, {}))
+    </script>*@
+
+</body>
+</html>

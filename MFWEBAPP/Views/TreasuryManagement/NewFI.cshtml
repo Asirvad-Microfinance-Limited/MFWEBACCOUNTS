@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "NewFI";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">New Financial Institution</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddlOutWard" class="control-label mb-1">Select FI Type<b style="color:red">*</b></label>
+                            <select name="ddlFIType" id="ddlFIType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlFIType-error" class="error" for="ddlFIType" style="display:block"></label>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Financial Institution Name<b style="color:red">*</b></label>
+                                <input type="text" id="txt_fiName" name="FINAME" placeholder="" class="form-control" maxlength="75" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '');">
+                                <label id="txt_fiName-error" class="error" for="txt_fiName" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="fundcat">GSTIN  : <b style="color:red">*</b> </label>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1 ">
+                                <div>
+                                    <input type="radio" id="radYes" name="radGSTIN" value="louie" />
+                                    <label for="louie">YES</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1">
+                                <div>
+                                    <input type="radio" id="radNo" name="radGSTIN" value="louie" />
+                                    <label for="louie">NO</label>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div><br />
+
+                    <div class="row form-group">
+                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="divGST" style="display:none">
+
+                            <label class="control-label mb-1">GSTIN <b style="color:red">*</b> </label>
+                        <input type="text" id="gstn_txt" name="GSTN" placeholder="" class="form-control" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');">
+                        <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+
+                        </div>
+                       
+                    </div><br />
+                    <div class="row form-group">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Address <b style="color:red">*</b> </label>
+                                <input type="text" id="txt_adrs" name="Address" placeholder="" class="form-control" maxlength="75">
+                                <label id="txtadrs-error" class="error" for="txtadrs" style="display:block"></label>
+                            </div>
+                        </div>
+                      </div><br />
+
+                    <div class="row form-group">
+                    
+                     
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Email <b style="color:red">*</b></label>
+                                <input type="text" id="txt_eml" name="Email" placeholder="" class="form-control" maxlength="50">
+                                <label id="txteml-error" class="error" for="txteml" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Mobile Number <b style="color:red">*</b></label>
+                                <input type="text" id="txt_mob" name="Mobilenum" placeholder="" class="form-control" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                <label id="txtmob-error" class="error" for="txtmob" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">CIN <b style="color:red">*</b></label>
+                                <input type="text" id="txt_cin" name="Cin" placeholder="" class="form-control" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');">
+                                <label id="txtcin-error" class="error" for="txtcin" style="display:block"></label>
+                            </div>
+                        </div>
+                       
+
+                    </div><br />
+
+
+                    <div class="row form-group">
+                        
+                       
+                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                                <label class="control-label mb-1">PAN <b style="color:red">*</b></label>
+                        <input type="text" id="pan_txt" name="Pan" placeholder="" class="form-control" maxlength="15">
+                        <label id="pantxt-error" class="error" for="pantxt" style="display:block"></label>
+                        </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Contact Person Name <b style="color:red">*</b></label>
+                                <input type="text" id="txt_person" name="person" placeholder="" class="form-control" maxlength="50" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '');">
+                                <label id="txtperson-error" class="error" for="txtperson" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Contact Number <b style="color:red">*</b></label>
+                                <input type="text" id="txt_contactnum" name="contactnum" placeholder="" class="form-control" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                <label id="txtcontactnum-error" class="error" for="txtcontactnum" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                    </div><br />
+
+         </form>
+
+                       </div>
+          
+        <div id="confirm" class="text-right">
+                <button type="button" class="btn btn-success" id="btnConf">Confirm</button>
+                <button type="button" class="btn btn-danger" id="btnExit">Exit</button>
+        </div>
+
+
+            </div>
+                   
+            </div>
+  </div>
+
+
+@section Scripts{
+    <script src="~/clientapp/treasurymanagement/firequest.js"></script>
+  
+}

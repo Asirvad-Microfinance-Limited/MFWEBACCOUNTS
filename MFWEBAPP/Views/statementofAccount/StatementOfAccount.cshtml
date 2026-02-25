@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "Account Statement";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body" @*style="height: 355px;" *@>
+        <h3 class="card-title">Account Statement</h3>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group" id="DivFrmDate">
+                    <label>From Date</label>
+                    <input type="text" class="form-control datepicker" id="FrmDate" name="FrmDate">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" id="DivToDate">
+                    <label>To Date</label>
+                    <input type="text" class="form-control datepicker" id="ToDate" name="ToDate">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Branch</label>
+                    <select name="BranchID" id="BranchID" class=" form-control">
+                        <option value="0">Select Branch</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Accounts</label>
+                    <select name="AccountID" id="AccountID" class=" form-control">
+                        <option value="0">Select Account</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" style="padding-top: 20px;">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-success" id="btnSearch"><i class="fa fa-search"></i>&nbsp;Search</button>
+                    <button class="btn btn-danger" id="btnBack"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="DivSubAccount">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sub Accounts</label>
+                    <select name="SubAccountID" id="SubAccountID" class=" form-control">
+                        <option value="0">Select Sub Account</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="DivReportA">
+                <table id="tblAccountsRetA" class="table table-bordered table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction #</th>
+                            <th>Description</th>
+                            <th style="text-align:right;">Debit</th>
+                            <th style="text-align:right;">Credit</th>
+                            <th style="text-align:right;">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align:right;font-weight: 625;" id="TotDrAmt">0.00</td>
+                            <td style="text-align:right;font-weight: 625;" id="TotCrAmt">0.00</td>
+                            <td style="text-align:right;font-weight: 625;" id="TotBalAmt">0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-md-12" id="DivReportB">
+                <table id="tblAccountsRetB" class="table table-bordered table-hover table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Account #</th>
+                            <th>Account Name</th>
+                            <th>Trans Date</th>
+                            <th>Description</th>
+                            <th style="text-align:right;">Debit</th>
+                            <th style="text-align:right;">Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align:right;font-weight: 625;" id="BTotDrAmt">0.00</td>
+                            <td style="text-align:right;font-weight: 625;" id="BTotCrAmt">0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/Script/StatementOfAccounts.js"></script>
+
+}

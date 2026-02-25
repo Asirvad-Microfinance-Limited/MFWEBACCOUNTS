@@ -1,0 +1,270 @@
+﻿@{
+    ViewData["Title"] = "Funder Exposure";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">FUNDER EXPOSURE</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name=" " id=" " method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3" id="selloan">
+                            <div class="form-group">
+                                <label for="selloan">Select Loan<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="txt_selectloan" name="selectloan">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Project Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_PjtName" class="form-control" maxlength="100" name="txtinvest" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_invest" class="form-control" maxlength="50" name="txtinvest" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor Type<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_investType" class="form-control" maxlength="20" name="txtinvestType" onchange="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Investor Sub Type<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_subinvestType" class="form-control" maxlength="20" name="txtsubinvestType" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="debenture">Secured/Unsecured <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="txtsecuredunsecured" name="ddldebenture" onchange="">
+                                    <option value="0">---Select----</option>
+                                    <option value="Secured">Secured</option>
+                                    <option value="Unsecured">Unsecured</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">MCLR<span class="text-danger"></span></label>
+                                <input type="text" id="txt_Mclr" class="form-control" name="txtMclr" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Nature Of Facility<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_nat_fac" class="form-control" maxlength="20" name="txtnatfac" onchange="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Type Of Scheme<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_schemes" class="form-control" maxlength="20" name="txtscheme" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Facilitator Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_fac_name" class="form-control" style="width:100%;" maxlength="50" name="txtfacname" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Funder Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_fund_name" class="form-control" maxlength="50" name="txtfundname" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Sanctioned Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_Sanc_amnt" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtSancamnt" onchange="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Availed Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_Ava_amnt" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtAvaamnt" onchange="">
+                            </div>
+                        </div>
+                        @* <div class="col-md-3">
+                            <div class="form-group" id="datepickerDates">
+                                <label for="selloan">Date Of Sanction<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control " id="txt_date_sanc" name="dateofpay" autocomplete="off" title="txtdatesanc" onkeypress="return false" />
+                            </div>
+                        </div> *@
+
+                        <div class="col-md-3">
+                            <div class="form-group" id="datepickerDates">
+                                <label for="datepicker" class=" form-control-label mb-1"> Date Of Sanction</label><b style="color:red">*</b>
+                                <input class="form-control datepicker " id="txt_date_sanc" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Base Rate Mclr At Sanction<span class="text-danger"></span></label>
+                                <input type="text" id="txt_base_mclr_san" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtbasemclrsan" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="spredrate">Spread Rate</label>
+                                <input type="text" class="form-control" id="txt_spreadrate" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtspreadrate" onchange="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="spredrate">Interest Rate At Sanction<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txt_intRateAtSan" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtintRateAtSan" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Cash Margin</label>
+                                <input type="text" id="txt_cashmargin" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtcashmargin" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Book debt Margin</label>
+                                <input type="text" id="txt_bkdbt_margin" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtbkdbtmargin" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="datepickerDatess">
+                                <label for="datepicker" class=" form-control-label mb-1">Disbursal Date</label><b style="color:red">*</b>
+                                <input class="form-control datepicker " id="txt_dis_dt" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        @* <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Date Of Maturity<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control " id="txt_Mat_dt" name="dateofpay" autocomplete="off" title="txtMatdt" onkeypress="return false" />
+                            </div>
+                        </div> *@
+                        <div class="col-md-3">
+                            <div class="form-group" id="datepickerDatesss">
+                                <label for="datepicker" class=" form-control-label mb-1">Date Of Maturity</label><b style="color:red">*</b>
+                                <input class="form-control datepicker " id="txt_Mat_dt" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Processing Fee</label>
+                                <input type="text" id="txt_proc_fee" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtprocfee" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Arranger Name</label>
+                                <input type="text" id="txt_arg_name" class="form-control" maxlength="50" name="txtargname" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" ;>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cashmargin">Arranger Fee</label>
+                                <input type="text" id="txt_arg_fee" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txtargfee" onchange="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="prepaymentpenalty">Prepayment Penalty</label>
+                                <input type="text" id="txt_prepaymentpenalty" class="form-control" name="prepaymentpenalty" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="selloan">Tenure In Months<span class="text-danger">*</span></label>
+                                <input type="text" id="txt_tenure" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="txttenure" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="debenture">Interest Type<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddldebenture" name="ddldebenture" onchange="">
+                                    <option value="0">---Select----</option>
+                                    <option value="Fixed">Fixed</option>
+                                    <option value="Floating">Floating</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="debenture">Listed/UnListed<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddllisted" name="ddldebenture" onchange="">
+                                    <option value="0">---Select----</option>
+                                    <option value="Listed">Listed</option>
+                                    <option value="UnListed">UnListed</option>
+                                    <option value="NA">NA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">Rating</label>
+                                <input type="text" id="txt_rating" class="form-control" maxlength="20" name="txtrating" onchange="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">MCLR Next Change(M)</label>
+                                <input type="text" id="txt_mclr_next" class="form-control" maxlength="2" name="tenureinmonth" oninput="this.value = this.value.replace(/[^0-9.]/g, '');">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="arrangerfee">Total Transcation Cost<span class="text-danger"></span></label>
+                                <input type="text" id="txt_tottracst" class="form-control" maxlength="20" name="" onchange="" oninput="this.value = this.value.replace(/[^0-9.]/g, '');">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-end">
+                <input id="btnconfirm" type="button" value="CONFIRM" class="btn btn-primary" />
+                <input id="btnexit" type="button" value="EXIT" class="btn btn-danger" onclick="return exitPage();" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/clientapp/treasurymanagement/funderexposure.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}

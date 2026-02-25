@@ -1,0 +1,109 @@
+﻿
+@model MFWEBAPP.Models.CriffReport.CriffReportResponse
+
+@{
+    ViewData["Title"] = "CriffReport";
+
+    Layout = "";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Equifax Report</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body style="background:#e6d8d8;">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-header"><strong></strong><strong></strong></div>
+                <div class="card-body card-block">
+                    <div class="row">
+
+
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divcriffreport" name="divcriffreport" style="background:#e6d8d8;">
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/plugins.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/main.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/flot-chart/jquery.flot.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/lib/flot-chart/jquery.flot.spline.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/widgets.js"></script>
+    <script src="~/ClientApp/App.js"></script>
+    <script src="~/ClientApp/Services/HttpService.js"></script>
+    <script src="~/ClientApp/CibilReport/CriffReport.Controller.js"></script>
+
+</body>
+</html>
+@*<div class="row">
+
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-header"><strong> CRIFF  </strong><strong> REPORT  </strong></div>
+                <div class="card-body card-block">
+                    <div class="row">
+
+
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" >
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divcriffreport" name="divcriffreport" >
+
+                                        @Model.imageString
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>*@
+
+@section Scripts{
+   
+
+}

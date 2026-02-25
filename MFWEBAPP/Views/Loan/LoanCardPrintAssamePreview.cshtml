@@ -1,0 +1,615 @@
+﻿@model MFWEBAPP.Models.LoanCard.GenerateLoanCardModel
+
+
+@{
+    ViewData["Title"] = "LoanCardPrintAssamePreview";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+ 
+<head>
+
+    @*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");*@
+
+    @*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");*@
+
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link href="~/lib/bootstrap/dist/assets/css/Print5.css" rel="stylesheet" />
+
+
+<body style="color:#000;font-family:' Open Sans', sans-serif;font-size:13px;line-height:normal;width:100%;">
+
+    <!-- Each sheet element should have the class "sheet" -->
+    <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+
+
+
+    <section class="sheet padding-10mm">
+
+        <!-- Write HTML just like a web page -->
+        <article>
+
+
+            <div id="pdfinsuranceform">
+
+                <!-- Write HTML just like a web page -->
+                <div id="page-wrap">
+
+
+
+                    <div id="container" style="width: 100%;margin-top:20px!important;">
+
+                        <!--left-->
+
+                        <div id="left" style="float:left;width:50.1%;">
+
+                            <div id="left" style="margin-bottom:15px;float:left;width:65%;">
+                                <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border:1px solid black;text-align:left;">
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+
+                                            শাখা নাম  : @Model.branchName
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+                                            কেন্দ্ৰৰ সংখ্যা আৰু নাম  : @Model.centerId - @Model.centerName
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+                                            গ্ৰাহক সংখ্যা আৰু নাম  : @Model.memberId - @Model.memberName
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+                                            ষ্বামীৰ/পিত্ৰ নাম  : @Model.fatHusName
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size:7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+                                            আধাৰ সংখ্যা  : @Model.kycNo
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse: collapse;border: 1px solid black;text-align:left;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">
+                                            ম'বাইল নম্বৰ  : @Model.mobileNumber
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div id="right" style="margin-bottom:0px;float: right;width: 33%;">
+
+                                <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border:1px solid black;text-align:left;">
+                                    <tr>
+                                        <td height="90" style="text-align:center;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:center;padding: 2px;color: black;line-height: normal;">
+                                            <img height="90" width="155" src="data:image/jpg;base64,@Model.customerImage" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+
+
+                            <br />
+
+                            <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border:1px solid black;text-align:left;">
+                                <tbody>
+                                    <tr>
+                                        <th class="th2" style="border-collapse: collapse;border: 1px solid black;text-align:left; font-size: 7px !important;font-weight: bold;text-align: left;padding: 2px;color:black;line-height: normal;width: 25% !important;"> বৰ্গ </th>
+                                        <th class="th1" style="border-collapse: collapse;border: 1px solid black;text-align:left; font-size: 11px !important;font-weight: bold;text-align: left;padding: 2px;color:black;line-height: normal;width: 15% !important;"> 1 </th>
+                                        <th class="th1" style="border-collapse: collapse;border: 1px solid black;text-align:left; font-size: 11px !important;font-weight: bold;text-align: left;padding: 2px;color:black;line-height: normal;width: 15% !important;"> 2 </th>
+                                        <th class="th1" style="border-collapse: collapse;border: 1px solid black;text-align:left; font-size: 11px !important;font-weight: bold;text-align: left;padding: 2px;color:black;line-height: normal;width: 15% !important;"> 3 </th>
+                                        <th class="th1" style="border-collapse: collapse;border: 1px solid black;text-align:left; font-size: 11px !important;font-weight: bold;text-align: left;padding: 2px;color:black;line-height: normal;width: 15% !important;"> 4 </th>
+                                    </tr>
+                                </tbody>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">বেংক একাউণ্ট নম্বৰ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.accountNo</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">ঋণ একাউণ্ট নম্বৰ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanId</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanId1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanId2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanId3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">IFSC Code</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.ifscCode</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">ঋণ বিতৰণৰ তাৰিখ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanDate</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanDate1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanDate2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanDate3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">ঋণ বিতৰণৰ তাৰিখ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.loanAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.loanAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.loanAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.loanAmount3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">দিবলগা সুত</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.interestRate</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.interestRate1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.interestRate2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.interestRate3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">উদ্দেশ্য</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanPurpose</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanPurpose1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanPurpose2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanPurpose3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">ঋণ চক্র</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.cycle</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.cycle1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.cycle2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.cycle3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">ঋণ সময়সীমা</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanTenure</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanTenure1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanTenure2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loanTenure3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">স্থগিত ৰাখাৰ সময়</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.morotorium</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.morotorium1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.morotorium2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.morotorium3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">পৰিশোধৰ পুনৰাবৃত্তি</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.repayMode</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.repayMode1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.repayMode2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.repayMode3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">প্ৰথম কিস্তি</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.firstInstallment</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.firstInstallment1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.firstInstallment2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.firstInstallment3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">শেষ কিস্তি</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.lastInstallment</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.lastInstallment1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.lastInstallment2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.lastInstallment3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">প্ৰক্ৰিয়াগত খৰচ + কৰ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.processingFee</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.processingFee1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.processingFee2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.processingFee3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">বীমা খৰচ + কৰ</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.insuranceAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.insuranceAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.insuranceAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.insuranceAmount3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">বীমা কোম্পানি</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.insuranceCompany</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.insuranceCompany1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.insuranceCompany2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.insuranceCompany3</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">বীমা শেষ সময়সীমা</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loandueDate</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loandueDate1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loandueDate2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.loandueDate3</td>
+                                </tr>
+                            </table>
+
+                            <br />
+
+                            <table cellspacing="1" cellpadding="0" style="width:100%;border-collapse:collapse;border:1px solid black;text-align:left;">
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">গ্ৰাহকৰ স্বাক্ষৰ :</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">স্বামীৰ/পিতৃৰ স্বাক্ষৰ :</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;"> ক্ষেত্ৰউন্নয়ন বিষয়াৰ স্বাক্ষৰ  :</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;"> শাখা পৰিচালকৰ স্বাক্ষৰ  :</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;"> ক্ষেত্ৰ পৰিচালকৰ স্বাক্ষৰ :</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 7px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;"> ২যণ সমাপ্ৰিৰ তাৰিখ:</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <!--right-->
+
+                        <div id="right" style="float: right; width: 49.1%;">
+
+                            <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border:1px solid black;text-align:left;">
+                                <tbody>
+                                    <tr>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;">কিস্তি সংখ্যা</th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;">দৰকাৰ তাৰিখ  </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> প্ৰকৃত  সংগ্রহ তাৰিখ </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> প্রধান বাকি </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> ধ্য়ান  বাকি </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> সম্পূর্ণ বাকি </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> প্রধান ৰাহি </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> ক্ষেত্ৰউন্নয়ন বিষয়াৰ স্বাক্ষৰ  </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> শাখা পৰিচালকৰ স্বাক্ষৰ  </th>
+                                        <th class="thc" style="border-collapse: collapse;border: 1px solid black;text-align:center; font-size: 6px !important;font-weight: bold;text-align: center;padding: 2px;color:black;line-height: normal;width: 25% !important;"> টোকা </th>
+
+                                    </tr>
+                                </tbody>
+
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount1</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount2</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount3</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount4</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount5</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount6</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount7</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount8</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount9</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount10</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount11</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount12</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount13</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount14</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount15</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount16</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount17</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount18</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount19</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount20</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount21</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount22</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount23</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount24</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="tdc" style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.installmentNo25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.dueDate25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">@Model.paidDate25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.principleAmount25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.interestAmount25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.paidAmount25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:right;padding: 2px;color: black;line-height: normal;">@Model.balanceAmount25</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                    <td style="text-align:left;border-collapse: collapse;border: 1px solid black;font-size: 12px !important;font-weight: bold;text-align:left;padding: 2px;color: black;line-height: normal;">&nbsp;</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </section>
+    @*<script>
+
+            function printDiv() {
+                var divToPrint = document.getElementById('table');
+                newWin = window.open("");
+                newWin.document.write(divToPrint.outerHTML);
+                newWin.print();
+                newWin.close();
+            }
+        </script>*@
+</body>
+
+
+

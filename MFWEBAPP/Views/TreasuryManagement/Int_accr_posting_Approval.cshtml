@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "Int_accr_posting_Approval";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Interest Accrual Posting Approval</strong>
+            </div>
+            <div class="card-body">
+                <form name="" id="" method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundcat">Select Fund Type<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlFundType" style="width:100%" name="FundType" > </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"id="scln">
+                                <label for="fundcat">Select Loan<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlloantype" style="width:100%" name="LoanType" > </select>
+                            </div>
+                        </div>
+                    </div>
+                   @*  <div class="row">
+                        <div class="col-md-12" id="ShowtblDiv">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-success" id="tableshowdetails">
+                                        <thead class="bg-danger text-black">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">ENTRY POSTING DATE</th>
+                                                <th class="VCol" style="text-align:left;">REVERSAL DATE</th>
+                                                <th class="VCol" style="text-align:left;">FINANCE COST MAIN BANK</th>
+                                                <th class="VCol" style="text-align:left;">FINANCE COST SUB BANK</th>
+                                                <th class="VCol" style="text-align:left;">FINANCE COST CONTRA ID</th>
+                                                <th class="VCol" style="text-align:left;">ACCURAL AMMOUNT</th>
+                                                
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input">
+                                    <label class="custom-control-label" for="radAppr">Approve</label>
+                                    &nbsp;
+                                    <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input" >
+                                    <label class="custom-control-label" for="radRjct">Reject</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="dvrejectremarks" style="display:none;">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="remarks">Reason : <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtremarks" title="Remarks" />
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="text-end">
+                    <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                    <input id="btnExit" type="button" value="Exit" class="btn btn-danger"  />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="hdUserId" type="hidden" runat="server" />
+<input id="hdBranchId" type="hidden" runat="server" />
+<input id="hdFirmId" type="hidden" runat="server" />
+
+@section scripts {
+
+<script src="~/clientapp/treasurymanagement/int_accr_posting_approval.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

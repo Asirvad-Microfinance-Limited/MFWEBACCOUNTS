@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Accounting Entry";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">ACCOUNTING ENTRY</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name=" " id=" " method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundcat">Select Fund Transfer Request<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_Reqst" name="Request" onchange="getFITableDtls()"> </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center" id="ShowtblDiv">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-success" id="tableShowRqst">
+                                        <thead class="bg-danger text-black">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="confirm" class="text-right">
+                <input id="btnConf" type="button" value="View Letter" class="btn btn-primary" onclick="return ViewLetter();" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" onclick="return frmExit();" />
+            </div>
+        </div>
+    </div>
+</div>
+

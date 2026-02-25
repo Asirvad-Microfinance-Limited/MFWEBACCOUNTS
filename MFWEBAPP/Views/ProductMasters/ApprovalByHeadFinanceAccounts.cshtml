@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewData["Title"] = "RejectedByHeadOperations";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">APPROVAL OF HEAD FINANCE</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmcourierupdation" id="frmcourierupdation" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddldept" class="control-label mb-1">REQUESTED PR<b style="color:red">*</b></label>
+                            <select name="ddlprselect" id="ddlprselect" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlprselect-error" class="error" for="ddlprselect" style="display:block"></label>
+
+                        </div>
+
+                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12">
+                            <br />
+                            <button type="button" class="btn btn-link" id="viewinvoice"  style="display:none">View Bill</button>
+
+                        </div>
+                    </div>
+                    <div id="others" style="display:none;">
+                        <div class="row form-group">
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-ddldept" class="control-label mb-1">Branch <b style="color:red"></b></label>
+                                <input type="text" id="branch" name="branch" class="form-control" readonly>
+                                <label id="txtbranch-error" class="error" for="txtbranch" style="display:block"></label>
+
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment" class="control-label mb-1">Payment Type</label>
+                                <input type="text" name="PayType" id="PayType" class="form-control" readonly>
+                                <label id="ddlPayType-error" class="error" for="ddlPayType" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">GSTIN</label>
+                                    <input type="text" id="gstin" name="gstin" placeholder="" class="form-control text-uppercase" readonly oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                                    <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Amount</label>
+                                    <input type="text" id="amt" name="amt" placeholder="" class="form-control" readonly oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="grossamt-error" class="error" for="grossamt" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row form-group">
+
+                            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Reliving Remarks</label>
+                                    <input type="text" id="RequestedRemarks" name="RelivingReason" readonly class="form-control" maxlength="150">
+                                    <label id="RelivingReason-error" class="error" for="RelivingReason" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1"> Remarks</label>
+                                    <input type="text" id="ApprovalRemarks" name="Reason" placeholder="Remarks" class="form-control" maxlength="150">
+                                    <label id="RelivingReason-error" class="error" for="Reason" style="display:block"></label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div align="center" class="col-lg-12">
+                                            <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="confirm" class="text-right" style="margin-top:24px; display:none">
+
+                            <button type="button" class="btn btn-success" id="btnapprove">APPROVE</button>
+                            <button type="button" class="btn btn-danger" id="btncancel">CANCEL</button>
+                        </div>
+                    </div>
+                    
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/PaymentAtBranch/ApprovalByHeadFinanceAccounts.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js"></script>
+}

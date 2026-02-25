@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "Change Interest Rate";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Change Interest Rate (Approval)</strong>
+            </div>
+            <div class="card-body">
+                <form name="" id="" method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundcat">Select Loan<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_approve" name="Request" > </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                  @*   <div class="row">
+                        <div class="col-md-12" id="ShowtblDiv">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-success" id="tableShowRqst">
+                                        <thead class="bg-danger text-black">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">LOAN ID</th>
+                                                <th class="VCol" style="text-align:left;">PROJECT CODE(%)</th>
+                                                <th class="VCol" style="text-align:left;">NEW INTERESTRATE(%)</th>
+                                                <th class="VCol" style="text-align:left;">EFFECTED FROM</th>
+                                                <th class="VCol" style="text-align:left;">EFFECTED TO</th>
+                                                
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @* <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input" >
+                                    <label class="custom-control-label" for="radAppr">Approve</label>
+                                    &nbsp;
+                                    <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input" >
+                                    <label class="custom-control-label" for="radRjct">Reject</label>
+                                    <div id="dvtext" style="display: none">
+                                        <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                        <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row form-group">
+
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+
+                                    <input type="radio" id="radAppr" name="radApprRej" value="louie" />
+                                    <label for="louie">Approve</label>
+
+                                    <input type="radio" id="radRjct" name="radApprRej" value="louie" />
+                                    <label for="louie">Reject</label>
+                                    <div id="dvtext" style="display: none">
+                                        <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                        <input type="text" style="width:300%;height:50px" maxlength="100" id="txt_reason" name="reason" />
+                                    </div>
+
+                                </div>
+                            </div><br />
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                   @*  <div class="row" style="display:none">
+                        <div class="col-md-12" id="divrej">
+                            <div class="form-group">
+                                <label for="fundcat">Reason<span class="text-danger">*</span> </label>
+                                <input type="text" class="form-control text-uppercase" id="txt_reason" name="Reason" maxlength="200" />
+                            </div>
+                        </div>
+                    </div> *@
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="text-end" id="divbtn">
+                    <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                    <input id="btnExit" type="button" value="Exit" class="btn btn-danger"  />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+</div>
+  @section Scripts {
+<script src="~/clientapp/treasurymanagement/change_interest_rate.js"></script>
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

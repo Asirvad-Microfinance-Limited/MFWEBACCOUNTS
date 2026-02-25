@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "Fixed Deposit Interest Accrual";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class=" ">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Fixed Deposit Interest Accrual Approval</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+             
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="fundcat">Select Financial Institution :<span class="text-danger">*</span></label>
+                        <select class="custom-select form-control" id="ddlfininst" name="FundType" > </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" id="selectid">
+                        <label for="fundcat">Select FD<span class="text-danger">*</span></label>
+                        <select class="custom-select form-control" id="ddlFD" name="FinancialInstitution" > </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+            @* table show *@
+            <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                <div class="card-body" style="background-color:#fff !important; ">
+                    <div class="table-responsive">
+                        <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                            <table class="table" id="tbldespatch">
+                                <thead>
+                                    <tr>
+                                        @* <th class="VCol" style="text-align:left;">#</th> *@
+                                        <th class="VCol" style="text-align:left;">Entry Posting Date</th>
+                                        <th class="VCol" style="text-align:left;">Reversal Date</th>
+                                        <th class="VCol" style="text-align:left;">FD Number</th>
+                                        <th class="VCol" style="text-align:left;">Account Number</th>
+                                        <th class="VCol" style="text-align:left;">Sub Account Number </th>
+                                        <th class="VCol" style="text-align:left;">Accural Amount </th>
+                                      
+
+
+
+                                        <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="Fidatatabl"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input">
+                            <label class="custom-control-label" for="radAppr">Approve</label>
+                            &nbsp;
+                            <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input">
+                            <label class="custom-control-label" for="radRjct">Reject</label>
+                        </div>
+                    </div>
+                </div>
+            </div> *@
+
+             <div class="row">
+                    <div class="col-md-12">
+                        <div class="row form-group">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                               
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                    <div>
+                                        <input type="radio" id="radAppr" name="radApprRej" value="louie" />
+                                        <label for="louie">Approve</label>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                    <div>
+                                        <input type="radio" id="radRjct" name="radApprRej" value="louie" />
+                                        <label for="louie">Reject</label>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+
+                        </div><br />
+                    </div>
+                </div>
+            <div class="row" id="dvrejectremarks" style="display:none;">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="remarks">Reason : <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="txtremarks" title="Remarks" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+</div>
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/fixeddeposite_interestaccrual.js"></script>
+
+}

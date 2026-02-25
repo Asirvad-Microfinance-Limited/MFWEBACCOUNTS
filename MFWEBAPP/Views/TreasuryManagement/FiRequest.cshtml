@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "FiRequest";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fi Request</strong>
+            </div>
+            <div class="card-body card-block">
+
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+
+                    <div class="row form-group">
+
+                        <div class="col-lg-4">
+
+                            <label  class="control-label mb-1">Financial Institution Type<b style="color:red">*</b></label>
+                            <select name="ddlFiType" id="ddlPayType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlfiType-error" class="error" for="ddlFinType" style="display:block"></label>
+
+                        </div>
+                        
+
+                        <div class="col-lg-4">
+
+                                <label class="control-label mb-1">Financial Institution Name</label>
+                                <input type="text" id="txtFiName" name="txtFiName" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                                <label id="finame-error" class="error" for="finame" style="display:block"></label> 
+
+                            
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <label class="control-label mb-1">GSTIN  : </label>
+
+                            <div class="custom-control custom-radio">
+
+                                <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input" onclick="ShowGst()" />
+                                <label class="custom-control-label" for="radAppr">Yes</label>
+
+                            </div>
+                            <div class="custom-control custom-radio">
+
+                                <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input" onclick="ShowHideDiv()">
+                                <label class="custom-control-label" for="radRjct">No</label>
+
+
+                            </div>
+                            
+
+                        </div>
+
+                    </div><br />
+                    
+                    <div class="row form-group">
+
+                        <div class=" col-lg-6">
+
+                            <label class="control-label mb-1">Address<b style="color:red">*</b></label>
+                            <input type="text" id="txtAddress" name="txtaddress" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="fiaddress-error" class="error" for="fiaddress" style="display:block"></label>
+
+                        </div>
+
+                         <div class=" col-lg-6">
+
+                            <label class="control-label mb-1">Email<b style="color:red">*</b></label>
+                            <input type="text" id="txtemail" name="txtemail" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="fiemail-error" class="error" for="fiemail" style="display:block"></label>
+
+                         </div>
+                    </div><br />
+
+                    <div class="row form-group">
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">Mobile No<b style="color:red">*</b></label>
+                            <input type="text" id="txtmob" name="txtmob" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="fimob-error" class="error" for="fimob" style="display:block"></label>
+
+                        </div>
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">PAN<b style="color:red">*</b></label>
+                            <input type="text" id="txtpan" name="txtpan" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="fipan-error" class="error" for="fipan" style="display:block"></label>
+
+                        </div>
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">CIN<b style="color:red">*</b></label>
+                            <input type="text" id="txtcin" name="txtcin" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="ficin-error" class="error" for="ficin" style="display:block"></label>
+
+                        </div>
+
+                    </div><br />
+
+                    <div class="row form-group">
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">Contact Person Name<b style="color:red">*</b></label>
+                            <input type="text" id="txtcpname" name="txtcpname" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="cpname-error" class="error" for="fimob" style="display:block"></label>
+
+                        </div>
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">Contact Number<b style="color:red">*</b></label>
+                            <input type="text" id="txtcpnum" name="txtcpnum" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="cpnum-error" class="error" for="cpnum" style="display:block"></label>
+
+                        </div>
+
+                        <div class=" col-lg-4">
+
+                            <label class="control-label mb-1">Contact Person Email<b style="color:red">*</b></label>
+                            <input type="text" id="txtcpemail" name="txtcpemail" placeholder="" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                            <label id="cpemail-error" class="error" for="cpemail" style="display:block"></label>
+
+                        </div>
+
+                    </div><br />
+
+                    <div id="confirm" class="text-right">
+                        <button type="button" class="btn btn-success" id="submit">Approve</button>
+                        <button type="button" class="btn btn-danger" id="reject">Reject</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts { 
+    <script src="~/clientapp/treasurymanagement/firequest.js"></script>
+   @*  <script src="~/lib/jquery/dist/jquery.js"></script> *@
+}

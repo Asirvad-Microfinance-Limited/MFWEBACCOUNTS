@@ -1,0 +1,736 @@
+﻿@{
+    ViewData["Title"] = "PaymentAtBranch";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<style type="text/css">
+    .table tbody tr:hover {
+        background-color: #f5f5f5 !important;
+    }
+
+    table thead th {
+        color: #292b35;
+        background-color: #f2f0e8;
+    }
+
+    table, th {
+        border: 2px solid #fff !important;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    .card-body {
+        overflow: auto;
+    }
+</style>
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Payment At Branch</strong>
+            </div>
+            <div class="card-body card-block">
+
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+
+                    <div class="row form-group">
+                        <div id="typelength" class="col-lg-4">
+                            <label for="cc-payment" class="control-label mb-1">Payment Type<b style="color:red">*</b></label>
+                            <select name="ddlPayType" id="ddlPayType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                            <label id="ddlPayType-error" class="error" for="ddlPayType" style="display:block"></label>
+
+                        </div>
+
+                        <div id="checkbox" class="col-lg-2" style="display:none;">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Accumilated Months<b style="color:red">*</b></label>
+                                @*<input type="checkbox" id="acumcheck" value="1"/><br />*@
+                                <input type="text" id="accumilatedMonths" name="accumilatedMonths" placeholder="" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                            </div>
+                        </div>
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <label class="control-label mb-1">Amount<b style="color:red">*</b></label>
+                <input type="text" id="payAmt" name="payAmt" placeholder="Amount" class="form-control" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                <label id="payAmt-error" class="error" for="payAmt" style="display:block"></label>
+            </div>
+        </div>*@
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="gstcheck" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">GSTIN</label>
+                                <input type="text" id="gstin" name="gstin" placeholder="" class="form-control text-uppercase" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        @*<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="Limit" style="display:none;">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Maximum Expense Limit</label>
+                                    <input type="text" id="limit" name="limit" placeholder="" class="form-control" maxlength="15" readonly />
+                                    <label id="limit-error" class="error" for="gstin" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="Requested" style="display:none;">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Already Entered Amount</label>
+                                    <input type="text" id="requested" name="requested" placeholder="" class="form-control" maxlength="15" readonly />
+                                    <label id="requested-error" class="error" for="requested" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="Available" style="display:none;">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Balance Amount</label>
+                                    <input type="text" id="available" name="available" placeholder="" class="form-control" maxlength="15" readonly />
+                                    <label id="available-error" class="error" for="available" style="display:block"></label>
+
+                                </div>
+                            </div>*@
+                    </div>
+
+                    <div class="row form-group" id="vendordata" style="display:none;">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Vendor Name</label>
+                                <input type="text" id="vendorName" name="vendorName" placeholder="Vendor" class="form-control" maxlength="25" readonly>
+                                <label id="vendorName-error" class="error" for="vendorName" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Vendor Address</label>
+                            <input type="text" id="vendorAddress" name="vendorAddress" placeholder="Vendor Address" class="form-control" readonly maxlength="100">
+                            <label id="vendorAddress-error" class="error" for="vendorAddress" style="display:block"></label>
+
+                        </div>
+                    </div>
+                    <div class="card" id="itemdata" style="display:none">
+                        <div class="card-header">
+                            <strong class="card-title">Add Item</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <label for="cc-Item" class="control-label mb-1">Item<b style="color:red">*</b></label>
+                                    <select name="ddlPRItem" id="ddlPRItem" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlPRItem-error" class="error" for="ddlPRItem" style="display:block"></label>
+
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">HSN/SAC Code</label>
+                                        <input type="text" id="hsncode" name="hsncode" placeholder="HSN code" class="form-control" maxlength="10" readonly>
+                                        <label id="hsncode-error" class="error" for="hsncode" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">TAX Rate(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="taxRate" name="taxRate" placeholder="Tax Rate" class="form-control" maxlength="2" readonly>
+                                        <label id="taxRate-error" class="error" for="taxRate" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">TAX <b style="color:red">*</b></label>
+                                        <input type="text" id="taxRateamt" name="taxRateamt" placeholder="Tax Rate" class="form-control" maxlength="5" readonly>
+                                        <label id="taxRateamt-error" class="error" for="taxRateamt" style="display:block"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Quantity<b style="color:red">*</b></label>
+                                        <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <label id="quantity-error" class="error" for="quantity" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Unit Amount<b style="color:red">*</b></label>
+                                        <input type="text" id="unitAmount" name="unitAmount" placeholder="Unit Amount" class="form-control" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <label id="unitAmount-error" class="error" for="unitAmount" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Total</label>
+                                        <input type="text" id="total" name="total" placeholder="Total" class="form-control" maxlength="6" readonly>
+                                        <label id="total-error" class="error" for="total" style="display:block"></label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">SGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="sgst" name="sgst" placeholder="SGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="sgst-error" class="sgst" for="sgst" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">SGST</label>
+                                        <input type="text" id="sgstamt" name="sgstamt" placeholder="SGST" class="form-control" maxlength="5" readonly>
+                                        <label id="sgstamt-error" class="sgst" for="sgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">CGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="cgst" name="cgst" placeholder="CGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="cgst-error" class="error" for="cgst" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">CGST</label>
+                                        <input type="text" id="cgstamt" name="cgstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                                        <label id="cgstamt-error" class="error" for="cgstamt" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">IGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="igst" name="igst" placeholder="IGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="igst-error" class="error" for="igst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">IGST</label>
+                                        <input type="text" id="igstamt" name="igstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                                        <label id="igstamt-error" class="error" for="igstamt" style="display:block"></label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Net GST</label>
+                                        <input type="text" id="netgst" name="netgst" placeholder="Net GST" class="form-control" maxlength="6" readonly>
+                                        <label id="netgst-error" class="error" for="netgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Net Amount</label>
+                                        <input type="text" id="netamt" name="netamt" placeholder="Net Amount" class="form-control" maxlength="6" readonly>
+                                        <label id="netamt-error" class="error" for="netamt" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" id="addItem">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" id="electricity" style="display:none">
+                        <div class="card-header">
+                            <strong class="card-title">READING DETAILS</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row form-group">
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Open Reading<b style="color:red">*</b></label>
+                                        <input type="text" id="openReading" name="openReading" placeholder="" class="form-control" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <label id="openReading-error" class="error" for="openReading" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Close Reading<b style="color:red">*</b></label>
+                                        <input type="text" id="closeReading" name="closeReading" placeholder="" class="form-control" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <label id="closeReading-error" class="error" for="closeReading" style="display:block"></label>
+                                    </div>
+                                </div>
+                                @*<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label mb-1">From Date<b style="color:red">*</b></label>
+                            <input type="date" id="efromDate" name="fromDate" placeholder="" class="form-control" />
+                            <label id="fromDate-error" class="error" for="fromDate" style="display:block"></label>
+
+                        </div>
+                    </div>*@
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1">
+                                    <div class="form-group">
+                                        <label for="datepicker" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                        <input class="form-control datepicker " id="efromDate" name="efromDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                        <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                                    </div>
+                                </div>
+                                @*<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label mb-1">To Date<b style="color:red">*</b></label>
+                            <input type="date" id="etoDate" name="etoDate" placeholder="" class="form-control" />
+                            <label id="etoDate-error" class="error" for="etoDate" style="display:block"></label>
+
+                        </div>
+                    </div>*@
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container2">
+                                    <div class="form-group">
+                                        <label for="datepicker" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                        <input class="form-control datepicker " id="etoDate" name="etoDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                        <label id="dtFromDate-error" class="error" for="etoDate" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Consumption Unit</label>
+                                        <input type="text" id="unitconsumed" name="unitconsumed" placeholder="" class="form-control" maxlength="4" readonly>
+                                        <label id="unitconsumed-error" class="error" for="unitconsumed" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Months</label>
+                                        <input type="text" id="emonthsadd" name="emonthsadd" placeholder="" class="form-control" maxlength="4" readonly>
+                                        <label id="emonthsadd-error" class="error" for="unitconsumed" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group" style="display:none;">
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">SGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="esgst" name="esgst" placeholder="SGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="esgst-error" class="error" for="esgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">SGST</label>
+                                        <input type="text" id="esgstamt" name="esgstamt" placeholder="SGST" class="form-control" maxlength="5" readonly>
+                                        <label id="esgstamt-error" class="error" for="esgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">CGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="ecgst" name="ecgst" placeholder="CGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="ecgst-error" class="error" for="ecgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">CGST</label>
+                                        <input type="text" id="ecgstamt" name="ecgstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                                        <label id="ecgstamt-error" class="error" for="ecgstamt" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">IGST(%)<b style="color:red">*</b></label>
+                                        <input type="text" id="eigst" name="eigst" placeholder="IGST" class="form-control" maxlength="2" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" readonly>
+                                        <label id="eigst-error" class="error" for="eigst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">IGST</label>
+                                        <input type="text" id="eigstamt" name="eigstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                                        <label id="eigstamt-error" class="error" for="eigstamt" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Total Bill Amount<b style="color:red">*</b></label>
+                                        <input type="text" id="electtotamt" name="electtotamt" placeholder="" class="form-control" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <label id="electtotamt-error" class="error" for="electtotamt" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Total GST</label>
+                                        <input type="text" id="etotalgst" name="etotalgst" placeholder="" class="form-control" maxlength="6" readonly>
+                                        <label id="etotalgst-error" class="error" for="etotalgst" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Gross Amount</label>
+                                        <input type="text" id="enetamount" name="enetamount" placeholder="" class="form-control" maxlength="6" readonly>
+                                        <label id="enetamount-error" class="error" for="enetamount" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" id="addElectricity">Add</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                <th class="VCol" style="text-align:left;">ITEM ID</th>
+                                                <th class="VCol" style="text-align:left;">ITEM NAME</th>
+                                                <th class="VCol" style="text-align:left;">UNIT PRICE</th>
+                                                <th class="VCol" style="text-align:left;">QUANTITY</th>
+                                                <th class="VCol" style="text-align:left;">AMOUNT</th>
+                                                <th class="VCol" style="text-align:left;">TAX</th>
+                                                <th class="VCol" style="text-align:left;">SGST</th>
+                                                <th class="VCol" style="text-align:left;">CGST</th>
+                                                <th class="VCol" style="text-align:left;">IGST</th>
+                                                <th class="VCol" style="text-align:left;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="paymenttabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div class="text-right" id="confdiv" style="display:none;">
+                                <button type="button" class="btn btn-success" id="addConfirm">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="others" style="display:none">
+                        @*<div class="row form-group">
+
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">SGST(%)</label>
+                    <input type="text" id="grosssgstper" name="grosssgstper" placeholder="SGST" class="form-control" maxlength="5" readonly>
+                    <label id="grosssgstper-error" class="error" for="grosssgstper" style="display:block"></label>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">SGST</label>
+                    <input type="text" id="grosssgstamt" name="grosssgstamt" placeholder="SGST" class="form-control" maxlength="5" readonly>
+                    <label id="grosssgstamt-error" class="error" for="grosssgst" style="display:block"></label>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">CGST(%)</label>
+                    <input type="text" id="grosscgstper" name="grosscgstper" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                    <label id="grosscgstper-error" class="error" for="grosscgstper" style="display:block"></label>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">CGST</label>
+                    <input type="text" id="grosscgstamt" name="grosscgstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                    <label id="grosscgstamt-error" class="error" for="grosscgstamt" style="display:block"></label>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">IGST(%)</label>
+                    <input type="text" id="grossigstper" name="grossigstper" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                    <label id="grossigstper-error" class="error" for="grossigstper" style="display:block"></label>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">IGST</label>
+                    <input type="text" id="grossigstamt" name="grossigstamt" placeholder="CGST" class="form-control" maxlength="5" readonly>
+                    <label id="grossigstamt-error" class="error" for="grossigstamt" style="display:block"></label>
+
+                </div>
+            </div>
+        </div>*@
+
+                        <div class="row form-group" id="readingdetails" style="display:none">
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container3">
+                                <div class="form-group">
+                                    <label for="datepicker" class=" form-control-label mb-1">From Date</label>
+                                    <input class="form-control datepicker " id="itmfrmdt" name="itmfrmdt" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="etoDate" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container4">
+                                <div class="form-group">
+                                    <label for="datepicker" class=" form-control-label mb-1">To Date</label>
+                                    <input class="form-control datepicker " id="itmtodt" name="itmtodt" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="itmtodt" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Open Reading</label>
+                                    <input type="text" id="eopen" name="eopen" placeholder="" class="form-control text-uppercase" maxlength="10" readonly>
+                                    <label id="eopen-error" class="error" for="eopen" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Close Reading</label>
+                                    <input type="text" id="eclose" name="eclose" placeholder="" class="form-control text-uppercase" maxlength="10" readonly>
+                                    <label id="eclose-error" class="error" for="eclose" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Unit Consumed</label>
+                                    <input type="text" id="eunitconsumed" name="eunitconsumed" placeholder="" class="form-control text-uppercase" maxlength="10" readonly>
+                                    <label id="eunitconsumed-error" class="error" for="eunitconsumed" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Months</label>
+                                    <input type="text" id="emonths" name="emonths" placeholder="" class="form-control" maxlength="4" readonly>
+                                    <label id="emonths-error" class="error" for="emonths" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Total Amount<b style="color:red">*</b></label>
+                                    <input type="text" id="totalamt" name="totalamt" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="totalamt-error" class="error" for="totalamt" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Total GST<b style="color:red">*</b></label>
+                                    <input type="text" id="grossGST" name="grossGST" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="grossGST-error" class="error" for="grossGST" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Gross Amount</label>
+                                    <input type="text" id="grossamt" name="grossamt" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="grossamt-error" class="error" for="grossamt" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Number</label><b style="color:red">*</b>
+                                    <input type="text" id="billno" name="billno" placeholder="" class="form-control text-uppercase" maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-Z0-9.,#$%^&*()\-_=+! ]/g, ''">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container5">
+                                <div class="form-group">
+                                    <label for="datepicker" class=" form-control-label mb-1">Bill Date</label><b style="color:red">*</b>
+                                    <input class="form-control datepicker " id="dtToDate" name="dtToDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <label class="control-label mb-1">Bill Upload</label><b style="color:red">*</b><br />
+                <button type="button" class="btn btn-link" id="billupd">Capture</button>
+                <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+            </div>
+        </div>*@
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <label class="control-label mb-1">Deparment</label><b style="color:red">*</b>
+                <select name="ddldept" id="ddldept" class="form-control">
+                    <option value="0"> ------------ Select ------------ </option>
+
+                </select>
+                <input type="text" id="outnumber" name="outnumber" placeholder="Outward Number" class="form-control text-uppercase" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" readonly>
+                <label id="ddldept-error" class="error" for="ddldept" style="display:block"></label>
+            </div>
+        </div>*@
+
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label for="cc-paymethod" class="control-label mb-1">Payment Method<b style="color:red">*</b></label>
+            <select name="paymethod" id="paymethod" class="form-control">
+                <option value="0"> ------------ Select ------------ </option>
+                <option value="1"> CASH </option>
+                <option value="2"> BANK </option>
+
+            </select>
+            <label id="paymethod-error" class="error" for="paymethod" style="display:block"></label>
+
+        </div>*@
+                        <div class="row form-group">
+
+                            @*date from new*@
+
+                            <div class="row form-group" style="display:none;margin-left:3px" id="Normal_exp">
+
+                                <div class="col-lg-6 col-md-2 col-sm-4 col-xs-2" id="bs_datepicker_container10">
+                                <div class="form-group">
+                                    <label for="datepicker" id="fstdt" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                    <input class="form-control datepicker " id="fromc" name="efromDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                                </div>
+                            </div>
+                            @*date To new*@
+                                <div class="col-lg-6 col-md-2 col-sm-4 col-xs-2" id="bs_datepicker_container11">
+                                <div class="form-group">
+                                    <label for="datepicker" id="todt" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                    <input class="form-control datepicker " id="Toc" name="efromDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                                </div>
+                            </div>
+                            </div>
+
+                            @*  NEW DATE PICKER FOR ONE YEAR EXPENSE *@
+                            <div class="row form-group" style="display:none;margin-left:3px" id="yearly_exp">
+                            <div class="col-lg-6 col-md-2 col-sm-4 col-xs-2" id="bs_datepicker_container30">
+                                <div class="form-group">
+                                    <label for="datepicker"  id="Fromdtfst" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                        <input class="form-control datepicker " id="One_YearFromdt"  name="efromDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6 col-md-2 col-sm-4 col-xs-2" id="bs_datepicker_container31">
+                                <div class="form-group">
+                                    <label for="datepicker"  id="TodtSec" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                        <input class="form-control datepicker " id="One_YearTodt"  name="efromDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="efromDate" style="display:block"></label>
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-lg-8 col-md-6 col-sm-8 col-xs-8" id="remarkss">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Remarks</label><b style="color:red">*</b>
+                                    <input type="text" id="remarks" name="remarks" placeholder="" class="form-control text-uppercase" maxlength="150" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');">
+                                    <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*<div class="row form-group">
+                                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Remarks</label><b style="color:red">*</b>
+                                        <input type="text" id="remarks" name="remarks" placeholder="" class="form-control text-uppercase" maxlength="150" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');">
+                                        <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Upload</label><b style="color:red">*&nbsp;&nbsp;&nbsp;</b><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"><i class="fa fa-close fa-lg" aria-hidden="true"></i></span><br />
+                                    <button type="button" class="btn btn-link" id="billupd">&nbsp;&nbsp;Capture</button>
+                                    <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        @*<label class="control-label mb-1"> UploadBill</label><b style="color:red">*</b>*@
+                                        <INPUT id="payfile" type="file" runat="server" NAME="payFile" Width="100" multiple="multiple">
+                                        <label id="pay_uploadBill-error" class="error" for="stay_uploadBill" style="display:block"></label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div id="camsection" class="modal">
+                            <div class=" modal-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span id="closeCam" class="close">&times;</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="camera">
+                                        </div>
+                                    </div>
+
+                                    <div id="click" class="col-md-2" style="text-align: center;padding-top: 110px;">
+                                        <button type="button" id="ClickmeBtn" class="btn btn-md btn-success" value="Click Me">Click Me</button><br /><br />
+                                        <button type="button" id="ClickmeBtnSave" class="btn btn-md btn-success" value="Done">Done</button>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div id="viewUploadedImages" name="viewUploadedImages" style="position: relative;max-height: 300px;max-width: 100%;overflow: hidden;display: block;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="confirm" class="text-right" style="display:none;">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="~/ClientApp/PaymentAtBranch/paymentatbranchController.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js?v=123"></script>
+
+}

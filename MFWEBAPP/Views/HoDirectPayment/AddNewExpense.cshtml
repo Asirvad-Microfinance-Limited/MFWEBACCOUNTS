@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewData["Title"] = "AddNewExpense";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<style type="text/css">
+    .Nbtn {
+        display: block;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        border: 8px solid #e5322d;
+    }
+
+    .modal-content {
+        border: none !important;
+    }
+</style>
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Add New Expenses</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmPaymetAtBranch" id="frmAddNewExpense" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <button type="button" id="btnaddExpense" class="btn btn-danger"><i class="fa fa-plus"></i> &nbsp;Add Expense</button>
+                            <button type="button" id="btnaddSubExpense" class="btn btn-danger"><i class="fa fa-plus"></i> &nbsp;Add SubExpense </button>
+                        </div>
+                    </div>
+
+                    <div class="row " id="addExpenseDetails" style="display:none;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="Description">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Expense Name <b style="color:red">*</b></label>
+                                <input type="text" id="txtexpensename" name="txtexpensename" class="form-control text-uppercase" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');"/>
+                                <label id="txtexpensename-error" class="error" for="txtexpensename" style="display:none"></label>
+                            </div>
+                        </div>
+                        @*<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="Dephdlimit" style="margin-left:-15px;">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Dep-Head Limit <b style="color:red">*</b></label>
+                                <input type="text" id="txtdphdlmt" style="width:150px;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtdphdlmt" class="form-control" />
+                                <label id="txtdphdlmt-error" class="error" for="txtdphdlmt" style="display:none"></label>
+                            </div>
+                        </div>*@
+                        @*<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="cfolimit" style="margin-left:-45px;">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">CFO-Head Limit <b style="color:red">*</b></label>
+                                <input type="text" id="txtcfolmt" style="width:150px;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtcfolmt" class="form-control" />
+                                <label id="txtcfolmt-error" class="error" for="txtcfolmt" style="display:none"></label>
+                            </div>
+                        </div>*@
+                        @*<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="mdlimit" style="margin-left:-45px;">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">CFO-Head Limit <b style="color:red">*</b></label>
+                                <input type="text" id="txtmdlmt" style="width:150px;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtmdlmt" class="form-control" />
+                                <label id="txtmdlmt-error" class="error" for="txtmdlmt" style="display:none"></label>
+                            </div>
+                        </div>*@
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" @*style="margin-left:-45px;"*@>
+                            <label for="cc-ddldept" class="control-label mb-1">Expense Type<b style="color:red">*</b></label>
+                            <select name="ddlexpensetyp" id="ddlexpensetyp" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                                <option value="1"> VENDOR </option>
+                                <option value="2"> EMPLOYEE </option>
+                            </select>
+                            <label id="ddlexpensetyp-error" class="error" for="ddlexpensetyp" style="display:block"></label>
+
+                        </div>
+                        <div class="col-lg-12" style="margin-left:1080px;">
+                            <button type="button" id="btnadd1" data-dismiss="modal" aria-label="Close" class="btn btn-primary" style="width:100px;margin-top:15px;"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                        </div>
+
+                    </div>
+                    <div class="row " id="addSubExpenseDetails" style="display:none;">
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <label for="cc-ddldept" class="control-label mb-1">Select Main Expense<b style="color:red">*</b></label>
+                            <select name="ddlexpense" id="ddlexpense" class="form-control">
+                                <option value="0"> --------------------- Select --------------------- </option>
+
+                            </select>
+                            <label id="ddlexpensetyp-error" class="error" for="ddlexpensetyp" style="display:block"></label>
+
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4" id="Subexpdtl" style="margin-left:-20px;">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Sub Expense Name <b style="color:red">*</b></label>
+                                <input type="text" id="txtsubexpensename" name="txtsubexpensename" class="form-control text-uppercase"  oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');"/>
+                                <label id="txtsubexpensename-error" class="error" for="txtsubexpensename" style="display:none"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" style="margin-left:-20px;">
+
+                            <label for="cc-ddldept" class="control-label mb-1">Select Parent Account<b style="color:red">*</b></label>
+                            <select name="ddlprntacc" id="ddlprntacc" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlprntacc-error" class="error" for="ddlprntacc" style="display:block"></label>
+
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2" style="margin-left:-20px;">
+                            <label for="cc-ddldept" class="control-label mb-1">Select Sub Account<b style="color:red">*</b></label>
+                            <select name="ddlsubacc" id="ddlsubacc" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlsubacc-error" class="error" for="ddlsubacc" style="display:block"></label>
+
+                        </div>
+                        <div class="form-group" style="margin-left:16px;">
+
+                            <label for="cc-payment" class="control-label mb-1">Type <b style="color:red">*</b></label>
+                            <input type="text" id="txttype" name="txttype" class="form-control" readonly />
+                            <label id="txttype-error" class="error" for="txttype" style="display:none"></label>
+                        </div>
+                        @*Sub expense limit*@
+                        @*<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="Dephdlimit">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">Department-Head Limit <b style="color:red">*</b></label>
+                                <input type="text" id="txtdphdlmt" style="width:200px;" maxlength="7" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtdphdlmt" class="form-control" />
+                                <label id="txtdphdlmt-error" class="error" for="txtdphdlmt" style="display:none"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="cfolimit" style="margin-left:10px;">
+                            <div class="form-group">
+
+                                <label for="cc-payment" class="control-label mb-1">CFO-Head Limit <b style="color:red">*</b></label>
+                                <input type="text" id="txtcfolmt" style="width:200px;" maxlength="7" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtcfolmt" class="form-control" />
+                                <label id="txtcfolmt-error" class="error" for="txtcfolmt" style="display:none"></label>
+                            </div>
+                        </div>*@
+                        @*<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="mdlimit" style="margin-left:-45px;">
+            <div class="form-group">
+
+                <label for="cc-payment" class="control-label mb-1">MD Limit <b style="color:red">*</b></label>
+                <input type="text" id="txtmdlmt" style="width:150px;" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" name="txtmdlmt" class="form-control" />
+                <label id="txtmdlmt-error" class="error" for="txtmdlmt" style="display:none"></label>
+            </div>
+        </div>*@
+
+                        @*<div class="col-lg-12">
+                            <button type="button" id="btnadd2" data-dismiss="modal" aria-label="Close" class="btn btn-primary" style="width:100px;"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                        </div>*@
+
+                        <div class="col-lg-12" style="margin-left:1035px">
+                            <button type="button" id="btnadd2" data-dismiss="modal" aria-label="Close" class="btn btn-primary" style="width:100px;"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/ClientApp/HoDirectPayment/AddNewExpense.js"></script>
+}

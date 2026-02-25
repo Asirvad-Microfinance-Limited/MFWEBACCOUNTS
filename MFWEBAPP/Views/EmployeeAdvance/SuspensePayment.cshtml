@@ -1,0 +1,726 @@
+﻿
+@{
+    ViewData["Title"] = "SuspensePayment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">SUSPENSE PAYMENT</strong>
+        </div>
+
+        <br />
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" id="suspenserequestLink"  href="#suspenserequest" style="font-size: 15px;">Suspense Request</a></li>
+            <li><a data-toggle="tab" id="suspenserecievalLink" href="#suspenserecieval" style="font-size: 15px;">Suspense Receival</a></li>
+            <li><a data-toggle="tab" href="#suspensereversal" style="font-size: 15px;">Suspense Reversal</a></li>
+            <li><a data-toggle="tab" id="suspensebillLink" href="#suspensebill" style="font-size: 15px;">Upload Original Bill</a></li>
+            <li><a data-toggle="tab" id="moneyrtrnLink" href="#moneyrtrn" style="font-size: 15px;">Money Return</a></li>
+            @*<li><a data-toggle="tab" id="voucherLink" href="#voucher" style="font-size: 15px;">Voucher</a></li>*@
+
+        </ul>
+
+
+
+        <br />
+        <br />
+        <div class="tab-content">
+            <div id="suspenserequest" class="tab-pane fade in active">
+                <div class="col-lg-12">
+                    <div class="row form-group" id="requestrow1" name="requestrow1">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="purpose" class=" form-control-label mb-1">PURPOSE</label><b style="color:red">*</b>
+                                <input class="form-control text-uppercase " id="purpose" name="purpose" type="text" maxlength="50" placeholder="Enter the Purpose">
+                                <label id="purpose-error" class="error" for="purpose" style="display:block"></label>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="description" class=" form-control-label mb-1">DESCRIPTION</label><b style="color:red">*</b>
+                                <input type="text" placeholder="ENTER DESCRIPTION" id="description" name="description" class="form-control" maxlength="200">
+                                <label id="description-error" class="error" for="description" style="display:block"></label>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+
+
+                                <label for="amount" class=" form-control-label mb-1">AMOUNT</label><b style="color:red">*</b>
+                                <input type="text" placeholder="ENTER THE AMOUNT" id="amount" name="amount" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                                <label id="amount-error" class="error" for="amount" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row form-group" id="requestrow2" name="requestrow2">
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="cnfmamount" class=" form-control-label mb-1">CONFIRM AMOUNT</label><b style="color:red">*</b>
+                                <input type="text" placeholder="ENTER AMOUNT TO CONFIRM" id="cnfmamount" name="cnfmamount" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                                <label id="cnfmamount-error" class="error" for="amount" style="display:block"></label>
+                                <label for="lbcnfmamount" class=" form-control-label mb-1" id="lbcnfmamount" name="lbcnfmamount" style="color:red; display:none;">Amount doesn't match!!</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group" id="gstselect">
+                                <label for="agreemntfrom"> GST <span class="text-danger">*</span></label>
+                                <br />
+                                <div class="custom-control custom-radio d-inline-block">
+                                    <input type="radio" id="gstyes" name="gstselect" class="custom-control-input" value="1" />
+                                    <label class="custom-control-label" for="gstyes">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio d-inline-block">
+                                    <input type="radio" id="gstno" name="gstselect" class="custom-control-input" value="0" />
+                                    <label class="custom-control-label" for="gstno">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="gstnum" style="display:none">
+                            <div class="form-group">
+
+                                <label for="amount" class=" form-control-label mb-1">GST NUMBER</label><b style="color:red">*</b>
+                                <input type="text" placeholder="ENTER GST" id="gst" name="gst" class="form-control" maxlength="15">
+                                <label id="amount-error" class="error" for="gst" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="vendorname" style="display:none">
+                            <div class="form-group">
+
+                                <label for="amount" class=" form-control-label mb-1">VENDOR</label><b style="color:red">*</b>
+                                <input type="text" placeholder="VENDOR" id="vendor" name="vendor" class="form-control" readonly>
+                                <label id="amount-error" class="error" for="vendor" style="display:block"></label>
+                            </div>
+                        </div>*@
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group" id="tdsselect">
+                                <label for="agreemntfrom"> TDS <span class="text-danger">*</span></label>
+                                <br />
+                                <div class="custom-control custom-radio d-inline-block">
+                                    <input type="radio" id="tdsyes" name="tdsselect" class="custom-control-input" value="1" />
+                                    <label class="custom-control-label" for="tdsyes">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio d-inline-block">
+                                    <input type="radio" id="tdsno" name="tdsselect" class="custom-control-input" value="0" />
+                                    <label class="custom-control-label" for="tdsno">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="tds" style="display:none">
+                            <label for="cc-payment" class="control-label mb-1">SELECT TDS<b style="color:red">*</b></label>
+                            <select name="ddlTds" id="ddlTds" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                        </div>*@
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="cnfm amount" class=" form-control-label mb-1">UPLOAD APPROVAL </label><b style="color:red">*</b>
+                                <form action="/action_page.php">
+                                    <input type="file" id="uploadfile" name="uploadfile">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row form-group">
+                            <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px">
+                                <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px;padding:4px 10px " name="save" id="save" value="save" onclick="">@*<i class="fa fa-save "></i>*@ Confirm</button>
+                                <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px;padding:4px 20px" name="exit2" id="exit2" value="exit2" onclick=""> @*<i class="fa fa-times "></i>*@ Exit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="suspenserecieval" class="tab-pane fade">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+
+
+                        <label for="rqstsearch" style="margin-left: 35px;" class=" form-control-label mb-1">ENTER REQUEST TO SEARCH </label><b style="color:red">*</b>
+                        <select name="rqstsearchngrcvl" id="rqstsearchngrcvl" style="width: 400px; margin-left: 35px;" class=" form-control">
+                            <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                        </select>
+                        <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width:100px; margin-left:50px; " name="morercvl" id="morercvl" value="morercvl" onclick=""><i class="more "></i> More>></button>
+
+                    </div>
+
+                    <div class="row form-group" id="advancepaymentcard" style="display:none">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="PURPOSE" class=" form-control-label mb-1"> PURPOSE </label><b style="color:red">*</b>
+                                <input type="text" placeholder="PURPOSE" id="PURPOSE" name="PURPOSE" class="form-control" maxlength="100" readonly>
+                                <label id="PURPOSE-error" class="error" for="PURPOSE" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="EMPLOYEE" class=" form-control-label mb-1"> EMPLOYEE </label><b style="color:red">*</b>
+                                <input type="text" placeholder="EMPLOYEE" id="EMPLOYEE" name="EMPLOYEE" class="form-control" maxlength="100" readonly>
+                                <label id="EMPLOYEE-error" class="error" for="EMPLOYEE" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="DESCRIPTION" class=" form-control-label mb-1"> DESCRIPTION </label><b style="color:red">*</b>
+                                <input type="text" placeholder="DESCRIPTION" id="DESCRIPTION" name="DESCRIPTION" class="form-control" maxlength="100" readonly>
+                                <label id="DESCRIPTION-error" class="error" for="DESCRIPTION" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="Reqamnt" class=" form-control-label mb-1"> REQUESTED AMOUNT </label><b style="color:red">*</b>
+                                <input type="text" placeholder="Requested Amount" id="Reqamnt" name="Reqamnt" class="form-control" maxlength="100" readonly>
+                                <label id="Reqamnt-error" class="error" for="Reqamnt" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="Reqdate" class=" form-control-label mb-1"> REQUESTED DATE </label><b style="color:red">*</b>
+                                <input type="text" placeholder="Requested Date" id="Reqdate" name="Reqdate" class="form-control" maxlength="100" readonly>
+                                <label id="Reqdate-error" class="error" for="Reqdate" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="Branch" class=" form-control-label mb-1"> BRANCH </label><b style="color:red">*</b>
+                                <input type="text" placeholder="Branch" id="Branch" name="Branch" class="form-control" maxlength="100" readonly>
+                                <label id="Branch-error" class="error" for="Branch" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="Apprvdamount" class=" form-control-label mb-1"> APPROVED AMOUNT </label><b style="color:red">*</b>
+                                <input type="text" placeholder="APPROVED AMOUNT" id="Apprvdamount" name="Apprvdamount" class="form-control" maxlength="100" readonly>
+                                <label id="Apprvdamount-error" class="error" for="Apprvdamount" style="display:block"></label>
+                            </div>
+                        </div>*@
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="gstflag" style="display:none">
+                            <div class="form-group">
+
+                                <label for="GSTamount" class=" form-control-label mb-1"> GST AMOUNT </label><b style="color:red">*</b>
+                                <input type="text" placeholder="GST AMOUNT" id="GSTamount" name="GSTamount" class="form-control" maxlength="100" readonly>
+                                <label id="GSTamount-error" class="error" for="GSTamount" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="tdsflag" style="display:none">
+                            <div class="form-group">
+
+                                <label for="TDSamount" class=" form-control-label mb-1"> TDS AMOUNT </label><b style="color:red">*</b>
+                                <input type="text" placeholder="TDS AMOUNT" id="TDSamount" name="TDSamount" class="form-control" maxlength="100" readonly>
+                                <label id="TDSamount-error" class="error" for="TDSamount" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="totamount" class=" form-control-label mb-1"> APPROVED AMOUNT </label><b style="color:red">*</b>
+                                <input type="text" placeholder="TOTAL AMOUNT" id="totamount" name="totamount" class="form-control" maxlength="100" readonly>
+                                <label id="totamount-error" class="error" for="totamount" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="Recvdamount" class=" form-control-label mb-1"> RECIEVED AMOUNT </label><b style="color:red">*</b>
+                                    <input type="text" placeholder="RECIEVED AMOUNT" id="Recvdamount" name="Recvdamount" class="form-control" maxlength="100">
+                                    <label id="Recvdamount-error" class="error" for="Recvdamount" style="display:block"></label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="Balamount" class=" form-control-label mb-1"> BALANCE AMOUNT </label><b style="color:red">*</b>
+                                    <input type="text" placeholder="BALANCE AMOUNT" id="Balamount" name="Balamount" class="form-control" maxlength="100">
+                                    <label id="Balamount-error" class="error" for="Balamount" style="display:block"></label>
+                                </div>
+                            </div>*@
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="paymode" class=" form-control-label mb-1"> PAYMENT MODE </label><b style="color:red">*</b>
+                                <input type="text" placeholder="PAYMENT MODE" id="paymode" name="paymode" class="form-control" maxlength="100" readonly>
+                                <label id="paymode-error" class="error" for="paymode" style="display:block"></label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*<div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="advancepaymentcard" name="advancepaymentcard" style="margin-top: 20px; display:none;">
+                                <div class="card-body" style="background-color:#fff !important; ">
+                                    <div class="table-responsive">
+                                        <div align="center" id="paymentadvancedetailstable" name="paymentadvancedetailstable" style="position: relative; min-height: 100px; overflow: auto; ">
+                                            <table class="table" id="tblpaymentadvncdetails" name="tblpaymentadvncdetails">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="VCol" style="text-align:left;">PURPOSE</th>
+                                                        <th class="VCol" style="text-align:left;">EMPLOYEE</th>
+                                                        <th class="VCol" style="text-align:left;">DESCRIPTION</th>
+                                                        <th class="VCol" style="text-align:left;">REQUESTED AMOUNT</th>
+                                                        <th class="VCol" style="text-align:left;">REQUESTED DATE</th>
+                                                        <th class="VCol" style="text-align:left;">BRANCH</th>
+                                                        <th class="VCol" style="text-align:left;">APROVED AMOUNT </th>
+                                                        <th class="VCol" style="text-align:left;">RECIEVED AMOUNT</th>
+                                                        <th class="VCol" style="text-align:left;">BALANCE AMOUNT</th>
+                                                    </tr>
+
+                                                </thead>
+                                                <tbody id="paymentAdvancedetails"></tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="row form-group" id="cnfmdamnt" name="cnfmdamnt" style="display:none;">
+                        @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="cnfmamount" class=" form-control-label mb-1">CONFIRMED AMOUNT</label><b style="color:red">*</b>
+                                <input type="text" id="cnfimdamount" name="cnfimdamount" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" readonly>
+                                <label id="cnfmamount-error" class="error" for="amount" style="display:block"></label>
+                            </div>
+
+                        </div>*@
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group" id="remarks" name="remarks" style="display:none;">
+
+                                <label for="remarks" class=" form-control-label mb-1">REMARKS</label><b style="color:red">*</b>
+                                <input type="text" id="remarks1" name="remarks1" class="form-control" maxlength="100">
+                                <label id="cnfmamount-error" class="error" for="amount" style="display:block"></label>
+                            </div>
+
+                        </div>
+
+                        @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">*@
+
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 150vh; padding-top: 15px; display: none;" id="btn1" name="btn1">
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; padding: 4px 10px " name="confirm" id="confirm" value="confirm" onclick="">@*<i class="confirm"></i>*@ Confirm</button>
+                            <button type="reset" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px; padding: 4px 20px " name="exit1" id="exit1" value="exit1" onclick=""> @*<i class="fa fa-times "></i>*@ Exit</button>
+                        </div>
+                    </div>
+                    @*</div>*@
+                    @*</div>*@
+                </div>
+            </div>
+
+
+            <div id="suspensereversal" class="tab-pane fade">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+
+
+                        <label for="rqstsearch1" style="margin-left: 35px;" class=" form-control-label mb-1">ENTER REQUEST TO SEARCH </label><b style="color:red">*</b>
+                        <select name="rqstsearch1" id="rqstsearch1" style="width: 400px; margin-left: 35px;" class=" form-control">
+                            <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                        </select>
+
+                        <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width:100px; margin-left:50px; " name="more" id="more" value="more" onclick=""><i class="more"></i> More>></button>
+
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="suspensereversalcard" name="suspensereversalcard" style="margin-top: 20px; display:none;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="paymentadvancedetailstable" name="paymentadvancedetailstable" style="position: relative; min-height: 100px; overflow: auto; ">
+                                        <table class="table" id="tblpaymentreversaldetails" name="tblpaymentadvncdetails">
+                                            <thead>
+                                                <tr>
+                                                    <th class="VCol" style="text-align:left;">PURPOSE</th>
+                                                    <th class="VCol" style="text-align:left;">EMPLOYEE</th>
+                                                    <th class="VCol" style="text-align:left;">DESCRIPTION</th>
+                                                    <th class="VCol" style="text-align:left;">REQUESTED AMOUNT</th>
+                                                    <th class="VCol" style="text-align:left;">REQUESTED DATE</th>
+                                                    <th class="VCol" style="text-align:left;">BRANCH</th>
+                                                    <th class="VCol" style="text-align:left;">APPROVED AMOUNT </th>
+                                                    <th class="VCol" style="text-align:left;">RECEIVED AMOUNT</th>
+                                                    <th class="VCol" style="text-align:left;">BALANCE AMOUNT</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody id="paymentreversaldetails"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width:300px; margin-left:100px; display:none" name="Suspensereverse" id="Suspensereverse" value="Suspensereverse" onclick=""><i class="Suspensereverse "></i>Suspence Reverse >></button>
+                        </div>
+                        <br />
+                        <br>
+
+
+                        <div class="form-group" id="billdetails" name="billdetails" style="display:none;">
+
+                            <div class="row form-group">
+
+
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="bs_datepicker_container5_billfrom">
+                                    <div class="form-group">
+                                        <label for="datepicker" class=" form-control-label mb-1">Bill From</label><b style="color:red">*</b>
+                                        <input class="form-control datepicker datePicker_po" id="billfrom" name="billfrom" placeholder="DD/MM/YYYY" type="text" readonly />
+                                        <label id="billfrom-error" class="error" for="billfrom" style="display:block"></label>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="bs_datepicker_container5_billto">
+                                    <div class="form-group">
+                                        <label for="datepicker" class=" form-control-label mb-1">Bill To</label><b style="color:red">*</b>
+                                        <input class="form-control datepicker datePicker_po" id="billto" name="billto" placeholder="DD/MM/YYYY" type="text" readonly />
+                                        <label id="billto-error" class="error" for="billto" style="display:block"></label>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="gstinn" class=" form-control-label mb-1">GSTIN </label>
+
+                                        <input type="text" id="gstin" name="gstin" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')">
+                                        <label for="lbgstin" class=" form-control-label mb-1" id="lbgstin" name="lbgstin" style="color:red; display:none;">Invalid GST Number!!</label>
+
+                                        <label id="gstin-error" class="error" for="gstno" style="display:block"></label>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="vendorname" class="control-label mb-1">Vendor Name</label>
+                                        <input type="text" name="vendorname" id="vendorname" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="vendoraddress" class=" form-control-label mb-1">Vendor Address</label>
+                                        <input type="text" id="vendoraddress" name="vendoraddress" class="form-control" maxlength="100" readonly>
+                                        <label id="panno-error" class="error" for="panno" style="display:block"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+
+                                        <label for="totalamount" class="control-label mb-1">Total Amount</label><b style="color:red">*</b>
+                                        <input type="text" id="totalamount" name="totalamount" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="totalgst1" class="control-label mb-1">Total GST</label><b style="color:red">*</b>
+                                        <input type="text" id="totalgst" name="" class="form-control" maxlength="100" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="grossamount" class=" form-control-label mb-1">Gross Amount</label><b style="color:red">*</b>
+                                        <input type="text" id="grossamount" name="grossamount" class="form-control" maxlength="100" readonly>
+                                        <label id="expensefrom-error" class="error" for="expensefrom" style="display:block"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="balanceamount" class=" form-control-label mb-1">Return Amount</label><b style="color:red">*</b>
+                                        <input type="text" id="balanceamount" name="balanceamount" class="form-control" maxlength="100" readonly>
+                                        <label id="expenseto-error" class="error" for="expenseto" style="display:block"></label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+
+                                        <label for="billupdate" class=" form-control-label mb-1">UPLOAD ORGINAL BILL</label><b style="color:red">*</b>
+                                        @*<form action="/action_page.php">*@
+                                        <input type="file" id="billupdate" name="billupdate" runat="server" multiple="multiple">
+                                        @*</form>*@
+                                    </div>
+                                </div>
+                                <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px" id="billdetailsbtn" name="billdetailsbtn">
+                                    <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; " name="reversalconfirm" id="reversalconfirm" value="reversalconfirm" onclick=""><i class="confirm "></i> Confirm</button>
+                                    <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px;  " name="exit" id="exit" value="exit" onclick=""> <i class="times "></i> Exit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="suspensebill" class="tab-pane fade">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+
+                        <label for="rqstsearch2" style="margin-left: 35px;" class=" form-control-label mb-1">ENTER REQUEST TO SEARCH </label><b style="color:red">*</b>
+                        <select name="rqstsearch2" id="rqstsearch2" style="width: 400px; margin-left: 35px;" class=" form-control">
+                            <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                        </select>
+                        <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width:100px; margin-left:50px; " name="morebill;" id="morebill" value="morebill" onclick=""><i class="more"></i> More>></button>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="suspensebillcard" name="suspensebillcard" style="margin-top: 20px; display:none;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="paymentadvancedetailstable" name="paymentadvancedetailstable" style="position: relative; min-height: 100px; overflow: auto; ">
+                                        <table class="table" id="tablebilldetails" name="tblpaymentadvncdetails">
+                                            <thead>
+                                                <tr>
+                                                    <th class="BCol" style="text-align:left;">PURPOSE</th>
+                                                    <th class="BCol" style="text-align:left;">EMPLOYEE</th>
+                                                    <th class="BCol" style="text-align:left;">DESCRIPTION</th>
+                                                    <th class="BCol" style="text-align:left;">REQUESTED AMOUNT</th>
+                                                    <th class="BCol" style="text-align:left;">REQUESTED DATE</th>
+                                                    <th class="BCol" style="text-align:left;">BRANCH</th>
+                                                    <th class="BCol" style="text-align:left;">APPROVED AMOUNT </th>
+                                                    <th class="BCol" style="text-align:left;">RECEIVED AMOUNT</th>
+                                                    @*<th class="BCol" style="text-align:left;">BALANCE AMOUNT</th>*@
+                                                </tr>
+
+                                            </thead>
+                                            <tbody id="tblbilldetails"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="uploadbutton" style="display:none">
+                        <div class="form-group">
+
+                            <label for="cnfm amount" class=" form-control-label mb-1">UPLOAD ORIGINAL BILL </label><b style="color:red">*</b>
+                            <form action="/action_page.php">
+                                <input type="file" id="uploadfile2" name="uploadfile2">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="billbutton" style="display:none">
+                        <div class="form-group">
+                            <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px">
+                                <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; padding: 4px 10px " name="billsave" id="billsave" value="save" onclick="">@*<i class="fa fa-save "></i>*@ Confirm</button>
+                                <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px; padding: 4px 20px " name="exit3" id="exit3" value="exit3" onclick=""> @*<i class="fa fa-times "></i>*@ Exit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div id="moneyrtrn" class="tab-pane fade">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+
+                        <label for="rqstsearch3" style="margin-left: 35px;" class=" form-control-label mb-1">ENTER REQUEST TO SEARCH </label><b style="color:red">*</b>
+                        <select name="rqstsearch3" id="rqstsearch3" style="width: 400px; margin-left: 35px;" class=" form-control">
+                            <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                        </select>
+                        <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width:100px; margin-left:50px; " name="return;" id="return" value="return" onclick=""><i class="more"></i> More>></button>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="suspensemoneycard" name="suspensemoneycard" style="margin-top: 20px; display:none;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="paymentadvancedetailstable" name="paymentadvancedetailstable" style="position: relative; min-height: 100px; overflow: auto; ">
+                                        <table class="table" id="tablertrndetails" name="tblpaymentadvncdetails">
+                                            <thead>
+                                                <tr>
+                                                    <th class="DCol" style="text-align:left;">PURPOSE</th>
+                                                    <th class="DCol" style="text-align:left;">EMPLOYEE</th>
+                                                    <th class="DCol" style="text-align:left;">DESCRIPTION</th>
+                                                    <th class="DCol" style="text-align:left;">REQUESTED AMOUNT</th>
+                                                    <th class="DCol" style="text-align:left;">REQUESTED DATE</th>
+                                                    <th class="DCol" style="text-align:left;">BRANCH</th>
+                                                    <th class="DCol" style="text-align:left;">APPROVED AMOUNT </th>
+                                                    <th class="DCol" style="text-align:left;">RECEIVED AMOUNT</th>
+                                                    @*<th class="DCol" style="text-align:left;">BALANCE AMOUNT</th>*@
+                                                </tr>
+
+                                            </thead>
+                                            <tbody id="tblmoneydetails"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group" id="moneydetails" style="display:none">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="recamnt" class=" form-control-label mb-1"> RECEIVED AMOUNT </label><b style="color:red">*</b>
+                                    <input type="text" placeholder="RECEIVED AMOUNT" id="recamnt" name="recamnt" class="form-control" maxlength="100" readonly>
+                                    <label id="recamnt-error" class="error" for="recamnt" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="usedexp" class=" form-control-label mb-1"> EXPENSE </label><b style="color:red">*</b>
+                                    <input type="text" placeholder="EXPENSE" id="usedexp" name="usedexp" class="form-control" maxlength="20" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                                    <label id="usedexp-error" class="error" for="usedexp" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="balamnt" class=" form-control-label mb-1"> BALANCE AMOUNT </label><b style="color:red">*</b>
+                                    <input type="text" placeholder=" BALANCE AMOUNT" id="balamnt" name="balamnt" class="form-control" readonly>
+                                    <label id="balamnt-error" class="error" for="balamnt" style="display:block"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+
+                                <label for="cnfm amount" class=" form-control-label mb-1">UPLOAD ORIGINAL BILL </label><b style="color:red">*</b>
+                                <form action="/action_page.php">
+                                    <input type="file" id="uploadfile2" name="uploadfile2">
+                                </form>
+                            </div>
+                        </div>*@
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="returnbutton" style="display:none">
+                        <div class="row form-group">
+                            <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px">
+                                <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; padding: 4px 10px " name="returnsave" id="returnsave" value="save" onclick="">@*<i class="fa fa-save "></i>*@ Confirm</button>
+                                <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px; padding: 4px 20px " name="exit4" id="exit4" value="exit4" onclick=""> @*<i class="fa fa-times "></i>*@ Exit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <!--<div id="voucher" class="tab-pane fade">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">SELECT BRANCH<b style="color:red">*</b></label>
+                            <select name="ddlBranch" id="ddlBranch" class="form-control">
+                                <option value="0"> ------------ Select Branch------------ </option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                            <label for="rqstsearch4" style="margin-left: 35px;" class=" form-control-label mb-1">ENTER REQUEST TO SEARCH </label><b style="color:red">*</b>
+                            <select name="rqstsearch4" id="rqstsearch4" style="width: 400px; margin-left: 35px;" class=" form-control">
+                                <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin-top:20px">
+                            <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px; width:100px; margin-left:50px; " name="vouchershow;" id="vouchershow" value="vouchershow" onclick=""><i class="fa fa-print"></i> Print</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-12">-->
+                            @*<div id="printable" style="display:none;">*@
+                            <!--<div id="generatevoucherapplication" style="display:none;">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/ClientApp/SuspensePayment/SuspensePayment.js"></script>
+}
+

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "RoleUserAssign";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Assign Role </strong></div>
+            <div class="card-body card-block">
+                <form name="frmRoleUserAssign" id="frmRoleUserAssign" method="post">
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="street" class=" form-control-label">Role<b style="color:red">*</b></label>
+                            <select name="ddlRole" id="ddlRole" class=" form-control">
+                                <option value="0"> ------------- Select ------------- </option>
+
+                            </select>
+                            <label id="ddlRole-error" class="error" for="ddlRole" style="display:block"></label>
+
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="street" class=" form-control-label">User <b style="color:red">*</b></label>
+                            <select name="ddluserName" id="ddluserName" class=" form-control">
+                                <option value="0"> ------------- Select ------------- </option>
+
+                            </select>
+                            <label id="ddluserName-error" class="error" for="ddluserName" style="display:block"></label>
+
+
+                        </div>
+                        
+
+
+                        <div class="float-right" style="padding-left: 410px;">
+                            <br />
+                            <button type="submit" class="btn btn-success" id="btnAssign"  @*onclick="_roleUserAssign.AssRemRole();*@">Assign</button>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                          
+                            <button type="submit" class="btn btn-primary" id="btnRmv"  @*onclick="_roleUserAssign.AssRemRole();*@">Remove</button>
+                        </div>
+                            
+                </div>
+
+
+                        @*</div>*@
+                        <!--Table-->
+                        <br />
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+
+                                    <div class="table-responsive">
+
+                                        <div align="center" id="divroleuserassign" name="divroleuserassign" style="position: relative;max-height: 300px;min-height:100px;overflow: auto;display: block;">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--more-->
+
+                        
+
+
+
+</form>
+            </div>
+
+
+            <!--Modal-->
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+    <script src="~/ClientApp/RoleUserAssign/RoleUserAssign.Controller.js"></script>
+    <script src="~/ClientApp/RoleUserAssign/RoleUserAssign.Validator.js"></script>
+
+
+}
+

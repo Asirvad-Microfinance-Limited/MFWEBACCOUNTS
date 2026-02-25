@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <UserSecretsId>5a805f80-8387-411d-add1-5ee9f5a79ef1</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\Images\**" />
+    <Compile Remove="wwwroot\lib\bootstrap\dist\css\images\**" />
+    <Compile Remove="wwwroot\sample\**" />
+    <Content Remove="wwwroot\Images\**" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\images\**" />
+    <Content Remove="wwwroot\sample\**" />
+    <EmbeddedResource Remove="wwwroot\Images\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\css\images\**" />
+    <EmbeddedResource Remove="wwwroot\sample\**" />
+    <None Remove="wwwroot\Images\**" />
+    <None Remove="wwwroot\lib\bootstrap\dist\css\images\**" />
+    <None Remove="wwwroot\sample\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\Reporting\Class.cs" />
+    <Compile Remove="Views\TreasuryManagement\Class.cs" />
+    <Compile Remove="Views\TreasuryManagement\Index.cshtml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\TreasuryManagement\Index.cshtml" />
+    <Content Remove="Views\TreasuryManagement\Index1.cshtml" />
+    <Content Remove="Views\TreasuryManagement\LoanRepaymentchecker.cshtml" />
+    <Content Remove="wwwroot\css\paper.css" />
+    <Content Remove="wwwroot\css\Print.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\TreasuryManagement\.html" />
+    <None Remove="Views\TreasuryManagement\Loanrepaymentchecker.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\NOCApproval\" />
+    <Folder Include="Models\Response\" />
+    <Folder Include="Views\Accounts\" />
+    <Folder Include="wwwroot\ClientApp\CashDenomination\" />
+    <Folder Include="wwwroot\lib\Plugins\exportpdf\" />
+    <Folder Include="wwwroot\lib\Plugins\sweetalert\js\" />
+    <Folder Include="wwwroot\lib\Plugins\sweetalert\css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Config\Config.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\TreasuryManagement\DebenturePayment.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

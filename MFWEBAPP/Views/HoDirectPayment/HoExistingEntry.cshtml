@@ -1,0 +1,287 @@
+﻿
+@{
+    ViewData["Title"] = "HoExistingEntry";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<style type="text/css">
+    .Nbtn {
+        display: block;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        border: 8px solid #e5322d;
+    }
+
+    .modal-content {
+        border: none !important;
+    }
+</style>
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Ho Existing Entry</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+                    @*Load Entry*@
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="existingentrydiv">
+                            <label for="cc-payment" class="control-label mb-1"> Existing Entry<b style="color:red">*</b></label>
+                            <select name="existingentry" id="existingentry" class=" form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="existingentryload" style="display:none;">
+                        @*Load date*@
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">Date<b style="color:red"></b></label>
+                                <input class="form-control datepicker " id="traDate" name="dtFromDate" placeholder="DD-MMM-YYYY" type="text" readonly="readonly" />
+                                <label id="dtFromDate-error" class="error" for="dtFromDate" @*style="display:block" *@></label>
+                            </div>
+                        </div>
+                        @*Load Amount*@
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Total Amount<b style="color:red"></b></label>
+                                <input type="text" id="txtamount" name="txtamount" placeholder="Total Amount" class="form-control" readonly="readonly" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                                <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                            </div>
+                        </div>
+                        @*Load Main Expense*@
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Main Expense<b style="color:red"></b></label>
+                                <input type="text" id="txtexpense" name="txtexpense" placeholder="txtexpense" class="form-control" readonly="readonly" />
+                                <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                            </div>
+                        </div>
+                        @*Load Paid Amount*@
+                        <div id="paidamountdiv" class="col-lg-2">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Paid Amount</label>
+                                <input type="text" id="paidamt" name="paidamt" placeholder="PAID AMOUNT" class="form-control" maxlength="15" readonly>
+                                <label id="paidamt-error" class="error" for="paidamt" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+                    @*Grid View*@
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="col-md-12" id="total">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+                                    <div class="table-responsive">
+                                        <div align="center" id="hodetailsentry" name="hodetailsentry" style="position: relative;">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-6">
+                                            <div class="small-box bg-dark" style="padding-left:50px;">
+                                                <div class="inner">
+                                                    @*<i class="fa fa-inr" style="color: #f93a3a;font-size: 20px;"></i>&nbsp;<span style="font-family:Open Sans,sans-serif;margin:0;font-size: 1.50rem;" id="amttotal">0.0</span>*@
+
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*Remarks and Camera*@
+                    @*start*@
+
+                    <div class="card" id="eremarksdiv" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            <div class="row form-group">
+                                @*Total Amount Showing*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="minusamountdiv">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Amount To Be Paid</label>
+                                        <input type="text" id="minusamount" name="minusamount" placeholder="" class="form-control" maxlength="10" readonly>
+                                        <label id="minusamount-error" class="error" for="minusamount" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                @*AMOUNT Type*@
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="eamtupd">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Amount Type..?<b style="color:red">*</b></label><br />
+                                        Partial Amount&nbsp;<input type="radio" id="eamountpartial" name="eamountfull" value="1" />&nbsp;&nbsp;
+                                        Full Amount&nbsp;<input type="radio" id="eamountfull" name="eamountfull" value="0" />&nbsp;&nbsp;
+                                    </div>
+                                </div>
+
+                                @*Full Amount Div*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="efullamountdiv" style="display:none;">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Full Amount</label>
+                                        <input type="text" id="efullamount" name="efullamount" placeholder="" class="form-control" maxlength="10" readonly>
+                                        <label id="efullamount-error" class="error" for="efullamount" style="display:block"></label>
+                                    </div>
+                                </div>
+
+                                @*Partial Amount Div*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="epartialamountdiv" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="cc-payment" class="control-label mb-1">Enter Partial Amount<b style="color:red">*</b></label>
+                                        <input type="text" id="epartialamount" name="epartialamount" placeholder="AMOUNT" class="form-control" maxlength="7" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                                        <label id="etxtUserID-error" class="error" for="etxtUserID" style="display:block"></label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+                                @*Bill Date*@
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="ebs_datepicker_container1">
+                                    <div class="form-group">
+                                        <label for="edatepicker" class=" form-control-label mb-1">Date<b style="color:red">*</b></label>
+                                        <input class="form-control datepicker " id="etraDate" name="edtFromDate" placeholder="DD-MMM-YYYY" type="text"  />
+                                        <label id="edtFromDate-error" class="error" for="edtFromDate" @*style="display:block" *@></label>
+                                    </div>
+                                </div>
+                                @*Bill No*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Bill Number</label><b style="color:red">*</b>
+                                        <input type="text" id="ebillno" name="ebillno" placeholder="Enter bill no" class="form-control text-uppercase" maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-Z0-9/-]/g, '');">
+                                        <label id="ebillno-error" class="error" for="ebillno" style="display:block"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                @*Remarks*@
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Remarks<b style="color:red">*</b></label>
+                                            <input type="text" id="eremarks" name="eremarks" placeholder="Enter Remarks" class="form-control text-uppercase" maxlength="200" style="min-width: 600px;" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');"/>
+                                            <label id="etxtUserID-error" class="error" for="etxtUserID" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:right">
+                                    <button type="button" id="ehopaymentsave" class="btn btn-success"><i class="fa fa-save"></i> &nbsp;Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        @*camera*@
+
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Upload</label><b style="color:red">*&nbsp;&nbsp;&nbsp;</b><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"><i class="fa fa-close fa-lg" aria-hidden="true"></i></span><br />
+                                    <button type="button" class="btn btn-link" id="billupd">&nbsp;&nbsp;Capture</button>
+                                    <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        @*<label class="control-label mb-1"> UploadBill</label><b style="color:red">*</b>*@
+                                        <INPUT id="payfile" type="file" runat="server" NAME="payFile" Width="100" multiple="multiple">
+                                        <label id="pay_uploadBill-error" class="error" for="stay_uploadBill" style="display:block"></label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div id="camsection" class="modal">
+                            <div class=" modal-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span id="closeCam" class="close">&times;</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="camera">
+
+                                        </div>
+                                    </div>
+                                    <div id="click" class="col-md-2" style="text-align: center;padding-top: 110px;">
+                                        <button type="button" id="ClickmeBtn" class="btn btn-md btn-success" value="Click Me">Click Me</button><br /><br />
+                                        <button type="button" id="ClickmeBtnSave" class="btn btn-md btn-success" value="Done">Done</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div id="viewUploadedImages" name="viewUploadedImages" style="position: relative;max-height: 300px;max-width: 100%;overflow: hidden;display: block;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*end*@
+
+
+
+
+
+
+
+
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>*@
+    <script src="~/ClientApp/HoDirectPayment/HoExistingEntry.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js?v=123"></script>
+
+
+
+}

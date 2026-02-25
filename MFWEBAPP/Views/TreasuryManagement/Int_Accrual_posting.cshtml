@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Interest Accrual Posting";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+    <div class=" ">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fixed Deposit Interest Accrual Request</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                   @*  <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Entry Posting Date <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtfrom_dt" name="dateofpay" autocomplete="off" title="from Date" onkeypress="return false" />
+                        </div>
+                    </div> *@
+                <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDate">
+                    <div class="form-group">
+                        <label for="datepicker" class=" form-control-label mb-1">Entry Posting Date</label><b style="color:red">*</b>
+                        <input class="form-control datepicker " id="AgreeDts" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                        <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                    </div>
+                </div>
+
+                    @* <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Reversal Date <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="txtTo_dt" name="dateofpay" autocomplete="off" title="from Date" onkeypress="return false" />
+                    </div>
+                </div> *@
+
+                <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDates">
+                    <div class="form-group">
+                        <label for="datepicker" class=" form-control-label mb-1">Reversal Date </label><b style="color:red">*</b>
+                        <input class="form-control datepicker " id="AgreeDt" name="dtToDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                        <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                    </div>
+                </div>
+                           
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Select Fund Type <span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFundType" name="FundType" > </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="Sclfins">
+                            <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFi" name="FinancialInstitution" > </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group" id="Scllon">
+                            <label for="fundcat">Select Loan<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlLoans" name="Fund" > </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="divAddAccount">
+                    <div class="col-md-2" id="divintfinmainbnk" style="display:none">
+                        <label for="fundcat"> Finance Cost Main Bank <span class="text-danger">*</span></label>
+                        <div style="width:100%;">
+                            <select id="ddl_intfc_main_bnk" class="custom-select form-control" name="Select Sub Id" ></select>
+                        </div>
+                    </div>
+                    <div class="col-md-2" id="divintfinsubbnk" style="display:none">
+                        <label for="fundcat">Finance Cost Sub Bank <span class="text-danger">*</span></label>
+                        <div style="width:100%;">
+                            <select id="ddl_intfc_sub_bnk" class="custom-select form-control" name="Select Sub Id" ></select>
+                        </div>
+                    </div>
+                    <div class="col-md-2" id="divintfinsubid" style="display:none">
+                        <label for="fundcat">Finance Cost Contra Id<span class="text-danger">*</span></label>
+                        <div style="width:100%;">
+                            <select id="ddl_IfSubid" class="custom-select form-control" name="Select Sub Id"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fundcat">Accrual Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txtPayAmount" maxlength="15" class="form-control" name="PayAmount"  />
+                            </div>
+                            <small id="AmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+        </div>
+
+
+
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+    </div>
+
+
+@section Scripts{
+
+<script src="~/clientapp/treasurymanagement/int_accrual_posting.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}
+
+  
+

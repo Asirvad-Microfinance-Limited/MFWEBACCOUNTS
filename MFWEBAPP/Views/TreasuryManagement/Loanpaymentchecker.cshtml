@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "Loan";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Loan Repayment Approval </strong></div>
+
+
+            <div class="card-body card-block">
+                <button type="submit" id="excel" name="excelbtn" class="btn btn-primary" style="float: right; margin-left: 15px; padding: 2px 10px">excel</button>
+
+                <form name="frmLoanrepaymentchecker" id="frmLoanrepaymentchecker" method="get">
+
+
+
+
+                    <div class="card" id="maincard" style="margin-top: 50px;">
+                        @* <div class="card" id="maincard" style="display:none;margin-top: 20px;">*@
+
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto; display: block">
+
+                                    @*<div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto; display: block; ">*@
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+
+                                                <th class="VCol" style="text-align:left;">#</th>
+                                                <th class="VCol" style="text-align:left;">REQ_ID</th>
+                                                <th class="VCol" style="text-align:left;">FUND_TYPE</th>
+                                                <th class="VCol" style="text-align:left;">PJT_CODE</th>
+                                                <th class="VCol" style="text-align:left;">FINANCIAL_INSTITUTION</th>
+                                                <th class="VCol" style="text-align:left;">LOAN_TYPE</th>
+
+                                                <th class="VCol" style="text-align:left;">PAYMENT_TYPE</th>
+                                                <th class="VCol" style="text-align:left;">MONTH</th>
+
+                                                <th class="VCol" style="text-align:left;">YEAR</th>
+                                                <th class="VCol" style="text-align:left;">LOAN_ID</th>
+                                                <th class="VCol" style="text-align:left;">INSTALLMENT_NO.</th>
+                                                <th class="VCol" style="text-align:left;">LOAN_AMOUNT</th>
+                                                <th class="VCol" style="text-align:left;">PAY_AMOUNT</th>
+
+                                                <th class="VCol" style="text-align:left;">MAIN_BANK_A/C</th>
+                                                <th class="VCol" style="text-align:left;">SUB_BANK_A/C</th>
+
+                                                <th class="VCol" style="text-align:left;">BENEFICIARY_ACCOUNT_NAME</th>
+                                                <th class="VCol" style="text-align:left;">BENEFICIARY_ACCOUNT_NO.</th>
+                                                <th class="VCol" style="text-align:left;">IFSC</th>
+                                                <th class="VCol" style="text-align:left;">TICK</th>
+                                                @* <th class="VCol" style="text-align:left;">APPROVE</th>
+                                                <th class="VCol" style="text-align:left;">REJECT</th>
+ *@
+
+                                                <th class="VCol" style="text-align:left;display:none" id="head">REJECT REMARK</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="text" id="remarks" name="remarks" class="form-control" placeholder="Enter your remarks" style="max-width: 400px;display:none">
+                        <button type="submit" id="btnSaveBank" name="btnSave" class="btn btn-success" style="float: right; margin-left: 15px; margin-top: 60px;">
+                            CONFIRM
+                        </button>
+                        <button type="submit" id="btnreject" name="btnreject" class="btn btn-primary" style="float: right; margin-left: 15px; margin-top: 60px;">REJECT</button>
+
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<input id="hdUserId" type="hidden" runat="server" />
+<input id="hdPag" type="hidden" runat="server" />
+<input id="hdMainAcc" type="hidden" runat="server" />
+<input id="hdSubAcc" type="hidden" runat="server" />
+<input id="hdBrid" type="hidden" runat="server" />
+<input id="hdFirmId" type="hidden" runat="server" />
+<input id="hdnLoanMainAcc" type="hidden" runat="server" />
+<input id="hdnLoanSubAcc" type="hidden" runat="server" />
+<input id="hdnSubAccStatus" type="hidden" runat="server" />
+<input id="hdTotal" type="hidden" runat="server" />
+<input id="hdMainAcc1" type="hidden" runat="server" />
+
+
+
+</div>
+
+@section Scripts {
+
+    <script src="~/clientapp/treasurymanagement/loanpaymentchecker.js"></script>
+}

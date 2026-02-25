@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "ReversalRequestCancel";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Reversal Request Cancel</strong>
+        </div>
+        <br />
+        <br />
+
+        <div id="reversalrequestcancel">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-12">
+
+                    <div class="row form-group">
+                        <div class="col col-md-6 col-sm-6 col-xs-12">
+
+
+                            <label for="rvslrqstcancel" class=" form-control-label mb-1">Enter request to search </label><b style="color:red">*</b>
+                            <input type="text"style="width:300px" placeholder="Employee code  >>>  Request Id >>> Amount" id="rvslrqstcancel" name="rvslrqstcancel" class="form-control" maxlength="100">
+                            <label id="rvslrequestcancel-error" class="error" for="rvslrequestcancel-error" style="display:block"></label>
+                        </div>
+                         
+
+
+                        <div class="col col-md-6 col-sm-6 col-xs-12">
+                            <label for="reason" class=" form-control-label mb-1" style ="margin-left:100px; ">Reason</label><b style="color:red">*</b>
+                            <input type="text" placeholder="Enter the reason" id="reason" name="reason" style ="margin-left: 100px; width: 400px"class="form-control" maxlength="500">
+                            <label id="reason-error" class="error" for="reason" style="display:block"></label>
+
+                        </div>
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left:150vh; padding-top:15px">
+
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" name="confirm" id="confirm" value="confirm" onclick=""><i class="confirm "></i> Confirm</button>
+                            <button type="button" class="btn btn-danger  waves-effect btn-sm"  name="exit" id="exit" value="exit" onclick=""> <i class="times "></i> Exit</button>
+
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

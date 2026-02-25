@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "InvoiceReceipt";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Invoice Receipt</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmAccountsApproval" id="frmAccountsApproval" method="post" class="form-horizontal">
+
+                    <div class="row form-group" id="cardbody">
+
+                        @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker" id="Fdate" name="Fdate" placeholder="DD-MM-YYYY" readonly onclick="_PrintInvoice.test()">
+                                <label id="payType-error" class="error" for="payType" style="display:block"></label>
+                            </div>
+                        </div>*@
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">Select Month<b style="color:red">*</b></label>
+                                <input class="form-control datepicker" id="Tdate" name="Tdate" placeholder="Select month" readonly onclick="_InvoiceReceipt.test()">
+                                <label id="payType-error" class="error" for="payType" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Select Vendor<b style="color:red">*</b></label>
+                            <select name="ddlVendor" id="ddlVendor" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Select Invoice<b style="color:red">*</b></label>
+                            <select name="ddlInvoice" id="ddlInvoice" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Total Amount<b style="color:red">*</b></label>
+                                <input type="text" id="totamount" name="totamount" placeholder="Total Amount" class="form-control" maxlength="15" readonly>
+                                <label id="payType-error" class="error" for="payType" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Enter Receiving Amount<b style="color:red">*</b></label>
+                                <input type="text" id="amount" name="amount" placeholder="Enter Receiving Amount" class="form-control" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                                <label id="payType-error" class="error" for="payType" style="display:block"></label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">TDS<b style="color:red">*</b></label>
+                                <input type="text" id="tds" name="tds" placeholder="TDS" class="form-control" maxlength="15" readonly>
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Remarks<b style="color:red">*</b></label>
+                                <input type="text" id="Remarks" name="Remarks" placeholder="Remarks" class="form-control" maxlength="100">
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+                            </div>
+                        </div>
+
+                    </div>
+
+             
+                    <div class="text-right" >
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                        <button type="button" class="btn btn-danger" id="exit">Exit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/ServiceFee/InvoiceReceipt.js"></script>
+}

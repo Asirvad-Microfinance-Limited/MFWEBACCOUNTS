@@ -1,0 +1,857 @@
+﻿@model MFWEBAPP.Models.EquifaxReport.EquifaxModel;
+
+
+
+@{
+    ViewData["Title"] = "GetEqufaxCibilDeatails";
+    Layout = "";
+}
+
+    <link href="~/lib/bootstrap/dist/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/assets/css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+          
+                <div class="container" style="color:#000000;">
+                <page style="background: white;display: block;margin: 0 auto;margin-bottom: 0.5cm;box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);width: 30cm;height: 75.7cm; ">
+                    <h1 style="font-size: xx-large;padding-top: 9px;text-align: center;color:#ffffff;background:#7676a0;padding-bottom:9px;font-family:segoe ui semibold">EQUIFAX CREDIT BUREAU REPORT</h1>
+                    <div align="center">
+                        <table class="table" style="width:96%;border:1px solid;margin-top:10px;border-color:#7676a0;color:black;">
+                            <tr style="border:1px solid;background:#cfcfe0">
+                                <th style="font-size:10px;border-color:#7676a0;">ClientID: </th>
+                                <td style="font-size:10px;border-color:#7676a0;">@Model.temperaturesInquiryResponseHeader.ClientId</td>
+                                <th style="font-size:10px;border-color:#7676a0;">ReferenceNo/LoanApplnNo:</th>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <th style="font-size:10px;border-color:#7676a0;">ReportOrderNO:</th>
+                                <td style="font-size:10px;border-color:#7676a0;">@Model.temperaturesInquiryResponseHeader.ReportOrderNo</td>
+                                <th style="font-size:10px;border-color:#7676a0;">ReportDate: </th>
+                                <td style="font-size:10px;border-color:#7676a0;">@Model.temperaturesInquiryResponseHeader.Date</td>
+                                <th style="font-size:10px;border-color:#7676a0;">Time:</th>
+                                <td style="font-size:10px;border-color:#7676a0;">@Model.temperaturesInquiryResponseHeader.Time</td>
+                            </tr>
+
+
+                        </table>
+                        <table  style="width:96%;margin-top:10px;border-color:#7676a0;color:black;">
+                            <tr>
+                                <th colspan="2" style="text-align:Left">Consumer Name : @Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.Name.FullName </th>
+
+                            </tr>
+                        </table>
+
+                        <table style="width:96%;border:1px solid;margin-top:10px;border-color:#7676a0;color:black;">
+
+                            <tr style="border:1px solid;background:#cfcfe0">
+                                <th colspan="2" style="text-align:Left">Personal Information</th>
+                                <th colspan="2" style="text-align:Left">Family Details</th>
+                                <th colspan="2" style="text-align:Left">Identification</th>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Previous Name</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  </td>
+                                <td style="font-size:10px;border-color:#7676a0;font-size:10px;">H</td>
+
+                                <td style="text-align:Left" ;font-size:10px;>:&nbsp;</td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Voter ID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Alias Name</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@*@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.AliasName*@</td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>No. Of Dependents</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Ration card</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>DOB</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.DateOfBirth</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                @for (int l = 0; l < Model.PanIdInfoCount; l++)
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>PAN card</b></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.IdentityInfo.PanId[l].IdNumber</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Age</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.Age.AgeAge</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>UID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Gender</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.Gender</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Phone</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Marital status</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.PersonalInfo.MaritalStatus</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left"></td>
+                                @for (int m = 0; m < Model.OtherIdInfoCount; m++)
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>Other </b></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.IdentityInfo.OtherId[m].IdNumber</td>
+                                }
+                            </tr>
+                        </table>
+
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Consumer Address</b></h4>
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black;">
+
+                            @*<tr>
+                <th style="font-size:18px;">Consumer Address</th>
+            </tr>*@
+
+                            <tr style="border:1px solid;background:#cfcfe0">
+                                <th>Type</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>Postal</th>
+                                <th>Reported Date</th>
+                            </tr>
+                            @for (int h = 0; h < Model.AddrInfoCount; h++)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.AddressInfo[h].Address</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.AddressInfo[h].State</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.AddressInfo[h].Postal</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IdAndContactInfo.AddressInfo[h].ReportedDate</td>
+                                </tr>
+                            }
+
+                        </table>
+
+                        @*<table style="width:96%;margin-top:10px;border-color:#7676a0;">*@
+                        @*<tr>
+            <th style="font-size:18px;">Account Information</th>
+        </tr>
+        <tr>
+            <th colspan="6">Accounts Summary</th>
+        </tr>*@
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Account Information</b></h4>
+
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black">
+
+                            <tr style="background:#cfcfe0;border:1px solid black">
+                                <td style="background:#cfcfe0;">
+                                    <b>
+                                        Account Information
+                                    </b>
+
+
+                                </td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Non-Own Open MFI > 1</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Balance > 125000.00</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 130px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Pastdue Accounts>=1</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Open Accounts</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Open Accounts -Own</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 130px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Open Accounts Non-Own</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of PastDue Accounts</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountsSummary.NoOfPastDueAccounts</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of PastDue Accounts-Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 130px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of PastDue Accounts -Non-Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Writtenoff Accounts</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Writtenoff Accounts-Own</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 130px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Num of Writtenoff Accounts -Non-Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Sum Outstanding Balance</b></ td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Sum Outstanding Balance -Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Sum Outstanding Balance -Non-Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b> Total PastDue Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountsSummary.TotalPastDue</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Total PastDue Amount - Own</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Total PastDue Amount -Non-Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"> <b>Total Written-off Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountsSummary.TotalWrittenOffAmount</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Total Written-off Amount -Own</b> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Total Written-off Amount -Non-Own:</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';padding-right: 45px;">:</td>
+                                <td style="text-align:Left" ;font-size:10px;></td>
+
+
+                        </table>
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Account Details</b></h4>
+
+                        @for (int i = 0; i < Model.MicrofinanceAccountDetailsCount; i++)
+                        {
+                            @*@for (int j = 0; i < Model.MFIAddressCount; j++)
+            {*@
+
+                            @*<table style="width:96%;margin-top:10px;border-color:#7676a0;">*@
+                            @*<tr>
+                <th colspan="8">Account Detail</th>
+            <tr>*@
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black;">
+
+                            <tr style="background:#cfcfe0;border:1px solid black">
+        <td colspan="18" style="background:#cfcfe0;">
+            <b>
+                Account Detail
+            </b>
+
+
+        </td>
+        
+
+                            @*</tr>*@
+                           
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Name</b></td>
+
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiClientFullname</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>DOB</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.Mfidob</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"> <b>Gender</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiGender</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b> PIN</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiAddress[0].Postal</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Seq</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiAddress[0].Seq</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Address</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiAddress[0].Address</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>State</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiAddress[0].State</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Ration Card</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Voter ID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;  </td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                @if (@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiIdentification.OtherId != null)
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>Other ID</b></td>
+
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiIdentification.OtherId[0].IdNumber</td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                }
+
+                                else
+
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>Other ID</b></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; </td>
+
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                }
+                                @if (@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiIdentification.PanId != null)
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>PAN</b></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AdditionalMfiDetails.MfiIdentification.PanId[0].IdNumber</td>
+
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                    <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                }
+                                else
+                                {
+                                    <td style="font-size:10px;border-color:#7676a0;"><b>PAN</b></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; </td>
+
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                    <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+                                }
+
+
+
+                            </tr>
+
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Branch ID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].BranchIdmfi</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Kendra ID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].KendraIdmfi</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Account Number</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AccountNumber</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Current Balance</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp; @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].CurrentBalance</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Status</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AccountStatus</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Reported</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DateReported</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Institution</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].Institution</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Past Due Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].PastDueAmount</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Disbursed Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DisbursedAmount</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Opened</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DateOpened</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Loan Category</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].LoanCategory</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Last Payment</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Last Payment Date</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].LastPaymentDate</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Closed</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DateClosed</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Loan Purpose</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">: @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].LoanPurpose</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Write Off Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Reason</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].Reason</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Written Off</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Loan Cycle ID</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">: @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].LoanCycleId</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Repayment Tenure</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">: @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].RepaymentTenure</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Sanction Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">: @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].SanctionAmount</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Sanctioned</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DateSanctioned</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>No Of Installments</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].NoOfInstallments</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Installment Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">: @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].InstallmentAmount</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Applied Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].AppliedAmount</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Date Applied</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].DateApplied</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>KeyPerson Name</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].KeyPerson.Name</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>KeyPerson Relationship</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[i].KeyPerson.RelationType</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Nominee Name</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:  </td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Nominee Relation</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+
+                            @*<tr>
+            <td style="font-size:10px;border-color:#7676a0;">Key</td>
+
+        </tr>
+        <tr>
+            <td style="font-size:10px;border-color:#7676a0;"> @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[0].History24Months[a].Key</td>
+        </tr>*@
+                            @*<tr style="border:1px solid;background:#cfcfe0"></tr>*@
+                            <tr>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Key</b></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                @for (int a = 0; a < Model.History24MonthsCount; a++)
+                                {
+
+
+
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"> @Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[0].History24Months[a].Key</td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                                }
+
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Payment Status</b></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                                @for (int a = 0; a < Model.History24MonthsCount; a++)
+                                {
+
+
+
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.MicrofinanceAccountDetails[0].History24Months[a].PaymentStatus</td>
+                                    <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+
+                                }
+                                <td style="font-size:10px;border-color:#7676a0;"> </td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+
+                        </table>
+
+
+
+
+                        }
+
+
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Enquiries</b></h4>
+
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black;">
+
+
+
+                            <tr style="border:1px solid;background:#cfcfe0">
+                                <th>Institution</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Request Purpose</th>
+                                <th>Amount</th>
+                            </tr>
+                            @for (int b = 0; b < Model.EnqCount; b++)
+                            {
+                                <tr>
+
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.Enquiries[b].Institution</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.Enquiries[b].Date</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.Enquiries[b].Time</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.Enquiries[b].RequestPurpose</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.Enquiries[b].Amount</td>
+                                </tr>
+                            }
+
+                        </table>
+
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Income Details</b></h4>
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black;">
+
+                            <tr style="border:1px solid;background:#cfcfe0">
+                                <th>Occupation</th>
+                                <th>Monthly Income</th>
+                                <th>Monthly Expense</th>
+                                <th>Poverty Index</th>
+                                <th>Asset Ownership</th>
+                                <th>Reported Date</th>
+                            </tr>
+                            @for (int c = 0; c < Model.IncomeDtlsCount; c++)
+                            {
+                                <tr>
+
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IncomeDetails[c].Occupation</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IncomeDetails[c].MonthlyExpense</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IncomeDetails[c].AssetOwnership</td>
+                                    <td style="text-align:Left;font: 10px 'Open Sans';">@Model.ccrResponse.CirReportDataLst[0].CirReportData.IncomeDetails[c].ReportedDate</td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+                        <h4 style="text-align:left;padding-left:20px;padding-top:12px;"><b>Input Enquiry</b></h4>
+
+                        <table style="width:96%;margin-top:10px;border-color:#7676a0;border:1px solid black;color:black">
+
+
+                            <tr style="background:#cfcfe0;border:1px solid black">
+                                <td style="background:#cfcfe0;">
+                                    <b>
+                                        Input Enquiry
+                                    </b>
+
+
+                                </td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                                <td style="background:#cfcfe0"></td>
+                            </tr>
+                            <tr>
+
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Full Name</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.FirstName</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>VotersId</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.IdDetails[1].IdValue</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>State</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.InquiryAddresses[0].State</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>DOB</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.Dob</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>AdditionalId 1</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Transaction Amount</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Gender</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Inquiry Purpose</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.InquiryPurpose</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Postal</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.InquiryAddresses[0].Postal</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Ration Card</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>PAN</td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.IdDetails[0].IdValue</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>DL No</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>AdditionalId 2</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Passport No</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>H</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Mobile</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>Home Phone</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+
+                            </tr>
+                            <tr>
+                                <td style="font-size:10px;border-color:#7676a0;"><b>AddrLine 1</b></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';">:&nbsp;@Model.temperaturesInquiryRequestInfo.InquiryAddresses[0].AddressLine1</td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+                                <td style="text-align:Left;font: 10px 'Open Sans';"></td>
+                                <td style="font-size:10px;border-color:#7676a0;"></td>
+
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </page>
+                    </div>
+                @*<page style="background: white;display: block;margin: 0 auto;margin-bottom: 0.5cm;box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);width: 21cm;height: 29.7cm; ">
+                </page>
+                <page style="background: white;display: block;margin: 0 auto;margin-bottom: 0.5cm;box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);width: 21cm;height: 29.7cm; ">
+                </page>*@
+            
+   
+

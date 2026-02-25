@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "FundTransferApprove";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fund Transfer Approval</strong>
+            </div>
+            <div class="card-body">
+                <form name=" " id=" " method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundcat">Select Fund Transfer Request<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_Reqst" name="Request" onchange="getFITableDtls();getFIbankTableDtls();"> </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-2" style="display:none" id="head1">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="card-title"><strong>From Bank Details</strong></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">BANK Name</th>
+                                                <th class="VCol" style="text-align:left;">BARNCH Name</th>
+                                                <th class="VCol" style="text-align:left;">Bank ACC NO</th>
+                                                <th class="VCol" style="text-align:left;">IFSC Code</th>
+                                                <th class="VCol" style="text-align:left;">TFR Amount</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-2" style="display:none" id="head2">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="card-title"><strong>To Bank Details</strong></h4>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card" id="maincards" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">BANK Name</th>
+                                                <th class="VCol" style="text-align:left;">BARNCH Name</th>
+                                                <th class="VCol" style="text-align:left;">Bank Acc No</th>
+                                                <th class="VCol" style="text-align:left;">IFSC Code</th>
+                                                <th class="VCol" style="text-align:left;">TFR Amount</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabls"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @* 
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <label for="agreemntfrom">Approval Status<span class="text-danger">*</span></label><br />
+                                <input type="radio" id="radAppr" name="radcheck" class="custom-control-input" style="cursor:pointer" onclick="ShowHideDiv()">
+                                <label class="custom-control-label" for="radAppr" style="cursor:pointer">Approve</label>
+                                &nbsp;
+                                <input type="radio" id="radRjct" name="radcheck" class="custom-control-input" style="cursor:pointer" onclick="ShowHideDiv()">
+                                <label class="custom-control-label" for="radRjct" style="cursor:pointer">Reject</label>
+                                <div id="dvtext" style="display: none">
+                                    <label for="fundsubcat">Reason<span class="text-danger">*</span> </label>
+                                    <input type="text" maxlength="500" id="txt_reason" name="reason" onclick="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row form-group">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="agreemntfrom">Approval Status<span class="text-danger">*</span></label><br />
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                        <div>
+                                            <input type="radio" id="radAppr" name="radcheck" value="louie" />
+                                            <label for="louie">Approve</label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                        <div>
+                                            <input type="radio" id="radRjct" name="radcheck" value="louie" />
+                                            <label for="louie">Reject</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dvtext" style="display: none">
+                        <label for="fundsubcat">Reason<span class="text-danger">*</span> </label>
+                        <input type="text" maxlength="500" id="txt_reason" name="reason" onclick="" />
+                    </div>
+
+
+                    @* <div class="row" id="dvtext" style="display:none">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fundsubcat">Reason<span class="text-danger">*</span></label>
+                                    <input type="text" id="txt_reason" name="reason" maxlength="500" />
+                                </div>
+                            </div>
+                        </div> *@
+
+                </form>
+            </div>
+
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/fundtransferappr.js"></script>
+}
+
+
+

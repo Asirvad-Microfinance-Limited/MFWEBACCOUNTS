@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" id="rptHeadName"><strong> REPORTS </strong></div>
+            <div class="card-body card-block">
+                <form name="frmMicroReport" id="frmMicroReport" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Reports<b style="color:red">*</b></label>
+                                <select name="ddlMicrRptName" id="ddlMicrRptName" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                </select>
+                                <label id="ddlMicrRptName-error" class="error" for="ddlMicrRptName" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container1" style="display: none;">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker " id="dtFromDate" name="dtFromDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="dtFromDate-error" class="error" for="dtFromDate" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container2" style="display: none;">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                <input class="form-control datepicker " id="dtToDate" name="dtToDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="dtToDate-error" class="error" for="dtToDate" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivddlDynCombo1" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDynCombo1" class="control-label mb-1">statys<b style="color:red">*</b></label>
+                                <select name="ddlDynCombo1" id="ddlDynCombo1" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                </select>
+                                <label id="ddlDynCombo1-error" class="error" for="ddlDynCombo1" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivddlDynCombo2" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDynCombo2" class="control-label mb-1">Select<b style="color:red">*</b></label>
+                                <select name="ddlDynCombo2" id="ddlDynCombo2" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                </select>
+                                <label id="ddlDynCombo2-error" class="error" for="ddlDynCombo2" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivddlDynCombo3" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDynCombo3" class="control-label mb-1"><b style="color:red">*</b></label>
+                                <select name="ddlDynCombo3" id="ddlDynCombo3" class="form-control">
+                                    <option value="0"> --------- Select --------- </option>
+                                </select>
+                                <label id="ddlDynCombo3-error" class="error" for="ddlDynCombo3" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivtxtDyn1" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDyn1" class="control-label mb-1"><b style="color:red">*</b></label>
+                                <input type="text" class="form-control" placeholder="" id="txtDyn1" name="txtDyn1" maxlength="16" />
+                                <label id="txtDyn1-error" class="error" for="txtDyn1" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivtxtDyn2" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDyn2" class="control-label mb-1"><b style="color:red">*</b></label>
+                                <input type="text" class="form-control" placeholder="" id="txtDyn2" name="txtDyn2" maxlength="16" />
+                                <label id="txtDyn2-error" class="error" for="txtDyn2" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="DivtxtDyn3" style="display: none;">
+                            <div class="form-group">
+                                <label for="cc-payment" id="lblDyn3" class="control-label mb-1"><b style="color:red">*</b></label>
+                                <input type="text" class="form-control" placeholder="" id="txtDyn3" name="txtDyn3" maxlength="16" />
+                                <label id="txtDyn3-error" class="error" for="txtDyn3" style="display:block"></label>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 btnwrap">
+                            <br />
+                            <button type="button" id="btnMicroSubmit" name="btnMicroSubmit" class="btnsmall btn-danger"> <i class="fa fa-eye" style="font-size:20px;margin-top: 4px;" title="view"></i></button>
+                            <button type="button" id="btnexport" name="btnexport" class="btnsmall btn-danger"> <i class="fa  fa-file-excel-o" style="font-size:20px;margin-top: 4px;" title="excel"></i></button>
+                            <button type="button" id="btnPdf" name="btnPdf" class="btnsmall btn-danger"> <i class="fa  fa-file-pdf-o" style="font-size:20px;margin-top: 4px;" title="PDF"></i></button>
+                        </div>
+                        @*<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                        <br />
+                        <button type="button" id="btnexport" name="btnexport" class="btnsmall btn-danger"> <i class="fa  fa-file-excel-o" style="font-size:20px;margin-top: 4px;"></i></button>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                        <br />
+                        <button type="button" id="btnPdf" name="btnPdf" class="btnsmall btn-danger"> <i class="fa  fa-file-pdf-o" style="font-size:20px;margin-top: 4px;"></i></button>
+                        </div>*@
+                    </div>
+                    <!--Table-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;min-height:250px">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+                                    <div id="exportpdf">
+                                        <div class="row">
+                                            <H4 style="text-align:center;margin-left:25px;margin-left:408px;font-weight:bold;" class="form-control-label" id="Heading"></H4>
+                                        </div>
+                                        <fieldset id="custDetailsDiv" style="width:100%;background-color:#d4d2cb;  margin-bottom:10px;">
+                                            <legend class="legendcls"></legend>
+                                            <div class="row " style="margin-bottom:8px;margin-left:-2px;margin-right:-3px;color:black;" id="custDetailsDiv1" name="custDetailsDiv">
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel1"> @*<b style="color:red">*</b>*@ </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel2"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText2" name="custText2" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel3"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText3" name="custText3" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel4"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText4" name="custText4" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row " style="margin-bottom:8px;margin-left:-2px;margin-right:-3px;color:black;" id="custDetailsDiv2" name="custDetailsDiv2">
+
+
+
+
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel5"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText1" name="custText1" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel6"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText2" name="custText2" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel7"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText3" name="custText3" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="street" class="form-control-label" id="custLabel8"> @*<b style="color:red">*</b>*@ </label>
+                                                        @*<input type="text" placeholder="Name" id="custText4" name="custText4" class="form-control">
+                                                        <label id="custName-error" class="error" for="custName" style="display:block;"></label>*@
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                        <button type="button" style="margin-top:0px;margin-bottom:7px;background:#777373;margin-left: 90%;" class="btnsmall btn-danger" id="backButton" name="backButton"><i class="ti-control-backward" style="font-size:10px;"></i> Back</button>
+                                        <div id="divMicroRptTable" name="divMicroRptTable ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+
+
+    <script src="~/ClientApp/Reports/Reports.Controller.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>
+    <link href="~/lib/Plugins/LoaderWrapper/Loginstyle.css" rel="stylesheet" />
+    <script src="~/js/image-zoom.js"></script>
+
+}
+

@@ -1,0 +1,185 @@
+﻿@{
+    ViewData["Title"] = "DepositWithBankUpdate";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">DEPOSIT WITH BANK UPDATE</strong>
+            </div>
+            <form class="form-horizontal">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fundcat">Select Bank<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlbanktype" name="Fund"> </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4" id="ddlDate">
+                            <div class="form-group">
+                                <label for="fundcat">Select Date<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddldatetype" name="Fund"> </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" id="ddlFixedDeposit">
+                                <label for="fundcat">Select Fixed Deposit<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlFiType" name="Fund"> </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*  <div class="row my-2">
+                    <div class="col-md-12">
+                    <div class="tabs">
+                    <div class="tab" id="ShowTblNewLoan" style="display:none">
+                    <input type="checkbox" id="chck1" class="inputAccord" />
+                    <label class="tab-label" for="chck1"><strong>Loan Deposit Details to be Approved</strong></label>
+                    <div class="tab-content">
+                    <div class="table-responsive">
+                    <table class="table table-hover table-success" id="tblShowNewLoan">
+                    <thead class="bg-inverse text-white">
+                    <tr>
+                    </tr>
+                    </thead>
+                    <tbody class="border border-dark"></tbody>
+                    </table>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
+
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                @*   <th class="VCol" style="text-align:left;">FD NUMBER</th> *@
+                                                <th class="VCol" style="text-align:left;">DEPOSIT AMOUNT</th>
+                                                <th class="VCol" style="text-align:left;">INTEREST RATE</th>
+                                                <th class="VCol" style="text-align:left;">DEPOSIT DATE</th>
+                                                <th class="VCol" style="text-align:left;">PURPOSE</th>
+                                                <th class="VCol" style="text-align:left;">MATURITY DATE</th>
+                                                @* <th class="VCol" style="text-align:left;">PROVISION</th> *@
+                                                @* <th class="VCol" style="text-align:left;">Maturity Date</th> *@
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="agreemntfrom">FD Number<span class="text-danger">*</span></label>
+                                <input type="text" id="txtFDNo" maxlength="25" class="form-control" name="FDNumber" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="agreemntfrom">Remark</label>
+                                <input type="text" id="txtremark" maxlength="25" class="form-control" name="" />
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">FD Receipt Upload</label><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"></span><br />
+                                @*  <button type="button" class="btn btn-link" id="billupd">&nbsp;&nbsp;Capture</button> *@
+                                <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <INPUT id="fdrecipt" type="file" runat="server" NAME="fdrecipt" Width="100" multiple="multiple">
+                                    <label id="pay_uploadBill-error" class="error" for="stay_uploadBill" style="display:block"></label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">FD Statement Upload</label>@* <b style="color:red">&nbsp;&nbsp;&nbsp;</b><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"><i class="fa fa-close fa-lg" aria-hidden="true"></i></span><br />
+                                *@
+                                <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <INPUT id="payfile2" type="file" runat="server" NAME="payFile2" Width="100" multiple="multiple">
+                                    <label id="pay_uploadBill-error" class="error" for="stay_uploadBill" style="display:block"></label>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="card-footer text-end">
+                        <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                        <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+
+                    </div>
+            </form>
+        </div>
+    </div>
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+
+</div>
+
+
+
+@section Scripts {
+
+
+    <script src="~/clientapp/treasurymanagement/depositwithbankupdate.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+}
+
+
+
+

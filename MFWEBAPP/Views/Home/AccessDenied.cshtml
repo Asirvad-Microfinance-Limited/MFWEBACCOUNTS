@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Access Denied";
+    Layout = "~/Views/Shared/_MFMainLayoutAceessDenied.cshtml";
+    //  Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+@*<h1 class="headline text-danger"><i class="fa fa-exclamation-triangle text-danger"></i> Access Denied</h1>*@
+
+@*<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/paymentatbranchController.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetPayDataBlock(); // Call GetPayData function
+        });
+    </script>*@
+
+<section class="content" style="min-height: 80vh !important;">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="~/lib/bootstrap/dist/images/access-denied.gif" style="float:left;width: 25%;" />
+            @*<h4 style="float:left;padding-top: 70px;">Access Denied, You can use Left Menu..!</h4>*@
+            <h4 style="float:left;padding-top: 70px;">Access Denied. </h4>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/accessdenied.js"></script>
+    <script src="~/js/image-zoom.js"></script>
+    @*<script src="~/js/jquery.min.js"></script>*@
+}
+
+

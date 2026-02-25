@@ -1,0 +1,91 @@
+﻿@* 
+@{
+    ViewData["Title"] = "MenuAssign";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>  MODULE </strong></div>
+            <div class="card-body card-block" style="min-height:100px">
+                <form name="frmmodulelist" id="frmmodulelist" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Module<b style="color:red">*</b></label>
+                                <select name="ddlModule" id="ddlModule" class=" form-control" style="margin-bottom:15px;">
+                                    <option value="0">Select Module</option>
+
+                                </select>
+                                <label id="ddlType-error" class="error" for="ddlModule" style="display:block"></label>
+
+                            </div>
+                        </div>
+
+                        <!--menu-->
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Menu<b style="color:red">*</b></label>
+                                <select name="ddlMenu" id="ddlMenu" class=" form-control" style="margin-bottom:15px;">
+                                    <option value="0">Select Menu</option>
+
+                                </select>
+                                <label id="ddlMenu-error" class="error" for="ddlMenu" style="display:block"></label>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+
+                            <label for="street" class=" form-control-label">EmployeeId<b style="color:red">*</b></label>
+                            <input type="text" placeholder="EnterId" id="vaemployee" name="vaemployee" class="form-control" maxlength="50">
+                            <label id="vaemployee-error" class="error" for="vaemployee" style="display:block"></label>
+                        </div>
+
+
+
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 1030px; margin-top: -40px;">
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; " name="Assign" id="Assign" value="Assign" onclick=""><i class="Assign "></i> Assign</button>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+@section Scripts{
+    
+	<script src="~/clientapp/paymentatbranch/MenuAssign.js"></script>
+    
+}
+
+ *@

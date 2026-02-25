@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewData["Title"] = "CourierReceival";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Courier Receival</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmCourierReceival" id="frmCourierReceival" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-ddldept" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="ddlOutWard" id="ddlOutWard" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlOutWard-error" class="error" for="ddlOutWard" style="display:block"></label>
+                        </div>
+                        @*<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                            <br />
+                            <button type="button" class="btn btn-link" id="viewinvoice">View challan</button>
+                        </div>*@
+                    </div>
+
+                        @*<div id="showimg" class="modal-content" style="display:none;">
+                            <span class="close">&times;</span>
+                            <div class="col-lg-8" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+                                <div align="center" id="divInvimages" name="divInvimages" style="position: relative;max-height: 350px;min-height:100px;display: block;">
+                                </div>
+                            </div>
+                        </div>*@
+
+                    <div class="modal fade" id="ImageModel" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="largeModalLabel">Image</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="FnClose()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12" id="ImageDiv" style="text-align:center;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div align="center" class="col-lg-12">
+                                        <button type="button" id="rtt" data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="FnClose()"><i class="fa fa-close"></i>&nbsp;Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                <th class="VCol" style="text-align:center;">PRID</th>
+                                                <th class="VCol" style="text-align:center;">OUTWARD</th>
+                                                <th class="VCol" style="text-align:center;">BRANCH</th>
+                                                <th class="VCol" style="text-align:center;">PAYMENT TYPE</th>
+                                                <th class="VCol" style="text-align:left;">AMOUNT</th>
+                                                <th class="VCol" style="text-align:center;">BILL NO</th>
+                                                <th class="VCol" style="text-align:center;">BILL DATE</th>
+                                                <th class="VCol" style="text-align:center;">SEND DATE</th>
+                                                <th class="VCol" style="text-align:left;">CHALLAN NO</th>
+                                                <th class="VCol" style="text-align:center;">AGENCY</th>
+                                                <th class="VCol" style="text-align:center;">CHALLAN</th>
+                                                <th class="VCol" style="text-align:left;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="paymenttabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="others" style="display:none;">
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Agency Name<b style="color:red">*</b></label>
+                                    <input type="text" id="agencyName" name="agencyName" placeholder="Agency Name" class="form-control text-uppercase" readonly>
+                                    <label id="agencyName-error" class="error" for="agencyName" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">No Of Bills<b style="color:red">*</b></label>
+                                    <input type="text" id="nobills" name="nobills" placeholder="No Of Bills" class="form-control" maxlength="2" readonly>
+                                    <label id="nobills-error" class="error" for="nobills" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Challan Number<b style="color:red">*</b></label>
+                                    <input type="text" id="challanno" name="challanno" placeholder="Challan Number" class="form-control text-uppercase" readonly>
+                                    <label id="challanno-error" class="error" for="challanno" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Send Date<b style="color:red">*</b></label>
+                                    <input type="text" id="sendDate" name="sendDate" placeholder="Send Date" class="form-control" readonly>
+                                    <label id="sendDate-error" class="error" for="sendDate" style="display:block"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Courier updated Date<b style="color:red">*</b></label>
+                                    <input type="text" id="crupdate" name="crupdate" placeholder="Updated Date" class="form-control" readonly>
+                                    <label id="crupdate-error" class="error" for="crupdate" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Receival Date<b style="color:red">*</b></label>
+                                    <input type="date" id="rcvDate" name="rcvDate" placeholder="Receival Date" class="form-control">
+                                    <label id="rcvDate-error" class="error" for="rcvDate" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="confirm" style="display:none;" class="text-right">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                        @*<button type="button" class="btn btn-danger" id="reject">Reject</button>*@
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/CourierReceival.js"></script>
+
+}

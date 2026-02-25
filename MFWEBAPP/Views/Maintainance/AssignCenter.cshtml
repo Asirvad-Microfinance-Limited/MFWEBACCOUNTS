@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "AssignCenter";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>  Assign Center </strong></div>
+            <div class="card-body card-block" style="min-height:300px">
+                <form name="frmAssignCenter" id="frmAssignCenter" method="post">
+
+                    <div class="row">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Assigned From<b style="color:red">*</b></label>
+                                    <select name="ddlAssignedFrom" id="ddlAssignedFrom" class="form-control">
+                                        <option value="0"> ------------- Select ------------- </option>
+
+                                    </select>
+                                    <label id="ddlAssignedFrom-error" class="error" for="ddlAssignedFrom" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <label for="cc-payment" class="control-label mb-1">Assigned To<b style="color:red">*</b></label>
+                                <select name="ddlAssignedTo" id="ddlAssignedTo" class=" form-control">
+                                    <option value="0"> ---------------- Select ---------------- </option>
+
+                                </select>
+                                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+
+                            </div>
+
+                            <div class="col col-md-3 col-sm-6 col-xs-12" id="bs_datepicker_container1">
+                                <div class="form-group">
+
+                                    <label for="cc-payment" class="control-label mb-1">Change Date<b style="color:red">*</b></label>
+
+                                    <input class="form-control datepicker" id="chngDate" name="chngDate" placeholder="MM/DD/YYYY" type="text" readonly />
+                                    <label id="chngDate-error" class="error" for="chngDate" style="display:block"></label>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col col-md-3 col-sm-6 col-xs-12">
+                                <br />
+
+                                 <div class="float-right"><button type="submit" class="btn btn-success fc-center"><i class="fa fa-save"></i> &nbsp;Save </button></div>
+
+                            </div>
+                      
+                        </div>
+
+
+
+                        <!--Table-->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+
+                                    <div class="table-responsive">
+
+                                        <div align="center" id="divassigncenter" name="divassigncenter" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--more-->
+
+
+                       
+
+
+
+</form>
+            </div>
+
+
+            <!--Modal-->
+
+
+
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+<script src="~/ClientApp/AssignCenter/AssignCenter.Controller.js"></script>
+<script src="~/ClientApp/AssignCenter/AssignCenter.Validator.js"></script>
+}
+

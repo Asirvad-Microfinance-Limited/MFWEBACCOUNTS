@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "NCD_BondRePayment_Approvechecker";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Debenture RePayment Checker</strong>
+            </div>
+            <div class="card-body">
+                <form name=" " id=" " method="post" class="form-horizontal">
+
+                    @*   <div class="row my-2" id="showcorddiv" style="display:none">
+                    <div class="col-md-12 text-center">
+                    <div class="form-group">
+                    <label class="custom-control-label" for="rbtCp" style="cursor:pointer">Commercial paper</label> <label class="custom-control-label" for="rbtCp" style="cursor:pointer">Commercial paper</label>
+                    <input type="radio" id="rbtCp" name="loanRbt" class="custom-control-input"  style="cursor:pointer">
+                    &nbsp;
+                    <input type="radio" id="rbtOther" name="loanRbt" class="custom-control-input"  style="cursor:pointer">
+                    <label class="custom-control-label" for="rbtOther" style="cursor:pointer">Others</label>
+                    </div>
+                    </div>
+                    </div> *@
+
+                    @* <div class="row" id="divPrincInter">
+                    <div class="col-md-12 text-center">
+                    <div class="form-group">
+                    <label for="rbtInterest">Select Payment Type<span class="text-danger">*</span></label><br/>
+                    <input type="radio" id="rbtInterest" name="PayRbt" class="custom-control-input" style="cursor:pointer" >
+                    <label class="custom-control-label" for="rbtInterest" style="cursor:pointer">Interest</label>
+                    &nbsp;
+                    <input type="radio" id="rbtPrinciple" name="PayRbt" class="custom-control-input" style="cursor:pointer" >
+                    <label class="custom-control-label" for="rbtPrinciple" style="cursor:pointer">Principle</label>
+                    </div>
+                    </div>
+                    </div> *@
+
+                   
+                   
+
+
+
+                    <div class="row">
+                        <div class="col-md-12" id="divPrincInter">
+                            <div class="row form-group">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                        <div>
+                                            <label for="rbtInterest">Select Payment Type :<span class="text-danger">*</span></label><br />
+                                            <input type="radio" id="rbtInterest" name="PayRbt" value="louie" />
+                                            <label for="louie">Interest</label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                        <div>
+                                            <input type="radio" id="rbtPrinciple" name="PayRbt" value="louie" />
+                                            <label for="louie">Principle</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div><br />
+                        </div>
+                    </div>
+
+
+                    <div class="row" id="divloanshow" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundcat">Select Debenture<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlLoans" name="Fund"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-2" id="divtblPrincpleIntDtl" style="display:none">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table" id="tblPrincpleIntDtl">
+                                        <thead class="bg-inverse text-white">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*   <div class="row my-2" id="ShwCrTbl">
+                    <div class="col-md-12">
+                    <div class="form-group">
+                    <div class="table-responsive">
+                    <table class="table table-hover table-success" id="tblPaymentDtl">
+                    <thead class="bg-success text-white">
+                    <tr>
+                    </tr>
+                    </thead>
+                    <tbody class="border border-dark"></tbody>
+                    </table>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
+
+
+
+
+
+                    @* table 1  interest*@
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">MAIN BANK A/C </th>
+                                                <th class="VCol" style="text-align:left;">SUB BANK A/C</th>
+                                                <th class="VCol" style="text-align:left;">Finanace Cost Main A/C </th>
+                                                <th class="VCol" style="text-align:left;">Finanace Cost Sub A/C</th>
+                                                <th class="VCol" style="text-align:left;">Finanace Cost Sub ID</th>
+                                                <th class="VCol" style="text-align:left;">TDS Sub A/C1</th>
+                                                <th class="VCol" style="text-align:left;">TDS Sub A/C2</th>
+                                                <th class="VCol" style="text-align:left;">TDS_1</th>
+                                                <th class="VCol" style="text-align:left;">TDS_2</th>
+                                                <th class="VCol" style="text-align:left;">TDS_Amount</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @* table  2 principal *@
+
+                    <div class="card" id="maincards" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatchprin">
+                                        <thead>
+                                            <tr>
+
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">Main Bank A/C </th>
+                                                <th class="VCol" style="text-align:left;">Sub Bank A/C</th>
+                                                <th class="VCol" style="text-align:left;">Sub ID</th>
+                                                <th class="VCol" style="text-align:left;">TDS Sub A/C1</th>
+                                                <th class="VCol" style="text-align:left;">TDS Sub A/C2</th>
+                                                <th class="VCol" style="text-align:left;">TDS_1</th>
+                                                <th class="VCol" style="text-align:left;">TDS_2</th>
+                                                <th class="VCol" style="text-align:left;">TDS AMOUNT</th>
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabls"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    @* table 2  principal*@
+
+
+
+                    <div class="card" id="maincareds" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatchprnc">
+                                        <thead>
+                                            <tr>
+                                                @* table  2 principal *@
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">Main Loan A/C </th>
+                                                <th class="VCol" style="text-align:left;">Sub Loan A/C</th>
+                                                <th class="VCol" style="text-align:left;">TotalAmount</th>
+                                                <th class="VCol" style="text-align:left;">Payment Amount</th>
+                                             @*    <th class="VCol" style="text-align:left;">Payment Amount</th> *@
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatablleess"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @* table 2  interest*@
+
+                    <div class="card" id="maincared" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatchint">
+                                        <thead>
+                                            <tr>
+                                                @* table  2 principal *@
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">Main Loan A/C </th>
+                                                <th class="VCol" style="text-align:left;">Sub Loan A/C</th>
+                                                <th class="VCol" style="text-align:left;">TotalAmount</th>
+                                                <th class="VCol" style="text-align:left;">Payment Amount</th>
+                                         @*        <th class="VCol" style="text-align:left;">Payment Amount</th> *@
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabllee"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" id="maincardss" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch1">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">NAME</th>
+                                                <th class="VCol" style="text-align:left;">BANKAC</th>
+                                                <th class="VCol" style="text-align:left;">IFSC	</th>
+                                                <th class="VCol" style="text-align:left;">PANNO</th>
+                                                <th class="VCol" style="text-align:left;">TOSAMT</th>
+                                                <th class="VCol" style="text-align:left;">INTRT</th>
+                                                <th class="VCol" style="text-align:left;"> GrsInrst</th>
+                                                <th class="VCol" style="text-align:left;"> Status</th>
+                                                <th class="VCol" style="text-align:left;">Panstatus</th>
+                                                <th class="VCol" style="text-align:left;">TDSrate</th>
+                                                <th class="VCol" style="text-align:left;"> oprtpan</th>
+                                                <th class="VCol" style="text-align:left;"> TDSamt</th>
+                                                <th class="VCol" style="text-align:left;"> CSNRI</th>
+                                                <th class="VCol" style="text-align:left;"> NETTDS</th>
+                                                <th class="VCol" style="text-align:left;"> NETINTRST</th>
+                                                <th class="VCol" style="text-align:left;"> Principal</th>
+                                                <th class="VCol" style="text-align:left;"> NETAMNT</th>
+                                                <th class="VCol" style="text-align:left;"> LOTNUMBER</th>
+
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatbl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* <div class="col-md-3" id="divpayment" style="display:none">
+                        <label for="fundcat">Payment Type<span class="text-danger">*</span></label>
+                        <select id="ddl_paymntype" class="custom-select form-control" name="Select Sub Id">
+                            <option value="0">Choose Payment Type</option>
+                            <option value="automatic">Automatic</option>
+                            <option value="manual">Manual</option>
+                        </select>
+                    </div>
+ *@
+                    <div class="card-body" id="divexl" style="display:none">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="text-center">
+
+
+                                        @*  class="btn btn-success" *@
+
+                                        <button type="button" id="btn_Excel" name="btnexport" class="btnsmall btn-danger" style="margin-left:2%;"> <i class="fa  fa-file-excel-o" style="font-size:20px;margin-top: 4px;"></i></button>
+                                        @*
+                                        <input type="button" class="btn btn-success" id="btn_Excel" value="Export to Excel" onclick="btn_Excel_Click" />
+                                        *@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                <input id="btnrej" type="button" value="Reject" class="btn btn-success" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/ncdbondrepaymentchecker.js"></script>
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+ *@
+}

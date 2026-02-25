@@ -1,0 +1,792 @@
+﻿
+@{
+    ViewData["Title"] = "HoDirectPayment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<style type="text/css">
+    .Nbtn {
+        display: block;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        border: 8px solid #e5322d;
+    }
+
+    .modal-content {
+        border: none !important;
+    }
+</style>
+
+@*first div updated*@
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Ho Direct Payment</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+
+                    @*New and Existing Entry Page Load*@
+                    @*<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4" id="existingupd">
+                        <div class="form-group">
+                            <label class="control-label mb-1">Please Select The Entry Type</label><br />
+                            New Payment&nbsp;<input type="radio" id="newentryyes" name="newentryyes" value="1" />&nbsp;&nbsp;
+                            Advance Payment&nbsp;<input type="radio" id="existingyes" name="newentryyes" value="0" />&nbsp;&nbsp;
+                        </div>
+                    </div>*@
+
+                    @*vendor add employee load*@
+                    @*<div class="row form-group" id ="billOfTypeDiv" style="display:none;">
+            <div id="typelength" class="col-lg-4">
+                <label for="cc-payment" class="control-label mb-1">Bill Type<b style="color:red">*</b></label>
+                <select name="ddlAssignedTo" id="billOfType" class=" form-control">
+                    <option value="0">  Select type </option>
+                    <option value="BILLVENDOR">VENDOR</option>
+                    <option value="BILLEMPLOYEE">EMPLOYEE</option>
+                </select>
+                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+            </div>
+        </div>*@
+
+                    <div class="row form-group" id="billOfTypeDiv" style="display:none;">
+                        <div id="typelength" class="col-lg-4">
+
+                            <label for="cc-payment" class="control-label mb-1"> Bill Type<b style="color:red">*</b></label>
+                            <select name="billOfType" id="billOfType" class=" form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+
+                        </div>
+
+                        @*GST Number Checking*@
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="gstupd" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">GST</label><br />
+                                Yes&nbsp;<input type="radio" id="gstyes" name="gstyes" value="1" />&nbsp;&nbsp;
+                                No&nbsp;<input type="radio" id="gstno" name="gstyes"  value="0" />&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*VENDOR div & EMPLOYEE div Start*@
+                    <div id="showoff" style=" margin-top:15px;">
+                        <div class="card" id="firstrow" style="display:none; margin-top:15px;">
+                            <div class="card-header" id="vendordetails" style="display:none;">
+                                <strong class="card-title">VENDOR DETAILS</strong>
+                            </div>
+
+                            <div class="card-header" id="employeedetails" style="display:none;">
+                                <strong class="card-title">EMPLOYEE DETAILS</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                @*vedor load*@
+                                <div class="row form-group">
+                                    @*<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="vendordiv" style="display:none;">
+                <label for="cc-payment" class="control-label mb-1"> Vendor<b style="color:red">*</b></label>
+                <select name="vendor" id="vendor" class=" form-control">
+                    <option value="0"> ------------ Select ------------ </option>
+
+                </select>
+                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+            </div>*@
+
+                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="employeediv" style="display:none;">
+                                        <label for="cc-payment" class="control-label mb-1"> Employee<b style="color:red">*</b></label>
+                                        <select name="employee" id="employee" class=" form-control">
+                                            <option value="0"> ------------ Select ------------ </option>
+
+                                        </select>
+                                        <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                    </div>
+
+                                    @*branch load*@
+
+                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="branchdiv">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1"> Branch<b style="color:red">*</b></label>
+                                            <select name="branch" id="branch" class=" form-control">
+                                                <option value="0"> ------------ Select ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>
+
+                                    @*Gstin Load*@
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-group" id="gstindiv">
+                                            <label  class="control-label mb-1">GSTIN</label>
+                                            <input type="text" id="gstin" name="gstin" placeholder="ENTER GSTIN" class="form-control text-uppercase" minlength="15" maxlength="25" autocomplete="off" />
+                                            <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*vendor name and address load in GST*@
+                                <div class="row form-group" id="vendordata" style="display:none;">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Vendor Name</label>
+                                            <input type="text" id="vendorName" name="vendorName" placeholder="Vendor" class="form-control" maxlength="25" readonly>
+                                            <label id="vendorName-error" class="error" for="vendorName" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                        <label for="cc-payment" class="control-label mb-1">Vendor Address</label>
+                                        <input type="text" id="vendorAddress" name="vendorAddress" placeholder="Vendor Address" class="form-control" readonly maxlength="100">
+                                        <label id="vendorAddress-error" class="error" for="vendorAddress" style="display:block"></label>
+
+                                    </div>
+                                </div>
+
+                                @*vendor name and address load not GST*@
+                                <div class="row form-group" id="vendordata1" style="display:none;">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Vendor Name</label>
+                                            <input type="text" id="vendorName1" name="vendorName1" placeholder="Vendor" class="form-control text-uppercase" maxlength="25" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');">
+                                            <label id="vendorName1-error" class="error" for="vendorName1" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                        <label for="cc-payment" class="control-label mb-1">Vendor Address</label>
+                                        <input type="text" id="vendorAddress1" name="vendorAddress1" placeholder="Vendor Address" class="form-control text-uppercase" maxlength="100">
+                                        <label id="vendorAddress1-error" class="error" for="vendorAddress1" style="display:block"></label>
+
+                                    </div>
+                                </div>
+
+                                @*IFSC code & Account number Div*@
+                                <div class="row form-group" id="ifscdata">
+                                    @*IFSC code*@
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">IFSC Code<b style="color:red">*</b></label>
+                                            <input type="text" id="txtIFSCCode" name="txtIFSCCode" placeholder="IFSC Code" class="form-control text-uppercase" onchange="_HoPaymentEntry.bankFill()">@*<span class="glyphicon glyphicon-search"></span>*@
+                                            <label id="txtIFSCCode-error" class="error" for="txtIFSCCode-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+
+                                    @*bank name*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <label for="cc-payment" class="control-label mb-1">Bank Name<b style="color:red">*</b></label>
+                                        <input type="text" id="txtBankName" name="txtBankName" placeholder="Bank Name" class="form-control" oninput="this.value;" disabled>
+                                    </div>
+
+                                    @*branch name*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Branch Name<b style="color:red">*</b></label>
+                                            <input type="text" id="txtBranchName" name="txtBranchName" placeholder="Branch Name" class="form-control" oninput="this.value;" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*IFSC code & Account number Div  read only *@
+                                <div class="row form-group" id="ifscdata1">
+                                    @*IFSC code*@
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">IFSC Code<b style="color:red">*</b></label>
+                                            <input type="text" id="txtIFSCCode1" name="txtIFSCCode1" placeholder="IFSC Code" class="form-control text-uppercase" onchange="_HoPaymentEntry.bankFillNew()">@*<span class="glyphicon glyphicon-search"></span>*@
+                                            <label id="txtIFSCCode1-error" class="error" for="txtIFSCCode1-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+
+                                    @*bank name*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <label for="cc-payment" class="control-label mb-1">Bank Name<b style="color:red">*</b></label>
+                                        <input type="text" id="txtBankName1" name="txtBankName1" placeholder="Bank Name" class="form-control" readonly oninput="this.value;" disabled>
+                                    </div>
+
+                                    @*branch name*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Branch Name<b style="color:red">*</b></label>
+                                            <input type="text" id="txtBranchName1" name="txtBranchName1" placeholder="Branch Name" class="form-control" readonly oninput="this.value;" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*Account No And verify div*@
+                                <div class="row form-group" id="accountnodata">
+                                    @*Account NO*@
+                                    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Account Number<b style="color:red">*</b></label>
+                                            <input type="password" id="txtAccountNumber" name="txtAccountNumber" placeholder="Account Number" class="form-control" oninput="this.value;">
+                                            <label id="txtAccountNumber-error" class="error" for="txtAccountNumber-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+                                    @*Confirm account No*@
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Confirm Account No<b style="color:red">*</b></label>
+                                            <input type="text" id="txtConfirmAccountNumber" name="txtConfirmAccountNumber" placeholder="Confirm Account Number" class="form-control" oninput="this.value;">
+                                            <label id="txtConfirmAccountNumber-error" class="error" for="txtConfirmAccountNumber-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+
+
+                                    @*Save and verify Button*@
+
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group" style="margin-top : 23px;">
+                                            <button type="button" id="verifybutton" class="btn btn-danger"> &nbsp;Verify </button> &nbsp;
+                                            @*<button type="button" id="savebutton" class="btn btn-danger"> &nbsp;Save Bank Details </button>*@
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                @*Account No And verify div read only and verify button*@
+                                <div class="row form-group" id="accountnodata1">
+                                    @*Account NO*@
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Account Number<b style="color:red">*</b></label>
+                                            <input type="password" id="txtAccountNumber1" name="txtAccountNumber1" placeholder="Account Number" class="form-control"  >
+                                            <label id="txtAccountNumber1-error" class="error" for="txtAccountNumber1-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+                                    @*Confirm account No*@
+                                    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Confirm Account No<b style="color:red">*</b></label>
+                                            <input type="text" id="txtConfirmAccountNumber1" name="txtConfirmAccountNumber1" placeholder="Confirm Account Number" class="form-control"  >
+                                            <label id="txtConfirmAccountNumber1-error" class="error" for="txtConfirmAccountNumber1-error" style="display:block;"></label>
+                                        </div>
+                                    </div>
+
+
+                                    @*Save and verify Button*@
+
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group" style="margin-top : 23px;">
+                                            <button type="button" id="verifybutton1" class="btn btn-danger"> &nbsp;Verify </button> &nbsp;
+                                            @*<button type="button" id="savebutton" class="btn btn-danger"> &nbsp;Save Bank Details </button>*@
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                @*Date Modification Start*@
+                                <div class="row form-group" id="showoff1" style="display:none;">
+                                    @*Vendor State Load*@
+                                    <div class="col-lg-5 col-md-5 col-sm-3 col-xs-3" id="vendorstatediv" style="display:none;">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1"> Vendor State<b style="color:red">*</b></label>
+                                            <select name="vendorstate" id="vendorstate" class=" form-control">
+                                                <option value="0"> ------------ Select State ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                    @*Employee Account*@
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="employeeaccdiv" style="display:none;">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Employee Account</label>
+                                            <input type="text" id="employeeacc" name="employeeacc" placeholder="" class="form-control" readonly>
+                                            <label id="employeeacc-error" class="error" for="employeeacc" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+                                    @*Branch State load*@
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Branch State</label>
+                                            <input type="text" id="branchstate" name="branchstate" placeholder="" class="form-control" readonly>
+                                            <label id="branchstate-error" class="error" for="branchstate" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+                                    @*From date load*@
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container1">
+                                        <div class="form-group">
+                                            <label for="datepicker" class=" form-control-label mb-1">From Date<b style="color:red">*</b></label>
+                                            <input class="form-control datepicker " id="traDate" name="dtFromDate" placeholder="DD-MMM-YYYY" type="text" readonly="readonly" />
+                                            <label id="dtFromDate-error" class="error" for="dtFromDate" @*style="display:block" *@></label>
+                                        </div>
+                                    </div>
+
+                                    @*To date load*@
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="bs_datepicker_container2">
+                                        <div class="form-group">
+                                            <label for="datepicker" class=" form-control-label mb-1">To Date<b style="color:red">*</b></label>
+                                            <input class="form-control datepicker " id="traToDate" name="ToDate" placeholder="DD-MMM-YYYY" type="text" readonly="readonly" />
+                                            <label id="ToDate-error" class="error" for="dtToDate" @*style="display:block" *@></label>
+                                        </div>
+                                    </div>
+
+                                    @*Bill date for vendor*@
+                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="bs_datepicker_container3">
+                                        <div class="form-group">
+                                            <label for="datepicker" class=" form-control-label mb-1">Bill Date<b style="color:red">*</b></label>
+                                            <input class="form-control datepicker " id="BillToDate" name="BillToDate" placeholder="DD-MMM-YYYY" type="text" readonly="readonly" />
+                                            <label id="BillToDate-error" class="error" for="dtToDate" @*style="display:block" *@></label>
+                                        </div>
+                                    </div>
+
+                                    @*expense load*@
+                                    @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="form-group">
+                <label for="cc-payment" class="control-label mb-1"> Expense<b style="color:red">*</b></label>
+                <select name="expense" id="expense" class=" form-control">
+                    <option value="0"> ------------ Select ------------ </option>
+
+                </select>
+                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+            </div>
+        </div>*@
+                                    @*subexpense load*@
+                                    @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="form-group">
+                <label for="cc-payment" class="control-label mb-1">Sub Expense<b style="color:red">*</b></label>
+                <select name="subexpense" id="subexpense" class=" form-control">
+                    <option value="0"> ------------ Select ------------ </option>
+
+                </select>
+                <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+            </div>
+        </div>*@
+                                    @*Bill Number load*@
+                                    @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <label class="control-label mb-1">Bill Number</label><b style="color:red">*</b>
+                <input type="text" id="billno" name="billno" placeholder="Enter bill no" class="form-control text-uppercase" maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-Z0-9/-]/g, '');">
+                <label id="billno-error" class="error" for="billno" style="display:block"></label>
+            </div>
+        </div>*@
+
+                                </div>
+
+                                @*Date Modification Stop*@
+
+                                @*expense load*@
+                                <div class="row form-group" id="showoff2" style="display:none;">
+                                    @*expense load*@
+                                    <div class="col-lg-5 col-md-4 col-sm-3 col-xs-3">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1"> Expense<b style="color:red">*</b></label>
+                                            <select name="expense" id="expense" class=" form-control">
+                                                <option value="0"> ------------ Select ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                    @*subexpense load*@
+                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Sub Expense<b style="color:red">*</b></label>
+                                            <select name="subexpense" id="subexpense" class=" form-control">
+                                                <option value="0"> ------------ Select ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                    @*Bill Number load*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">Bill Number</label><b style="color:red">*</b>
+                                            <input type="text" id="billno" name="billno" placeholder="Enter bill no" class="form-control text-uppercase" maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-Z0-9/-]/g, '');">
+                                            <label id="billno-error" class="error" for="billno" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*Amount full amount or partial amount*@
+                                <div class="row form-group" id="showoff3" style="display:none;">
+                                    @*TOTAL AMOUNT*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Enter Amount<b style="color:red">*</b></label>
+                                            <input type="text" id="amount" name="amount" placeholder="AMOUNT" class="form-control" maxlength="7" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                                            <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                    @*AMOUNT Type*@
+                                    @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="amtupd">
+                <div class="form-group">
+                    <label class="control-label mb-1">Amount Type..?</label><br />
+                    Partial Amount&nbsp;<input type="radio" id="amountpartial" name="amountfull" value="1" />&nbsp;&nbsp;
+                    Full Amount&nbsp;<input type="radio" id="amountfull" name="amountfull" value="0" />&nbsp;&nbsp;
+                </div>
+            </div>*@
+                                    @*Full Amount Div*@
+                                    @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="fullamountdiv" style="display:none;">
+                <div class="form-group">
+                    <label class="control-label mb-1">Full Amount</label>
+                    <input type="text" id="fullamount" name="fullamount" placeholder="" class="form-control" maxlength="10" readonly>
+                    <label id="fullamount-error" class="error" for="fullamount" style="display:block"></label>
+
+                </div>
+            </div>*@
+                                    @*Partial Amount Div*@
+                                    @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="partialamountdiv" style="display:none;">
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1">Enter Partial Amount<b style="color:red">*</b></label>
+                    <input type="text" id="partialamount" name="partialamount" placeholder="AMOUNT" class="form-control" maxlength="7" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                    <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                </div>
+            </div>*@
+                                    @*GST Type*@
+                                    <div id="gsttype" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <label for="cc-payment" class="control-label mb-1">GST Type</label>@*<b style="color:red">*</b>*@
+                                        <select name="ddlAssignedTo" id="gstOfType" class=" form-control">
+                                            <option value="0">  Select type </option>
+                                            <option value="1">GST</option>
+                                            <option value="2">ISD</option>
+                                            <option value="3">RCM</option>
+                                        </select>
+                                        <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1"> GST Percentage</label>
+                                            <select name="gstper" id="gstper" class=" form-control">
+                                                <option value="0"> ------------ Select ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                    @*GST Total Amount*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">GST Total Amount</label>
+                                            <input type="text" id="gstamount" name="gstamount" placeholder="" class="form-control" maxlength="10" readonly>
+                                            <label id="gstamount-error" class="error" for="gstamount" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                @*TDS Checking*@
+                                <div class="row form-group" id="showoff4" style="display:none;">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="tdsupd">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">TDS</label><br />
+                                            Yes&nbsp;<input type="radio" id="tdsyes" name="tdsyes" value="1" />&nbsp;&nbsp;
+                                            No&nbsp;<input type="radio" id="tdsno" name="tdsyes" checked value="0" />&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                    @*TDS MASTER*@
+                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="tdsmasterdiv" style="display:none;">
+                                        <label for="cc-payment" class="control-label mb-1"> TDS<b style="color:red">*</b></label>
+                                        <select name="tdsmaster" id="tdsmaster" class=" form-control">
+                                            <option value="0"> ------------ Select ------------ </option>
+
+                                        </select>
+                                        <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                    </div>
+                                    @*TDS Slab*@
+                                    @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="tdspercentage" style="display:none;">
+                <div class="form-group">
+                    <label class="control-label mb-1"> TDS Percentage</label>
+                    <input type="text" id="tdsper" name="tdsper" placeholder="" class="form-control" maxlength="10" readonly>
+                    <label id="tdsper-error" class="error" for="tdsper" style="display:block"></label>
+
+                </div>
+            </div>*@
+
+                                    @*TDS percentage*@
+                                    @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="tdspercentage" style="display:none;">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1"> TDS Percentage<b style="color:red">*</b></label>
+                                            <select name="tdsper" id="tdsper" class=" form-control">
+                                            <option value="0"> ------------ Select ------------ </option>
+
+                                            </select>
+                                            <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                                        </div>
+                                    </div>*@
+                                    @*TDS Amount slab*@
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="tdstotamount" style="display:none;">
+                                        <div class="form-group">
+                                            <label class="control-label mb-1">TDS Total Amount</label>
+                                            <input type="text" id="tdsamount" name="tdsamount" placeholder="" class="form-control" maxlength="10" readonly>
+                                            <label id="tdsamount-error" class="error" for="tdsamount" style="display:block"></label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*Vendor State*@
+                                <div class="row form-group">
+                                    @*<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="vendorstatediv" style="display:none;">
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"> Vendor State<b style="color:red">*</b></label>
+                    <select name="vendorstate" id="vendorstate" class=" form-control">
+                        <option value="0"> ------------ Select State ------------ </option>
+
+                    </select>
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                </div>
+            </div>*@
+                                    @*Employee Account*@
+                                    @*<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="employeeaccdiv" style="display:none;">
+                <div class="form-group">
+                    <label class="control-label mb-1">Employee Account</label>
+                    <input type="text" id="employeeacc" name="employeeacc" placeholder="" class="form-control" readonly>
+                    <label id="employeeacc-error" class="error" for="employeeacc" style="display:block"></label>
+
+                </div>
+            </div>*@
+
+                                    @*<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" id="employeeaccdiv" style="display:none;">
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"> Employee<b style="color:red">*</b></label>
+                    <select name="employeeacc" id="employeeacc" class=" form-control">
+                        <option value="0"> ------------ Select State ------------ </option>
+
+                    </select>
+                    <label id="ddlAssignedTo-error" class="error" for="ddlAssignedTo" style="display:block"></label>
+                </div>
+            </div>*@
+
+
+                                    @*Branch State load*@
+                                    @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label mb-1">Branch State</label>
+                    <input type="text" id="branchstate" name="branchstate" placeholder="" class="form-control" readonly>
+                    <label id="branchstate-error" class="error" for="branchstate" style="display:block"></label>
+
+                </div>
+            </div>*@
+
+                                </div>
+
+
+
+                                @*Add and Clear Button*@
+                                <div class="row form-group" id="showoff5" style="display:none;">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:900px">
+                                        <button type="button" id="add" style="color:white" class="btn btn-warning"><i class="fa fa-plus"></i> &nbsp;Add </button>
+                                        <button type="button" id="clear" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Clear </button> @*onclick="_HoPaymentEntry.ClearData();"*@
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    @*start EMPLOYEE DIV*@
+
+
+                    @*Stop Employee DIv*@
+
+                    @*Grid View*@
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12" style="padding-top:10px;">
+                        <div class="col-md-12" id="total">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+                                    <div class="table-responsive">
+                                        <div align="center" id="hodetailsentry" name="hodetailsentry" style="position: relative;">
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-6">
+                                            <div class="small-box bg-dark" style="padding-left:50px;">
+                                                <div class="inner">
+                                                    <i class="fa fa-inr" style="color: #f93a3a;font-size: 20px;"></i>&nbsp;<span style="font-family:Open Sans,sans-serif;margin:0;font-size: 1.50rem;" id="amttotal">0.0</span>
+
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xs-6">
+                                            <button type="button" style="margin-left:470px" id="ClickmeBtnConfirm" class="btn btn-md btn-success" value="confirm">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*Remarks and Camera*@
+                    @*start*@
+
+                    <div class="card" id="remarksdiv" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            <div class="row form-group">
+                                @*Total Amount Showing*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="fullamountdiv">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Full Amount</label>
+                                        <input type="text" id="fullamount" name="fullamount" placeholder="" class="form-control" maxlength="10" readonly>
+                                        <label id="fullamount-error" class="error" for="fullamount" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                                @*AMOUNT Type*@
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="amtupd">
+                                    <div class="form-group">
+                                        <label class="control-label mb-1">Amount Type..<b style="color:red">*</b></label><br />
+                                        Partial Amount&nbsp;<input type="radio" id="amountpartial" name="amountfull" value="1" />&nbsp;&nbsp;
+                                        Full Amount&nbsp;<input type="radio" id="amountfull" name="amountfull" value="0" />&nbsp;&nbsp;
+                                    </div>
+                                </div>
+
+                                @*Partial Amount Div*@
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="partialamountdiv" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="cc-payment" class="control-label mb-1">Enter Partial Amount<b style="color:red">*</b></label>
+                                        <input type="text" id="partialamount" name="partialamount" placeholder="AMOUNT" class="form-control" maxlength="7" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                                        <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+                                @*Remarks*@
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Remarks<b style="color:red">*</b></label>
+                                            <input type="text" id="remarks" name="remarks" placeholder="Enter Remarks" class="form-control text-uppercase" maxlength="200" style="min-width: 600px;" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');" />
+                                            <label id="txtUserID-error" class="error" for="txtUserID" style="display:block"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:right">
+                                    <button type="button" id="hopaymentsave" class="btn btn-success"><i class="fa fa-save"></i> &nbsp;Save </button>
+                                    <button type="button" id="hopaymentclear" class="btn btn-danger"><i class="fa fa-times"></i> &nbsp;Clear </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        @*camera*@
+
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Upload</label><b style="color:red">*&nbsp;&nbsp;&nbsp;</b><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"><i class="fa fa-close fa-lg" aria-hidden="true"></i></span><br />
+                                    <button type="button" class="btn btn-link" id="billupd">&nbsp;&nbsp;Capture</button>
+                                    <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        @*<label class="control-label mb-1"> UploadBill</label><b style="color:red">*</b>*@
+                                        <INPUT id="payfile" type="file" runat="server" NAME="payFile" Width="100" multiple="multiple">
+                                        <label id="pay_uploadBill-error" class="error" for="stay_uploadBill" style="display:block"></label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div id="camsection" class="modal">
+                            <div class=" modal-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span id="closeCam" class="close">&times;</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="camera">
+
+                                        </div>
+                                    </div>
+                                    <div id="click" class="col-md-2" style="text-align: center;padding-top: 110px;">
+                                        <button type="button" id="ClickmeBtn" class="btn btn-md btn-success" value="Click Me">Click Me</button><br /><br />
+                                        <button type="button" id="ClickmeBtnSave" class="btn btn-md btn-success" value="Done">Done</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div id="viewUploadedImages" name="viewUploadedImages" style="position: relative;max-height: 300px;max-width: 100%;overflow: hidden;display: block;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*end*@
+
+
+
+
+
+
+
+                </form>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+            </div>
+
+
+        </div>
+
+</div>
+
+
+
+    @section Scripts{
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+        @*<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+            <script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>*@
+        <script src="~/ClientApp/HoDirectPayment/HoDirectPayment.js"></script>
+        <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js?v=123"></script>
+
+
+
+    }

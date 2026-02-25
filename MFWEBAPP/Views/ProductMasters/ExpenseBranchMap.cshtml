@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "ExpenseBranchMap";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>EXPENSE BRANCH MAP</strong></div>
+            <div class="card-body card-block" style="background-color:#fff">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">State<b style="color:red">*</b></label>
+                            <select name="Branchid" id="Branchid" class=" form-control">
+                                <option value="0">------------------Select State------------------</option>
+                            </select>
+                            <label id="ddlClaimFor-error" class="error" for="Branchid"></label>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group" style="margin-left:10px;">
+                            <label for="cc-payment" class="control-label mb-1">Type<b style="color:red"> *</b></label>
+                            <select name="Type" id="Type" class="form-control">
+                                <option value="0">------------Choose Type----------</option>
+                                <option value="1">NORMAL BRANCH</option>
+                                <option value="2">GL BRANCH</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">Expense<b style="color:red">*</b></label>
+                            <select name="Expense" id="Expense" class=" form-control">
+                                <option value="0">------------------Select Expense------------------</option>
+                            </select>
+                            <label id="ddlClaimFor-error" class="error" for="employee"></label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="card" id="maincard" style="margin-top: 20px;">
+                    <div class="card-body" style="background-color:#fff !important; ">
+                        <div class="table-responsive">
+                            <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                <table class="table" id="tbldespatch">
+                                    <thead>
+                                        <tr>
+
+                                            <th class="VCol" style="text-align:center;">BRANCH ID</th>
+                                            <th class="VCol" style="text-align:center;">BRANCH NAME</th>
+                                            <th class="VCol" style="text-align:center;">STATUS</th>
+                                            <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Fidatatabl"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    
+	<script src="~/clientapp/paymentatbranch/expensebranchmap.js"></script>
+}

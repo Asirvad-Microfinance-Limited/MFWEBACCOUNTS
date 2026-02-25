@@ -1,0 +1,214 @@
+﻿@{
+    ViewData["Title"] = "Fund_Transfer_Request";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fund Transfer Request</strong>
+            </div>
+            <div class="card-body">
+                <form name=" " id=" " method="post" class="form-horizontal">
+                    <div class="row my-2">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <h4 class="card-title"><strong>From Bank Details</strong></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divAddAccount">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fundcat">Bank<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_bank" name="Bank"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fundcat">Branch<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_branch" name="Branch"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fundcat">Account<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_accnt" name="Account"> </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">BANK</th>
+                                                <th class="VCol" style="text-align:left;">BRANCH</th>
+                                                <th class="VCol" style="text-align:left;">ACCOUNT NO</th>
+                                                <th class="VCol" style="text-align:left;">IFSC CODE</th>
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row my-2" id="divAddAccount1head" style="display:none;">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <h4 class="card-title"><strong>To Bank Details</strong></h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="divAddAccount1" style="display:none;">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Bank<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_bank1" name="ToBank"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Branch<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_branch1" name="ToBranch"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Account<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddl_accnt1" name="ToAccount"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundcat">Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="txtPayAmount" maxlength="15" class="form-control" name="PayAmount" onclick="" onkeyup="AmtWords.innerHTML=AmountToWords(this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                <small id="AmtWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* <div class="row" id="divremark">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundremark">Remarks<span class="text-danger">*</span></label>
+                                <input type="text" id="ddl_remarks" class="form-control" name="remarks"  />
+                            </div>
+                        </div>
+                    </div> *@
+
+                    <div class="row" id="divaddbutton" style="display:none;">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <label for="fundcat"></label>
+                                <div class="buttonboxFull">
+                                    <input id="btnAdd" type="button" value="Add" class="btn btn-success" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+
+
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincards" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+
+                                    <div align="center" id="divcustomertable" name="divcustomertable" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                        <table class="table" id="divcustomertbl">
+                                            <thead>
+                                                <tr>
+                                                    @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                    <th class="VCol" style="text-align:left;">BANK</th>
+                                                    <th class="VCol" style="text-align:left;">BRANCH</th>
+                                                    <th class="VCol" style="text-align:left;">ACCOUNT NO</th>
+                                                    <th class="VCol" style="text-align:left;">AMOUNT</th>
+                                                    @* <th class="VCol" style="text-align:left;">bank_id</th> *@
+
+                                                    <th class="VCol" style="text-align:center;">DELETE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Filldatatabl"></tbody>
+                                        </table>
+
+                                    </div>
+
+
+
+                                    @* <div id="divcustomertable" name="divcustomertable"></div> *@
+                                    @*newly added*@
+                                    @* <div class="row">
+
+
+
+                                    </div> *@
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row" id="divTotal" style="display:none;">
+                        <div class="col-md-3" id="DivTotalAmnt">
+                            <div class="form-group">
+                                <label for="fundcat">Payment Amount </label>
+                                <input type="text" class="form-control" style="color:red" id="txtTotalAmount" title="TotalAmount" disabled="disabled" />
+                                <small id="TotalAmountWords" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divremark" style="display:none">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="fundremark">Remarks<span class="text-danger">*</span></label>
+                                <input type="text" id="ddl_remarks" class="form-control" name="remarks" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary" />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/fund_transfer_request.js"></script>
+}

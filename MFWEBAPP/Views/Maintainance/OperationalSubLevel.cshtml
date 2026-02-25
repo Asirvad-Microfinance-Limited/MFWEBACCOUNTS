@@ -1,0 +1,247 @@
+﻿
+
+@{
+    ViewData["Title"] = "OperationalSubLevel";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Operational Sub Level  </strong></div>
+            <div class="card-body card-block">
+                <form name="frmOperationalSubLevel" id="frmOperationalSubLevel" method="post">
+                    <!--Branch-->
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">Levels</label>
+                                <select name="ddlLevels" id="ddlLevels" class="form-control">
+                                    <option value="0">--------------Select----------</option>
+
+                                </select>
+                                <label id="ddlLevels-error" class="error" for="ddlLevels" style="display:block"></label>
+                            </div>
+                        </div>
+                        <br />
+                   
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                            <br />
+                            @*<button type="submit" id="addBtnClick" name="addBtnClick" class="btn btn-primary btn-bg" data-toggle="modal" onclick="_operationalSubLevel.changePopupHeader(1);" data-target="#mediumModal"> <i class="fa fa-plus-circle" style="font-size:24px;"></i></button>*@
+                            <button type="submit" id="addBtnClick" name="addBtnClick" class="btn btn-primary btn-bg"  > <i class="fa fa-plus-circle" style="font-size:24px;"></i></button>
+
+                        </div>
+
+                    </div>
+
+                  
+
+                </form>
+
+                <!--Modal-->
+                <form name="frmOperationalAddSubLevel" id="frmOperationalAddSubLevel" method="post">
+                    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="mediumModalLabel">Add New Sub Level</h5>
+                                    <button type="button" id="closemodBtn" class="close" data-dismiss="modal" aria-label="Close" onclick="_operationalSubLevel.clearForm();">
+                                    @*<button type="button" id="closemodBtn" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload();">*@
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <div class="row form-group">
+                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                <input type="checkbox" class="switch-input" name="checkBoxQuest" checked="" id="checkBoxQuest"><label for="checkBoxQuest"> &nbsp;&nbsp; Do You Have An Office?</label>
+                                                @*<label class="switch switch-text switch-primary switch-pill"><input type="checkbox" class="switch-input" checked=""> <span data-on="On" data-off="Off" class="switch-label"></span> <span class="switch-handle"></span></label>*@
+                                            </div>
+                                        </div>
+                                        @*<div id="OffcCheckboxTrue" style="display:none">*@
+
+                                            <div class="row form-group">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="street" class="form-control-label">Name @*<b style="color:red">*</b>*@ </label>
+                                                    <input type="text" placeholder="Name" id="levelName" name="levelName" maxlength="24" class="form-control">
+                                                    <label id="levelName-error" class="error" for="levelName" style="display:block;"></label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="street" class=" form-control-label">Phone @*<b style="color:red">*</b>*@</label>
+                                                    <input type="text" placeholder="Phone" id="mobno" name="mobno" maxlength="10" class="form-control">
+                                                    <label id="mobno-error" class="error" for="mobno" style="display:block;"></label>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="street" class="form-control-label">Email - ID @*<b style="color:red">*</b>*@ </label>
+                                                    <input type="text" placeholder="Email - ID" id="txtemail" name="txtemail" maxlength="25" class="form-control">
+                                                    <label id="txtemail-error" class="error" for="txtemail" style="display:block;"></label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="cc-payment" class=" form-control-label">Language</label>
+                                                    <select name="ddlLanguage" id="ddlLanguage" class="form-control">
+                                                        <option value="0">--------------Select----------</option>
+
+                                                    </select>
+                                                    <label id="ddlLanguage-error" class="error" for="ddlLanguage" style="display:block;"></label>
+                                                </div>
+
+
+                                            </div>
+                                            @*<div id="OffcCheckboxFalse" style="display:none">*@
+                                                <div class="row form-group">
+                                                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">Address @*<b style="color:red">*</b>*@</label>
+                                                        <input type="text" placeholder="Address" id="address" name="address" maxlength="45" class="form-control">
+                                                        <label id="address-error" class="error" for="address" style="display:block;"></label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">CIN Number @*<b style="color:red">*</b>*@</label>
+                                                        <input type="text" style="text-transform:uppercase" placeholder="CIN Number" id="cinNo" name="cinNo" maxlength="21" class="form-control">
+                                                        <label id="cinNo-error" class="error" for="cinNo" style="display:block;"></label>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">GSTIN@*<b style="color:red">*</b>*@</label>
+                                                        <input type="text" style="text-transform:uppercase" placeholder="GSTIN" id="gstIn" name="gstIn" maxlength="15" class="form-control">
+                                                        <label id="gstIn-error" class="error" for="gstIn" style="display:block;"></label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">RBI Number@*<b style="color:red">*</b>*@</label>
+                                                        <input type="text" placeholder="RBI Number" id="rbiNo" name="rbiNo" maxlength="20" class="form-control">
+                                                        <label id="rbiNo-error" class="error" for="rbiNo" style="display:block;"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+
+                                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">Pincode@*<b style="color:red">*</b>*@</label>
+                                                        <input type="text" placeholder="Pincode" id="pincode" name="pincode" maxlength="6" class="form-control">
+                                                        <label id="pincode-error" class="error" for="pincode" style="display:block;"></label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">Post Office@*<b style="color:red">*</b>*@</label>
+                                                        <select name="ddlPostOffice" id="ddlPostOffice" placeholder="Post Office" class="form-control">
+                                                            <option value="0">--------------Select----------</option>
+                                                        </select>
+                                                        <label id="ddlPostOffice-error" class="error" for="ddlPostOffice" style="display:block;"></label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                        <label for="street" class=" form-control-label">Dependent ID@*<b style="color:red">*</b>*@</label>
+                                                        <select name="ddlDependentID" id="ddlDependentID" placeholder="Dependent ID" class="form-control">
+                                                            <option value="0">--------------Select----------</option>
+                                                        </select>
+                                                        <label id="ddlDependentID-error" class="error" for="ddlDependentID" style="display:block;"></label>
+                                                    </div>
+                                                </div>
+                                            @*</div>*@
+                                        @*</div>*@
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="submit" id="addSubLevelDataBtn" class="btn btn-success fc-center "><i class="fa fa-save"></i> &nbsp;Save </button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                             aria-hidden="true">
+
+                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document" id="mdlsearch">
+
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Search Head</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="padding:0rem">
+
+                                        <div id="userListTable" name="userListTable" style="overflow-y:scroll;height:200px;display:block;">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </form>
+
+
+
+
+
+                </br>
+
+
+                <!--Table-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                    <div class="card" id="maincard" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            <div class="table-responsive">
+
+                                <div  id="divoperationalsublevel"  name="divoperationalsublevel" style="overflow-x:hidden !important;overflow-y:auto !important;">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/OperationalLevel/OperationalSubLevel.Validator.js"></script>
+    <script src="~/ClientApp/OperationalLevel/OperationalSubLevel.Controller.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+
+
+    @*<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>*@
+
+
+    @*<script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.colVis.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.html5.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/buttons.print.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/dataTables.bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/dataTables.buttons.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/datatables.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/datatables-init.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/jszip.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/pdfmake.min.js"></script>
+        <script src="~/lib/bootstrap/dist/assets/js/data-table/vfs_fonts.js"></script>*@
+
+
+}

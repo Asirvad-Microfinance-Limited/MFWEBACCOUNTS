@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewData["Title"] = "tabrelatedexpense";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="min-height:304px;">
+            <div class="card-header"><strong> TAB RELATED EXPENSE </strong></div>
+            <div class="card-body card-block" style="min-height:200px">
+                <form name="frmissuetype" id="frmissuetype" method="post">
+
+                    <div class="row" id="firstrow">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" style="margin-top: 4px" ;>
+
+                            <label for="street" class=" form-control-label">IMEI NUMBER <b style="color:red">*</b></label>
+                            <input type="text" placeholder="IMEI Number" id="vaimeiNumber" name="vaimeiNumber" style="width:250px;" readonly class="form-control" maxlength="50">
+                            <label id="vaimeiNumber-error" class="error" for="vaimeiNumber" style="display:block"></label>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" style="margin-left:-90px" ;>
+
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1">ISSUE TYPE<b style="color:red">*</b></label>
+                                <select name="ddlIssue" id="ddlIssue" class=" form-control" style="margin-bottom:15px; width:250px;">
+                                    <option value="0">Select Type</option>
+
+                                </select>
+                                <label id="ddlType-error" class="error" for="ddlIssue" style="display:block"></label>
+
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" style="margin-left:-90px" ; id="bs_datepicker_container5_dateissueoccured">
+                            <div class="form-group">
+                                <label for="datepicker" class=" form-control-label mb-1">DATE ISSUE OCCURED</label><b style="color:red">*</b>
+                                <input class="form-control datepicker datePicker_po" id="dateissueoccured" style="width:250px;" name="dateissueoccured" placeholder="DD/MM/YYYY" type="text" readonly />
+                                <label id="dateissueoccured-error" class="error" for="dateissueoccured" style="display:block"></label>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="ddlimageupload" style="margin-left:-90px; margin-top: 5px;">
+
+                            <label for="street" class=" form-control-label"> IMAGE UPLOAD <b style="color:red">*</b></label>
+                            <INPUT id="vaimgupload" type="file" NAME="vaimgupload" accept="image/jpeg,image/png" Width="100" multiple="multiple">
+                            <label id="vaimgupload-error" class="error" for="vaimgupload" style="display:block"></label>
+
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="ddlamount" style="margin-left:-90px" ;>
+
+                            <label for="street" class=" form-control-label">QUOTATION AMOUNT<b style="color:red">*</b></label>
+                            <input type="text" placeholder="EnterAmount" id="vaamount" name="vaamount" style="width:250px;" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" class="form-control" maxlength="50">
+                            <label id="vaamount-error" class="error" for="vaamount" style="display:block"></label>
+                        </div>
+
+
+                    </div>
+                    <div class="row" id="secondrow">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="ddlcomments" ;>
+
+                            <label for="street" class=" form-control-label">COMMENTS <b style="color:red">*</b></label>
+                            <input type="text" placeholder="Comments" id="vacomments" name="vacomments" style="width:250px;" class="form-control" maxlength="50">
+                            <label id="vacomments-error" class="error" for="vacomments" style="display:block"></label>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" style="margin-left:-90px;display:none;" id="ddlreason" ;>
+
+                            <label for="street" class=" form-control-label">EXCESS REASON <b style="color:red">*</b></label>
+                            <input type="text" placeholder="Reason" id="vareason" name="vareason" style="width:250px;" class="form-control" maxlength="50">
+                            <label id="vareason-error" class="error" for="vareason" style="display:block"></label>
+                        </div>
+                        @*<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" style="margin-left:-90px" ;>
+
+                                <label for="street" class=" form-control-label">COMMENTS <b style="color:red">*</b></label>
+                                <input type="text" placeholder="Comments" id="vacomments" name="vacomments" style="width:250px;" class="form-control" maxlength="50">
+                                <label id="vacomments-error" class="error" for="vacomments" style="display:block"></label>
+                            </div>*@
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" id="ddluploadQtn" style="margin-left:-90px;margin-top:3px;">
+
+                            <label for="street" class=" form-control-label"> FIR/QUOTATION UPLOAD <b style="color:red">*</b></label>
+                            <INPUT id="vauploadQtn" type="file" NAME="vauploadQtn" accept="image/jpeg,image/png" Width="100" multiple="multiple">
+                            <label id="vaupload-error" class="error" for="vauploadQtn" style="display:block"></label>
+
+
+                        </div>
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 950px; margin-top: -32px;  ">
+                            <!--<button type="button" class="btn btn-success  waves-effect btn-sm"--> @*style="font-size: 15px;*@ <!--" name="save" id="save" value="save" onclick=""><i class="fa fa-save "></i> Save</button>-->
+
+                            <button type="button" id="save" class="btn btn-success">  <i class="fa fa-save"></i> &nbsp;Save  </button>
+
+                        </div>
+
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 1050px;  margin-top: -32px; ">
+                            <button type="reset" class="btn btn-warning" style="color:#fff"><i class="fa fa-remove"></i> &nbsp;Clear </button>
+
+                        </div>
+                    </div>
+
+                    <div style="padding:10px;">
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">
+
+                                    <div class="table-responsive">
+
+                                        <div align="center" id="divtabrelatedexpense" name="divtabrelatedexpense" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/clientapp/tabexpense/tabrelatedexpense.js"></script>
+}
+
+
+@{
+    ViewData["Title"] = "Tabrelatedexpense";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<h1>Tabrelatedexpense</h1>
+

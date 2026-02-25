@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "ApproveIndent";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> Approve Indent  </strong></div>
+            <div class="card-body card-block">
+                <form name="frmApproveIndent" id="frmApproveIndent" method="post">
+                    <!--Branch-->
+
+                 
+                        <div class="row form-group">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Branch<b style="color:red">*</b></label>
+                                    <select name="ddlBranches" id="ddlBranches" class="form-control">
+                                        <option value="0">--------------Select----------</option>
+                                    </select>
+                                    <label id="ddlBranches-error" class="error" for="ddlBranches" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <!--Center-->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Center<b style="color:red">*</b></label>
+                                    <select name="ddlIntend" id="ddlIntend" class="form-control">
+                                        <option value="0"> ------------Select------------------ </option>
+                                    </select>
+                                    <label id="ddlIntend-error" class="error" for="ddlIntend" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="cc-payment" class="control-label mb-1">Delivery Address<b style="color:red">*</b></label>
+                                    <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="Delivery Address"  class="form-control" maxlength="50">
+                                    <label id="deliveryAddress-error" class="error" for="deliveryAddress" style="display:block"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xl-12 no-padding">
+                            @*<div class="card" style="visibility:hidden">*@
+                            <div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important; ">
+
+                                    <div class="table-responsive">
+
+                                        <div  align="center" id="divapproveindent" name="divapproveindent" style="position: relative;max-height: 350px;min-height:100px;overflow: auto;display: block;">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+
+                                <button type="submit" class="btn btn-success"  name="btnApprove"  id="btnApprove">Approve</button>
+                                &nbsp;  &nbsp;  &nbsp;
+                                <button type="submit" class="btn btn-primary"  name="btnReject"  id="btnReject">Reject</button>
+
+                            </div>
+
+
+
+                        
+                    </div>
+                </form>
+                <!--Table-->
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/ClientApp/ApproveIndent/ApproveIndentForm.Controller.js"></script>
+
+    <script src="~/ClientApp/ApproveIndent/ApproveIndentForm.Validator.js"></script>
+
+}

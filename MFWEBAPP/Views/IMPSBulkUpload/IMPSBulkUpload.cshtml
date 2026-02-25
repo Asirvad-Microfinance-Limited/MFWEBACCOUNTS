@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "IMPS Bulk Upload";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<style type="text/css">
+    .table td, .table th {
+        border-top: none;
+    }
+
+    .btn-warning {
+        color: #ffffff;
+    }
+
+        .btn-warning:hover {
+            color: #ffffff;
+        }
+
+        .btn-warning:not([disabled]):not(.disabled).active, .btn-warning:not([disabled]):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+            color: #ffffff;
+        }
+</style>
+
+<div class="card">
+    <div class="card-body" style="min-height: 500px;">
+        <h3 class="card-title">IMPS Upload</h3>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group" style="padding-top: 20px;">
+                    <label>&nbsp;</label>
+                    <input type="file" id="fileUpload" name="Select File">
+                    <button class="btn btn-success" onclick="_ImpsWorkUpload.GetData();" id="viewData"><i class="fa fa-search"></i>&nbsp;View Data</button>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group" style="padding-top: 20px;">
+                    <button class="btn btn-success" onclick="_ImpsWorkUpload.ExcelDataUpload();" id="btnUpload"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" style="padding-top: 20px;">
+                    <a class="btn btn-warning" href="~/Template/IMPSTemplate.xlsx"><i class="fa fa-download"></i>&nbsp;Download Template</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="dvExcel"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="~/Script/IMPSBulkUpload.js"></script>
+}

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "AccountApprovalOrReject";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">ACCOUNT APPROVAL OR REJECT</strong>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                <div class="card-body" style="background-color:#fff !important;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<div class="card" id="maincard" style="display:none;">
+                                <div class="card-body" style="background-color:#fff !important;">*@
+                            <div class="table-responsive">
+                                <div align="center" id="accountapprovalorReject" name="accountapprovalorReject " style="position: relative;">
+                                </div>
+                            </div>
+                        </div>
+                        @*</div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/ClientApp/AccountApprovalOrReject/AccountApprovalOrReject.js"></script>
+   
+
+}

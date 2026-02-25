@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "suspensepaymentRecommend";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<style>
+    .card {
+        background-color: #ffffff;
+    }
+</style>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">SUSPENSE PAYMENT RECOMMEND</strong>
+        </div>
+        <div class="card-body card-block">
+            <form name="suspenserecommend" id="suspenserecommend" method="post" class="form-horizontal">
+
+
+                <div id="recommend" class="card-body card-block">
+                    <div class="col-lg-12">
+
+
+                        <br />
+
+                        <div class="row form-group">
+
+                            <label for="rcmndsrch" class="control-label mb-1">Enter request to search</label><b style="color:red">*</b>
+                            <select name="rcmndsrch" id="rcmndsrch" style="width: 400px; margin-left: 35px;" class=" form-control">
+                                <option value="0">Employee code  >>>  Request Id >>> Amount</option>
+                            </select>
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; width: 100px; margin-left: 50px; " name="morercmndsrch" id="morercmndsrch" value="morercmndsrch" onclick=""><i class="more "></i> More>></button>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                            <div class="card" id="paymentrcmndcard" name="paymentrcmndcard" style="margin-top: 20px; ">
+                                <div class="card-body" style="background-color:#fff !important; ">
+                                    <div class="table-responsive">
+                                        <div align="center" id="paymentrcmnddetailstable" name="paymentrcmnddetailstable" style="position: relative; min-height: 100px; overflow: auto; ">
+                                            <table class="table" id="tblpaymentadvncdetails" name="tblpaymentadvncdetails">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="VCol" style="text-align:left;">PURPOSE</th>
+                                                        <th class="VCol" style="text-align:left;">EMPLOYEE</th>
+                                                        <th class="VCol" style="text-align:left;">DESCRIPTION</th>
+                                                        <th class="VCol" style="text-align:left;">REQUESTED AMOUNT</th>
+                                                        <th class="VCol" style="text-align:left;">REQUESTED DATE</th>
+                                                        <th class="VCol" style="text-align:left;">BRANCH</th>
+                                                        <th class="VCol" style="text-align:left;">APROVED AMOUNT </th>
+                                                        <th class="VCol" style="text-align:left;">RECIEVED AMOUNT</th>
+                                                        <th class="VCol" style="text-align:left;">BALANCE AMOUNT</th>
+                                                    </tr>
+
+                                                </thead>
+                                                <tbody id="paymentrcmnddetails"></tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row form-group" id="reason" name="reason">
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+
+                                    <label for="rejctreason" class=" form-control-label mb-1">Remarks </label><b style="color:red">*</b>
+                                    <input type="text" style="width:500px" id="rejctreason" name="rejctreason" class="form-control" maxlength="400">
+                                    <label id="rejctreason-error" class="error" for="rejctreason" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 140vh; padding-top:15px;" id="btnext" name="btnext" >
+                            <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; " name="recommend" id="recommend" value="recommend" onclick=""><i class="confirm "></i> Recommend</button>
+                            <button type="button" class="btn btn-danger  waves-effect btn-sm" style="font-size: 15px; width: 80px " name="reject" id="reject" value="reject"> <i class="times "></i> Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        @section Scripts{
+            <script src="~/ClientApp/SuspensePayment//suspenserecommend.js"></script>
+        }
+    </div>
+</div>

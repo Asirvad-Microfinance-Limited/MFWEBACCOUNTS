@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "ExcessClaimGlNewExpenses";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">  Excess Claim GL Expenses</strong>
+            </div>
+            <div class="card-body card-block">
+                <form name="frmapprovalfromdm" id="frmapprovalfromdm" method="post" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Payment Request<b style="color:red">*</b></label>
+                            <select name="ddlPayType" id="ddlPayType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlPayType-error" class="error" for="ddlPayType" style="display:block"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Payment Type</label>
+                                <input type="text" id="payType" name="payType" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="payType-error" class="error" for="payType" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Vendor Name</label>
+                                <input type="text" id="vendorName" name="vendorName" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="vendorName-error" class="error" for="vendorName" style="display:block"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Amount</label>
+                                <input type="text" id="reqAmt" name="reqAmt" placeholder="" class="form-control" maxlength="15" readonly>
+                                <label id="reqAmt-error" class="error" for="reqAmt" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="GLAHDetails" style="display:none;">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">AH Remark </label>
+                                <input type="text" id="recommendedAHRemark" name="recommendedAHRemark" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="recommendedAHRemark-error" class="error" for="recommendedAHRemark" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="GLRMDetails" style="display:none;">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">RM Remark </label>
+                                <input type="text" id="recommendedRMRemark" name="recommendedRMRemark" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="recommendedRMRemark-error" class="error" for="recommendedRMRemark" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="GLHOOPDetails" style="display:none;">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Head of Operations Remark </label>
+                                <input type="text" id="recommendedHOPRemarks" name="recommendedHOPRemarks" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="recommendedHOPRemarks-error" class="error" for="recommendedHOPRemarks" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="GLBusinessHeadDetails" style="display:none;">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Business Head Remark </label>
+                                <input type="text" id="recommendedBUHEADRemark" name="recommendedBUHEADRemark" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="recommendedBUHEADRemark-error" class="error" for="recommendedBUHEADRemark" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="GLMDDetails" style="display:none;">
+
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">MD Head Remark </label>
+                                <input type="text" id="MDRemark" name="MDRemark" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="MDRemark-error" class="error" for="MDRemark" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="OtherRemarks" style="display:none;">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Approval Remarks</label>
+                                <input type="text" id="remarks" name="remarks" placeholder="" class="form-control" maxlength="150" readonly>
+                                <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/ExcessClaimGlNewExpenses.js"></script>
+
+}

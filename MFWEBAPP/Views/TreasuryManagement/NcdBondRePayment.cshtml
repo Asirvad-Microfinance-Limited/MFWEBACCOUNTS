@@ -1,0 +1,254 @@
+﻿@{
+    ViewData["Title"] = "NCDBondRePayment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">Debenture RePayment</strong>
+            </div>
+
+             <div class="card-body">
+                @* <div class="row" >
+                    <div class="col-md-12 text-center">
+                        <div class="form-group">
+                            
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="rbtPublic" name="loanRbt" class="custom-control-input"  style="cursor:pointer">
+                                <label class="custom-control-label" for="rbtPublic" style="cursor:pointer">Public Issue</label>
+                                &nbsp;
+                                <input type="radio" id="rbtOther" name="loanRbt" class="custom-control-input"  style="cursor:pointer">
+                                <label class="custom-control-label" for="rbtOther" style="cursor:pointer">Others</label>
+                                &nbsp;
+                                
+                            </div>
+                            <br>
+                            <div class="row" id="divPrincInter" style="display:none;">
+                                <div class="col-md-15">
+                                    <div class="form-group">
+                                        <label for="rbtInterest">Select Payment Type :<span class="text-danger">*</span></label>
+                                        <br />
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="rbtInterest" name="PayRbt" class="custom-control-input" style="cursor:pointer">
+                                            <label class="custom-control-label" for="rbtInterest" style="cursor:pointer">Interest</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="rbtPrinciple" name="PayRbt" class="custom-control-input" style="cursor:pointer">
+                                            <label class="custom-control-label" for="rbtPrinciple" style="cursor:pointer">Principle</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            *@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row form-group">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                    <div>
+                                        <input type="radio" id="rbtPublic" name="radchecking" value="louie" />
+                                        <label for="louie">Public Issue</label>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                    <div>
+                                        <input type="radio" id="rbtOther" name="radchecking" value="louie" />
+                                        <label for="louie">Other</label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div><br />
+                    </div>
+                </div>
+
+                <div class="row" id="divPrincInter" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="row form-group">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label for="rbtInterest">Select Payment Type :<span class="text-danger">*</span></label><br />
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                    <div>
+                                        <input type="radio" id="rbtInterest" name="PayRbt" value="louie" />
+                                        <label for="louie">Interest</label>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                    <div>
+                                        <input type="radio" id="rbtPrinciple" name="PayRbt" value="louie" />
+                                        <label for="louie">Principle</label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div><br />
+                    </div>
+                </div>
+
+              
+
+
+                <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                    <div class="card-body" style="background-color:#fff !important; ">
+                        <div class="table-responsive">
+                            <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                <table class="table" id="tbldespatchs">
+                                    <thead>
+                                        <tr>
+
+                                            @* <th class="VCol" style="text-align:left;">#</th> *@
+                                            <th class="VCol" style="text-align:left;">Pay </th>
+                                            <th class="VCol" style="text-align:left;">LoanID</th>
+                                            <th class="VCol" style="text-align:left;">Installment </th>
+                                            <th class="VCol" style="text-align:left;">Financial_Institition</th>
+                                            <th class="VCol" style="text-align:left;">Pay_Type</th>
+                                            <th class="VCol" style="text-align:left;">TDS</th>
+                                            <th class="VCol" style="text-align:left;">Amount</th>
+                                            <th class="VCol" style="text-align:left;">LoanAccount</th>
+                                            <th class="VCol" style="text-align:left;">Pay_Date</th>
+                                            <th class="VCol" style="text-align:left;">Pjt_Code</th>
+
+                                            <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Fidatatabl"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row" id="divAddAccount" style="display:none;">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Main Account<span class="text-danger">*</span></label>
+                            <select id="ddl_mainAcc" class="custom-select form-control" name="Select Main Account" ></select>
+                            <small id="LoanAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="subacst">
+                        <div class="form-group">
+                            <label for="fundcat">Sub Account<span class="text-danger">*</span></label>
+                            <select id="ddl_SubAcc" class="custom-select form-control" name="Select Sub Account"></select>
+                            <small id="LoanSubAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="divTDSmainbnk" style="display:none">
+                        <label for="fundcat">TDs sub Bank Id<span class="text-danger">*</span></label>
+                        <select id="ddl_TDS_main_bnk" class="custom-select form-control" name="Select Sub Id"></select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Amount<span class="text-danger">*</span></label>
+                            <input type="text" id="txtPayAmount" maxlength="15" class="form-control" name="PayAmount"  >
+                            <small id="AmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                 </div>
+                <div class="row" id="addbtn" style="display:none;">
+                    <div class="col-md-12 text-center mt-2">
+                        <div class="form-group">
+                            <div class="buttonboxFull">
+                                <input id="btnAdd" type="button" value="Add" class="btn btn-success"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                    <div class="card" id="maincards" style="display:none;">
+                        <div class="card-body" style="background-color:#fff !important;">
+                            <div class="table-responsive">
+                                <div id="divcustomertable" name="divcustomertable"></div>
+                                @*newly added*@
+                                <div class="row">
+
+                                   
+
+                                </div>
+
+                               
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" id="divTotal" style="display:none;">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Amount</label>
+                            <input type="text" class="form-control" id="txt_intrst_amt" title="RequestedAmount" disabled="disabled" />
+                            <small id="txtReqINTAmountWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Amount</label>
+                            <input type="text" class="form-control" id="txt_tds_amnt" title="RequestedAmount" disabled="disabled" />
+                            <small id="txtTDSReqAmountWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Total Amount</label>
+                            <input type="text" class="form-control" id="txt_tot" title="RequestedAmount" disabled="disabled" />
+                            <small id="txtReqAmountWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="DivTotalAmnt">
+                        <div class="form-group">
+                            <label for="fundcat">Payment Amount</label>
+                            <input type="text" class="form-control" id="txtTotalAmount" title="TotalAmount" disabled="disabled" />
+                            <small id="TotalAmountWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                <input id="btnExit" type="button" value="Exit" class="btn btn-danger"  />
+            </div>
+        </div>
+    </div>
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdPag" type="hidden" runat="server" />
+    <input id="hdMainAcc" type="hidden" runat="server" />
+    <input id="hdSubAcc" type="hidden" runat="server" />
+    <input id="hdBrid" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+    <input id="hdnLoanMainAcc" type="hidden" runat="server" />
+    <input id="hdnLoanSubAcc" type="hidden" runat="server" />
+    <input id="hdnSubAccStatus" type="hidden" runat="server" />
+    <input id="hdTotal" type="hidden" runat="server" />
+
+
+</div>
+    @section Scripts {
+    <script src="~/clientapp/treasurymanagement/ncdbondrepayment.js"></script>
+    }
+
+
+
+
+

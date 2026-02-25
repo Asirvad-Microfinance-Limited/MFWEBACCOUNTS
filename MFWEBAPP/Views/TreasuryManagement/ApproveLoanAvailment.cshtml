@@ -1,0 +1,249 @@
+﻿@{
+    ViewData["Title"] = "ApproveLoanAvailment";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">New Loan Availment Approval</strong>
+            </div>
+            <div class="card-body">
+                <form name="" id="" method="post" class="form-horizontal">
+
+                    <div class="row my-3">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Select Fund Type <b style="color:red">*</b></label>
+                            <select class="custom-select form-control" id="ddlFundType" style="width:100%" name="FundType">
+                                <option value="0"> ------------ Select ------------ </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlFi" style="width:100%" name="FinancialInstitution" ></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="fundcat">Select Fund : <span class="text-danger">*</span></label>
+                                <select class="custom-select form-control" id="ddlLoans" style="width:100%" name="Fund" > </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-3">
+                        <div class="col-lg-12">
+                            <div class="tabs">
+                                <div class="tab" id="ShowTblOldLoan" style="display:none">
+                                    <input type="checkbox" id="chck3" class="inputAccord" />
+                                    <label class="tab-label" for="chck3">Loan Availed Details </label><br />
+                                    <div class="tab-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-success" id="tblShowOldLoan">
+                                                <thead class="bg-inverse text-white">
+                                                    <tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="border border-dark"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                                @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                <th class="VCol" style="text-align:left;">Fund Type</th>
+                                                <th class="VCol" style="text-align:left;">Financial Institution</th>
+                                                <th class="VCol" style="text-align:left;">Fund ID</th>
+                                                <th class="VCol" style="text-align:left;">Loan ID</th>
+                                                <th class="VCol" style="text-align:left;">Loan Amount</th>
+                                                <th class="VCol" style="text-align:left;">Interest Rate</th>
+                                                <th class="VCol" style="text-align:left;">Tenure</th>
+                                                <th class="VCol" style="text-align:left;">Loan Date</th>
+                                                <th class="VCol" style="text-align:left;">Maturity Date</th>
+                                                <th class="VCol" style="text-align:left;">Repayment Date</th>
+
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatabl"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card" id="maincardsub" style="display:none;margin-top: 20px;">
+                        <div class="card-body" style="background-color:#fff !important; ">
+                            <div class="table-responsive">
+                                <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                    <table class="table" id="tbldespatch">
+                                        <thead>
+                                            <tr>
+                                               
+                                                <th class="VCol" style="text-align:left;">LoanID</th>
+                                                <th class="VCol" style="text-align:left;">InstallmentNo</th>
+                                                <th class="VCol" style="text-align:left;">InstallmentType</th>
+                                                <th class="VCol" style="text-align:left;">InstallmentFrequency</th>
+                                                <th class="VCol" style="text-align:left;">Amount</th>
+                                                <th class="VCol" style="text-align:left;">PenaltyAmount</th>
+                                                <th class="VCol" style="text-align:left;">InterestFromDate</th>
+                                                <th class="VCol" style="text-align:left;">InterestToDate</th>
+                                                <th class="VCol" style="text-align:left;">PaymentDate</th>
+                                                
+
+
+                                                <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Fidatatable"></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+
+
+
+
+
+                    <div class="row my-3">
+                        <div class="col-lg-12" id="ShowTblNewLoan" style="display:none">
+                            <input type="checkbox" id="chck1" class="inputAccord" />
+                            <label class="tab-label" for="chck1">Loan Availment Details to be Approved</label><br />
+                            <div class="tab-content">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-success" id="tblShowNewLoan">
+                                        <thead class="bg-inverse text-white">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-lg-12" id="ShowTblNewLoanEMI" style="display:none">
+                            <input type="checkbox" id="chck2" class="inputAccord" />
+                            <label class="tab-label" for="chck2">Repayment Shedule</label>
+                            <div class="tab-content" id="table-scroll">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-success" id="tblShowNewLoanEMI">
+                                        <thead class="bg-inverse text-white">
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-dark"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row form-group">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                        <div>
+                                            <label for="agreemntfrom">Approval Status <span class="text-danger">*</span></label><br />
+                                            <input type="radio" id="radAppr" name="radcheck" value="louie" />
+                                            <label for="louie">Approve</label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                        <div>
+                                            <input type="radio" id="radRjct" name="radcheck" value="louie" />
+                                            <label for="louie">Reject</label>
+                                        </div>
+                                    </div>
+                                    <div id="dvtext" style="display: none">
+                                        <div class="form-group">
+                                            <label for="fundsubcat">Reason :<span class="text-danger">*</span> </label>
+                                            <input type="text" style="width:100%;height:50px" maxlength="500" id="txt_reason" name="reason" onclick="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div><br />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row form-group">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1 ">
+                                        <div>
+                                            <label for="agreemntfrom">Do you pass Entry? <span class="text-danger">*</span></label><br />
+
+                                          
+                                            <input type="radio" id="radYes" name="radchecking" value="louie" />
+                                            <label for="louie">Yes</label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-radio" id="bs_datepicker_container1">
+                                        <div>
+                                            <input type="radio" id="radNo" name="radchecking" value="louie" />
+                                            <label for="louie">no</label>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+
+                            </div><br />
+                        </div>
+                    </div>
+                   
+
+                     
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="text-end">
+                    <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                    <input id="btnExit" type="button" value="Exit" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/clientapp/treasurymanagement/approveloanavailment.js"></script>
+}
+
+
+
+
+
+
+

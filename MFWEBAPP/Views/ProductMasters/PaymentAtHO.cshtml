@@ -1,0 +1,278 @@
+﻿
+@{
+    ViewData["Title"] = "PaymentAtHO";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+
+<style type="text/css">
+    .table tbody tr:hover {
+        background-color: #f5f5f5 !important;
+    }
+
+    table thead th {
+        color: #292b35;
+        background-color: #f2f0e8;
+    }
+
+    table, th {
+        border: 2px solid #fff !important;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    .card-body {
+        overflow: auto;
+    }
+</style>
+
+<div class="">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Payment At HO</strong>
+            </div>
+            <div class="card-body card-block">
+
+                <form name="frmPaymetAtBranch" id="frmPaymetAtBranch" method="post" class="form-horizontal">
+
+                    <div class="row form-group">
+                        <div id="typelength" class="col-lg-4">
+                            <label for="cc-payment" class="control-label mb-1">Payment Type<b style="color:red">*</b></label>
+                            <select name="ddlPayType" id="ddlPayType" class="form-control">
+                                <option value="0"> ------------ Select ------------ </option>
+
+                            </select>
+                            <label id="ddlPayType-error" class="error" for="ddlPayType" style="display:block"></label>
+
+                        </div>
+                        <div class="col-lg-2" id="BranchPayment" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Branch<b style="color:red">*</b></label>
+                                <select name="ddlPayBranch" id="ddlPayBranch" class="form-control">
+                                    <option value="0"> ------- Select ------- </option>
+
+                                </select>
+                                <label id="ddlPayBranch-error" class="error" for="ddlPayBranch" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4" id="gstcheck" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">GSTIN</label>
+                                <input type="text" id="gstin" name="gstin" placeholder="" class="form-control text-uppercase" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');" />
+                                <label id="gstin-error" class="error" for="gstin" style="display:block"></label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="tdspercentage" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">TDS(%)</label> &nbsp; <input type="checkbox" id="tdscheck" />
+                                <input type="text" id="tdsper" name="tdsper" placeholder="" class="form-control text-uppercase" maxlength="5" max="50" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" />
+                                <label id="tdsper-error" class="error" for="tdsper" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12" id="tdsamount" style="display:none;">
+                            <div class="form-group">
+                                <label class="control-label mb-1">TDS</label>
+                                <input type="text" id="tdsamt" name="tdsamt" placeholder="" value="0" class="form-control text-uppercase" maxlength="15" />
+                                <label id="tdsamt-error" class="error" for="tdsamt" style="display:block"></label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="vendordata" style="display:none;">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label mb-1">Vendor Name</label>
+                                <input type="text" id="vendorName" name="vendorName" placeholder="Vendor" class="form-control" maxlength="25" readonly>
+                                <label id="vendorName-error" class="error" for="vendorName" style="display:block"></label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                            <label for="cc-payment" class="control-label mb-1">Vendor Address</label>
+                            <input type="text" id="vendorAddress" name="vendorAddress" placeholder="Vendor Address" class="form-control" readonly maxlength="100">
+                            <label id="vendorAddress-error" class="error" for="vendorAddress" style="display:block"></label>
+
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="others" style="display:none">
+                        <div class="row form-group">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Total Amount<b style="color:red">*</b></label>
+                                    <input type="text" id="totalamt" name="totalamt" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="totalamt-error" class="error" for="totalamt" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Total GST<b style="color:red">*</b></label>
+                                    <input type="text" id="grossGST" name="grossGST" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="grossGST-error" class="error" for="grossGST" style="display:block"></label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Gross Amount</label>
+                                    <input type="text" id="grossamt" name="grossamt" placeholder="" class="form-control" maxlength="6" readonly oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <label id="grossamt-error" class="error" for="grossamt" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Number</label><b style="color:red">*</b>
+                                    <input type="text" id="billno" name="billno" placeholder="" class="form-control text-uppercase" maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-Z0-9/-]/g, '');">
+                                    <label id="billno-error" class="error" for="billno" style="display:block"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container5">
+                                <div class="form-group">
+                                    <label for="datepicker" class=" form-control-label mb-1">Bill Date</label><b style="color:red">*</b>
+                                    <input class="form-control datepicker " id="dtToDate" name="dtToDate" placeholder="YYYY/MM/DD" type="text" readonly />
+                                    <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-4" id="debitAcc">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Debit Account<b style="color:red">*</b></label>
+                                    <select name="ddlDebitAcc" id="ddlDebitAcc" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlDebitAcc-error" class="error" for="ddlDebitAcc" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" id="debitSubAcc" style="display:none;">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Sub Account<b style="color:red">*</b></label>
+                                    <select name="ddlDebitSubAcc" id="ddlDebitSubAcc" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlDebitSubAcc-error" class="error" for="ddlDebitSubAcc" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" id="CreditAcc">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Credit Account<b style="color:red">*</b></label>
+                                    <select name="ddlCreditAcc" id="ddlCreditAcc" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlCreditAcc-error" class="error" for="ddlCreditAcc" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" id="creditSubAcc" style="display:none;">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Sub Account<b style="color:red">*</b></label>
+                                    <select name="ddlCreditSubAcc" id="ddlCreditSubAcc" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddlDebitSubAcc-error" class="error" for="ddlDebitSubAcc" style="display:block"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">TDS Category</label>
+                                    <select name="ddltdsCat" id="ddltdsCat" class="form-control">
+                                        <option value="0"> ------------ Select ------------ </option>
+
+                                    </select>
+                                    <label id="ddltdsCat-error" class="error" for="ddltdsCat" style="display:block"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Remarks</label><b style="color:red">*</b>
+                                    <input type="text" id="remarks" name="remarks" placeholder="" class="form-control text-uppercase" maxlength="150" oninput="this.value = this.value.replace(/[^a-zA-Z0-9., ]/g, '');">
+                                    <label id="remarks-error" class="error" for="remarks" style="display:block"></label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Bill Upload</label><b style="color:red">*&nbsp;&nbsp;&nbsp;</b><span style="color:green;display:none" id="tick"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span><span style="color:red" id="close"><i class="fa fa-close fa-lg" aria-hidden="true"></i></span><br />
+                                    <button type="button" class="btn btn-link" id="billupd">Capture</button>
+                                    <label id="billupd-error" class="error" for="billupd" style="display:block"></label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="camsection" class="modal">
+                            <div class=" modal-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span id="closeCam" class="close">&times;</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="camera">
+
+                                        </div>
+                                    </div>
+
+                                    <div id="click" class="col-md-2" style="text-align: center;padding-top: 110px;">
+                                        <button type="button" id="ClickmeBtn" class="btn btn-md btn-success" value="Click Me">Click Me</button><br /><br />
+                                        <button type="button" id="ClickmeBtnSave" class="btn btn-md btn-success" value="Done">Done</button>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div id="viewUploadedImages" name="viewUploadedImages" style="position: relative;max-height: 300px;max-width: 100%;overflow: hidden;display: block;">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="confirm" class="text-right" style="display:none;">
+                        <button type="button" class="btn btn-success" id="submit">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/ClientApp/PaymentAtBranch/paymentathoController.js"></script>
+    <script src="~/ClientApp/PaymentAtBranch/InvoiceWebcamFile.js"></script>
+
+}

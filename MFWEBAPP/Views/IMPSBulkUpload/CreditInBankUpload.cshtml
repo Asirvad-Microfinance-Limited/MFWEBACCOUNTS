@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "CreditInBankUpload";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<style>
+    table thead th {
+        color: #fff;
+        background-color: #777373;
+        position: sticky;
+        top: -2px;
+        z-index: 7;
+    }
+</style>
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>Credit In Bank Upload</strong></div>
+            <div class="card-body card-block">
+                <div class="row">
+                    <div class="col-lg-4 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">Bank<b style="color:red">*</b></label>
+                            <select name="ddlBank" id="ddlBank" class=" form-control" style="margin-bottom:15px;">
+                                <option value="0">Select Bank</option>
+
+                            </select>
+                            <label id="ddlBank-error" class="error" for="ddlBank" style="display:block"></label>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group" style="padding-top: 20px; margin-left:200px">
+                            <a class="btn btn-warning" href="~/Template/CreditInBankUploadTemplates.xlsx" id="btnDownload"><i class="fa fa-download"></i>&nbsp;Download Template</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="excelUpload" style="display:none;">
+                    <div class="col-md-3">
+                        <div class="form-group" style="padding-top: 20px;">
+                            <label>&nbsp;</label>
+                            <input type="file" id="fileUpload" accept=".xls,.xlsx" name="Select File">
+                        </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <div class="form-group" style="padding-top: 20px;">
+                            <button class="btn btn-success" onclick="_CreditInBankUpload.GetData();" id="viewData"><i class="fa fa-search"></i>&nbsp;View Data</button>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group" style="padding-top: 20px;">
+                            <button class="btn btn-success" onclick="_CreditInBankUpload.ExcelDataUpload();" id="btnUpload"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none">
+                            <div class="card-body" style="background-color:#fff !important;min-height:200px;">
+                                <div align="center" id="dvExcel" name="dvExcel" style="position: relative;min-height: 50px;overflow-x: auto;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+<script src="~/ClientApp/PaymentAtBranch/CreditInBankUpload.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.buttons.min.js"></script>
+<script src="~/lib/bootstrap/dist/assets/js/DataTable/buttons.print.min.js"></script>
+<link href="~/lib/Plugins/LoaderWrapper/Loginstyle.css" rel="stylesheet" />
+}
+

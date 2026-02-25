@@ -1,0 +1,286 @@
+﻿@{
+    ViewData["Title"] = "DepositWithBankClosure";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-header">
+                <strong class="card-title">DEPOSIT WITH BANK CLOSURE</strong>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fundcat">Select Financial Institution<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlFI" name="FI" > </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="ddlDepositAccount">
+                        <div class="form-group">
+                            <label for="fundcat">Select Deposit Account<span class="text-danger">*</span></label>
+                            <select class="custom-select form-control" id="ddlDeposit" name="Fund"> </select>
+                        </div>
+                    </div>
+                </div>
+
+              @*   <div class="row my-2" id="ddlAccural">
+                    <div class="col-md-12 text-center">
+                        <div class="form-group">
+                            <h4 class="card-title"><strong>Accrual Included or not</strong><span class="text-danger">*</span></h4>
+                            <br />
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radInclude" name="radcheck" class="custom-control-input" >
+                                <label class="custom-control-label" for="radInclude">FD Closure With Accrual</label>
+                                &nbsp;
+                                <input type="radio" id="radExclude" name="radcheck" class="custom-control-input">
+                                <label class="custom-control-label" for="radExclude">FD Closure Without Accrual</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+               @*  <div class="row" style="display:none" id="accrdiv">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Accrual Amount</label>
+                            <input type="text" class="form-control" id="txtAccrualAmt" title="Deposit Amount" />
+                            <small id="AccrAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div> *@
+
+
+                  <div class="row my-2" id="ddlAccural">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <label for="agreemntfrom">Accrual Included or not <span class="text-danger">*</span></label>
+                                <br />
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="bs_datepicker_container1 " style="margin-left:350px;">
+                                                                    <input type="radio" id="radInclude" name="radcheck" value="louie" />
+                                                               <label for="louie">FD Closure With Accrual</label>
+                                
+                         
+                            
+                                
+                                    <input type="radio" id="radExclude" name="radcheck" value="louie" />
+                                    <label for="louie">FD Closure Without Accrual</label>
+                                
+                            </div>
+
+@* 
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="radInclude" name="radcheck" class="custom-control-input">
+                                    <label class="custom-control-label" for="radInclude">FD Closure With Accrual</label>
+                                    &nbsp;
+                                    <input type="radio" id="radExclude" name="radcheck" class="custom-control-input">
+                                    <label class="custom-control-label" for="radExclude">FD Closure Without Accrual</label>
+                                </div> *@
+                            </div>
+                        </div>
+                  </div>
+                <div class="row" style="display:none" id="accrdiv">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fundcat">Accrual Amount</label>
+                            <input type="text" class="form-control" id="txtAccrualAmt" title="Deposit Amount" />
+                            <small id="AccrAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div> 
+
+               @*  <div class="row my-2">
+                    <div class="col">
+                        <div class="tabs">
+                            <div class="tab" id="ShowTblNewLoan" style="display:none">
+                                <input type="checkbox" id="chck1" class="inputAccord" />
+                                <label class="tab-label" for="chck1">Deposit Details</label>
+                                <div class="tab-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-success" id="tblShowNewLoan">
+                                            <thead class="bg-inverse text-white">
+                                                <tr>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border border-dark"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+                <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                    <div class="card-body" style="background-color:#fff !important; ">
+                        <div class="table-responsive">
+                            <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display: block;">
+                                <table class="table" id="tbldespatch">
+                                    <thead>
+                                        <tr>
+                                            @* <th class="VCol" style="text-align:left;">#</th> *@
+                                            <th class="VCol" style="text-align:left;">Financial Institution</th>
+                                            <th class="VCol" style="text-align:left;">FD NUMBER</th>
+                                            <th class="VCol" style="text-align:left;">DEPOSIT AMOUNT</th>
+                                            <th class="VCol" style="text-align:left;">Interest Rate</th>
+                                            <th class="VCol" style="text-align:left;">DEPOSIT DATE</th>
+                                            <th class="VCol" style="text-align:left;">PURPOSE</th>
+                                          @* <th class="VCol" style="text-align:left;">PROVISION</th> *@
+                                            <th class="VCol" style="text-align:left;">Maturity Date</th>
+                                            <th class="VCol" style="text-align:center;">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Fidatatabl"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="form-group">
+                            <h4 class="card-title"><strong>Account Details</strong></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Main Account<span class="text-danger">*</span></label>
+                            <select id="ddl_mainAcc" class="custom-select form-control" name="Select Main Account"></select>
+                            <small id="LoanAccName" class="form-text text-muted"></small>
+                           
+                                <label id="stay_totamount-error" class="error" for="stay_amount" style=" color:red;">(i)please select main account correctly.</label>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="ddlsubacsts" style="display:none">
+                        <div class="form-group">
+                            <label for="fundcat">Sub Account<span class="text-danger">*</span></label>
+
+                            <select id="ddl_SubAcc" class="custom-select form-control" name="Select Sub Account"></select>
+
+                            <small id="LoanSubAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="TdsMainAcc">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Main Account</label>
+                            <input type="text" class="form-control" id="txttdsmainacc" title="TDS Account" disabled="disabled" />
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="TdsSubAcc">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Sub Account<span class="text-danger">*</span></label>
+                            <select id="ddl_SubAcc_Tds" class="custom-select form-control" name="Select Sub Account"></select>
+                            <small id="LoanTDSAccName" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Interest Amount<span class="text-danger">*</span></label>
+                            <input type="text" id="txtIntAmount" maxlength="15" class="form-control" name="InterestAmount"  >
+                            <small id="IntAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">TDS Amount<span class="text-danger">*</span></label>
+                            <input type="text" id="txtTdsAmount" maxlength="15" class="form-control" name="TDSAmount"  >
+                            <small id="TdsAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fundcat">Deposit Amount</label>
+                            <input type="text" class="form-control" id="txtDepAmt" title="Deposit Amount" disabled="disabled" />
+                            <small id="DepAmtWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="DivTotalAmnt">
+                        <div class="form-group">
+                            <label for="fundcat">Total Amount</label>
+                            <input type="text" class="form-control" id="txtTotalAmount" title="TotalAmount" disabled="disabled" />
+                            <small id="TotalAmountWords" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+                   @*  <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="txtTraDate">Transaction Date<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtTraDate" name="TransactionDate" autocomplete="off" title="Transaction Date" onkeypress="return false" />
+                        </div>
+                    </div> *@
+
+                    <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2" id="datepickerDates">
+                        <div class="form-group">
+                            <label for="datepicker" class=" form-control-label mb-1">Transaction Date</label><b style="color:red">*</b>
+                            <input class="form-control datepicker " id="txtTraDate" name="txtTraDate" type="text" readonly placeholder="mm/dd/yyyy" />
+                            <label id="dtFromDate-error" class="error" for="txtTraDate" style="display:block"></label>
+                        </div>
+                    </div>
+
+
+                   
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="agreemntfrom">Remark</label>
+                                <input type="text" id="txtremark" maxlength="25" class="form-control" name="" />
+                            </div>
+                        </div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="card-footer text-end">
+                <input id="btnConf" type="button" value="Confirm" class="btn btn-primary"  />
+                <input id="BtnExit" type="button" value="Exit" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+    <input id="hdUserId" type="hidden" runat="server" />
+    <input id="hdBranchId" type="hidden" runat="server" />
+    <input id="hdFirmId" type="hidden" runat="server" />
+    <input id="hdnLoanMainAcc" type="hidden" runat="server" />
+    <input id="hdnLoanSubAcc" type="hidden" runat="server" />
+    <input id="hdnFTMainAcc" type="hidden" runat="server" />
+    <input id="hdnFTSubAcc" type="hidden" runat="server" />
+    <input id="Hidden4" type="hidden" runat="server" />
+    <input id="hdnLoanBal" type="hidden" runat="server" />
+    <input id="hdnSubAccStatus" type="hidden" runat="server" />
+    <input id="hdnTDSMain" type="hidden" runat="server" />
+    <input id="hdnTDSSub" type="hidden" runat="server" />
+</div>
+
+
+
+
+@section Scripts {
+
+   
+<script src="~/clientapp/treasurymanagement/depositwithbankclosure.js"></script>
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}
+
+

@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "StaffBalanceRecovery";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>STAFF BALANCE RECOVERY</strong></div>
+            <div class="card-body card-block" style="background-color:#fff">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="cc-payment" class="control-label mb-1">Branch<b style="color:red">*</b></label>
+                            <select name="Branchid" id="Branchid" class=" form-control">
+                                <option value="0">------------------SELECT BRANCH------------------</option>
+                            </select>
+                            <label id="ddlClaimFor-error" class="error" for="Branchid"></label>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group" style="margin-left:10px;">
+                            <label for="cc-payment" class="control-label mb-1">Employee<b style="color:red"> *</b></label>
+                            <select name="empid" id="empid" class="form-control">
+                                <option value="0">------------------SELECT EMPLOYEE------------------</option>
+                            </select>
+                            <label id="ddlClaimFor-error" class="error" for="empid"></label>
+                            
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="card-body card-block">
+                    <form name="frmClaimRequestedMembers" id="frmClaimRequestedMembers" method="post">
+
+                        <div class="card" id="maincard" style="margin-top: 20px;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:100px;overflow: auto;display:block;">
+                                        <table class="table" id="tbldespatch">
+                                            <thead>
+                                                <tr>
+
+                                                    <th class="VCol" style="text-align:center;">BRANCH ID</th>
+                                                    <th class="VCol" style="text-align:center;">BRANCH NAME</th>
+                                                    <th class="VCol" style="text-align:center;">EMPCODE</th>
+                                                    <th class="VCol" style="text-align:center;">EMPNAME</th>
+                                                    <th class="VCol" style="text-align:center;">AMOUNT</th>
+                                                    @* <th class="VCol" style="text-align:center;">TICK(✔)</th> *@
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Fidatatabl"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col col-md-3 col-sm-6 col-xs-12" id="amountdiv" style="text-align: left;float:left/* ;padding-left:25px */;display:none">
+                    <label for="street" class="form-control-label">Enter Amount<b style="color: red;">*</b></label>
+                    <input type="number" id="amount" name="amount" class="form-control" maxlength="2000" style="width:310px;height:28px;" />
+                </div>
+
+                <div>
+                    <button type="submit" id="btnSaveBank" name="btnSave" class="btn btn-success" style="float: right; margin-left: 15px; margin-top: 60px;">CONFIRM</button>
+                    <input id="btnExit" type="button" style="float: right;background-color:red; color:white;width:70px;height:30px;margin-top: 60px;" value="EXIT" class="btn btn-danger" />
+                </div>
+
+                @* <div>
+                    <button type="submit" id="btnRejectBank" name="btnSave" class="btn btn-danger" style="float: right; margin-top: 22px;/* display:none */">REJECT</button>
+                </div>
+
+                <div class="col col-md-3 col-sm-6 col-xs-12" id="Remarks" style="text-align: left;padding:10px;/* display:non */e">
+                    <label for="street" class="form-control-label"> Remarks<b style="color: red;">*</b></label>
+                    <input type="text" name="Remarks" id="remark" placeholder="Remarks" class="form-control" maxlength="2000" style="width:310px;height:28px;" />
+                </div> *@
+
+               
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+	<script src="~/clientapp/paymentatbranch/staffbalancerecovery.js"></script>
+    
+}

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "AddVendor";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong> ADD VENDOR  </strong></div>
+            <div class="card-body card-block">
+                <form name="frmAddVendor" id="frmAddVendor" method="post">
+                    <!--Branch-->
+                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 btnwrap">
+                        <button type="button" class="btn btn-primary btn-bg" onclick="@("window.location.href='" + @Url.Action("AddVendorDetails", "ProductMasters") + "'");">
+                            <i class="fa fa-plus-circle" style="font-size:24px;"></i>
+                        </button>
+                    </div>
+                    &nbsp; &nbsp;
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-12 no-padding">
+                        <div class="card" id="maincard" style="display:none;">
+                            <div class="card-body" style="background-color:#fff !important;">
+                                <div class="table-responsive">
+                                    <div id="divvendordetailstable" name="divvendordetailstable"></div>
+                                    <div id="divaddvendor"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--Table-->
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/ClientApp/AddVendor/AddVendorForm.Controller.js"></script>
+    <script src="~/ClientApp/AddVendor/AddVendorForm.Validator.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/dataTables.responsive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/assets/js/DataTable/responsive.bootstrap4.min.js"></script>
+}
+

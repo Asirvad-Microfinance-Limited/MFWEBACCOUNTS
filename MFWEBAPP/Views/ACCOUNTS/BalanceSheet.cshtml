@@ -1,0 +1,178 @@
+﻿@{
+    ViewData["Title"] = "BALANCE SHEET";
+    Layout = "~/Views/Shared/_MFMainLayout.cshtml";
+}
+
+
+<div id="Loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue-grey">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p style="color:#dbb714;font-family:'Myanmar Text'">Please Wait...</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="height:400px;">
+            <div class="card-header" style="text-align:left; ">
+                <span style="font-size:20px">
+                    <b>Balance Sheet </b><span style="font-size:15px">
+                        <span style="font-size:15px;">(All Amounts in lakhs unless otherwise stated)</span>
+                      
+                       @*  <label id="date-infos"> </label><span> </br>(All Amounts in lakhs unless otherwise stated)</span> *@
+                    </span>
+                </span>
+
+                <button type="button" id="back" style="color:white;margin-top:-12px;display:none;" class="ti-control-backward btnsmall btn btn-warning float-right">&nbsp;Back</button>
+
+            </div>
+
+
+          
+              
+
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="bs_datepicker_container5">
+                    <div class="form-group">
+                    <label for="datepicker" class=" form-control-label mb-1" style="margin-left:-100px">Ason Date</label><b style="color:red">*</b>
+                    
+                        <input class="form-control datepicker " id="dtToDate" name="dtToDate" placeholder="DD/MM/YYYY" type="text" readonly />
+                        <label id="dtFromDate-error" class="error" for="dtToDate" style="display:block"></label>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group" style="margin-top: -40px;margin-left:250px">
+                        <button class="btn btn-success" id="viewData"><i class="fa fa-search"></i>&nbsp;View Data</button>
+                    </div>
+                </div>
+
+
+           
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+   
+
+<div class="row" style="display:none;margin-top:-280px" id="balance">
+    <div class="col-md-12">
+        <div class="card">
+           @*  <div class="card-header" style="text-align:left; ">
+                <span style="font-size:20px">
+                    <b>Balance Sheet </b><span style="font-size:15px">
+                        as on
+                        <label id="date-info"> </label><span> </br>(All Amounts in lakhs unless otherwise stated)</span>
+                    </span>
+                </span>
+
+                <button type="button" id="back" style="color:white;margin-top:-12px;display:none;" class="ti-control-backward btnsmall btn btn-warning float-right">&nbsp;Back</button>
+
+            </div> *@
+          
+           
+
+
+            <div id="table" style="background-color:white;" class="Particulars ">
+
+                <label for="street" class="form-control-label"><b style="color: red;  "></b></label>
+                <input type="text" id="Asondate" style="width:300px ; color:white;margin-left:1280px;  border:none; background:none" name="Asondate" class="form-control">
+
+
+
+            </div>
+
+            @*<div class="row" style="margin-left:200px;">
+                    <button type="button" style="margin-left:800px;" class="btn btn-success" id="BtnConfirm">Back</button>
+
+                </div>*@
+            <html>
+            <head>
+                <style>
+                    body {
+                        text-align: center;
+                        /*font-family: Tahoma;*/
+                        color: #0a0a23;
+                    }
+
+
+
+                    tr {
+                        width: 100%;
+                        // display: flex;
+                        border: none;
+                    }
+
+
+                    th, td {
+                        text-align: left;
+                        padding: 8px;
+                        /*margin-left: 100px;*/
+                        font-size: 13px;
+                        /*border:1px solid black;*/
+                    }
+
+                    tr:nth-child(even) {
+                        background-color: #f0f0f073;
+                    }
+
+
+
+
+                    tr:not(#header):not(#subheader) > th {
+                        color: black;
+                        padding: 8px;
+                        width: 50%;
+                    }
+
+                    /*#header > th {
+                            width: 100%;
+                            text-align: left;
+                            text-decoration: none;
+                            background-color: transparent;
+                            font-size: 2em;
+                        }*/
+                    th {
+                        width: 30%;
+                    }
+                </style>
+            </head>
+
+            <body class="MainParticulars">
+                <div id="table" class="Particulars">
+                    <table style="background-color:white;width:100%"></table>
+                </div>
+                <div class="Amount">
+                </div>
+            </body>
+        </html>
+
+
+    </div>
+</div>
+</div>
+
+@section Scripts{
+
+    <script src="~/ClientApp/Balancesheet/Balancesheet.js"></script>
+
+}
