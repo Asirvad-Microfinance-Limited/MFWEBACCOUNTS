@@ -54,3 +54,4 @@ TestResult.xml
 nunit-*.xml
 /MFWEBAPP/wwwroot/ClientApp/App.js
 /MFWEBAPP/appsettings.json
+/.vs/MFACCOUNTS/FileContentIndex
