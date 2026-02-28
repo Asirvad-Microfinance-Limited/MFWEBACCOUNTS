@@ -204,20 +204,20 @@ namespace MFWEBAPP.Controllers
         {
             return View();
         }
-        [HttpGet("PaymentAtBranchGlExpense")]
-        public IActionResult PaymentAtBranchGlExpense()
+        [HttpGet("BranchOperatingExpense")]
+        public IActionResult BranchOperatingExpense()
         {
             return View();
         }
 
-        [HttpGet("ExcessClaimGlNewExpenses")]
-        public IActionResult ExcessClaimGlNewExpenses()
+        [HttpGet("BranchOperationalClaims")]
+        public IActionResult BranchOperationalClaims()
         {
             return View();
         }
 
-        [HttpGet("ResubmissionGLNewExpense")]
-        public IActionResult ResubmissionGLNewExpense()
+        [HttpGet("OperationalResubmission")]
+        public IActionResult OperationalResubmission()
         {
             return View();
         }
