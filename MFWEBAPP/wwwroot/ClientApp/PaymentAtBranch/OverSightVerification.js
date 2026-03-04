@@ -319,82 +319,82 @@
 
     //NEW CHANGE FOR IMAGE VIEW//
 
-    //viewInvoiceImagesLoadCompleted: function (response) {
-    //    jQuery('.page-loader-wrapper').hide();
-    //    if (response.status === "SUCCESS") {
+    viewInvoiceImagesLoadCompleted: function (response) {
+        jQuery('.page-loader-wrapper').hide();
+        if (response.status === "SUCCESS") {
 
-    //        var images = response.data.imageData;   // list of images
-    //        var $container = jQuery('#ImageDiv');
-    //        $container.empty();                     // clear old content
+            var images = response.data.imageData;   // list of images
+            var $container = jQuery('#ImageDiv');
+            $container.empty();                     // clear old content
 
-    //        // create carousel wrapper
-    //        var $carousel = jQuery(
-    //            '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
-    //            '<div class="carousel-inner"></div>' +
-    //            '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
-    //            '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
-    //            '<span class="sr-only">Previous</span>' +
-    //            '</a>' +
-    //            '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
-    //            '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
-    //            '<span class="sr-only">Next</span>' +
-    //            '</a>' +
-    //            '</div>'
-    //        );
+            // create carousel wrapper
+            var $carousel = jQuery(
+                '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
+                '<div class="carousel-inner"></div>' +
+                '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
+                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+                '<span class="sr-only">Previous</span>' +
+                '</a>' +
+                '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
+                '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+                '<span class="sr-only">Next</span>' +
+                '</a>' +
+                '</div>'
+            );
 
-    //        var $inner = $carousel.find('.carousel-inner');
+            var $inner = $carousel.find('.carousel-inner');
 
-    //        // loop through all images
-    //        for (var i = 0; i < images.length; i++) {
-    //            var imgBase64 = images[i].imageString;
-    //            var fileType = images[i].fileType || "png"; // default to png
+            // loop through all images
+            for (var i = 0; i < images.length; i++) {
+                var imgBase64 = images[i].imageString;
+                var fileType = images[i].fileType || "png"; // default to png
 
-    //            var $item = jQuery(
-    //                '<div class="carousel-item ' + (i === 0 ? 'active' : '') + '">' +
-    //                '<img class="d-block w-100 rtimg" ' +
-    //                'src="data:image/' + fileType + ';base64,' + imgBase64 + '" ' +
-    //                'height="450" style="margin:auto;" />' +
-    //                '</div>'
-    //            );
+                var $item = jQuery(
+                    '<div class="carousel-item ' + (i === 0 ? 'active' : '') + '">' +
+                    '<img class="d-block w-100 rtimg" ' +
+                    'src="data:image/' + fileType + ';base64,' + imgBase64 + '" ' +
+                    'height="450" style="margin:auto;" />' +
+                    '</div>'
+                );
 
-    //            // initialize rotation state for each image
-    //            $item.find('img').data('rotate', 0);
+                // initialize rotation state for each image
+                $item.find('img').data('rotate', 0);
 
-    //            $inner.append($item);
-    //        }
+                $inner.append($item);
+            }
 
-    //        $container.append($carousel);
+            $container.append($carousel);
 
-    //        jQuery('#ImageModel').modal('show');
+            jQuery('#ImageModel').modal('show');
 
-    //        // apply zoom to all images
-    //        jQuery('.rtimg').each(function () {
-    //            jQuery(this).imageZoom();
-    //        });
+            // apply zoom to all images
+            jQuery('.rtimg').each(function () {
+                jQuery(this).imageZoom();
+            });
 
-    //        // rotation logic
-    //        jQuery('#rotate').off('click').on('click', function () {
-    //            // find the currently active image in the carousel
-    //            var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
+            // rotation logic
+            jQuery('#rotate').off('click').on('click', function () {
+                // find the currently active image in the carousel
+                var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
 
-    //            if ($activeImg.length) {
-    //                var currentAngle = $activeImg.data('rotate') || 0;
-    //                var newAngle = (currentAngle + 90) % 360;
+                if ($activeImg.length) {
+                    var currentAngle = $activeImg.data('rotate') || 0;
+                    var newAngle = (currentAngle + 90) % 360;
 
-    //                $activeImg.css({
-    //                    'transform': 'rotate(' + newAngle + 'deg)',
-    //                    'transition': 'transform 0.3s ease' // smooth animation
-    //                });
+                    $activeImg.css({
+                        'transform': 'rotate(' + newAngle + 'deg)',
+                        'transition': 'transform 0.3s ease' // smooth animation
+                    });
 
-    //                // save new angle for this image
-    //                $activeImg.data('rotate', newAngle);
-    //            }
-    //        });
+                    // save new angle for this image
+                    $activeImg.data('rotate', newAngle);
+                }
+            });
 
-    //    } else {
-    //        _General.noData(jQuery('#divInvimages'), "No Data Found");
-    //    }
-    //},
+        } else {
+            _General.noData(jQuery('#divInvimages'), "No Data Found");
+        }
+    },
 
 
     viewInvoiceImages: function (x) {
@@ -408,44 +408,44 @@
         _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/images", invimagemageData, _AddOversightdata.viewInvoiceImagesLoadCompleted, userdata.token)
     },
 
-    viewInvoiceImagesLoadCompleted: function (response) {
-        jQuery('.page-loader-wrapper').hide();
-        if (response.status === "SUCCESS") {
+    //viewInvoiceImagesLoadCompleted: function (response) {
+    //    jQuery('.page-loader-wrapper').hide();
+    //    if (response.status === "SUCCESS") {
 
-            var max = response.data.imageData.length;
-            var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + ' " height="450" width="50%" >');
-            //var $image = jQuery('<img class="north" id="rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + '" alt="Invoice Image" />');
+    //        var max = response.data.imageData.length;
+    //        var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + ' " height="450" width="50%" >');
+    //        //var $image = jQuery('<img class="north" id="rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + '" alt="Invoice Image" />');
 
-            //var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageString + ' " height="450" width="50%" >');
-            jQuery('#ImageModel').modal('show');
-            jQuery('#ImageDiv').html($image);
+    //        //var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageString + ' " height="450" width="50%" >');
+    //        jQuery('#ImageModel').modal('show');
+    //        jQuery('#ImageDiv').html($image);
 
-            var zoomImage = jQuery('#rtimg');
+    //        var zoomImage = jQuery('#rtimg');
 
-            zoomImage.imageZoom();
+    //        zoomImage.imageZoom();
 
 
 
-        }
-        else {
-            //jQuery('.page-loader-wrapper').hide();
-            _General.noData(jQuery('#divInvimages'), "No Data Found");
+    //    }
+    //    else {
+    //        //jQuery('.page-loader-wrapper').hide();
+    //        _General.noData(jQuery('#divInvimages'), "No Data Found");
 
-        }
-    },
-    rotateImage1: function () {
-        var img = jQuery('#rtimg1');
-        if (img.hasClass('north')) {
-            img.attr('class', 'west');
-        } else if (img.hasClass('west')) {
-            img.attr('class', 'south');
-        } else if (img.hasClass('south')) {
-            img.attr('class', 'east');
-        } else if (img.hasClass('east')) {
-            img.attr('class', 'north');
-        }
+    //    }
+    //},
+    //rotateImage1: function () {
+    //    var img = jQuery('#rtimg1');
+    //    if (img.hasClass('north')) {
+    //        img.attr('class', 'west');
+    //    } else if (img.hasClass('west')) {
+    //        img.attr('class', 'south');
+    //    } else if (img.hasClass('south')) {
+    //        img.attr('class', 'east');
+    //    } else if (img.hasClass('east')) {
+    //        img.attr('class', 'north');
+    //    }
 
-    },
+    //},
     getCollectionName: function (prid) {
         var GetPayTypeData = {
             "flag1": "GETCOLLECTIONNAME",
