@@ -235,14 +235,14 @@ var _AddPayData = {
             }
         }
     },
-    //viewInvoiceImages: function (x) {
-    //    jQuery('.page-loader-wrapper').show();
-    //    var invimagemageData = {
-    //        "recordingId": x,
-    //        "collectionName": colectname
-    //    }
-    //    _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/images", invimagemageData, _AddPayData.viewInvoiceImagesLoadCompleted, userdata.token)
-    //},
+    viewInvoiceImages: function (x) {
+        jQuery('.page-loader-wrapper').show();
+        var invimagemageData = {
+            "recordingId": x,
+            "collectionName": colectname
+        }
+        _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/images", invimagemageData, _AddPayData.viewInvoiceImagesLoadCompleted, userdata.token)
+    },
 
     //viewInvoiceImagesLoadCompleted: function (response) {
     //    jQuery('.page-loader-wrapper').hide();
