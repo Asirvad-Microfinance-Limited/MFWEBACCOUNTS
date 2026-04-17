@@ -167,11 +167,11 @@ namespace MFWEBAPP.Controllers
             return View();
         }
 
-        //[HttpGet("MenuAssign")]
-        //public IActionResult MenuAssign()
-        //{
-        //    return View();
-        //}
+        [HttpGet("MenuAssign")]
+        public IActionResult MenuAssign()
+        {
+            return View();
+        }
         [HttpGet("AddNewExpenseHead")]
         public IActionResult AddNewExpenseHead()
         {
@@ -218,6 +218,12 @@ namespace MFWEBAPP.Controllers
 
         [HttpGet("OperationalResubmission")]
         public IActionResult OperationalResubmission()
+        {
+            return View();
+        }
+
+        [HttpGet("StaffBalanceRecoveryApprove")]
+        public IActionResult StaffBalanceRecoveryApprove()
         {
             return View();
         }

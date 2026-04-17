@@ -1,4 +1,6 @@
 ﻿var totamt;
+var Strbase64List = [];   // array to hold multiple base64 strings
+var DFILETYPE = "";
 var _AddPayData = {
 
     checkAccess: function () {
@@ -62,7 +64,7 @@ var _AddPayData = {
             "flag1": "RESUBMISSION",
             "flag2": "GETREJECTPERSON",
             "inptvar1": br,
-            "inptvar2": userdata.userId, 
+            "inptvar2": userdata.userId,
             "typeID": "4",
             "userID": userdata.userId,
             "branchID": userdata.branchId
@@ -274,22 +276,95 @@ var _AddPayData = {
         _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/images", invimagemageData, _AddPayData.viewInvoiceImagesLoadCompleted, userdata.token)
     },
 
+    //--------------- SHOW ONLY LAST UPLOADED IMAGE 1
 
     viewInvoiceImagesLoadCompleted: function (response) {
         jQuery('.page-loader-wrapper').hide();
         if (response.status === "SUCCESS") {
-            var max = response.data.imageData.length;
-            var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + ' " height="450"  >');
-            jQuery('#ImageModel').modal('show');
-            jQuery('#ImageDiv').html($image);
 
-        }
-        else {
-            //jQuery('.page-loader-wrapper').hide();
+            var images = response.data.imageData;   // list of images
+            var $container = jQuery('#ImageDiv');
+            $container.empty();                     // clear old content
+
+            if (images && images.length > 0) {
+                // get the last uploaded image (highest index)
+                var lastImage = images[images.length - 1];
+                var imgBase64 = lastImage.imageString;
+                var fileType = lastImage.fileType || "png"; // default to png
+
+                // create carousel wrapper
+                var $carousel = jQuery(
+                    '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
+                    '<div class="carousel-inner"></div>' +
+                    '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
+                    '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+                    '<span class="sr-only">Previous</span>' +
+                    '</a>' +
+                    '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
+                    '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+                    '<span class="sr-only">Next</span>' +
+                    '</a>' +
+                    '</div>'
+                );
+
+                var $inner = $carousel.find('.carousel-inner');
+
+                // only append the last image
+                var $item = jQuery(
+                    '<div class="carousel-item active">' +
+                    '<img class="d-block w-100 rtimg" ' +
+                    'src="data:image/' + fileType + ';base64,' + imgBase64 + '" ' +
+                    'height="450" style="margin:auto;" />' +
+                    '</div>'
+                );
+
+                $item.find('img').data('rotate', 0);
+                $inner.append($item);
+
+                $container.append($carousel);
+                jQuery('#ImageModel').modal('show');
+
+                // apply zoom
+                jQuery('.rtimg').each(function () {
+                    jQuery(this).imageZoom();
+                });
+
+                // rotation logic
+                jQuery('#rotate').off('click').on('click', function () {
+                    var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
+                    if ($activeImg.length) {
+                        var currentAngle = $activeImg.data('rotate') || 0;
+                        var newAngle = (currentAngle + 90) % 360;
+                        $activeImg.css({
+                            'transform': 'rotate(' + newAngle + 'deg)',
+                            'transition': 'transform 0.3s ease'
+                        });
+                        $activeImg.data('rotate', newAngle);
+                    }
+                });
+            }
+
+        } else {
             _General.noData(jQuery('#ImageModel'), "No Data Found");
-
         }
     },
+
+
+    //viewInvoiceImagesLoadCompleted: function (response) {
+    //    jQuery('.page-loader-wrapper').hide();
+    //    if (response.status === "SUCCESS") {
+    //        var max = response.data.imageData.length;
+    //        var $image = jQuery('<img class="north" id = "rtimg" src="data:image/png;base64,' + response.data.imageData[max - 1].imageString + ' " height="450"  >');
+    //        jQuery('#ImageModel').modal('show');
+    //        jQuery('#ImageDiv').html($image);
+
+    //    }
+    //    else {
+    //        //jQuery('.page-loader-wrapper').hide();
+    //        _General.noData(jQuery('#ImageModel'), "No Data Found");
+
+    //    }
+    //},
     enontotcalc: function (st) {
         valchange = 1;
         var totamtt = parseFloat(jQuery('#totalamt').val());
@@ -351,15 +426,17 @@ var _AddPayData = {
     },
     takeInvoice: function () {
         Webcam.snap(function (k) {
-            //width = "100%" 
 
-            var $image = jQuery('<img id="rtimg" src="' + k + '" height="310" width = "80%"  />');
+            var $image = jQuery('<img id="rtimg" src="' + k + '" height="310" width="80%" />');
             jQuery('#viewUploadedImages').html($image);
             jQuery('#viewUploadedImages').show();
 
-            Strbase64 = k.toString().replace('data:image/jpeg;base64,', '');
+            // Push captured image into the list instead of overwriting
+            var cleanBase64 = k.toString().replace('data:image/jpeg;base64,', '');
+            Strbase64List.push(cleanBase64);
 
-            if (jQuery('#viewUploadedImages').val() == null) {
+            // Validation check
+            if (!Strbase64List || Strbase64List.length === 0) {
                 swal("", "Add URL or PDF File..!", "warning");
                 return false;
             }
@@ -446,9 +523,8 @@ var _AddPayData = {
             jQuery('.page-loader-wrapper').hide();
             return false;
         }
-        else if (Strbase64 == null || Strbase64 == "") {
+        else if (!Strbase64List || Strbase64List.length === 0) {
             swal("", "Please capture the Bill..!", "error");
-            jQuery('.page-loader-wrapper').hide();
             return false;
         }
         //else if (totamt == newnetamt) {
@@ -460,12 +536,12 @@ var _AddPayData = {
             swal("", "Please enter the Bill number!", "error");
             jQuery('.page-loader-wrapper').hide();
             return false;
-        } else if (bill_date=="") {
+        } else if (bill_date == "") {
             swal("", "Please select the bill date..!", "error");
             jQuery('.page-loader-wrapper').hide();
             return false;
         }
-       
+
         //else if (updbill == '1' && Strbase64 == null) {
         //    swal("Error", "Please capture the bill..!", "error");
         //    return false;
@@ -476,20 +552,26 @@ var _AddPayData = {
             newgst = jQuery('#grossGST').val();
         }
 
-        if (/*updbill == '1' && */Strbase64 != null) {
+        if (Strbase64List != null && Strbase64List.length > 0) {
             checkst = 1;
             var msg = "PRRESUBMITBILL";
             var pr = jQuery('#ddlprselect').val();
-            var GetOutWardData = {
-                "typeId": "0",
-                "image": Strbase64,
-                "collectionName": msg,
-                "fileName": msg,
-                "recordingId": pr,
-                "imageType": "img"
-            };
-            _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/insertimage", GetOutWardData, "", userdata.token)
+
+            // Loop through each base64 image in the list
+            Strbase64List.forEach(function (base64Img, index) {
+                var GetOutWardData = {
+                    "typeId": "0",
+                    "image": base64Img,
+                    "collectionName": msg,
+                    "fileName": msg + "_" + index, // optional: unique filename per image
+                    "recordingId": pr,
+                    "imageType": "img"
+                };
+
+                _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/insertimage", GetOutWardData, "", userdata.token)
+            });
         }
+
         if (valchange == 1)
             fullval = "0!!" + valchange + "!!" + newnetamt + "!!" + newgst + "!!" + 1 + "!!" + userdata.branchId + "!!" + rej + "!!" + gstin + "!!" + bill_no + "!!" + bill_date;
         else
@@ -570,75 +652,149 @@ var _AddPayData = {
             }
         }
     },
+
+
+
+    //convertToBase64: function (img) {
+    //    Strbase64 = "";
+    //    DFILETYPE = "";
+    //    //var a = "travelFile";
+    //    var a = img;
+    //    //Read File
+    //    var selectedFile = document.getElementById(a).files;
+    //    //Check File is not Empty
+    //    if (selectedFile.length > 0) {
+    //        //Size checking //
+    //        var sizeInKB = selectedFile[0].size / 1024;
+    //        var sizeLimit = 200;
+    //        //if (sizeInKB >= sizeLimit) {
+    //        //    swal("", "Max file size allowed is 200KB", "warning");
+    //        //    selectedFile = "";
+    //        //    return false;
+    //        //}
+    //        // TEST BLOB TO BASE 64 //
+
+    //        //var reader = new FileReader();
+    //        //reader.readAsDataURL(blob);
+    //        //reader.onloadend = function () {
+    //        //    var base64String = reader.result;
+    //        //   // console.log('Base64 String - ', base64String);
+
+    //        //TEST BLOB TO BASE 64 //
+
+    //        // Select the very first file from list
+    //        var fileToLoad = selectedFile[0];
+    //        // FileReader function for read the file.
+    //        var fileReader = new FileReader();
+    //        var base64;
+    //        // Convert data to base64
+    //        fileReader.readAsDataURL(fileToLoad);
+    //        // Onload of file read the file content
+    //        fileReader.onloadend = function (fileLoadedEvent) {
+    //            base64 = fileLoadedEvent.target.result;
+    //            if (base64.toString().includes("data:application/pdf;base64")) {
+    //                DFILETYPE = "PDF";
+    //                swal("", "Please only upload Images..!", "warning");
+    //                jQuery('#travelFile').val("");
+    //                jQuery('#foodlFile').val("");
+    //                jQuery('#stayFile').val("");
+    //                return false;
+
+    //            }
+    //            else {
+    //                DFILETYPE = "IMG";
+    //            }
+    //            if ((base64.toString().includes("data:image/jpeg;base64")) || (base64.toString().includes("data:image/img;base64")) || (base64.toString().includes("data:image/jpg;base64")) || (base64.toString().includes("data:image/png;base64"))) {
+    //                DFILETYPE = "IMG";
+    //            }
+    //            else {
+    //                swal("", "Please only upload Images..!", "warning");
+    //                jQuery('#payfile').val("");
+    //                return false;
+    //            }
+
+    //            Strbase64 = base64.toString().replace('data:application/pdf;base64,', '').replace('data:image/jpeg;base64,', '').replace('data:image/png;base64,', '');
+
+    //        };
+    //        if (Strbase64 != null) {
+    //            jQuery('#tick').show();
+    //            jQuery('#close').hide();
+    //        }
+    //    }
+    //    else {
+
+    //        swal("", "Add Image..!", "warning");
+    //        swal("", "Add Image..!", "warning");
+    //        return false;
+    //    }
+    //},
+
     convertToBase64: function (img) {
-        Strbase64 = "";
+        Strbase64List = [];   // store multiple base64 strings
         DFILETYPE = "";
-        //var a = "travelFile";
+
         var a = img;
-        //Read File
-        var selectedFile = document.getElementById(a).files;
-        //Check File is not Empty
-        if (selectedFile.length > 0) {
-            //Size checking //
-            var sizeInKB = selectedFile[0].size / 1024;
-            var sizeLimit = 200;
-            //if (sizeInKB >= sizeLimit) {
-            //    swal("", "Max file size allowed is 200KB", "warning");
-            //    selectedFile = "";
-            //    return false;
-            //}
-            // TEST BLOB TO BASE 64 //
+        var selectedFiles = document.getElementById(a).files;
 
-            //var reader = new FileReader();
-            //reader.readAsDataURL(blob);
-            //reader.onloadend = function () {
-            //    var base64String = reader.result;
-            //   // console.log('Base64 String - ', base64String);
+        if (selectedFiles.length > 0) {
+            // Loop through all selected files
+            for (var i = 0; i < selectedFiles.length; i++) {
+                var fileToLoad = selectedFiles[i];
 
-            //TEST BLOB TO BASE 64 //
-
-            // Select the very first file from list
-            var fileToLoad = selectedFile[0];
-            // FileReader function for read the file.
-            var fileReader = new FileReader();
-            var base64;
-            // Convert data to base64
-            fileReader.readAsDataURL(fileToLoad);
-            // Onload of file read the file content
-            fileReader.onloadend = function (fileLoadedEvent) {
-                base64 = fileLoadedEvent.target.result;
-                if (base64.toString().includes("data:application/pdf;base64")) {
-                    DFILETYPE = "PDF";
-                    swal("", "Please only upload Images..!", "warning");
-                    jQuery('#travelFile').val("");
-                    jQuery('#foodlFile').val("");
-                    jQuery('#stayFile').val("");
-                    return false;
-
-                }
-                else {
-                    DFILETYPE = "IMG";
-                }
-                if ((base64.toString().includes("data:image/jpeg;base64")) || (base64.toString().includes("data:image/img;base64")) || (base64.toString().includes("data:image/jpg;base64")) || (base64.toString().includes("data:image/png;base64"))) {
-                    DFILETYPE = "IMG";
-                }
-                else {
-                    swal("", "Please only upload Images..!", "warning");
+                // Size check (optional)
+                var sizeInKB = fileToLoad.size / 1024;
+                var sizeLimit = 200;
+                if (sizeInKB >= sizeLimit) {
+                    swal("", "Max file size allowed is 200KB", "warning");
                     jQuery('#payfile').val("");
+                    jQuery('#tick').hide();
+                    jQuery('#close').show();
                     return false;
                 }
 
-                Strbase64 = base64.toString().replace('data:application/pdf;base64,', '').replace('data:image/jpeg;base64,', '').replace('data:image/png;base64,', '');
+                var fileReader = new FileReader();
+                fileReader.onloadend = function (fileLoadedEvent) {
+                    var base64 = fileLoadedEvent.target.result;
 
-            };
-            if (Strbase64 != null) {
-                jQuery('#tick').show();
-                jQuery('#close').hide();
+                    // Validate type
+                    if (base64.includes("data:application/pdf;base64")) {
+                        DFILETYPE = "PDF";
+                        swal("", "Please only upload Images..!", "warning");
+                        jQuery('#payfile').val("");
+                        jQuery('#tick').hide();
+                        jQuery('#close').show();
+                        return false;
+                    } else if (
+                        base64.includes("data:image/jpeg;base64") ||
+                        base64.includes("data:image/jpg;base64") ||
+                        base64.includes("data:image/png;base64")
+                    ) {
+                        DFILETYPE = "IMG";
+                    } else {
+                        swal("", "Please only upload Images..!", "warning");
+                        jQuery('#payfile').val("");
+                        jQuery('#tick').hide();
+                        jQuery('#close').show();
+                        return false;
+                    }
+
+                    // Clean base64 string and push to list
+                    var cleanBase64 = base64
+                        .replace('data:image/jpeg;base64,', '')
+                        .replace('data:image/jpg;base64,', '')
+                        .replace('data:image/png;base64,', '');
+                    Strbase64List.push(cleanBase64);
+
+                    // Show tick if at least one valid file
+                    if (Strbase64List.length > 0) {
+                        jQuery('#tick').show();
+                        jQuery('#close').hide();
+                    }
+                };
+
+                fileReader.readAsDataURL(fileToLoad);
             }
-        }
-        else {
-
-            swal("", "Add Image..!", "warning");
+        } else {
             swal("", "Add Image..!", "warning");
             return false;
         }
@@ -654,7 +810,7 @@ jQuery(document).ready(function ($) {
     jQuery('#ddlreject').change(function (e) {
         jQuery('#others').hide();
         valchange = 0;
-        Strbase64 = null;
+        Strbase64List = [];
         var val = jQuery('#ddlreject').val();
         if (val != "0") {
             if (val == 9)
@@ -681,7 +837,7 @@ jQuery(document).ready(function ($) {
             _AddPayData.getCollectionName(val);
             jQuery("#gstcheck").hide();
             valchange = 0;
-            Strbase64 = null;
+            Strbase64List = [];
             jQuery('#others').show();
             jQuery('#tick').hide();
             jQuery('#close').show();
@@ -694,7 +850,7 @@ jQuery(document).ready(function ($) {
         else {
             jQuery('#others').hide();
             valchange = 0;
-            Strbase64 = null;
+            Strbase64List = [];
             colectname = "";
         }
         var dateInputValue = jQuery('#billdateedit').val();
@@ -804,7 +960,7 @@ jQuery(document).ready(function ($) {
         _AddPayData.takeSnapShot();
     });
     jQuery('#Rejsubmit').click(function (e) {
-        if (/*valchange != 0 ||*/ Strbase64 != null)
+        if (Strbase64List != null && Strbase64List.length > 0)
             _AddPayData.RejResubmit();
         else {
             swal("", "Please capture the Bill..!", "error");
@@ -821,7 +977,7 @@ jQuery(document).ready(function ($) {
         jQuery('#camsection').hide();
         jQuery('#closeCam').hide();
         jQuery('#viewUploadedImages').hide();
-        if (Strbase64 != null) {
+        if (Strbase64List != null && Strbase64List.length > 0) {
             jQuery('#tick').show();
             jQuery('#close').hide();
         }
@@ -842,7 +998,7 @@ spanCam2.onclick = function () {
     jQuery('#camsection').hide();
     jQuery('#closeCam').hide();
     jQuery('#viewUploadedImages').hide();
-    if (Strbase64 != null) {
+    if (Strbase64List != null && Strbase64List.length > 0) {
         jQuery('#tick').show();
         jQuery('#close').hide();
     }

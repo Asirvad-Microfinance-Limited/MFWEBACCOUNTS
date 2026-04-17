@@ -1,5 +1,7 @@
 ﻿var expToDate;
 var expFromDate;
+var vendernm = "";
+var venderaddr = "";
 var _AddPayData = {
 
     checkAccess: function () {
@@ -433,7 +435,10 @@ var _AddPayData = {
     GetGST: function () {
         jQuery('.page-loader-wrapper').show();
         jQuery('#gstin-error').hide();
-        var val = jQuery('#gstin').val();
+        var val = jQuery('#gstin').val().toUpperCase();
+        gststate = parseInt(val.substring(0, 2));
+        tkn = "MzM0OTY4XmV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTkzY3k4eU1EQTFMekExTDJsa1pXNTBhWFI1TDJOc1lXbHRjeTl1WVcxbElqb2lNek0wT1RZNElpd2lhWE56SWpvaWFIUjBjRG92TDJ4dlkyRnNhRzl6ZERvMU1EQXdJaXdpWVhWa0lqb2lhSFIwY0RvdkwyeHZZMkZzYUc5emREbzFNREF3SW4wLkUxUXFGWVozb1VSUmxuWFlnWFFwZGsyNXZONi14QjlsWElyU0s5QVpBblE=";
+
         if (val != "" && val.toUpperCase() != "NIL") {
             var GetGSTValue = {
                 "gstin": val,
@@ -444,8 +449,20 @@ var _AddPayData = {
 
             };
 
-            _http.post(MFPUBLICKYCAPI_URL + "api/gst", GetGSTValue, _AddPayData.FillGST, userdata.token)
-        }
+            try {
+                GetGSTValue = JSON.stringify(GetGSTValue);
+            } catch (e) {
+                swal("", e.message, "warning");
+                return false;
+            }
+
+            EncryptAPIReqNew(GetGSTValue).then(encrypted => {
+                GetGSTValue = { "encryptedRqstStr": encrypted };
+                _http.post(MFPUBLICKYCAPI_URL + "api/gst", GetGSTValue, _AddPayData.FillGST, tkn)
+
+            });
+
+         }
         else {
             jQuery("#gstin").val("---");
             jQuery("#vendorName").val("---");
@@ -455,20 +472,43 @@ var _AddPayData = {
             jQuery('.page-loader-wrapper').hide();
         }
     },
-    FillGST: function (response) {
+    FillGST: async function (response) {
+        jQuery('.page-loader-wrapper').hide();
+
         if (response.status === "SUCCESS") {
-            jQuery('.page-loader-wrapper').hide();
-            if (response.data.pradr.em.length > 0) {
-                jQuery("#vendorName").val(response.data.lgnm);
+            const decrypted = await DecryptAPIReqNew(response.data.encryptedResStr);
+            let parsedResult;
+
+            try {
+                parsedResult = JSON.parse(decrypted);
+            } catch (e) {
+                swal("GST", "Invalid GSTIN number..!", "error");
+                jQuery("#vendorName").val("");
+                return;
             }
-            else {
+
+            response.data.queryResult = parsedResult;
+
+            // Check for invalid GSTIN
+            if (response.apiStatus === "FAILED" || parsedResult.error) {
+                swal("GST", "Invalid GSTIN number..!", "error");
+                jQuery("#vendorName").val("");
+                return;
+            }
+
+            let vendernm = response.data.queryResult.LegalNameOfBusiness;
+
+            if (vendernm != null) {
+                jQuery("#vendorName").val(vendernm);
+            } else {
                 jQuery("#vendorName").val("");
             }
-        }
-        else {
+        } else {
+            swal("GST", "Invalid GSTIN number..!", "error");
             jQuery("#vendorName").val("");
         }
     },
+
     checkDateValidity: function () {
         var frmdtval = Date.parse(jQuery('#expfrom').val());
         var todtval = Date.parse(jQuery('#expto').val());
@@ -645,7 +685,7 @@ var _AddPayData = {
 
         _http.post(MFPUBLICACCOUNTSAPI_URL + "api/accounts/images", invimagemageData, _AddPayData.viewInvoiceImagesLoadCompleted, userdata.token)
     },
-    //IMAGE VIEW NEW//
+
     viewInvoiceImagesLoadCompleted: function (response) {
         jQuery('.page-loader-wrapper').hide();
         if (response.status === "SUCCESS") {
@@ -654,74 +694,148 @@ var _AddPayData = {
             var $container = jQuery('#ImageDiv');
             $container.empty();                     // clear old content
 
-            // create carousel wrapper
-            var $carousel = jQuery(
-                '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
-                '<div class="carousel-inner"></div>' +
-                '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
-                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
-                '<span class="sr-only">Previous</span>' +
-                '</a>' +
-                '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
-                '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
-                '<span class="sr-only">Next</span>' +
-                '</a>' +
-                '</div>'
-            );
+            if (images && images.length > 0) {
+                // get the last uploaded image (highest index)
+                var lastImage = images[images.length - 1];
+                var imgBase64 = lastImage.imageString;
+                var fileType = lastImage.fileType || "png"; // default to png
 
-            var $inner = $carousel.find('.carousel-inner');
+                // create carousel wrapper
+                var $carousel = jQuery(
+                    '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
+                    '<div class="carousel-inner"></div>' +
+                    '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
+                    '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+                    '<span class="sr-only">Previous</span>' +
+                    '</a>' +
+                    '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
+                    '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+                    '<span class="sr-only">Next</span>' +
+                    '</a>' +
+                    '</div>'
+                );
 
-            // loop through all images
-            for (var i = 0; i < images.length; i++) {
-                var imgBase64 = images[i].imageString;
-                var fileType = images[i].fileType || "png"; // default to png
+                var $inner = $carousel.find('.carousel-inner');
 
+                // only append the last image
                 var $item = jQuery(
-                    '<div class="carousel-item ' + (i === 0 ? 'active' : '') + '">' +
+                    '<div class="carousel-item active">' +
                     '<img class="d-block w-100 rtimg" ' +
                     'src="data:image/' + fileType + ';base64,' + imgBase64 + '" ' +
                     'height="450" style="margin:auto;" />' +
                     '</div>'
                 );
 
-                // initialize rotation state for each image
                 $item.find('img').data('rotate', 0);
-
                 $inner.append($item);
+
+                $container.append($carousel);
+                jQuery('#ImageModel').modal('show');
+
+                // apply zoom
+                jQuery('.rtimg').each(function () {
+                    jQuery(this).imageZoom();
+                });
+
+                // rotation logic
+                jQuery('#rotate').off('click').on('click', function () {
+                    var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
+                    if ($activeImg.length) {
+                        var currentAngle = $activeImg.data('rotate') || 0;
+                        var newAngle = (currentAngle + 90) % 360;
+                        $activeImg.css({
+                            'transform': 'rotate(' + newAngle + 'deg)',
+                            'transition': 'transform 0.3s ease'
+                        });
+                        $activeImg.data('rotate', newAngle);
+                    }
+                });
             }
 
-            $container.append($carousel);
-
-            jQuery('#ImageModel').modal('show');
-
-            // apply zoom to all images
-            jQuery('.rtimg').each(function () {
-                jQuery(this).imageZoom();
-            });
-
-            // rotation logic
-            jQuery('#rotate').off('click').on('click', function () {
-                // find the currently active image in the carousel
-                var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
-
-                if ($activeImg.length) {
-                    var currentAngle = $activeImg.data('rotate') || 0;
-                    var newAngle = (currentAngle + 90) % 360;
-
-                    $activeImg.css({
-                        'transform': 'rotate(' + newAngle + 'deg)',
-                        'transition': 'transform 0.3s ease' // smooth animation
-                    });
-
-                    // save new angle for this image
-                    $activeImg.data('rotate', newAngle);
-                }
-            });
-
         } else {
-            _General.noData(jQuery('#divInvimages'), "No Data Found");
+            _General.noData(jQuery('#ImageModel'), "No Data Found");
         }
     },
+
+
+
+    ////IMAGE VIEW NEW//
+    //viewInvoiceImagesLoadCompleted: function (response) {
+    //    jQuery('.page-loader-wrapper').hide();
+    //    if (response.status === "SUCCESS") {
+
+    //        var images = response.data.imageData;   // list of images
+    //        var $container = jQuery('#ImageDiv');
+    //        $container.empty();                     // clear old content
+
+    //        // create carousel wrapper
+    //        var $carousel = jQuery(
+    //            '<div id="invoiceCarousel" class="carousel slide" data-ride="carousel">' +
+    //            '<div class="carousel-inner"></div>' +
+    //            '<a class="carousel-control-prev" href="#invoiceCarousel" role="button" data-slide="prev">' +
+    //            '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+    //            '<span class="sr-only">Previous</span>' +
+    //            '</a>' +
+    //            '<a class="carousel-control-next" href="#invoiceCarousel" role="button" data-slide="next">' +
+    //            '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+    //            '<span class="sr-only">Next</span>' +
+    //            '</a>' +
+    //            '</div>'
+    //        );
+
+    //        var $inner = $carousel.find('.carousel-inner');
+
+    //        // loop through all images
+    //        for (var i = 0; i < images.length; i++) {
+    //            var imgBase64 = images[i].imageString;
+    //            var fileType = images[i].fileType || "png"; // default to png
+
+    //            var $item = jQuery(
+    //                '<div class="carousel-item ' + (i === 0 ? 'active' : '') + '">' +
+    //                '<img class="d-block w-100 rtimg" ' +
+    //                'src="data:image/' + fileType + ';base64,' + imgBase64 + '" ' +
+    //                'height="450" style="margin:auto;" />' +
+    //                '</div>'
+    //            );
+
+    //            // initialize rotation state for each image
+    //            $item.find('img').data('rotate', 0);
+
+    //            $inner.append($item);
+    //        }
+
+    //        $container.append($carousel);
+
+    //        jQuery('#ImageModel').modal('show');
+
+    //        // apply zoom to all images
+    //        jQuery('.rtimg').each(function () {
+    //            jQuery(this).imageZoom();
+    //        });
+
+    //        // rotation logic
+    //        jQuery('#rotate').off('click').on('click', function () {
+    //            // find the currently active image in the carousel
+    //            var $activeImg = jQuery('#invoiceCarousel .carousel-item.active img');
+
+    //            if ($activeImg.length) {
+    //                var currentAngle = $activeImg.data('rotate') || 0;
+    //                var newAngle = (currentAngle + 90) % 360;
+
+    //                $activeImg.css({
+    //                    'transform': 'rotate(' + newAngle + 'deg)',
+    //                    'transition': 'transform 0.3s ease' // smooth animation
+    //                });
+
+    //                // save new angle for this image
+    //                $activeImg.data('rotate', newAngle);
+    //            }
+    //        });
+
+    //    } else {
+    //        _General.noData(jQuery('#divInvimages'), "No Data Found");
+    //    }
+    //},
 
     //viewInvoiceImagesLoadCompleted: function (response) {
     //    jQuery('.page-loader-wrapper').hide();
