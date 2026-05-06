@@ -1,8 +1,65 @@
-﻿@* 
+﻿
 @{
     ViewData["Title"] = "MenuAssign";
     Layout = "~/Views/Shared/_MFMainLayout.cshtml";
 }
+<style type="text/css">
+    .nb {
+        height: 100%;
+        width: 100%;
+        /*overflow-x: scroll;
+            overflow-y: scroll;*/
+        overflow-x: auto;
+        overflow-y: auto;
+        /*background-color: powderblue;*/
+    }
+
+    .north {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+
+    .west {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+
+    .south {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    }
+
+    .east {
+        transform: rotate(270deg);
+        -ms-transform: rotate(270deg); /* IE 9 */
+        -webkit-transform: rotate(270deg); /* Safari and Chrome */
+    }
+
+
+    figure.containerZoom {
+        background-position: 50% 50%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: zoom-in;
+        margin: 0;
+    }
+
+        figure.containerZoom img {
+            transition: opacity .5s;
+            display: block;
+            width: 100%;
+        }
+
+        figure.containerZoom.active img {
+            opacity: 0;
+        }
+</style>
+
+
 
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -30,7 +87,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Module<b style="color:red">*</b></label>
+                                <label for="cc-payment" class="control-label mb-1">MODULE NAME <b style="color:red">*</b></label>
                                 <select name="ddlModule" id="ddlModule" class=" form-control" style="margin-bottom:15px;">
                                     <option value="0">Select Module</option>
 
@@ -40,12 +97,12 @@
                             </div>
                         </div>
 
-                        <!--menu-->
+                        <!--main menu-->
                         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Menu<b style="color:red">*</b></label>
-                                <select name="ddlMenu" id="ddlMenu" class=" form-control" style="margin-bottom:15px;">
-                                    <option value="0">Select Menu</option>
+                                <label for="cc-payment" class="control-label mb-1">MAIN MENU<b style="color:red">*</b></label>
+                                <select name="ddlmainmenu" id="ddlmainmenu" class=" form-control" style="margin-bottom:15px;">
+                                    <option value="0">Select Main Menu</option>
 
                                 </select>
                                 <label id="ddlMenu-error" class="error" for="ddlMenu" style="display:block"></label>
@@ -54,24 +111,155 @@
                         </div>
 
 
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        @* <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 
                             <label for="street" class=" form-control-label">EmployeeId<b style="color:red">*</b></label>
                             <input type="text" placeholder="EnterId" id="vaemployee" name="vaemployee" class="form-control" maxlength="50">
                             <label id="vaemployee-error" class="error" for="vaemployee" style="display:block"></label>
+                        </div> *@
+
+
+
+
+                       
+
+
+                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 1030px; margin-top: -40px;">
+                            <button type="button" id="clickbtn" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+                                Click Me
+                            </button>
                         </div>
 
 
 
-                        <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 1030px; margin-top: -40px;">
+                        <div class="row">
+                            <div class="col-md-12" id="divCollDet" style="background-color:white;padding-top:20px;padding-bottom:20px;">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                       @*  grid show  *@
+
+                        <div class="card" id="maincard" style="display:none;margin-top: 20px;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+                                <div class="table-responsive">
+                                    <div align="center" id="divdespatch" name="divdespatch" style="position: relative;min-height:200px;overflow: auto;display: block;">
+                                        <table class="table" id="tbldespatch">
+                                            <thead>
+                                                <tr>
+                                                    <th class="VCol" style="text-align:left; width:1900px;">DESCRIPTION</th>
+
+                                                    @* <th class="VCol" style="text-align:left;">#</th> *@
+                                                   @*  <th class="VCol" style="text-align:left;">DESCRIPTION</th>
+                                                    *@
+                                                </tr>
+                                            </thead>
+                                            <tbody id="paymenttabl"></tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        @* <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+
+                            <label for="street" class=" form-control-label">EmployeeId<b style="color:red">*</b></label>
+                            <input type="text" placeholder="EnterId" id="vaemployee" name="vaemployee" class="form-control" maxlength="50">
+                            <label id="vaemployee-error" class="error" for="vaemployee" style="display:block"></label>
+                        </div> *@
+
+
+                         
+
+
+
+
+                 
+
+                  <div class="card" id="empost" style="display:none;margin-top: 20px;">
+                            <div class="card-body" style="background-color:#fff !important; ">
+
+                            <div class="col-lg-4">
+
+                            <label class="control-label mb-1">Assign Employee code or post </label>
+                             @* radio 1 *@
+                            <div class="custom-control custom-radio">
+
+                                <input type="radio" id="radAppr" name="radApprRej" class="custom-control-input" onclick="Showemp()" />
+                                <label class="custom-control-label" for="radAppr">EMPLOYEE CODE</label>
+
+                            </div>
+
+                            <div class="col-lg-8 col-md-8 col-sm-18 col-xs-25">
+
+                            
+                            <input type="text" placeholder="EnterId" id="vaemployee" name="vaemployee" class="form-control" maxlength="50">
+
+                                    
+                                    <label for="cc-payment" class="control-label mb-1" id="menudes1" style="display:none;">Menu Description <b style="color:red">*</b></label>
+                                    <input type="text" placeholder="Enter Description" id="vaemployeedesc" name="vaemployee" class="form-control"   maxlength="50" style="display:none;"> 
+
+                            <label id="vaemployee-error" class="error" for="vaemployee" style="display:block"></label>
+                        </div>
+
+
+                        @* radio 2 *@
+                            <div class="custom-control custom-radio">
+
+                                <input type="radio" id="radRjct" name="radApprRej" class="custom-control-input" onclick="Showpost()">
+                                <label class="custom-control-label" for="radRjct">POST</label>
+
+
+                            </div>
+
+                           <div class="col-lg-8 col-md-8 col-sm-18 col-xs-25">
+                            <div class="form-group">
+                               
+                                <select name="ddlpost" id="ddlpost" class=" form-control" style="margin-bottom:15px;">
+                                    <option value="0">Select Post</option>
+
+                                </select>
+
+                                       
+                                        <label for="cc-payment" id="menudes2" class="control-label mb-1" style="display:none;">Menu Description <b style="color:red">*</b></label>
+                                        <input type="text" placeholder="Enter Description" id="ddlpostdesc" name="vaemployee" class="form-control"   maxlength="50" style="display:none;"> 
+                                        
+
+                                <label id="ddlType-error" class="error" for="ddlModule" style="display:block"></label>
+
+                            </div>
+
+
+
+
+
+
+
+                                  
+
+
+
+
+
+
+                        </div>
+                            
+
+                        </div>
+                        
+
+                         <div class=" col-md-6 col-sm-6 col-xl-6" style="margin-left: 1030px; margin-top: -40px;">
                             <button type="button" class="btn btn-success  waves-effect btn-sm" style="font-size: 15px; " name="Assign" id="Assign" value="Assign" onclick=""><i class="Assign "></i> Assign</button>
 
                         </div>
 
 
-
-
                     </div>
+                   
+                    
 
                 </form>
 
@@ -88,4 +276,3 @@
     
 }
 
- *@
