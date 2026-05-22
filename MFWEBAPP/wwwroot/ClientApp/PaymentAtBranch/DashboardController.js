@@ -72,7 +72,7 @@
                     //    msg = "The PR " + response.data.queryResult[i].param2 + " is rejected by " + response.data.queryResult[i].param4 + " due to " + response.data.queryResult[i].param3;
                     //    alert(msg);
                     //}
-                    swal("OVERSIGHT VERIFICATION PENDING", "Please Verify Oversight!", "warning");
+                    swal("OVERSIGHT VERIFICATION PENDING", "Please verify oversight otherwise punching will be BLOCKED !", "warning");
 
 
                 }
